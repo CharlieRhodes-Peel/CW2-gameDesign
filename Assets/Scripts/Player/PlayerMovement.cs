@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpReleaseDamping;
     [SerializeField] private float flipTime;
+    [SerializeField] private float maxVelocity;
     
     [Header("References")]
     [SerializeField] private LayerMask groundLayer;
@@ -23,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private Rigidbody2D rb;
     private bool facingRight = true;
+    
+    //Events
+    [HideInInspector] public static event Action<Vector2> ChangedLookDir;
     
     //Get components on player
     void Start()
@@ -41,6 +45,14 @@ public class PlayerMovement : MonoBehaviour
     {
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = moveDirection.x * moveSpeed;
+        
+        Debug.Log(rb.linearVelocityX);
+
+        if (rb.linearVelocityY < -maxVelocity)
+        {
+            Debug.Log("MaxVelocity Reached");
+            rb.linearVelocityY = -maxVelocity;
+        }
         
         //If player is facing wrong way, flip them
         if (facingRight && moveDirection.x < 0 || !facingRight && moveDirection.x > 0)
@@ -71,13 +83,14 @@ public class PlayerMovement : MonoBehaviour
     //Checks if the player is grounded when called
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.5f, groundLayer);
     }
 
     private void Flip()
     {
         facingRight = !facingRight;
         LeanTween.rotateY(gameObject, facingRight ? 0 : 180, flipTime).setEaseInOutSine();
+        ChangedLookDir?.Invoke(moveDirection);
     }
     
     //Subscribes to input events when player is enabled and vice versa
