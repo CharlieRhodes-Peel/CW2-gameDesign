@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpReleaseDamping;
+    [SerializeField] private float flipTime;
     
     [Header("References")]
     [SerializeField] private LayerMask groundLayer;
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     //Privates
     private Vector2 moveDirection;
     private Rigidbody2D rb;
+    private bool facingRight = true;
     
     //Get components on player
     void Start()
@@ -38,6 +41,12 @@ public class PlayerMovement : MonoBehaviour
     {
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = moveDirection.x * moveSpeed;
+        
+        //If player is facing wrong way, flip them
+        if (facingRight && moveDirection.x < 0 || !facingRight && moveDirection.x > 0)
+        {
+            Flip();
+        }
     }
     
     //Called when jump button pressed down
@@ -63,6 +72,12 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        LeanTween.rotateY(gameObject, facingRight ? 0 : 180, flipTime).setEaseInOutSine();
     }
     
     //Subscribes to input events when player is enabled and vice versa
