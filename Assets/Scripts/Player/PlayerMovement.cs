@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -34,6 +33,20 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     
+    //Subscribes to events when player is enabled and vice versa
+    private void OnEnable()
+    {
+        //Input events
+        jumpInput.action.started += Jump;
+        jumpInput.action.canceled += CancelJump;
+    }
+
+    private void OnDisable()
+    {
+        jumpInput.action.started -= Jump;
+        jumpInput.action.canceled -= CancelJump;
+    }
+    
     //Get player input
     void Update()
     {
@@ -45,12 +58,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = moveDirection.x * moveSpeed;
-        
-        Debug.Log(rb.linearVelocityX);
 
         if (rb.linearVelocityY < -maxVelocity)
         {
-            Debug.Log("MaxVelocity Reached");
             rb.linearVelocityY = -maxVelocity;
         }
         
@@ -91,18 +101,5 @@ public class PlayerMovement : MonoBehaviour
         facingRight = !facingRight;
         LeanTween.rotateY(gameObject, facingRight ? 0 : 180, flipTime).setEaseInOutSine();
         ChangedLookDir?.Invoke(moveDirection);
-    }
-    
-    //Subscribes to input events when player is enabled and vice versa
-    private void OnEnable()
-    {
-        jumpInput.action.started += Jump;
-        jumpInput.action.canceled += CancelJump;
-    }
-
-    private void OnDisable()
-    {
-        jumpInput.action.started -= Jump;
-        jumpInput.action.canceled -= CancelJump;
     }
 }
