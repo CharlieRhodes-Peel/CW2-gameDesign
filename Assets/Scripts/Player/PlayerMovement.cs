@@ -4,12 +4,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Relative to tilemap player should be able to:
+    // - Jump up to a 4 block high platform
+    // - Jump across a 6 block gap
+    
     [Header("Stats")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpReleaseDamping;
     [SerializeField] private float flipTime;
     [SerializeField] private float maxVelocity;
+
+    [SerializeField] private Transform coyoteJumpPos;
+    [SerializeField] private float coyoteJumpRadius;
     
     [Header("References")]
     [SerializeField] private LayerMask groundLayer;
@@ -18,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movingInput;
     [SerializeField] private InputActionReference jumpInput;
+    
+    [Header("Visuals")]
+    //[SerializeField] private Animator animator;
     
     //Privates
     private Vector2 moveDirection;
@@ -58,6 +68,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
+        
+        //animator.SetFloat("Move", Mathf.Abs(moveDirection.x));
+        //animator.SetBool("Grounded", IsGrounded());
 
         if (rb.linearVelocityY < -maxVelocity)
         {
@@ -79,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         //Jump
         rb.linearVelocityY = 0;
         rb.AddForceY(jumpForce, ForceMode2D.Impulse);
+        
+        //animator.SetTrigger("Jump");
     }
 
     //Called when jump button released
@@ -88,12 +103,15 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocityY *= (1/jumpReleaseDamping);
         }
+        
+        //animator.SetTrigger("Fall");
     }
 
     //Checks if the player is grounded when called
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.5f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer) 
+               || Physics2D.OverlapCircle(coyoteJumpPos.position, coyoteJumpRadius, groundLayer);
     }
 
     private void Flip()
