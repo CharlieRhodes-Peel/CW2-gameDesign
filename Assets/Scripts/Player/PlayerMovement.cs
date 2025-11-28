@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Only moves the player along the horizontal axis
-        rb.linearVelocityX = moveDirection.x * moveSpeed;
+        rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
 
         if (rb.linearVelocityY < -maxVelocity)
         {

@@ -1,10 +1,12 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraEffector : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private InputActionReference movingInput;
     
     [Header("Falling Positional")]
     [SerializeField] private float maxDamp;
@@ -17,8 +19,13 @@ public class CameraEffector : MonoBehaviour
     [Header("Turning Settings")]
     [SerializeField] private float turnLerpTime;
     
-    [Header("Interpolation Curve")]
-    [SerializeField] private LeanTweenType easeType = LeanTweenType.easeInOutQuad;
+    [Header("Look Settings")]
+    [SerializeField] private float lookOffset;
+    [SerializeField] private float lookLerpTime;
+    
+    [Header("Interpolation Curves")]
+    [SerializeField] private LeanTweenType movementLeanType = LeanTweenType.easeInOutQuad;
+    [SerializeField] private LeanTweenType lookingLeanType = LeanTweenType.easeInOutElastic;
     
     private CinemachinePositionComposer cam;
     private int dampTweenId = -1;
@@ -27,6 +34,8 @@ public class CameraEffector : MonoBehaviour
 
     private float xDirection;
     private bool startTweeningHorizontal;
+
+    private Vector2 lookDir;
     
     void Start()
     {
@@ -36,6 +45,8 @@ public class CameraEffector : MonoBehaviour
 
     void Update()
     {
+        lookDir = movingInput.action.ReadValue<Vector2>();   
+        
         //If going up
         if (rb.linearVelocityY > 0)
         {
@@ -47,6 +58,16 @@ public class CameraEffector : MonoBehaviour
         {
             TweenDamping(minDamp);
             TweenOffset(-fallingOffset);
+        }
+        //If looking up and not moving
+        else if (lookDir.y > 0 && rb.linearVelocity == new Vector2(0, 0))
+        {
+            TweenLook(lookOffset);
+        }
+        //If looking down and not moving
+        else if (lookDir.y < 0 &&  rb.linearVelocity == new Vector2(0, 0))
+        {
+            TweenLook(-lookOffset);
         }
         //If horizontal not moving
         else
@@ -82,7 +103,7 @@ public class CameraEffector : MonoBehaviour
         }
 
         dampTweenId = LeanTween.value(gameObject, cam.Damping.y, targetValue, dampingLerpTime)
-            .setEase(easeType)
+            .setEase(movementLeanType)
             .setOnUpdate((float val) => {
                 var damping = cam.Damping;
                 damping.y = val;
@@ -101,7 +122,26 @@ public class CameraEffector : MonoBehaviour
         }
 
         offsetTweenId = LeanTween.value(gameObject, cam.TargetOffset.y, targetValue, offsetLerpTime)
-            .setEase(easeType)
+            .setEase(movementLeanType)
+            .setOnUpdate((float val) => {
+                var offset = cam.TargetOffset;
+                offset.y = val;
+                cam.TargetOffset = offset;
+            })
+            .setOnComplete(() => offsetTweenId = -1)
+            .id;
+    }
+    
+    private void TweenLook(float targetValue)
+    {
+        //If not alr tweening
+        if (offsetTweenId != -1 && LeanTween.descr(offsetTweenId) != null)
+        {
+            return;
+        }
+
+        offsetTweenId = LeanTween.value(gameObject, cam.TargetOffset.y, targetValue, lookLerpTime)
+            .setEase(lookingLeanType)
             .setOnUpdate((float val) => {
                 var offset = cam.TargetOffset;
                 offset.y = val;
@@ -120,7 +160,7 @@ public class CameraEffector : MonoBehaviour
         }
 
         horizontalTweenId = LeanTween.value(gameObject, cam.TargetOffset.x, direction, Mathf.Abs(cam.TargetOffset.x - direction) /  (1/turnLerpTime))
-            .setEase(easeType)
+            .setEase(movementLeanType)
             .setOnUpdate((float val) => {
                 var offset = cam.TargetOffset;
                 offset.x = val;
