@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
         
-        animator.SetFloat("Move", Mathf.Abs(moveDirection.x));
+        animator.SetFloat("Move", Mathf.Abs(rb.linearVelocityX));
         animator.SetBool("isGrounded", IsGrounded());
 
         if (rb.linearVelocityY < 0)
