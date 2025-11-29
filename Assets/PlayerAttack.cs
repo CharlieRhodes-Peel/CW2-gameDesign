@@ -26,16 +26,21 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private InputActionReference attackInput;
     [SerializeField] private InputActionReference movingInput;
     
+    [Header("Visuals")]
+    [SerializeField] private Animator animator;
+    
     private Vector2 movementInput;
 
     //Privates
     private bool isAttacking;
     private GameObject currentHitbox;
     private Rigidbody2D rb;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     //Get player input
@@ -47,10 +52,13 @@ public class PlayerAttack : MonoBehaviour
     
     private void FixedUpdate()
     {
+        //Dont change the hitbox is we're already attacking!
+        if (isAttacking) {return;}
+        
         //Depending on where the player is looking determines attack
-        if (movementInput.y > 0)      { currentHitbox = upAttackHitBox; }
-        else if (movementInput.y < 0) { currentHitbox = downAttackHitBox; }
-        else                          { currentHitbox = sideAttackHitBox;}
+        if (movementInput.y > 0)                                         { currentHitbox = upAttackHitBox; }
+        else if (movementInput.y < 0 && !playerMovement.GetIsGrounded()) { currentHitbox = downAttackHitBox; }
+        else                                                             { currentHitbox = sideAttackHitBox;}
     }
 
     //Called whenever the attack button is pressed
@@ -64,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator StartAttacking()
     {
         isAttacking = true;
+        StartCoroutine(SetAnimatorCorrectAttack());
         
         yield return new WaitForSeconds(attackWindup);
         
@@ -87,6 +96,31 @@ public class PlayerAttack : MonoBehaviour
                 rb.AddForceY(downAttackBounceForce,  ForceMode2D.Impulse);
             }
         }
+    }
+
+    private IEnumerator SetAnimatorCorrectAttack()
+    {
+        if (currentHitbox == downAttackHitBox)
+        {
+            animator.SetTrigger("attackDown");
+        }
+        else if (currentHitbox == sideAttackHitBox)
+        {
+            animator.SetTrigger("attackSide");
+        }
+        else if (currentHitbox == upAttackHitBox)
+        {
+            animator.SetTrigger("attackUp");
+        }
+        yield return new WaitForFixedUpdate();
+        resetAnimationTriggers();
+    }
+
+    private void resetAnimationTriggers()
+    {
+        animator.ResetTrigger("attackDown");
+        animator.ResetTrigger("attackSide");
+        animator.ResetTrigger("attackUp");
     }
 
 

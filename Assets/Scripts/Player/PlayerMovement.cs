@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionReference jumpInput;
     
     [Header("Visuals")]
-    //[SerializeField] private Animator animator;
+    [SerializeField] private Animator animator;
     
     //Privates
     private Vector2 moveDirection;
@@ -69,8 +69,14 @@ public class PlayerMovement : MonoBehaviour
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
         
-        //animator.SetFloat("Move", Mathf.Abs(moveDirection.x));
-        //animator.SetBool("Grounded", IsGrounded());
+        animator.SetFloat("Move", Mathf.Abs(moveDirection.x));
+        animator.SetBool("isGrounded", IsGrounded());
+
+        if (rb.linearVelocityY < 0)
+        {
+            animator.SetBool("isFalling", true);
+        }
+        else {animator.SetBool("isFalling", false);}
 
         if (rb.linearVelocityY < -maxVelocity)
         {
@@ -93,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocityY = 0;
         rb.AddForceY(jumpForce, ForceMode2D.Impulse);
         
-        //animator.SetTrigger("Jump");
+        animator.SetTrigger("Jump");
     }
 
     //Called when jump button released
@@ -119,5 +125,10 @@ public class PlayerMovement : MonoBehaviour
         facingRight = !facingRight;
         LeanTween.rotateY(gameObject, facingRight ? 0 : 180, flipTime).setEaseInOutSine();
         ChangedLookDir?.Invoke(moveDirection);
+    }
+
+    public bool GetIsGrounded()
+    {
+        return IsGrounded();
     }
 }
