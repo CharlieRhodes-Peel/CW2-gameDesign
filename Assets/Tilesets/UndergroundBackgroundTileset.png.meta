@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a8a876a554a04e81a80d3e91e17b6aa8
+guid: 1e42618a3dff272809dce6b353fd37ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5670815145464694343
-    second: UndergroundForegroundTileset_0
-  - first:
-      213: -9090117937057184444
-    second: UndergroundForegroundTileset_1
+      213: 8741732245658456266
+    second: UndergroundBackgroundTileset_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,11 +100,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_0
+      name: UndergroundBackgroundTileset_0
       rect:
         serializedVersion: 2
         x: 16
-        y: 96
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -118,168 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 746045c5458c2be40800000000000000
-      internalID: 5670815145464694343
+      spriteID: ac0dc08692fd05970800000000000000
+      internalID: 8741732245658456266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 445cc43d5e969d180800000000000000
-      internalID: -9090117937057184444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe19af843107ea95d827a16bed2b9972
-      internalID: 1955630087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2a207bbebbf471978f7d94f84c287e1
-      internalID: -359608230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_4
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edc736427eadcf218b8f48d0c2f8142d
-      internalID: -331443011
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63c9bfdec88442918a23f433283e9ade
-      internalID: 1259402552
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d28c28cd91b99d7e8bb2d4da0687a5f0
-      internalID: -1580673688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_7
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60a1355c6e0597eeab6bdaa273258e6f
-      internalID: -1977516867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_8
+      name: UndergroundBackgroundTileset_1
       rect:
         serializedVersion: 2
         x: 32
@@ -294,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c5e63ba62e6cef878705b8cc0d887c7
-      internalID: 378512847
+      spriteID: c05de2c253894f18f8a016353fff6145
+      internalID: -524513759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_9
+      name: UndergroundBackgroundTileset_2
       rect:
         serializedVersion: 2
         x: 48
@@ -316,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09f4c7067e08d0c8e9526ece3e5ce445
-      internalID: 358790706
+      spriteID: 8c6cace0412cadb229682b070d608b39
+      internalID: -527746858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_10
+      name: UndergroundBackgroundTileset_3
       rect:
         serializedVersion: 2
         x: 64
@@ -338,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5300cc6d3b8a6263cb1b13be4601279c
-      internalID: -421106550
+      spriteID: 9ee6c1bccffdb263dbf4f42d26d52918
+      internalID: -1254816534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_11
+      name: UndergroundBackgroundTileset_4
       rect:
         serializedVersion: 2
         x: 80
@@ -360,36 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dc690f75b0396c7596d7ba17541f134
-      internalID: 805659232
+      spriteID: f9001d9a66efd61c19571f9608c4b9a7
+      internalID: 1751023200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_12
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 737a44772fddd924a8eac36e6b3aa3d5
-      internalID: 92938901
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_13
+      name: UndergroundBackgroundTileset_5
       rect:
         serializedVersion: 2
         x: 0
@@ -404,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93ac51f0464fbc3a9a65080acd67f282
-      internalID: -1646661112
+      spriteID: 4be6f6b51753f55f6bb80e7168a3fb7b
+      internalID: -1491487427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_14
+      name: UndergroundBackgroundTileset_6
       rect:
         serializedVersion: 2
         x: 16
@@ -426,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e53ac98b689e5577bbbfc7d40ea5048
-      internalID: -1856471322
+      spriteID: b08f5879733ad7b959633d8834646f6c
+      internalID: 1877986090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_15
+      name: UndergroundBackgroundTileset_7
       rect:
         serializedVersion: 2
         x: 32
@@ -448,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34ef8bc5f78a4addfb2ac17761750ced
-      internalID: 1273214925
+      spriteID: 63bbb0e7bdbc91803913d6913a8addd6
+      internalID: -1708690135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_16
+      name: UndergroundBackgroundTileset_8
       rect:
         serializedVersion: 2
         x: 48
@@ -470,14 +291,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b60e11546ef5e0db2ad139f21678733f
-      internalID: 326936458
+      spriteID: 52c7c2e48212da887887c38f31f44287
+      internalID: -872062439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_17
+      name: UndergroundBackgroundTileset_9
       rect:
         serializedVersion: 2
         x: 64
@@ -492,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d33fe9306aa1d6f591ce11481a4d5e0
-      internalID: -166868139
+      spriteID: 669d4c557961184b08cb66fa8622065f
+      internalID: 1959154121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_18
+      name: UndergroundBackgroundTileset_10
       rect:
         serializedVersion: 2
         x: 80
@@ -514,36 +335,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 499ac6e439885953d97f23289406bd66
-      internalID: -651770377
+      spriteID: b4adc1681b1559a3f9e6b80a40b6c045
+      internalID: 719447713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_19
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0540dd463d8894d7a60301c66fe76c7
-      internalID: -95165256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_20
+      name: UndergroundBackgroundTileset_11
       rect:
         serializedVersion: 2
         x: 0
@@ -558,14 +357,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d52053b9bff1b3a697ea5a742b25093
-      internalID: -1714114757
+      spriteID: c4d22a430baea24acb39a2f561789486
+      internalID: 1283933910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_21
+      name: UndergroundBackgroundTileset_12
       rect:
         serializedVersion: 2
         x: 16
@@ -580,14 +379,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 937b94b0eddc9272abaf0ea89ccbcaa9
-      internalID: -166926136
+      spriteID: e1f04ad4073182ebab0c495b9e091c19
+      internalID: 165767709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_22
+      name: UndergroundBackgroundTileset_13
       rect:
         serializedVersion: 2
         x: 32
@@ -602,14 +401,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad02a1cdab14435bc884c8830a1f937c
-      internalID: -1250898796
+      spriteID: 031a07cfd5e9d3200b919b11675826c8
+      internalID: 342484947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_23
+      name: UndergroundBackgroundTileset_14
       rect:
         serializedVersion: 2
         x: 48
@@ -624,14 +423,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d65082ac304b60dd78f449784aa182f8
-      internalID: 1921663845
+      spriteID: becc265fc6b634b1da388e2c3f7e93a5
+      internalID: -1712435087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_24
+      name: UndergroundBackgroundTileset_15
       rect:
         serializedVersion: 2
         x: 64
@@ -646,14 +445,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14561a50a5f6fede799e628cd0734170
-      internalID: -1875561599
+      spriteID: bcd7fd9b79977c9b9a276bf33dc052aa
+      internalID: 2094198990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_25
+      name: UndergroundBackgroundTileset_16
       rect:
         serializedVersion: 2
         x: 80
@@ -668,36 +467,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c1d199041af29f90a2d700627d2d06c
-      internalID: -542050951
+      spriteID: 97d0658e52adfda6daec076e46501b46
+      internalID: -653722963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_26
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b3e59145c3ffd94c8eb71711276ed8b
-      internalID: -126704099
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_27
+      name: UndergroundBackgroundTileset_17
       rect:
         serializedVersion: 2
         x: 0
@@ -712,14 +489,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a3d8b651634f40eab6620a44b7eea10
-      internalID: 549276183
+      spriteID: e41f4dc330a0e48a18eb928c5081f542
+      internalID: -248846923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_28
+      name: UndergroundBackgroundTileset_18
       rect:
         serializedVersion: 2
         x: 16
@@ -734,14 +511,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab15b1193bc55db058cdbb251620e542
-      internalID: 1741957193
+      spriteID: 143ca9fb3a8dc576fb9b202eaca014e3
+      internalID: -1454178977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_29
+      name: UndergroundBackgroundTileset_19
       rect:
         serializedVersion: 2
         x: 32
@@ -756,14 +533,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d1138f6658e21ec5a853c246971a569
-      internalID: -1148505996
+      spriteID: 88648a75e1510b6d6b188812798c9a71
+      internalID: 147427775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_30
+      name: UndergroundBackgroundTileset_20
       rect:
         serializedVersion: 2
         x: 48
@@ -778,14 +555,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5119021ef358928bfa4e770e0d9b7d6a
-      internalID: 1475391861
+      spriteID: ce05022035dae6459971a813f0c8e386
+      internalID: 1134225341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_31
+      name: UndergroundBackgroundTileset_21
       rect:
         serializedVersion: 2
         x: 64
@@ -800,14 +577,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c3a9347194e67b9839168ec6ea363f
-      internalID: -1051081008
+      spriteID: 4d6199861aa2cb94098c9e826776b24b
+      internalID: -714908533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_32
+      name: UndergroundBackgroundTileset_22
       rect:
         serializedVersion: 2
         x: 80
@@ -822,36 +599,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a27ca816dfc1964a2ae20704e88fe8ea
-      internalID: -1803222349
+      spriteID: 198e4a4168125ecb283de2ad62f01d53
+      internalID: 58203999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_33
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e9ca099ac0a8657bb198a4b8e54b3d6
-      internalID: 1649309607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_34
+      name: UndergroundBackgroundTileset_23
       rect:
         serializedVersion: 2
         x: 0
@@ -866,14 +621,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 474d1b2a81e5fe297b62c326ddb3f95d
-      internalID: -824284062
+      spriteID: d6982060a317e739490126f31a087728
+      internalID: -1552923258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_35
+      name: UndergroundBackgroundTileset_24
       rect:
         serializedVersion: 2
         x: 16
@@ -888,14 +643,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6741a9fcd9d6511f9a4ad29a4ac7beb
-      internalID: 309059187
+      spriteID: 3683c209dfc7bb0fe82347fd9c3d831e
+      internalID: -1431751611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_36
+      name: UndergroundBackgroundTileset_25
       rect:
         serializedVersion: 2
         x: 32
@@ -910,14 +665,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c07edd4b98d1eaeaadfb2aaff79ecaa
-      internalID: 1682417511
+      spriteID: da0062010cac15b36ab6bc54d0e5a426
+      internalID: -336207302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_37
+      name: UndergroundBackgroundTileset_26
       rect:
         serializedVersion: 2
         x: 48
@@ -932,14 +687,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3288241525a9e0ffb6dcd504d8c37bd
-      internalID: 1009542685
+      spriteID: 189194242ccdbf7f08d0179e59c9bf9d
+      internalID: 1649122994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_38
+      name: UndergroundBackgroundTileset_27
       rect:
         serializedVersion: 2
         x: 64
@@ -954,14 +709,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd0ba1b801ce7663d8fafe5dc08ef909
-      internalID: 259322874
+      spriteID: a331473da58d04aff97dc3b995fe62e9
+      internalID: 1777782258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_39
+      name: UndergroundBackgroundTileset_28
       rect:
         serializedVersion: 2
         x: 80
@@ -976,36 +731,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cae0d5ecb1c7357cbb43c6f625e6cd00
-      internalID: -1523533038
+      spriteID: 462d8bde18546c11988eb3c60fe9ec5c
+      internalID: -869158840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_40
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8822d62eeb3d3a7eb51ef47d4b43b79
-      internalID: 1282978170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UndergroundForegroundTileset_41
+      name: UndergroundBackgroundTileset_29
       rect:
         serializedVersion: 2
         x: 0
@@ -1020,14 +753,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04fb29027f213e3b094b237389876da3
-      internalID: 943797383
+      spriteID: fdf5eceeac5e70dc3872fce74ff074fc
+      internalID: 1658238842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_42
+      name: UndergroundBackgroundTileset_30
       rect:
         serializedVersion: 2
         x: 16
@@ -1042,14 +775,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d38ab0f818764d42fb5c4e683cf7f7f0
-      internalID: -1180327016
+      spriteID: 4618be356671031acbdc6c6af3e49015
+      internalID: -239058239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UndergroundForegroundTileset_43
+      name: UndergroundBackgroundTileset_31
       rect:
         serializedVersion: 2
         x: 32
@@ -1064,8 +797,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15477edd308e88a509315eaf8aae09e0
-      internalID: -608344266
+      spriteID: bd506ee5642ac4f7ebb277fe958f414f
+      internalID: 1792918566
       vertices: []
       indices: 
       edges: []
@@ -1074,7 +807,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5dfabd9a31fd8fd9cabc07f8b1546634
+    spriteID: a31ba80fad87931f8b4b948ac27aa03e
     internalID: 0
     vertices: []
     indices: 
@@ -1084,50 +817,38 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UndergroundForegroundTileset_0: 5670815145464694343
-      UndergroundForegroundTileset_1: -9090117937057184444
-      UndergroundForegroundTileset_10: -421106550
-      UndergroundForegroundTileset_11: 805659232
-      UndergroundForegroundTileset_12: 92938901
-      UndergroundForegroundTileset_13: -1646661112
-      UndergroundForegroundTileset_14: -1856471322
-      UndergroundForegroundTileset_15: 1273214925
-      UndergroundForegroundTileset_16: 326936458
-      UndergroundForegroundTileset_17: -166868139
-      UndergroundForegroundTileset_18: -651770377
-      UndergroundForegroundTileset_19: -95165256
-      UndergroundForegroundTileset_2: 1955630087
-      UndergroundForegroundTileset_20: -1714114757
-      UndergroundForegroundTileset_21: -166926136
-      UndergroundForegroundTileset_22: -1250898796
-      UndergroundForegroundTileset_23: 1921663845
-      UndergroundForegroundTileset_24: -1875561599
-      UndergroundForegroundTileset_25: -542050951
-      UndergroundForegroundTileset_26: -126704099
-      UndergroundForegroundTileset_27: 549276183
-      UndergroundForegroundTileset_28: 1741957193
-      UndergroundForegroundTileset_29: -1148505996
-      UndergroundForegroundTileset_3: -359608230
-      UndergroundForegroundTileset_30: 1475391861
-      UndergroundForegroundTileset_31: -1051081008
-      UndergroundForegroundTileset_32: -1803222349
-      UndergroundForegroundTileset_33: 1649309607
-      UndergroundForegroundTileset_34: -824284062
-      UndergroundForegroundTileset_35: 309059187
-      UndergroundForegroundTileset_36: 1682417511
-      UndergroundForegroundTileset_37: 1009542685
-      UndergroundForegroundTileset_38: 259322874
-      UndergroundForegroundTileset_39: -1523533038
-      UndergroundForegroundTileset_4: -331443011
-      UndergroundForegroundTileset_40: 1282978170
-      UndergroundForegroundTileset_41: 943797383
-      UndergroundForegroundTileset_42: -1180327016
-      UndergroundForegroundTileset_43: -608344266
-      UndergroundForegroundTileset_5: 1259402552
-      UndergroundForegroundTileset_6: -1580673688
-      UndergroundForegroundTileset_7: -1977516867
-      UndergroundForegroundTileset_8: 378512847
-      UndergroundForegroundTileset_9: 358790706
+      UndergroundBackgroundTileset_0: 8741732245658456266
+      UndergroundBackgroundTileset_1: -524513759
+      UndergroundBackgroundTileset_10: 719447713
+      UndergroundBackgroundTileset_11: 1283933910
+      UndergroundBackgroundTileset_12: 165767709
+      UndergroundBackgroundTileset_13: 342484947
+      UndergroundBackgroundTileset_14: -1712435087
+      UndergroundBackgroundTileset_15: 2094198990
+      UndergroundBackgroundTileset_16: -653722963
+      UndergroundBackgroundTileset_17: -248846923
+      UndergroundBackgroundTileset_18: -1454178977
+      UndergroundBackgroundTileset_19: 147427775
+      UndergroundBackgroundTileset_2: -527746858
+      UndergroundBackgroundTileset_20: 1134225341
+      UndergroundBackgroundTileset_21: -714908533
+      UndergroundBackgroundTileset_22: 58203999
+      UndergroundBackgroundTileset_23: -1552923258
+      UndergroundBackgroundTileset_24: -1431751611
+      UndergroundBackgroundTileset_25: -336207302
+      UndergroundBackgroundTileset_26: 1649122994
+      UndergroundBackgroundTileset_27: 1777782258
+      UndergroundBackgroundTileset_28: -869158840
+      UndergroundBackgroundTileset_29: 1658238842
+      UndergroundBackgroundTileset_3: -1254816534
+      UndergroundBackgroundTileset_30: -239058239
+      UndergroundBackgroundTileset_31: 1792918566
+      UndergroundBackgroundTileset_4: 1751023200
+      UndergroundBackgroundTileset_5: -1491487427
+      UndergroundBackgroundTileset_6: 1877986090
+      UndergroundBackgroundTileset_7: -1708690135
+      UndergroundBackgroundTileset_8: -872062439
+      UndergroundBackgroundTileset_9: 1959154121
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
