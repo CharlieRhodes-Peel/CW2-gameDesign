@@ -9,11 +9,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float timeStopDuration;
     
     private Rigidbody2D rb;
-    private SpriteRenderer renderer;
+    [SerializeField] private SpriteRenderer renderer;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

@@ -160,7 +160,7 @@ public class CameraEffector : MonoBehaviour
         }
 
         horizontalTweenId = LeanTween.value(gameObject, cam.TargetOffset.x, direction, Mathf.Abs(cam.TargetOffset.x - direction) /  (1/turnLerpTime))
-            .setEase(movementLeanType)
+            .setEase(LeanTweenType.easeInOutSine)
             .setOnUpdate((float val) => {
                 var offset = cam.TargetOffset;
                 offset.x = val;

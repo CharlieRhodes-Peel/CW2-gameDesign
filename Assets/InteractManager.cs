@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,7 +17,11 @@ public class InteractManager : MonoBehaviour
     //Events
     public static event Action<Actor> InteractWithMePlayer;
     public static event Action<Actor> DontInteractWithMePlayer;
-    
+
+    private void Start()
+    {
+        StartCoroutine(WaitForTxtMeshProBug());
+    }
 
     // Update is called once per frame
     void Update()
@@ -81,5 +86,14 @@ public class InteractManager : MonoBehaviour
     public static Actor GetClosestActor()
     {
         return closestActor;
+    }
+
+    //Called at the start of the game because Text Mesh Pro's Awake() function is a 256kb garbage collection NUKE
+    //So call it at the start of the game to kinda "preload it" so that it doesn't happen during gameplay
+    private IEnumerator WaitForTxtMeshProBug()
+    {
+        popupText.gameObject.SetActive(true);
+        yield return new WaitForFixedUpdate();
+        popupText.gameObject.SetActive(false);
     }
 }
