@@ -1,3 +1,4 @@
+//Adapted from: https://pastebin.com/DgyxWJ5T Accessed: November 26, 2025
 //Dialogue Node
 using System;
 using System.Collections.Generic;

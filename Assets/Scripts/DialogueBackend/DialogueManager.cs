@@ -1,3 +1,4 @@
+//Adapted from: https://pastebin.com/DgyxWJ5T Accessed: November 26, 2025
 //manager
 
 using System;
