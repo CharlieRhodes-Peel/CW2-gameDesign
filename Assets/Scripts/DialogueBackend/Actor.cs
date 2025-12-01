@@ -9,6 +9,7 @@ public class Actor : MonoBehaviour
     public Dialogue Dialogue;
     
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
+    [SerializeField] private GameObject feeling;
 
     private bool playerInRange = false;
     private bool facingLeft = true;
@@ -43,6 +44,7 @@ public class Actor : MonoBehaviour
             InteractManager.TellPlayerIWantThem(this); //Tells the manager that I want to talk to the player
             
             playerEnterRangeEvent?.Invoke(gameObject);
+            feeling.SetActive(true);
         }
     }
 
@@ -56,6 +58,7 @@ public class Actor : MonoBehaviour
             InteractManager.TellPlayerIDontWantThem(this); //Tell the manager that we don't want to interact with the player anymore
             
             playerExitRangeEvent?.Invoke(gameObject);
+            feeling.SetActive(false);
         }
     }
 

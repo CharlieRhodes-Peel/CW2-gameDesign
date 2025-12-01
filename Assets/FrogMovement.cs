@@ -35,6 +35,12 @@ public class FrogMovement : MonoBehaviour
         Actor.playerExitRangeEvent += PlayerExitRange;
     }
 
+    void OnDisable()
+    {
+        Actor.playerEnterRangeEvent -= PlayerEnterRange;
+        Actor.playerExitRangeEvent -= PlayerExitRange;
+    }
+
     private void Update()
     {
         if  (hitWallCheck()) {Flip();}
