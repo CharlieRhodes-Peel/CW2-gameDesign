@@ -66,18 +66,23 @@ public class PlayerMovement : MonoBehaviour
     //Move player
     private void FixedUpdate()
     {
+        
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
+        bool isGrounded = IsGrounded();   
         
+        //Animator
         animator.SetFloat("Move", Mathf.Abs(rb.linearVelocityX));
-        animator.SetBool("isGrounded", IsGrounded());
+        animator.SetBool("isGrounded", isGrounded);
 
+        //Animator
         if (rb.linearVelocityY < 0)
         {
             animator.SetBool("isFalling", true);
         }
         else {animator.SetBool("isFalling", false);}
 
+        //Max velocity
         if (rb.linearVelocityY < -maxVelocity)
         {
             rb.linearVelocityY = -maxVelocity;
@@ -109,8 +114,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocityY *= (1/jumpReleaseDamping);
         }
-        
-        //animator.SetTrigger("Fall");
     }
 
     //Checks if the player is grounded when called
@@ -119,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer) 
                || Physics2D.OverlapCircle(coyoteJumpPos.position, coyoteJumpRadius, groundLayer);
     }
-
+    
     private void Flip()
     {
         facingRight = !facingRight;
