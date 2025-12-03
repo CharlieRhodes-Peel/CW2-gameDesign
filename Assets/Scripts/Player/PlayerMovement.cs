@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Transform coyoteJumpPos;
     [SerializeField] private float coyoteJumpRadius;
+
+    [SerializeField] private float invulMovementPauseTime;
     
     [Header("References")]
     [SerializeField] private LayerMask groundLayer;
@@ -25,14 +28,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movingInput;
     [SerializeField] private InputActionReference jumpInput;
-    
-    [Header("Visuals")]
+
+    [Header("Visuals")] 
+    [SerializeField] private Transform groundPartcilesPos;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject jumpParticles;
+    [SerializeField] private GameObject landParticles;
     
     //Privates
     private Vector2 moveDirection;
     private Rigidbody2D rb;
     private bool facingRight = true;
+    private bool movementDisabled = false;
+    private bool falling = false;
     
     //Events
     [HideInInspector] public static event Action<Vector2> ChangedLookDir;
@@ -41,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        PlayerHealth.OnPlayerHit += () => StartCoroutine(DisableMovementFor(invulMovementPauseTime));
     }
     
     //Subscribes to events when player is enabled and vice versa
@@ -66,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     //Move player
     private void FixedUpdate()
     {
-        
+        if (movementDisabled) { return; }
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
         bool isGrounded = IsGrounded();   
@@ -74,13 +83,6 @@ public class PlayerMovement : MonoBehaviour
         //Animator
         animator.SetFloat("Move", Mathf.Abs(rb.linearVelocityX));
         animator.SetBool("isGrounded", isGrounded);
-
-        //Animator
-        if (rb.linearVelocityY < 0)
-        {
-            animator.SetBool("isFalling", true);
-        }
-        else {animator.SetBool("isFalling", false);}
 
         //Max velocity
         if (rb.linearVelocityY < -maxVelocity)
@@ -93,23 +95,40 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+        
+        //Animator
+        if (rb.linearVelocityY < 0)
+        {
+            falling = true;
+            animator.SetBool("isFalling", true);
+        }
+        else if (falling && isGrounded) //If we have stopped falling and "falling" still true
+        {
+            animator.SetBool("isFalling", false);
+            Instantiate(landParticles, groundPartcilesPos.position, Quaternion.identity);
+            falling = false;
+        }
     }
     
     //Called when jump button pressed down
     private void Jump(InputAction.CallbackContext ctx)
     {
         if(!IsGrounded()) { return; } //Don't jump if alr in air
+        if(movementDisabled) { return; }
         
         //Jump
         rb.linearVelocityY = 0;
         rb.AddForceY(jumpForce, ForceMode2D.Impulse);
         
         animator.SetTrigger("Jump");
+        
+        Instantiate(jumpParticles, groundPartcilesPos.position, Quaternion.identity);
     }
 
     //Called when jump button released
     private void CancelJump(InputAction.CallbackContext ctx)
     {
+        if (movementDisabled) { return; }
         if (rb.linearVelocity.y > 0)
         {
             rb.linearVelocityY *= (1/jumpReleaseDamping);
@@ -133,5 +152,12 @@ public class PlayerMovement : MonoBehaviour
     public bool GetIsGrounded()
     {
         return IsGrounded();
+    }
+    
+    private IEnumerator DisableMovementFor(float duration)
+    {
+        movementDisabled = true;
+        yield return new WaitForSeconds(duration);
+        movementDisabled = false;
     }
 }

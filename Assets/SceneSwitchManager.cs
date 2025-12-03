@@ -15,6 +15,7 @@ public class SceneSwitchManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private CinemachineConfiner2D camBoundaryComponent;
     [SerializeField] private CinemachineCamera camBrain;
+    [SerializeField] private CinemachineCamera bossCamera;
     
     [Header("Fade Settings")]
     [SerializeField] private CanvasGroup fadeOut;
@@ -78,10 +79,17 @@ public class SceneSwitchManager : MonoBehaviour
                 yield return null; //For camera to move
                 
                 //The most expensive single call known to man
-                camBoundaryComponent.BoundingShape2D = GameObject.FindGameObjectsWithTag("CameraBounds")[0].GetComponent<CompositeCollider2D>();
+                camBoundaryComponent.BoundingShape2D = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<CompositeCollider2D>();
                 camBoundaryComponent.Damping = 0;
                 camBoundaryComponent.InvalidateBoundingShapeCache(); //Just in case
                 camBoundaryComponent.BakeBoundingShape(camBrain, fadeTime);
+
+                GameObject bossRoomCamPos = GameObject.FindGameObjectWithTag("BossRoomCamera");
+                if (bossRoomCamPos != null) //If there is a boss room camera
+                {
+                    bossCamera.Follow = bossRoomCamPos.transform;
+                }
+                
                 break;
             }
         }
