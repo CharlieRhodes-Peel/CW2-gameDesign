@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     
     [Header("Other references")]
     [SerializeField] private PlayerInput playerInput;
+
     [SerializeField] private EventSystem eventSystem;
  
     private void Awake()

@@ -18,8 +18,8 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
-  - 
+  - Neutral
+  - Happy
   - 
   - 
   - 
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3553804957
+    locked: 0
+  - name: WorldUI
+    uniqueID: 2420965767
     locked: 0
   m_RenderingLayers:
   - Default

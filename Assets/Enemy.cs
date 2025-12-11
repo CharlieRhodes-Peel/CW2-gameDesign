@@ -9,10 +9,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float timeStopDuration;
     
     private Rigidbody2D rb;
+    private NpcStates npcStates;
     [SerializeField] private SpriteRenderer renderer;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        npcStates = GetComponent<NpcStates>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,9 @@ public class Enemy : MonoBehaviour
         //Visual Impact
         StartCoroutine(DamageFlash());
         StartCoroutine(TimeStop());
+        
+        //Change States
+        npcStates.SetCurrentState(NpcStates.State.Angry);
         
         //Death Logic
         CheckHealth();

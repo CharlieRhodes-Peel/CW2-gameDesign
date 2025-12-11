@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class InteractManager : MonoBehaviour
 {
-    private static List<Actor> actorsWantingToInteract = new List<Actor>();
+    private static List<NpcActor> npcsWantingToInteract = new List<NpcActor>();
     [SerializeField] private TextMeshProUGUI popupText;
     private Vector3 popUpPos;
 
-    private static Actor closestActor;
+    private static NpcActor closestNpcActor;
 
     [SerializeField] private Transform playerPos;
     
     //Events
-    public static event Action<Actor> InteractWithMePlayer;
-    public static event Action<Actor> DontInteractWithMePlayer;
+    public static event Action<NpcActor> InteractWithMePlayer;
+    public static event Action<NpcActor> DontInteractWithMePlayer;
 
     private void Start()
     {
@@ -26,22 +26,25 @@ public class InteractManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        closestActor = null; //This is so it doesn't get stuck
-        if (actorsWantingToInteract.Count < 1) { DisablePopUp(); return; } //If there are no actors near player disable and move on
+        if (npcsWantingToInteract.Count < 1) //If there are no actors near player disable and move on
+        { 
+            DisablePopUp();
+            return;
+        }
         EnablePopUp();
         
-        closestActor = FindClosestActor();
+        closestNpcActor = FindClosestActor();
         
         //Places text by the closest actor
-        PlaceText(closestActor.GetPopupPos());
+        PlaceText(closestNpcActor.GetPopupPos());
     }
     
-    private Actor FindClosestActor()
+    private NpcActor FindClosestActor()
     {
-        Actor closest = null;
+        NpcActor closest = null;
         float closestDistance = float.MaxValue;
         
-        foreach (Actor actor in actorsWantingToInteract)
+        foreach (NpcActor actor in npcsWantingToInteract)
         {
             float distance = Vector2.Distance(actor.gameObject.transform.position, playerPos.position);
 
@@ -55,17 +58,17 @@ public class InteractManager : MonoBehaviour
     }
     
     //Gets called on the frame an actor wants to interact with the player
-    public static void TellPlayerIWantThem(Actor actor)
+    public static void TellPlayerIWantThem(NpcActor npcActor)
     {
-        actorsWantingToInteract.Add(actor);
+        npcsWantingToInteract.Add(npcActor);
 
-        if (actor == closestActor) { InteractWithMePlayer?.Invoke(actor); } //Tells player this is their closest actor
+        if (npcActor == closestNpcActor) { InteractWithMePlayer?.Invoke(npcActor); } //Tells player this is their closest actor
     }
 
     //Gets called on the frame an actor doesn't want to interact with the player anymore
-    public static void TellPlayerIDontWantThem(Actor actor)
+    public static void TellPlayerIDontWantThem(NpcActor npcActor)
     {
-        actorsWantingToInteract.Remove(actor);
+        npcsWantingToInteract.Remove(npcActor);
     }
     
     private void PlaceText(Vector3 pos)
@@ -83,9 +86,9 @@ public class InteractManager : MonoBehaviour
         popupText.gameObject.SetActive(true);
     }
     
-    public static Actor GetClosestActor()
+    public static NpcActor GetClosestActor()
     {
-        return closestActor;
+        return closestNpcActor;
     }
 
     //Called at the start of the game because Text Mesh Pro's Awake() function is a 256kb garbage collection NUKE

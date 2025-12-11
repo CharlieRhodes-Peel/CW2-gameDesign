@@ -17,32 +17,51 @@ public class FrogMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private Animator animator;
     
+    //Other scripts on this object
     private Rigidbody2D rb;
-    
+    private NpcStates npcStates;
+        
+    //Flags
     private bool jumping = false;
     private bool stop = false;
-    private bool flipFlag = false;
+    private bool facingLeft = false;
+    
+    //Others
+    private Transform playerPos; //Player gets found on scene load
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        npcStates = GetComponent<NpcStates>();
     }
 
     void OnEnable()
     {
-        Actor.playerEnterRangeEvent += PlayerEnterRange;
-        Actor.playerExitRangeEvent += PlayerExitRange;
+        NpcActor.playerEnterRangeEvent += PlayerEnterRange;
+        NpcActor.playerExitRangeEvent += PlayerExitRange;
+        SceneSwitchManager.onSceneLoaded += FindPlayer;
     }
 
     void OnDisable()
     {
-        Actor.playerEnterRangeEvent -= PlayerEnterRange;
-        Actor.playerExitRangeEvent -= PlayerExitRange;
+        NpcActor.playerEnterRangeEvent -= PlayerEnterRange;
+        NpcActor.playerExitRangeEvent -= PlayerExitRange;
+        SceneSwitchManager.onSceneLoaded -= FindPlayer;
     }
 
     private void Update()
     {
+        //If in angry state
+        if (npcStates.GetCurrentState() == NpcStates.State.Angry)
+        {
+            //Face the player
+            bool shouldFaceLeft = playerPos.position.x - transform.position.x < 0;
+
+            if (shouldFaceLeft && !facingLeft) { Flip(); }
+            else if (!shouldFaceLeft && facingLeft) { Flip(); }
+        }
+        
         if  (hitWallCheck()) {Flip();}
     }
     
@@ -70,13 +89,13 @@ public class FrogMovement : MonoBehaviour
     {
         return Physics2D.OverlapCircle(wallCheck.position, 0.1f, whatIsWall);
     }
-
+    
     private void Flip()
     {
-        if (flipFlag) { transform.rotation = Quaternion.Euler(0f, -180f, 0f); }
-        else { transform.rotation = Quaternion.Euler(0f, 0f, 0f); }
+        if (facingLeft) { transform.rotation = Quaternion.Euler(0f, -180f, 0f); } //Then face right
+        else { transform.rotation = Quaternion.Euler(0f, 0f, 0f); } //Face left
         
-        flipFlag = !flipFlag;
+        facingLeft = !facingLeft;
     }
 
     //Called whenever the player enters our range
@@ -87,10 +106,17 @@ public class FrogMovement : MonoBehaviour
         stop = true;
     }
 
+    //Look at the function above and think about when this one gets called... it's the same
     private void PlayerExitRange(GameObject caller)
     {
         if (caller != this.gameObject) { return; }
         
         stop = false;
+    }
+    
+    //Called when the scene loads
+    private void FindPlayer()
+    {
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

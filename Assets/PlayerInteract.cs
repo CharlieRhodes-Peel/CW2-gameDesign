@@ -11,16 +11,16 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private InputActionReference interactInput;
 
     //Events
-    [HideInInspector] public static event Action<Actor> PlayerInteractWith;
+    [HideInInspector] public static event Action<NpcActor> PlayerInteractWith;
     
     //This gets triggered everytime the player presses the interact key
     private void Interact(InputAction.CallbackContext ctx)
     {
-        Actor closestActor = InteractManager.GetClosestActor();
+        NpcActor closestNpcActor = InteractManager.GetClosestActor();
 
-        if (closestActor == null) { return; }
+        if (closestNpcActor == null) { return; }
         
-        PlayerInteractWith?.Invoke(closestActor); //Talk to the closest actor
+        PlayerInteractWith?.Invoke(closestNpcActor); //Talk to the closest actor
     }
 
     //Subscribes to input events when player is enabled and vice versa

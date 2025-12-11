@@ -29,13 +29,13 @@ MonoBehaviour:
         onDialogueStart:
           m_PersistentCalls:
             m_Calls:
-            - m_Target: {fileID: 0}
-              m_TargetAssemblyTypeName: 
-              m_MethodName: 
-              m_Mode: 0
+            - m_Target: {fileID: 5711295997224705625, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
+              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+              m_MethodName: SetStateToAngry
+              m_Mode: 1
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: 
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
                 m_IntArgument: 0
                 m_FloatArgument: 0
                 m_StringArgument: 
@@ -54,7 +54,19 @@ MonoBehaviour:
                 m_Calls: []
         onDialogueStart:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 5711295997224705625, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
+              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+              m_MethodName: SetStateToHappy
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
     - responseText: I will KILL you
       nextNode:
         dialogueText: Oh yeah?
