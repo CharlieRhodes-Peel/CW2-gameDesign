@@ -19,13 +19,21 @@ public class PlayerHealth : MonoBehaviour
     
     private Rigidbody2D rb;
 
+    private float maxHealth;
+    
+    
+    //Events
     public static event Action OnPlayerHit;
+    public static event Action OnPlayerDeath;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        maxHealth = health;
+        
+        SceneSwitchManager.onSceneLoaded += CheckRespawn; //Checks if the player needs to respawn when the a new scene is loaded
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (isInvulnerable) { return; }
@@ -58,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
     {
         StopAllCoroutines();
         gameObject.SetActive(false);
+        OnPlayerDeath?.Invoke();
     }
 
     private IEnumerator Invulnerability()
@@ -69,5 +78,14 @@ public class PlayerHealth : MonoBehaviour
         
         Physics2D.IgnoreLayerCollision(playerLayerID, enemyLayerID, false);
         isInvulnerable = false;
+    }
+
+    private void CheckRespawn()
+    {
+        gameObject.SetActive(true);
+        
+        StartCoroutine(Invulnerability()); //Makes the player init invulnerable
+
+        health = maxHealth;
     }
 }

@@ -21,6 +21,12 @@ public class SceneSwitchManager : MonoBehaviour
     [SerializeField] private CanvasGroup fadeOut;
     [SerializeField] private float fadeTime;
     
+    //Private flags for player positioning logic
+    private bool playerToDoor = false;
+    private bool playerToCheckpoint = false;
+    
+    public static event Action onSceneLoaded;
+    
     private void Awake()
     {
         if (instance == null)
@@ -33,24 +39,37 @@ public class SceneSwitchManager : MonoBehaviour
     {
         DoorTrigger.OnDoorTriggered += DoorTriggered;
         SceneManager.sceneLoaded += OnSceneLoaded;
-        
+        CheckpointManager.PlayerShouldRespawn += PlayerRespawning;
     }
 
     private void OnDisable()
     {
         DoorTrigger.OnDoorTriggered -= DoorTriggered;
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        CheckpointManager.PlayerShouldRespawn -= PlayerRespawning;
     }
 
     //Called when a door is triggered
     private void DoorTriggered(string sceneToLoad, DoorTrigger door)
     {
+        playerToDoor = true;
+        playerToCheckpoint = false;
         StartCoroutine(SceneExit(sceneToLoad, door));
     }
     
+    //Called when the player should respawn
+    private void PlayerRespawning(string sceneToLoad)
+    {
+        playerToDoor = false;
+        playerToCheckpoint = true;
+        StartCoroutine(SceneExit(sceneToLoad, null));
+    }
+    
+    
     private IEnumerator SceneExit(string sceneToLoad, DoorTrigger door)
     {
-        targetDoor = door.doorToSpawnAt;
+        if (playerToDoor) {targetDoor = door.doorToSpawnAt;}
+        
         camBoundaryComponent.InvalidateBoundingShapeCache(); //Gets rid of the previous bounding cache
         
         yield return StartCoroutine(Fade(1));
@@ -61,39 +80,39 @@ public class SceneSwitchManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(SceneInit());
+        onSceneLoaded?.Invoke();
     }
 
     private IEnumerator SceneInit()
     {
         yield return null; //Waits one frame so scene is properly loaded
-        
-        DoorTrigger[] doors = FindObjectsOfType<DoorTrigger>();
-        foreach (DoorTrigger door in doors)
+
+        if (playerToDoor) //If the player when through the door then do the following
         {
-            if (door.currentDoor == targetDoor)
+            DoorTrigger[] doors = FindObjectsOfType<DoorTrigger>();
+            foreach (DoorTrigger door in doors)
             {
-                player.position = door.exitOffset.position;
-                
-                camBrain.ForceCameraPosition(door.exitOffset.position, Quaternion.identity);
-
-                yield return null; //For camera to move
-                
-                //The most expensive single call known to man
-                camBoundaryComponent.BoundingShape2D = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<CompositeCollider2D>();
-                camBoundaryComponent.Damping = 0;
-                camBoundaryComponent.InvalidateBoundingShapeCache(); //Just in case
-                camBoundaryComponent.BakeBoundingShape(camBrain, fadeTime);
-
-                GameObject bossRoomCamPos = GameObject.FindGameObjectWithTag("BossRoomCamera");
-                if (bossRoomCamPos != null) //If there is a boss room camera
+                if (door.currentDoor == targetDoor)
                 {
-                    bossCamera.Follow = bossRoomCamPos.transform;
-                }
+                    MovePlayerAndCamTo(door.exitOffset.position);
+
+                    yield return null; //For camera to move
                 
-                break;
+                    CameraSceneInitProcedure();
+                    
+                    break;
+                }
             }
         }
         
+        else if (playerToCheckpoint) //Else if the scene is loading because the player is respawning do the following
+        {
+            Checkpoint checkpoint = FindObjectOfType<Checkpoint>();
+            MovePlayerAndCamTo(checkpoint.GetCheckpointPosition());
+            
+            yield return null;
+            CameraSceneInitProcedure();
+        }
         
         StartCoroutine(Fade(0));
         
@@ -108,5 +127,25 @@ public class SceneSwitchManager : MonoBehaviour
         LeanTween.alphaCanvas(fadeOut, targetAlpha, fadeTime);
         
         yield return new WaitForSeconds(fadeTime);
+    }
+
+    private void CameraSceneInitProcedure()
+    {
+        //The most expensive single call known to man
+        camBoundaryComponent.BoundingShape2D = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<CompositeCollider2D>();
+        camBoundaryComponent.Damping = 0;
+        camBoundaryComponent.InvalidateBoundingShapeCache(); //Just in case
+        camBoundaryComponent.BakeBoundingShape(camBrain, fadeTime);
+
+        GameObject bossRoomCamPos = GameObject.FindGameObjectWithTag("BossRoomCamera");
+        if (bossRoomCamPos != null) //If there is a boss room camera
+        {
+            bossCamera.Follow = bossRoomCamPos.transform;
+        }
+    }
+    private void MovePlayerAndCamTo(Vector3 targetPosition)
+    {
+        player.position = targetPosition;
+        camBrain.ForceCameraPosition(targetPosition, Quaternion.identity);
     }
 }
