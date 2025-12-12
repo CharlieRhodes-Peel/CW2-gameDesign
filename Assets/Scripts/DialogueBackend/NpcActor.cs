@@ -7,6 +7,7 @@ public class NpcActor : MonoBehaviour
 {
     public string Name;
     public Dialogue Dialogue;
+    public Quest Quest;
     
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
     [SerializeField] private GameObject feeling;

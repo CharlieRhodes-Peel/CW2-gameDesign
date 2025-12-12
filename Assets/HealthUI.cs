@@ -12,6 +12,7 @@ public class HealthUI : MonoBehaviour
     //Gets called whenever the player is hit, is also just callable from anywhere
     public void UpdateHealthUITo(float newHealth)
     {
+        
         //Get rid of all existing hearts
         foreach (Transform child in horizontalLayoutGroup.transform)
         {

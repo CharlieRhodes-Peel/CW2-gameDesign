@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7668d260df5e89bfaa66f96db2c88a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Test Dummy 1
+  Name: Jerry
   Dialogue: {fileID: 11400000, guid: 6ed81d470a3c74d7383c8007938cefd7, type: 2}
   popupPos: {fileID: 784491077430450403}
   feeling: {fileID: 55043106963687979}

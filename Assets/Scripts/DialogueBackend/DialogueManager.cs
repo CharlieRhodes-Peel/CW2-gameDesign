@@ -70,8 +70,6 @@ public class DialogueManager : MonoBehaviour
             // Setup button to trigger SelectResponse when clicked
             buttonObj.GetComponent<Button>().onClick.AddListener(() => SelectResponse(response, title));
         }
-        //Invoke Assosiated Event With Start
-        node.onDialogueStart?.Invoke();
         
         playerInput.SwitchCurrentActionMap("UI"); //Switch player input to UI, will stop them moving as a result
     }
@@ -88,6 +86,9 @@ public class DialogueManager : MonoBehaviour
         {
             FinishDialogue();
         }
+        
+        //Invoke an event to occur on dialogue end
+        response.nextNode.onDialogue?.Invoke(); 
     }
  
     // Hide the dialogue UI
@@ -103,6 +104,8 @@ public class DialogueManager : MonoBehaviour
             
         eventSystem.SetSelectedGameObject(null); //Get rid of any select game object!
         playerInput.SwitchCurrentActionMap("Player"); //Switch player input back to the player
+        
+        
     }
  
     // Show the dialogue UI

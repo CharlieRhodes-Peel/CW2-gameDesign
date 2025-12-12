@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: JerryMeet
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Hey there, you look fit and healthy, I lost my ball somewhere around
+      here. I know it's a big ask but if you find it would you give it back to me?
+    responses:
+    - responseText: Sure!
+      nextNode:
+        dialogueText: Oh thank you so much!! Please come back with it. I miss sitting
+          on it so much!
+        responses:
+        - responseText: '*Wave Goodbye*'
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 0}
+              m_TargetAssemblyTypeName: 
+              m_MethodName: 
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: 
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+    - responseText: No thank you
+      nextNode:
+        dialogueText: Oh, that's no worry at all. Safe travels!
+        responses:
+        - responseText: Close
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

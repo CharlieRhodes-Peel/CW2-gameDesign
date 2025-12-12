@@ -8,10 +8,11 @@ using UnityEngine.Events;
 [System.Serializable]
 public class DialogueNode
 {
+    [TextArea(3, 5)]
     public string dialogueText;
     public List<DialogueResponse> responses;
-    
-    public UnityEvent onDialogueStart;
+
+    public UnityEvent onDialogue;
  
     internal bool IsLastNode()
     {

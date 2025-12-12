@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
+  m_Name: Go Get my Ball
+  m_EditorClassIdentifier: 
+  questId: fetchJerrysBall
+  questName: Fetch My Ball!
+  questDescription: Jerry has lost his ball and he needs your help to get it, he
+    said it must be around here somewhere...
+  questGiver: {fileID: 8251622368369629549, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}

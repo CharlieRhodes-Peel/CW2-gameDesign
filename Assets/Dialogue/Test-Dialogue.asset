@@ -13,32 +13,34 @@ MonoBehaviour:
   m_Name: Test-Dialogue
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: This is my first message!
+    dialogueText: Hey!!! How are you standing up like that! I've been so overgrown
+      for ever. Do you want to test out what states I can go into? Tell me something
+      that'll affect me!
     responses:
-    - responseText: I hate you
+    - responseText: I am neutral with you
       nextNode:
-        dialogueText: :( that sucks!
+        dialogueText: Cool bro
         responses:
         - responseText: Walk away
           nextNode:
             dialogueText: 
             responses: []
-            onDialogueStart:
+            onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-        onDialogueStart:
+        onDialogue:
           m_PersistentCalls:
             m_Calls:
             - m_Target: {fileID: 5711295997224705625, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
               m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateToAngry
-              m_Mode: 1
+              m_MethodName: SetStateTo
+              m_Mode: 5
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}
                 m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
                 m_IntArgument: 0
                 m_FloatArgument: 0
-                m_StringArgument: 
+                m_StringArgument: Neutral
                 m_BoolArgument: 0
               m_CallState: 2
     - responseText: I love you
@@ -49,38 +51,50 @@ MonoBehaviour:
           nextNode:
             dialogueText: 
             responses: []
-            onDialogueStart:
+            onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-        onDialogueStart:
+        onDialogue:
           m_PersistentCalls:
             m_Calls:
             - m_Target: {fileID: 5711295997224705625, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
               m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateToHappy
-              m_Mode: 1
+              m_MethodName: SetStateTo
+              m_Mode: 5
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}
                 m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
                 m_IntArgument: 0
                 m_FloatArgument: 0
-                m_StringArgument: 
+                m_StringArgument: Happy
                 m_BoolArgument: 0
               m_CallState: 2
-    - responseText: I will KILL you
+    - responseText: I hate you
       nextNode:
-        dialogueText: Oh yeah?
+        dialogueText: Well lets settle it with a fight then!
         responses:
-        - responseText: Draw sword
+        - responseText: FIGHT!
           nextNode:
             dialogueText: 
             responses: []
-            onDialogueStart:
+            onDialogue:
               m_PersistentCalls:
-                m_Calls: []
-        onDialogueStart:
+                m_Calls:
+                - m_Target: {fileID: 5711295997224705625, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
+                  m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+                  m_MethodName: SetStateTo
+                  m_Mode: 5
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 0}
+                    m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: Angry
+                    m_BoolArgument: 0
+                  m_CallState: 2
+        onDialogue:
           m_PersistentCalls:
             m_Calls: []
-    onDialogueStart:
+    onDialogue:
       m_PersistentCalls:
         m_Calls: []

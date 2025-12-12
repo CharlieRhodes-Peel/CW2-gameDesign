@@ -26,11 +26,12 @@ public class NpcStates : MonoBehaviour
         SetCurrentState(defaultState);
     }
 
+    [Serializable]
     public enum State
     {
-        Neutral,
-        Happy,
-        Angry,
+        Neutral = 0,
+        Happy   = 1,
+        Angry   = 2,
     }
 
     public State GetCurrentState()
@@ -126,21 +127,24 @@ public class NpcStates : MonoBehaviour
                 OnAngryEnter(); break;
         }
     }
-    
-    //This is for the inspector, yeah it's boilerplate ik, but I need it!
-    public static void SetStateToNeutral()
-    {
-        NpcStates callingInstance = InteractManager.GetClosestActor()?.GetComponent<NpcStates>();
-        callingInstance?.SetCurrentState(State.Neutral);
-    }
-    public static void SetStateToHappy()
+
+    public static void SetStateTo(string stateName)
     {
         NpcStates callingInstance = InteractManager.GetClosestActor().GetComponent<NpcStates>();
-        callingInstance.SetCurrentState(State.Happy);
+        callingInstance.SetCurrentState(stringToState(stateName)); 
     }
-    public static void SetStateToAngry()
+
+
+    private static State stringToState(string stateName)
     {
-        NpcStates callingInstance = InteractManager.GetClosestActor()?.GetComponent<NpcStates>();
-        callingInstance?.SetCurrentState(State.Angry);
+        switch (stateName)
+        {
+            case "Happy":
+                return State.Happy;
+            case "Angry":
+                return State.Angry;
+            default:
+                return State.Neutral;
+        }
     }
 }
