@@ -11,6 +11,7 @@ TagManager:
   - Checkpoint
   - Neutral
   - Happy
+  - Item
   layers:
   - Default
   - TransparentFX

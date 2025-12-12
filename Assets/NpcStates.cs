@@ -135,11 +135,8 @@ public class NpcStates : MonoBehaviour
     }
     public static void SetStateToHappy()
     {
-        Debug.Log("Someone wants to be happy");
         NpcStates callingInstance = InteractManager.GetClosestActor().GetComponent<NpcStates>();
-        Debug.Log(callingInstance.gameObject.name + " Wants to be happy");
         callingInstance.SetCurrentState(State.Happy);
-        Debug.Log(callingInstance.gameObject.name + " Is now happy!");
     }
     public static void SetStateToAngry()
     {
