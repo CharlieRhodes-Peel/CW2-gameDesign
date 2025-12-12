@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        PlayerHealth.OnPlayerHit += () => StartCoroutine(DisableMovementFor(invulMovementPauseTime));
+        PlayerHealth.OnPlayerHit += (float idc) => StartCoroutine(DisableMovementFor(invulMovementPauseTime));
     }
     
     //Subscribes to events when player is enabled and vice versa

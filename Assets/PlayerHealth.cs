@@ -4,6 +4,7 @@ using System.Drawing;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -15,21 +16,24 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int playerLayerID;
     [SerializeField] private int enemyLayerID;
     
+    [SerializeField] private HealthUI healthUI;
+    
     private bool isInvulnerable = false;
     
     private Rigidbody2D rb;
 
-    private float maxHealth;
+    public static float maxHealth;
     
     
     //Events
-    public static event Action OnPlayerHit;
+    public static event Action<float> OnPlayerHit; //int represents the new health the player is now on
     public static event Action OnPlayerDeath;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        maxHealth = health;
+        
+        SetHealthTo(health);
         
         SceneSwitchManager.onSceneLoaded += CheckRespawn; //Checks if the player needs to respawn when the a new scene is loaded
     }
@@ -41,14 +45,13 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(1, other);
-            OnPlayerHit?.Invoke();
         }
     }
 
     private void TakeDamage(float damage, Collision2D from)
     {
         //Health
-        health -= damage;
+        SetHealthTo(health - damage);
         
         //Death check
         if (health <= 0) { Die(); }
@@ -60,6 +63,8 @@ public class PlayerHealth : MonoBehaviour
         
         //Invulnerability
         StartCoroutine(Invulnerability());
+        
+        OnPlayerHit?.Invoke(health);
     }
 
     private void Die()
@@ -85,7 +90,13 @@ public class PlayerHealth : MonoBehaviour
         gameObject.SetActive(true);
         
         StartCoroutine(Invulnerability()); //Makes the player init invulnerable
+        
+        SetHealthTo(maxHealth);
+    }
 
-        health = maxHealth;
+    private void SetHealthTo(float value)
+    {
+        health = value;
+        healthUI.UpdateHealthUITo(health);
     }
 }

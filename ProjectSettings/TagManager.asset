@@ -9,6 +9,8 @@ TagManager:
   - CameraBounds
   - BossRoomCamera
   - Checkpoint
+  - Neutral
+  - Happy
   layers:
   - Default
   - TransparentFX

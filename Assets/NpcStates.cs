@@ -43,6 +43,7 @@ public class NpcStates : MonoBehaviour
     {
         feelingRenderer.sprite = neutralSprite;
         
+        gameObject.tag = "Neutral";
         gameObject.layer = LayerMask.NameToLayer("Neutral");
     }
 
@@ -57,6 +58,7 @@ public class NpcStates : MonoBehaviour
         feelingRenderer.sprite = happySprite;
 
         gameObject.layer = LayerMask.NameToLayer("Happy");
+        gameObject.tag = "Happy";
 
         frogRenderer.sortingLayerID = SortingLayer.NameToID("Background");
         frogRenderer.sortingOrder = 1; //Puts it just above everything in the background
@@ -81,6 +83,7 @@ public class NpcStates : MonoBehaviour
         feelingDisplay.SetActive(true);
         feelingDisplay.transform.position = aboveHeadPos.position;
         
+        gameObject.tag = "Enemy";
         gameObject.layer = LayerMask.NameToLayer("Enemy");
         
         //Turn the face to angry
