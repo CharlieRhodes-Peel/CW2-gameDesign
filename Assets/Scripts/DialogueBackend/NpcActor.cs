@@ -1,12 +1,15 @@
 //Adapted from: https://pastebin.com/DgyxWJ5T Accessed: November 26, 2025
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
  
 public class NpcActor : MonoBehaviour
 {
     public string Name;
-    public Dialogue Dialogue;
+
+    public List<Dialogue> DialogueTrees;
+    
     public Quest Quest;
     
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
@@ -29,7 +32,27 @@ public class NpcActor : MonoBehaviour
     // Trigger dialogue for this actor
     public void SpeakTo()
     {
-        DialogueManager.Instance.StartDialogue(Name, Dialogue.RootNode);
+        PickDialogueTree();
+    }
+
+    private void PickDialogueTree()
+    {
+        //Pick the first option in the list who's conditional is met
+        bool dialoguePicked = false;
+        foreach (Dialogue dialogue in DialogueTrees)
+        {
+            if (dialogue.conditional)
+            {
+                dialoguePicked = true;
+                DialogueManager.Instance.StartDialogue(Name, dialogue.RootNode);
+                break;
+            }
+        }
+
+        if (!dialoguePicked)
+        {
+            DialogueManager.Instance.StartDialogue(Name, DialogueTrees[0].RootNode); //If no dialogue conditional default to the start one
+        }
     }
 
     public void Update()
@@ -99,4 +122,11 @@ public class NpcActor : MonoBehaviour
         
         facingLeft = !facingLeft;
     }
+    
+    //This is for unity events
+    public static void SetDialogueConditionalFalse(Dialogue dialogue)
+    { dialogue.conditional = false; }
+
+    public static void SetDialogueConditionalTrue(Dialogue dialogue)
+    { dialogue.conditional = true; }
 }

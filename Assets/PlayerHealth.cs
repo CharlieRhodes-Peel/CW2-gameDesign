@@ -1,18 +1,14 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Health")]
     [SerializeField] private float health;
     [SerializeField] private float knockbackForce;
     
-    [Header("Getting hit visuals")]
-    
+    [Header("Damage Visuals")]
     [SerializeField] private float timeStopDuration;
     [SerializeField] private Color damageFlashColor;
     [SerializeField] private float damageFlashDuration;
@@ -24,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float invulFlashTime;
     [SerializeField] private Color invulFlashColor;
      
-    [Header("Getting health")] 
+    [Header("Healing Visuals")]
     [SerializeField] private float healTime;
     [SerializeField] private GameObject playerHealingParticles;
     [SerializeField] private GameObject playerHealedParticles;
@@ -32,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
     [Header("References")]
     [SerializeField] private int playerLayerID;
     [SerializeField] private int enemyLayerID;
-    
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private SpriteRenderer renderer;
     

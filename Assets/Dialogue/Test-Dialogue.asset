@@ -98,3 +98,4 @@ MonoBehaviour:
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
+  conditional: 0
