@@ -27,22 +27,22 @@ MonoBehaviour:
             responses: []
             onDialogue:
               m_PersistentCalls:
-                m_Calls: []
+                m_Calls:
+                - m_Target: {fileID: 8251622368369629549, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
+                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+                  m_MethodName: MakeDialogueInactive
+                  m_Mode: 2
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 11400000}
+                    m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
         onDialogue:
           m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 8251622368369629549, guid: 80e2a1fe2e2ed982eb0feabd47699b07, type: 3}
-              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-              m_MethodName: SetDialogueConditionalFalse
-              m_Mode: 2
-              m_Arguments:
-                m_ObjectArgument: {fileID: 11400000}
-                m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: 
-                m_BoolArgument: 0
-              m_CallState: 2
+            m_Calls: []
     - responseText: No thank you
       nextNode:
         dialogueText: Oh, that's no worry at all. Safe travels!
@@ -60,4 +60,4 @@ MonoBehaviour:
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  conditional: 0
+  active: 1

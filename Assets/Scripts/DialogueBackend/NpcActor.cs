@@ -23,7 +23,7 @@ public class NpcActor : MonoBehaviour
     
     public static event Action<GameObject> playerEnterRangeEvent; //Called to let other scripts know player is in range of US
     public static event Action<GameObject> playerExitRangeEvent; //Called to let other scripts know player is OUT of range of us
-
+    
     private void Start()
     {
         npcStates = GetComponent<NpcStates>();
@@ -41,7 +41,7 @@ public class NpcActor : MonoBehaviour
         bool dialoguePicked = false;
         foreach (Dialogue dialogue in DialogueTrees)
         {
-            if (dialogue.conditional)
+            if (DialogueStateManager.instance.IsDialogueActive(dialogue))
             {
                 dialoguePicked = true;
                 DialogueManager.Instance.StartDialogue(Name, dialogue.RootNode);
@@ -124,9 +124,9 @@ public class NpcActor : MonoBehaviour
     }
     
     //This is for unity events
-    public static void SetDialogueConditionalFalse(Dialogue dialogue)
-    { dialogue.conditional = false; }
+    public static void MakeDialogueInactive(Dialogue dialogue)
+    { DialogueStateManager.instance.MakeDialogueInActive(dialogue); }
 
-    public static void SetDialogueConditionalTrue(Dialogue dialogue)
-    { dialogue.conditional = true; }
+    public static void MakeDialogueActive(Dialogue dialogue)
+    { DialogueStateManager.instance.MakeDialogueActive(dialogue); }
 }
