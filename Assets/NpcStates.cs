@@ -21,10 +21,12 @@ public class NpcStates : MonoBehaviour
     [SerializeField] private GameObject hitbox;
     
     private State currentState;
+    private FrogMovement frogMovement;
 
     private void Start()
     {
         SetCurrentState(defaultState);
+        frogMovement = GetComponent<FrogMovement>();
     }
 
     [Serializable]
@@ -96,6 +98,7 @@ public class NpcStates : MonoBehaviour
         feelingRenderer.sprite = angrySprite;
         
         hitbox.SetActive(true);
+        frogMovement.enabled = true;
     }
 
     private void OnAngryExit()

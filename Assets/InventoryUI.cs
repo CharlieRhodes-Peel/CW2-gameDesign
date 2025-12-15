@@ -8,10 +8,23 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    private static InventoryUI instance;
+    
     [SerializeField] private GameObject itemHolderUIPrefab;
     
     [SerializeField] private InputActionReference inventoryAction;
-    
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+    }
+
     //Logic flag
     private bool isInventoryOpen = false;
 
@@ -21,8 +34,9 @@ public class InventoryUI : MonoBehaviour
         
         //Events
         inventoryAction.action.performed += OnInventoryPressed;
-        Item.OnItemPicked += AddItemToUI;
-        PlayerInventory.OnItemRemovedFromInventory += RemoveItemFromUI;
+        
+        SceneSwitchManager.onSceneLoaded += SubscribeToItemsInRoom;
+        SceneSwitchManager.onSceneExit += UnsubscribeFromItemsInRoom;
     }
 
     //Called when an item is picked up and said item is passed through
@@ -73,5 +87,24 @@ public class InventoryUI : MonoBehaviour
         //This is because it needs to find the correct image, bit jank I know, but it works (sue me!)
         Image[] images = itemHolder.GetComponentsInChildren<Image>();
         return images[1]; 
+    }
+
+    private void SubscribeToItemsInRoom()
+    {
+        Item.OnItemPicked += AddItemToUI;
+    }
+
+    private void UnsubscribeFromItemsInRoom()
+    {
+        Item.OnItemPicked -= AddItemToUI;
+    }
+
+    private void OnDestroy()
+    {
+        //Unsubscribe from all events
+        Item.OnItemPicked -= AddItemToUI;
+        SceneSwitchManager.onSceneLoaded -= SubscribeToItemsInRoom;
+        SceneSwitchManager.onSceneExit -= UnsubscribeFromItemsInRoom;
+        inventoryAction.action.performed -= OnInventoryPressed;
     }
 }

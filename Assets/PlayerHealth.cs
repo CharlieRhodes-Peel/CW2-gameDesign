@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Drawing;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -8,17 +7,42 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField] private float health;
     [SerializeField] private float knockbackForce;
     
-    [SerializeField] private float invulnerabilityTime;
+    [Header("Getting hit visuals")]
     
+    [SerializeField] private float timeStopDuration;
+    [SerializeField] private Color damageFlashColor;
+    [SerializeField] private float damageFlashDuration;
+    [SerializeField] private GameObject blobParticles;
+    [SerializeField] private GameObject smokeParticles;
+    
+    [Header("Invulnerability")]
+    [SerializeField] private float invulnerabilityTime;
+    [SerializeField] private float invulFlashTime;
+    [SerializeField] private Color invulFlashColor;
+     
+    [Header("Getting health")] 
+    [SerializeField] private float healTime;
+    [SerializeField] private GameObject playerHealingParticles;
+    [SerializeField] private GameObject playerHealedParticles;
+    
+    [Header("References")]
     [SerializeField] private int playerLayerID;
     [SerializeField] private int enemyLayerID;
     
     [SerializeField] private HealthUI healthUI;
+    [SerializeField] private SpriteRenderer renderer;
     
     private bool isInvulnerable = false;
+    private bool isHealing = false;
+    private bool invulnerableFlashing = false;
+    private bool invulFlashFlag = true;
+    private bool secondaryInvulFlag = false;
+
+    private Color baseColor;
     
     private Rigidbody2D rb;
     private PlayerAttack playerAttack;
@@ -38,7 +62,9 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = health;
         SetHealthTo(health);
         
-        SceneSwitchManager.onSceneLoaded += CheckRespawn; //Checks if the player needs to respawn when the a new scene is loaded
+        SceneSwitchManager.onSceneLoaded += CheckRespawn; //Checks if the player needs to respawn when a new scene is loaded
+        
+        baseColor = renderer.color;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -65,6 +91,13 @@ public class PlayerHealth : MonoBehaviour
         //Invulnerability
         StartCoroutine(Invulnerability());
         
+        //Visuals
+        StartCoroutine(DamageFlash());
+        StartCoroutine(TimeStop());
+        
+        Instantiate(blobParticles, transform.position, Quaternion.identity);
+        Instantiate(smokeParticles, transform.position, Quaternion.identity);
+        
         OnPlayerHit?.Invoke(health);
     }
 
@@ -80,6 +113,8 @@ public class PlayerHealth : MonoBehaviour
         isInvulnerable = true;
         Physics2D.IgnoreLayerCollision(playerLayerID, enemyLayerID, true);
         
+        StartCoroutine(InvulFlash());
+        
         yield return new WaitForSeconds(invulnerabilityTime);
         
         Physics2D.IgnoreLayerCollision(playerLayerID, enemyLayerID, false);
@@ -88,6 +123,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void CheckRespawn()
     {
+        if (health > 0) {return;} //Player did not die 
+            
         gameObject.SetActive(true);
         
         StartCoroutine(Invulnerability()); //Makes the player init invulnerable
@@ -114,4 +151,67 @@ public class PlayerHealth : MonoBehaviour
         //Apply force
         rb.AddForce(new Vector2(knockbackX, knockbackForce * 2), ForceMode2D.Impulse);
     }
+    
+    private IEnumerator DamageFlash()
+    {
+        renderer.color = damageFlashColor;
+        yield return new WaitForSeconds(damageFlashDuration);
+        renderer.color = baseColor;
+    }
+
+    private IEnumerator TimeStop()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(timeStopDuration);
+        Time.timeScale = 1;
+    }
+
+    private void CheckpointHealthRestore(Checkpoint NOTNEEDED)
+    {
+        StartCoroutine(HealPlayerTo(maxHealth));
+    }
+
+    private IEnumerator HealPlayerTo(float health)
+    {
+        if (this.health < health && !isHealing)
+        {
+            isHealing = true;
+            
+            Instantiate(playerHealingParticles, transform.position, Quaternion.identity, transform);
+            yield return new WaitForSecondsRealtime(healTime);
+        
+            SetHealthTo(health);
+            Instantiate(playerHealedParticles, transform.position, Quaternion.identity);
+            
+            isHealing = false;
+        }
+    }
+
+    private IEnumerator InvulFlash()
+    {
+        if (renderer.color == baseColor)
+        {
+            renderer.color = invulFlashColor;
+        }
+        else if (renderer.color == invulFlashColor)
+        {
+            renderer.color = baseColor;
+        }
+
+        yield return new WaitForSecondsRealtime(invulFlashTime);
+        if (isInvulnerable) { StartCoroutine(InvulFlash()); }
+        else { renderer.color = baseColor; }
+    }
+
+    
+    private void OnEnable()
+    {
+        Checkpoint.OnPlayerEnteredCheckpoint += CheckpointHealthRestore;
+    }
+
+    private void OnDisable()
+    {
+        Checkpoint.OnPlayerEnteredCheckpoint -= CheckpointHealthRestore;
+    }
+    
 }

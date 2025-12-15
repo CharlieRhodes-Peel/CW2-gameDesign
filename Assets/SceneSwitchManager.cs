@@ -26,6 +26,7 @@ public class SceneSwitchManager : MonoBehaviour
     private bool playerToCheckpoint = false;
     
     public static event Action onSceneLoaded;
+    public static event Action onSceneExit;
     
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class SceneSwitchManager : MonoBehaviour
         {
             instance = this;
         }
+        
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     private void OnEnable()
@@ -73,6 +76,7 @@ public class SceneSwitchManager : MonoBehaviour
         camBoundaryComponent.InvalidateBoundingShapeCache(); //Gets rid of the previous bounding cache
         
         yield return StartCoroutine(Fade(1));
+        onSceneExit?.Invoke();
         
         SceneManager.LoadScene(sceneToLoad);
     }
@@ -80,7 +84,6 @@ public class SceneSwitchManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(SceneInit());
-        onSceneLoaded?.Invoke();
     }
 
     private IEnumerator SceneInit()
@@ -118,6 +121,8 @@ public class SceneSwitchManager : MonoBehaviour
         
         yield return new WaitForSeconds(fadeTime);
         camBoundaryComponent.Damping = 1;
+        
+        onSceneLoaded?.Invoke();
     }
 
     private IEnumerator Fade(float targetAlpha)

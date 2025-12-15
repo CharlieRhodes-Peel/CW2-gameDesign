@@ -55,6 +55,8 @@ public class FrogMovement : MonoBehaviour
         //If in angry state
         if (npcStates.GetCurrentState() == NpcStates.State.Angry)
         {
+            if (!playerPos.gameObject.activeInHierarchy) { return; } //Player is dead don't bother
+            
             //Face the player
             bool shouldFaceLeft = playerPos.position.x - transform.position.x < 0;
 
@@ -117,6 +119,7 @@ public class FrogMovement : MonoBehaviour
     //Called when the scene loads
     private void FindPlayer()
     {
+        Debug.Log("I am trying to find player");
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

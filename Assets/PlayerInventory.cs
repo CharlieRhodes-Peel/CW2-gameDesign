@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    List<Item> items = new List<Item>();
-    
-    public static event Action<Item> OnItemRemovedFromInventory;
+    public List<string> items = new List<string>();
 
     //Called anytime an item is picked up, passing through the item that wants to be picked up!
     private void OnItemPicked(Item item)
     {
-        items.Add(item);
+        items.Add(item.itemID);
         
         Debug.Log(item.itemName + " was picked up");
     }
-
-    public void RemoveItemFromInventory(Item item)
-    {
-        items.Remove(item);
-        OnItemRemovedFromInventory?.Invoke(item);
-    }
-    
     
     //Event stuff
     private void OnEnable()
@@ -32,5 +23,10 @@ public class PlayerInventory : MonoBehaviour
     private void OnDisable()
     {
         Item.OnItemPicked -= OnItemPicked;
+    }
+
+    public bool isInInventory(string itemID)
+    {
+        return items.Contains(itemID);
     }
 }
