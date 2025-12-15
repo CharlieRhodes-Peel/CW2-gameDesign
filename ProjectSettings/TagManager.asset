@@ -12,6 +12,7 @@ TagManager:
   - Neutral
   - Happy
   - Item
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX

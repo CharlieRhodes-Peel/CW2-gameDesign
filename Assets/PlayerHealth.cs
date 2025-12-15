@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvulnerable = false;
     
     private Rigidbody2D rb;
+    private PlayerAttack playerAttack;
 
     public static float maxHealth;
     
@@ -32,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerAttack = GetComponent<PlayerAttack>();
         
         maxHealth = health;
         SetHealthTo(health);
@@ -39,17 +41,18 @@ public class PlayerHealth : MonoBehaviour
         SceneSwitchManager.onSceneLoaded += CheckRespawn; //Checks if the player needs to respawn when the a new scene is loaded
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (isInvulnerable) { return; }
+        if (playerAttack.IsWindup()) { return; }
         
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("EnemyAttack"))
         {
             TakeDamage(1, other);
         }
     }
 
-    private void TakeDamage(float damage, Collision2D from)
+    private void TakeDamage(float damage, Collider2D from)
     {
         //Health
         SetHealthTo(health - damage);
@@ -57,10 +60,7 @@ public class PlayerHealth : MonoBehaviour
         //Death check
         if (health <= 0) { Die(); }
 
-        //Knockback
-        Vector2 dir = (transform.position - from.gameObject.transform.position).normalized;
-        rb.AddForceX(dir.x * knockbackForce,  ForceMode2D.Impulse);
-        rb.AddForceY(knockbackForce, ForceMode2D.Impulse);
+        DoKnockback(from);
         
         //Invulnerability
         StartCoroutine(Invulnerability());
@@ -99,5 +99,19 @@ public class PlayerHealth : MonoBehaviour
     {
         health = value;
         healthUI.UpdateHealthUITo(health);
+    }
+
+    private void DoKnockback(Collider2D from)
+    {
+        //Reset velocity
+        rb.linearVelocity = Vector2.zero;
+        
+        //Flip around knockback x if attacking from other direction
+        Vector2 dir = (transform.position - from.gameObject.transform.position).normalized;
+        float knockbackX = knockbackForce;
+        if (dir.x <= 0) {knockbackX *= -1; }
+        
+        //Apply force
+        rb.AddForce(new Vector2(knockbackX, knockbackForce * 2), ForceMode2D.Impulse);
     }
 }

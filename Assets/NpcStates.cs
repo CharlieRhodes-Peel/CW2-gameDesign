@@ -18,6 +18,7 @@ public class NpcStates : MonoBehaviour
     [SerializeField] private GameObject interactDetector;
     [SerializeField] private Transform aboveHeadPos;
     [SerializeField] private GameObject feelingDisplay;
+    [SerializeField] private GameObject hitbox;
     
     private State currentState;
 
@@ -46,6 +47,8 @@ public class NpcStates : MonoBehaviour
         
         gameObject.tag = "Neutral";
         gameObject.layer = LayerMask.NameToLayer("Neutral");
+        
+        hitbox.SetActive(false);
     }
 
     private void OnNeutralExit()
@@ -64,6 +67,8 @@ public class NpcStates : MonoBehaviour
         frogRenderer.sortingLayerID = SortingLayer.NameToID("Background");
         frogRenderer.sortingOrder = 1; //Puts it just above everything in the background
 
+        
+        hitbox.SetActive(false);
     }
 
     private void OnHappyExit()
@@ -89,12 +94,16 @@ public class NpcStates : MonoBehaviour
         
         //Turn the face to angry
         feelingRenderer.sprite = angrySprite;
+        
+        hitbox.SetActive(true);
     }
 
     private void OnAngryExit()
     {
         interactDetector.SetActive(true);
         feelingDisplay.SetActive(false);
+        
+        hitbox.SetActive(false);
     }
     
     //Changes states, called from outside

@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
     //Privates
     private bool isAttacking;
+    private bool isWindup = false;
     private GameObject currentHitbox;
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
@@ -72,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator StartAttacking()
     {
         isAttacking = true;
+        isWindup = true;
         StartCoroutine(SetAnimatorCorrectAttack());
         
         yield return new WaitForSeconds(attackWindup);
@@ -79,6 +81,7 @@ public class PlayerAttack : MonoBehaviour
         currentHitbox.SetActive(true);
         yield return new WaitForSeconds(hitboxActiveTime);
         currentHitbox.SetActive(false);
+        isWindup = false;
         
         yield return new WaitForSeconds(cooldownPostHitbox);
         isAttacking = false;
@@ -123,6 +126,8 @@ public class PlayerAttack : MonoBehaviour
         animator.ResetTrigger("attackUp");
     }
 
+    
+    public bool IsWindup() { return isWindup; }
 
     //Subscribes and Unsubscribes to input events when player exists or doesn't
     private void OnEnable()
