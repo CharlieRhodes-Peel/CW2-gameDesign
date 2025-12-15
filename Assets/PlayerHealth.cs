@@ -199,7 +199,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(invulFlashTime);
-        if (isInvulnerable) { StartCoroutine(InvulFlash()); }
+
+        if (isInvulnerable)
+        {
+            StartCoroutine(InvulFlash());
+        }
         else { renderer.color = baseColor; }
     }
 

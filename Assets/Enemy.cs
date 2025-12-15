@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float damageFlashDuration;
     [SerializeField] private Color damageFlashColor;
     [SerializeField] private float timeStopDuration;
+    [SerializeField] private GameObject deathParticles;
     
     private Rigidbody2D rb;
     private NpcStates npcStates;
@@ -54,6 +55,8 @@ public class Enemy : MonoBehaviour
     private IEnumerator Death()
     {
         yield return new WaitUntil(()=> Time.timeScale == 1);
+        
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

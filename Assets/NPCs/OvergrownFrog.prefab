@@ -364,6 +364,7 @@ MonoBehaviour:
   damageFlashDuration: 0.1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
+  deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
   renderer: {fileID: 7115634320739923198}
 --- !u!61 &1487424892965331796
 BoxCollider2D:
