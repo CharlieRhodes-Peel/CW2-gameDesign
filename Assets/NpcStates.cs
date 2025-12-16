@@ -156,10 +156,9 @@ public class NpcStates : MonoBehaviour
 
     public static void SetStateTo(string stateName)
     {
-        NpcStates callingInstance = NpcInteractManager.GetClosestActor().GetComponent<NpcStates>();
+        NpcStates callingInstance = ClosestNpcTracker.GetClosestNpcActor().GetComponent<NpcStates>();
         callingInstance.SetCurrentState(stringToState(stateName)); 
     }
-
 
     private static State stringToState(string stateName)
     {

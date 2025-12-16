@@ -16,11 +16,11 @@ public class PlayerInteract : MonoBehaviour
     //This gets triggered everytime the player presses the interact key
     private void Interact(InputAction.CallbackContext ctx)
     {
-        NpcActor closestNpcActor = NpcInteractManager.GetClosestActor();
-
-        if (closestNpcActor == null) { return; }
+        IInteractable interactable = InteractManager.GetClosestInteractable();
         
-        PlayerInteractWith?.Invoke(closestNpcActor); //Talk to the closest actor
+        if  (interactable == null) {return;}
+        
+        interactable?.Interact(); //Interact with this!
     }
 
     //Subscribes to input events when player is enabled and vice versa

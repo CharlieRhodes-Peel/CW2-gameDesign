@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
  
-public class NpcActor : MonoBehaviour
+public class NpcActor : MonoBehaviour, IInteractable
 {
     public string Name;
 
     public List<Dialogue> DialogueTrees;
     
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
+    [SerializeField] private string popupText;
     [SerializeField] private GameObject feeling;
 
     private bool playerInRange = false;
@@ -76,11 +77,11 @@ public class NpcActor : MonoBehaviour
     {
         playerInRange = true;
         playerTransformOnEnter = playerTransform;
-            
-        PlayerInteract.PlayerInteractWith += PlayerTalkedToMe; //Subscribe to interact event from player
-        NpcInteractManager.TellPlayerIWantThem(this); //Tells the manager that I want to talk to the player
         
         playerEnterRangeEvent?.Invoke(gameObject);
+        
+        InteractManager.RegisterInteractable(this);
+        ClosestNpcTracker.RegisterActor(this);
         
         feeling.SetActive(true);
     }
@@ -89,11 +90,11 @@ public class NpcActor : MonoBehaviour
     public void PlayerExitSpeakingRange(Transform playerTransform)
     {
         playerInRange = false;
-        
-        PlayerInteract.PlayerInteractWith -= PlayerTalkedToMe; //Unsubscribe from player interact event so we are not spammed!
-        NpcInteractManager.TellPlayerIDontWantThem(this); //Tell the manager that we don't want to interact with the player anymore
 
         playerExitRangeEvent?.Invoke(gameObject);
+        
+        InteractManager.UnregisterInteractable(this);
+        ClosestNpcTracker.UnregisterActor(this);
 
         //If we're not angry then when we leave disable the indicator
         if (npcStates.GetCurrentState() != NpcStates.State.Angry)
@@ -101,18 +102,11 @@ public class NpcActor : MonoBehaviour
             feeling.SetActive(false);
         }
     }
-
-    //Triggered when the player has talked to me
-    private void PlayerTalkedToMe(NpcActor npcActor)
-    {
-        if (npcActor != this) { return; }
-        
-        SpeakTo();
-    }
     
-    public Vector3 GetPopupPos()
+    //Called when the player interact with them :)
+    public void Interact()
     {
-        return popupPos.position;
+        SpeakTo();
     }
 
     private void FacePlayer()
@@ -151,4 +145,15 @@ public class NpcActor : MonoBehaviour
     
     public static void QuestExitProcessing(Quest quest)
     { QuestManager.Instance.QuestExitProcessing(quest); }
+    
+
+    public Vector3 GetInteractPopupPosition()
+    {
+        return popupPos.position;
+    }
+
+    public string GetInteractPopupText()
+    {
+        return popupText;
+    }
 }

@@ -21,7 +21,7 @@ public class CheckpointManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnPlayerDeath += PlayerDied;
-        Checkpoint.OnPlayerEnteredCheckpoint += PlayerEnteredCheckpoint;
+        Checkpoint.CheckpointActivated += CheckpointActivated;
     }
 
     private void OnDisable()
@@ -43,7 +43,7 @@ public class CheckpointManager : MonoBehaviour
     }
 
     //Called anytime a player enters a checkpoint
-    private void PlayerEnteredCheckpoint(Checkpoint checkpointEntered)
+    private void CheckpointActivated(Checkpoint checkpointEntered)
     {
         checkpointSceneName = SceneManager.GetActiveScene().name;
     }

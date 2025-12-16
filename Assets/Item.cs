@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 {
     public ItemData itemData;
+    [SerializeField] private Transform popUpPos;
+    [SerializeField] private string popUpText;
     public static event Action<ItemData> OnItemPicked;
 
     private void Start()
@@ -15,7 +17,15 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Pickup();
+            InteractManager.RegisterInteractable(this);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InteractManager.UnregisterInteractable(this);
         }
     }
 
@@ -39,5 +49,21 @@ public class Item : MonoBehaviour
     {
         //Unsubscribe from all events
         SceneSwitchManager.onSceneLoaded -= AlreadyCollectedCheck;
+    }
+
+    //Called when the player interacts with it
+    public void Interact()
+    {
+        Pickup();
+    }
+
+    public Vector3 GetInteractPopupPosition()
+    {
+        return popUpPos.position;
+    }
+
+    public string GetInteractPopupText()
+    {
+        return popUpText;
     }
 }

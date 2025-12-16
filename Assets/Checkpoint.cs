@@ -1,31 +1,64 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-public class Checkpoint : MonoBehaviour
+public class Checkpoint : MonoBehaviour, IInteractable
 {
-    public static event Action<Checkpoint> OnPlayerEnteredCheckpoint;
-
-    [SerializeField] private GameObject wishPrompt;
+    [Header("Checkpoint Settings")]
+    [SerializeField] private Transform playerSpawnPos;
+    [SerializeField] private Transform wishPromptPos;
+    [SerializeField] private string wishPromptText;
     
+    [Header("Visuals")]
+    [SerializeField] private float anticipationTime;
+    [SerializeField] private GameObject checkpointActiviatedParticles;
+    [SerializeField] private GameObject checkpointAnticipationParticles;
+    
+    public static event Action<Checkpoint> CheckpointActivated;
+    
+    //TODO: FIx the face that respawning isnt working right now. Is prob on checkpoint manager
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) { return; }
         
-        wishPrompt.SetActive(true);
-        wishPrompt.transform.position = transform.position;
-        
-        OnPlayerEnteredCheckpoint?.Invoke(this);
+        InteractManager.RegisterInteractable(this);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if  (!other.CompareTag("Player")) { return; }
         
-        wishPrompt.SetActive(false);
+        InteractManager.UnregisterInteractable(this);
     }
 
     public Vector3 GetCheckpointPosition(){
-        return transform.position;
+        return playerSpawnPos.position;
+    }
+
+    public void Interact()
+    {
+        CheckpointActivated?.Invoke(this);
+        StartCoroutine(Particles());
+        InteractManager.UnregisterInteractable(this);
+    }
+
+    public Vector3 GetInteractPopupPosition()
+    {
+        return wishPromptPos.position;
+    }
+
+    public string GetInteractPopupText()
+    {
+        return wishPromptText;
+    }
+
+    private IEnumerator Particles()
+    {
+        Instantiate(checkpointAnticipationParticles, transform.position, Quaternion.identity);
+        
+        yield return new WaitForSecondsRealtime(anticipationTime);
+        Instantiate(checkpointActiviatedParticles, transform.position, Quaternion.identity);
     }
 }

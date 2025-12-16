@@ -161,7 +161,7 @@ public class PlayerHealth : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void CheckpointHealthRestore(Checkpoint NOTNEEDED)
+    private void CheckpointActivatedHealthRestore(Checkpoint NOTNEEDED)
     {
         StartCoroutine(HealPlayerTo(maxHealth));
     }
@@ -205,12 +205,12 @@ public class PlayerHealth : MonoBehaviour
     
     private void OnEnable()
     {
-        Checkpoint.OnPlayerEnteredCheckpoint += CheckpointHealthRestore;
+        Checkpoint.CheckpointActivated += CheckpointActivatedHealthRestore;
     }
 
     private void OnDisable()
     {
-        Checkpoint.OnPlayerEnteredCheckpoint -= CheckpointHealthRestore;
+        Checkpoint.CheckpointActivated -= CheckpointActivatedHealthRestore;
     }
     
 }
