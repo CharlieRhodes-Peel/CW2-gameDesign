@@ -1,63 +1,43 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [Header("Stats")]
-    [SerializeField] public string itemName;
-    [SerializeField] public string itemID;
-    
-    
-    //Private references
-    private SpriteRenderer spriteRenderer;
-    
-    //Events
-    public static event Action<Item> OnItemPicked; //Passes itself at the reference
+    public ItemData itemData;
+    public static event Action<ItemData> OnItemPicked;
+
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        SceneSwitchManager.onSceneLoaded += PlayerHasItemCheck;
+        SceneSwitchManager.onSceneLoaded += AlreadyCollectedCheck;
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //If the player enters out range then pick up
-        if (other.CompareTag("Player")) { Pickup(); }
+        if (other.CompareTag("Player"))
+        {
+            Pickup();
+        }
     }
 
     private void Pickup()
     {
-        OnItemPicked?.Invoke(this);
+        OnItemPicked?.Invoke(itemData);
         Destroy(gameObject);
     }
 
-    public Sprite GetSprite()
+    private void AlreadyCollectedCheck()
     {
-        return spriteRenderer.sprite;
-    }
-
-    private void PlayerHasItemCheck()
-    {
-        GameObject player = FindPlayer();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         
-        Debug.Log("I found player he is called!: " + player.name);
+        bool alreadyCollected = player.GetComponent<PlayerInventory>().HavePickedUpBefore(itemData);
 
-        bool playerHasItem = player.GetComponent<PlayerInventory>().isInInventory(itemID);
-
-        if (playerHasItem)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private GameObject FindPlayer()
-    {
-        return GameObject.FindWithTag("Player");
+        if (alreadyCollected)
+        { Destroy(gameObject); }
     }
 
     private void OnDestroy()
     {
-        SceneSwitchManager.onSceneLoaded -= PlayerHasItemCheck;
+        //Unsubscribe from all events
+        SceneSwitchManager.onSceneLoaded -= AlreadyCollectedCheck;
     }
 }

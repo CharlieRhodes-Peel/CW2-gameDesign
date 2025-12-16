@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
+  m_Name: Jerry'sQuest
+  m_EditorClassIdentifier: 
+  questId: JerryBallQuest
+  questName: Jerry's Lost Ball
+  questGiverName: Jerry
+  questDescription: Jerry has ask you to get his ball for him, he really misses it!
+  questInProgressDialogue: {fileID: 11400000, guid: fcdd6f84913ae7f2f903eafd54a5003e, type: 2}
+  questCompleteDialogue: {fileID: 11400000, guid: bff68caa32207330ca9932588d4e0862, type: 2}
+  questType: 0
+  itemData: {fileID: 11400000, guid: f98f13472aea3596783328e2f8188d6e, type: 2}
+  itemCount: 1
+  enemyName: 
+  requiredKills: 0
+  npcName: 
+  locationName: 

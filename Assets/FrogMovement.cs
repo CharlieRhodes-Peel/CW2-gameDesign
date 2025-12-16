@@ -119,7 +119,6 @@ public class FrogMovement : MonoBehaviour
     //Called when the scene loads
     private void FindPlayer()
     {
-        Debug.Log("I am trying to find player");
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

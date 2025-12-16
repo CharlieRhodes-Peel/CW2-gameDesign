@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3425118953178313102}
   - component: {fileID: 5669444366660297931}
   - component: {fileID: 6951436809286091186}
-  - component: {fileID: 131296173374562273}
+  - component: {fileID: 2941974604829362472}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &131296173374562273
+--- !u!114 &2941974604829362472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,4 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2c8daa1674c4fbe92085b26cb37077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Jerry's ball
+  itemData: {fileID: 11400000, guid: f98f13472aea3596783328e2f8188d6e, type: 2}

@@ -23,10 +23,22 @@ public class NpcStates : MonoBehaviour
     private State currentState;
     private FrogMovement frogMovement;
 
+    private string npcName;
+
     private void Start()
     {
-        SetCurrentState(defaultState);
         frogMovement = GetComponent<FrogMovement>();
+
+        npcName = GetComponent<NpcActor>().Name;
+        if (NpcStateManager.Instance.KeepingTrackOf(npcName))
+        {
+            SetCurrentState(NpcStateManager.Instance.GetState(npcName));
+        }
+        else
+        {
+            SetCurrentState(defaultState);
+        }
+        
     }
 
     [Serializable]
@@ -138,6 +150,8 @@ public class NpcStates : MonoBehaviour
             case State.Angry:
                 OnAngryEnter(); break;
         }
+        
+        NpcStateManager.Instance.UpdateState(npcName, currentState);
     }
 
     public static void SetStateTo(string stateName)

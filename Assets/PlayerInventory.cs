@@ -4,29 +4,43 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<string> items = new List<string>();
+    public List<ItemData> items = new List<ItemData>();
+    
+    public List<ItemData> itemsPickedUp = new List<ItemData>(); //This should only be ADDED to
 
-    //Called anytime an item is picked up, passing through the item that wants to be picked up!
-    private void OnItemPicked(Item item)
+    public static event Action<ItemData> OnItemRemoved;
+    public static event Action<ItemData> OnItemPickedUp;
+    
+    private void ItemPickedUp(ItemData item)
     {
-        items.Add(item.itemID);
+        items.Add(item);
+        itemsPickedUp.Add(item);
         
-        Debug.Log(item.itemName + " was picked up");
+        OnItemPickedUp?.Invoke(item); //This is to tell the Inventory UI
     }
+    
+    private void ItemRemoved(ItemData item)
+    {
+        items.Remove(item);
+        OnItemRemoved?.Invoke(item);
+    }
+    
     
     //Event stuff
     private void OnEnable()
     {
-        Item.OnItemPicked += OnItemPicked;
+        Item.OnItemPicked += ItemPickedUp;
+        QuestManager.OnItemGivenAway += ItemRemoved;
     }
 
     private void OnDisable()
     {
-        Item.OnItemPicked -= OnItemPicked;
+        Item.OnItemPicked -= ItemPickedUp;
+        QuestManager.OnItemGivenAway -= ItemRemoved;
     }
 
-    public bool isInInventory(string itemID)
+    public bool HavePickedUpBefore(ItemData itemData)
     {
-        return items.Contains(itemID);
+        return itemsPickedUp.Contains(itemData);
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: JerryMeet2
+  m_Name: JerryQuestAccepted
   m_EditorClassIdentifier: 
   RootNode:
     dialogueText: Hey have you found my ball yet? It shouldn't be too far!

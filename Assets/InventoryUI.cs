@@ -1,9 +1,6 @@
-using System;
-using UnityEditor.Timeline.Actions;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
@@ -13,7 +10,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject itemHolderUIPrefab;
     
     [SerializeField] private InputActionReference inventoryAction;
+    
+    private Dictionary<ItemData, GameObject> items = new Dictionary<ItemData, GameObject>(); //Connects ItemData to Icons on inventory
 
+    
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -21,36 +21,37 @@ public class InventoryUI : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+    
         instance = this;
     }
-
+    
     //Logic flag
     private bool isInventoryOpen = false;
-
+    
     private void Start()
     {
         gameObject.SetActive(false);
         
         //Events
         inventoryAction.action.performed += OnInventoryPressed;
-        
-        SceneSwitchManager.onSceneLoaded += SubscribeToItemsInRoom;
-        SceneSwitchManager.onSceneExit += UnsubscribeFromItemsInRoom;
-    }
 
+        PlayerInventory.OnItemPickedUp += AddItemToUI;
+        PlayerInventory.OnItemRemoved += RemoveItemFromUI;
+    }
+    
     //Called when an item is picked up and said item is passed through
-    private void AddItemToUI(Item item)
+    private void AddItemToUI(ItemData itemData)
     {
         //Create the item holder
         GameObject newItemHolder = Instantiate(itemHolderUIPrefab, transform);
-
+    
         //This is because it needs to find the correct image, bit jank I know, but it works (sue me!)
         Image[] images = newItemHolder.GetComponentsInChildren<Image>();
-        images[1].sprite = item.GetSprite();
+        images[1].sprite = itemData.itemUIIcon;
+        
+        items.Add(itemData, newItemHolder);
     }
     
-        
     //Called anytime the player presses the inventory button
     private void OnInventoryPressed(InputAction.CallbackContext ctx)
     {
@@ -59,52 +60,22 @@ public class InventoryUI : MonoBehaviour
         
         isInventoryOpen = !isInventoryOpen;
     }
-
-    //Allowing this to be called from somewhere
-    public void RemoveItemFromUI(Item item)
+    
+    //Called anytime the player removes an item from their inventory
+    public void RemoveItemFromUI(ItemData itemData)
     {
-        GameObject itemHolder = FindItemGameObject(item);
-        if (itemHolder == null) { return; }
+        if (!items.ContainsKey(itemData)) { return; }
         
+        GameObject itemHolder = items[itemData];
+        items.Remove(itemData);
         Destroy(itemHolder);
     }
-
-    private GameObject FindItemGameObject(Item item)
-    {
-        GameObject[] items = item.GetComponentsInChildren<GameObject>();
-
-        foreach (GameObject i in items) {
-            if (GetItemImage(i).sprite == item.GetSprite())
-            {
-                return i;
-            }
-        }
-        return null;
-    }
-
-    private Image GetItemImage(GameObject itemHolder)
-    {
-        //This is because it needs to find the correct image, bit jank I know, but it works (sue me!)
-        Image[] images = itemHolder.GetComponentsInChildren<Image>();
-        return images[1]; 
-    }
-
-    private void SubscribeToItemsInRoom()
-    {
-        Item.OnItemPicked += AddItemToUI;
-    }
-
-    private void UnsubscribeFromItemsInRoom()
-    {
-        Item.OnItemPicked -= AddItemToUI;
-    }
-
+    
     private void OnDestroy()
     {
         //Unsubscribe from all events
-        Item.OnItemPicked -= AddItemToUI;
-        SceneSwitchManager.onSceneLoaded -= SubscribeToItemsInRoom;
-        SceneSwitchManager.onSceneExit -= UnsubscribeFromItemsInRoom;
+        PlayerInventory.OnItemRemoved -= RemoveItemFromUI;
+        PlayerInventory.OnItemPickedUp -= AddItemToUI;
         inventoryAction.action.performed -= OnInventoryPressed;
     }
 }

@@ -10,8 +10,6 @@ public class NpcActor : MonoBehaviour
 
     public List<Dialogue> DialogueTrees;
     
-    public Quest Quest;
-    
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
     [SerializeField] private GameObject feeling;
 
@@ -23,6 +21,8 @@ public class NpcActor : MonoBehaviour
     
     public static event Action<GameObject> playerEnterRangeEvent; //Called to let other scripts know player is in range of US
     public static event Action<GameObject> playerExitRangeEvent; //Called to let other scripts know player is OUT of range of us
+
+    private static bool activeQuest = false;
     
     private void Start()
     {
@@ -37,6 +37,14 @@ public class NpcActor : MonoBehaviour
 
     private void PickDialogueTree()
     {
+        //If the player has an active quest with the NPC it takes precedent over any dialogue trees
+        if (activeQuest)
+        {
+            //Do the quest Dialogue
+            DialogueManager.Instance.StartDialogue(Name, QuestManager.Instance.GetActiveDialogue().RootNode);
+            return;
+        }
+        
         //Pick the first option in the list who's conditional is met
         bool dialoguePicked = false;
         foreach (Dialogue dialogue in DialogueTrees)
@@ -100,8 +108,6 @@ public class NpcActor : MonoBehaviour
         if (npcActor != this) { return; }
         
         SpeakTo();
-        PlayerInteract.PlayerInteractWith -= PlayerTalkedToMe; //Unsubscribe from player interact so they cannot interact with us while talking!
-        InteractManager.TellPlayerIDontWantThem(this); //Can no longer interact with NPC
     }
     
     public Vector3 GetPopupPos()
@@ -129,4 +135,20 @@ public class NpcActor : MonoBehaviour
 
     public static void MakeDialogueActive(Dialogue dialogue)
     { DialogueStateManager.instance.MakeDialogueActive(dialogue); }
+
+    public static void StartQuest(Quest quest)
+    {
+        activeQuest = true;
+        QuestManager.Instance.StartQuest(quest);
+    }
+    
+    public static void FinishQuest(Quest quest)
+    {
+        activeQuest = false;
+        QuestManager.Instance.QuestComplete(quest);
+        QuestManager.Instance.QuestExitProcessing(quest);
+    }
+    
+    public static void QuestExitProcessing(Quest quest)
+    { QuestManager.Instance.QuestExitProcessing(quest); }
 }
