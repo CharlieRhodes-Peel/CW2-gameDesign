@@ -29,6 +29,7 @@ public class InteractManager : MonoBehaviour
     {
         if (interactablesInRange.Count < 1)
         {
+            closestInteractable = null;
             DisablePopup();
             return;
         }

@@ -37,9 +37,9 @@ public class Checkpoint : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        InteractManager.UnregisterInteractable(this);
         CheckpointActivated?.Invoke(this);
         StartCoroutine(Particles());
-        InteractManager.UnregisterInteractable(this);
     }
 
     public Vector3 GetInteractPopupPosition()
