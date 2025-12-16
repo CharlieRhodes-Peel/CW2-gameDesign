@@ -17,8 +17,6 @@ public class Checkpoint : MonoBehaviour, IInteractable
     
     public static event Action<Checkpoint> CheckpointActivated;
     
-    //TODO: FIx the face that respawning isnt working right now. Is prob on checkpoint manager
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) { return; }
