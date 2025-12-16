@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SideAir
+  m_Name: Side
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -455,7 +455,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 3.0519184e-10
+  m_ExitTime: 8.6009583e-10
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -563,13 +563,13 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2012937791560808552}
-    m_Position: {x: 490, y: -50, z: 0}
+    m_Position: {x: 490, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8169977139998233689}
-    m_Position: {x: 370, y: -100, z: 0}
+    m_Position: {x: 350, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9221265888902551285}
-    m_Position: {x: 270, y: -150, z: 0}
+    m_Position: {x: 260, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8861743126454855881}
     m_Position: {x: 100, y: 270, z: 0}
@@ -581,7 +581,7 @@ AnimatorStateMachine:
     m_Position: {x: 0, y: -250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8050366648514375126}
-    m_Position: {x: -120, y: -30, z: 0}
+    m_Position: {x: -100, y: -30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -4977982801923000762}
@@ -661,6 +661,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isDashing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsWallClimbing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2182286176210448780}

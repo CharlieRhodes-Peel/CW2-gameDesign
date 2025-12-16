@@ -66,6 +66,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack(InputAction.CallbackContext ctx)
     {
         if (isAttacking) {return;}
+        if (playerMovement.isWallClimbing) {return;}
         
         StartCoroutine(StartAttacking());
     }

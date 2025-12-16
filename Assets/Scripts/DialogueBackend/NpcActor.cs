@@ -24,6 +24,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     public static event Action<GameObject> playerExitRangeEvent; //Called to let other scripts know player is OUT of range of us
 
     private static bool activeQuest = false;
+    private static bool spokenTo = false;
     
     private void Start()
     {
@@ -83,6 +84,8 @@ public class NpcActor : MonoBehaviour, IInteractable
         InteractManager.RegisterInteractable(this);
         ClosestNpcTracker.RegisterActor(this);
         
+        NpcActorNameManager.UnregisterActor(this);
+        
         feeling.SetActive(true);
     }
 
@@ -95,6 +98,8 @@ public class NpcActor : MonoBehaviour, IInteractable
         
         InteractManager.UnregisterInteractable(this);
         ClosestNpcTracker.UnregisterActor(this);
+        
+        if (spokenTo) {NpcActorNameManager.RegisterActor(this);}
 
         //If we're not angry then when we leave disable the indicator
         if (npcStates.GetCurrentState() != NpcStates.State.Angry)
@@ -107,6 +112,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     public void Interact()
     {
         SpeakTo();
+        spokenTo = true;
     }
 
     private void FacePlayer()

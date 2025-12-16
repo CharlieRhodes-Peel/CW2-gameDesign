@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,24 +6,27 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    private static InventoryUI instance;
+    public static InventoryUI Instance;
     
     [SerializeField] private GameObject itemHolderUIPrefab;
+    [SerializeField] private InputActionReference openInventoryAction;
+    [SerializeField] private InputActionReference closeInventoryAction;
     
-    [SerializeField] private InputActionReference inventoryAction;
+    [SerializeField] private ToolTip toolTip;
+    [SerializeField] private PlayerInput playerInput;
     
-    private Dictionary<ItemData, GameObject> items = new Dictionary<ItemData, GameObject>(); //Connects ItemData to Icons on inventory
+    private Dictionary<ItemData, ItemUI> items = new Dictionary<ItemData, ItemUI>(); //Bridges ItemData to ItemUI
 
     
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
     
-        instance = this;
+        Instance = this;
     }
     
     //Logic flag
@@ -33,32 +37,45 @@ public class InventoryUI : MonoBehaviour
         gameObject.SetActive(false);
         
         //Events
-        inventoryAction.action.performed += OnInventoryPressed;
+        openInventoryAction.action.performed += OnInventoryOpen;
+        closeInventoryAction.action.performed += OnInventoryClose;
 
         PlayerInventory.OnItemPickedUp += AddItemToUI;
         PlayerInventory.OnItemRemoved += RemoveItemFromUI;
     }
-    
+
     //Called when an item is picked up and said item is passed through
     private void AddItemToUI(ItemData itemData)
     {
         //Create the item holder
         GameObject newItemHolder = Instantiate(itemHolderUIPrefab, transform);
-    
-        //This is because it needs to find the correct image, bit jank I know, but it works (sue me!)
-        Image[] images = newItemHolder.GetComponentsInChildren<Image>();
-        images[1].sprite = itemData.itemUIIcon;
         
-        items.Add(itemData, newItemHolder);
+        ItemUI itemUI = newItemHolder.GetComponent<ItemUI>();
+
+        itemUI.itemIcon.sprite = itemData.itemUIIcon;
+        itemUI.itemName.text = itemData.itemName;
+        itemUI.description = itemData.description;
+        
+        items.Add(itemData, itemUI);
     }
     
-    //Called anytime the player presses the inventory button
-    private void OnInventoryPressed(InputAction.CallbackContext ctx)
+    //Called anytime the player presses the inventory button while using the "Player" action map
+    private void OnInventoryOpen(InputAction.CallbackContext ctx)
     {
-        if (isInventoryOpen) { gameObject.SetActive(false); }
-        else                 { gameObject.SetActive(true); } 
+        isInventoryOpen = true;
         
-        isInventoryOpen = !isInventoryOpen;
+        gameObject.SetActive(true);
+        playerInput.SwitchCurrentActionMap("UI");
+    }
+
+    //Called anytime the player presses the inventory button while using the "UI" action map
+    private void OnInventoryClose(InputAction.CallbackContext ctx)
+    {
+        isInventoryOpen = false;
+        gameObject.SetActive(false);
+        
+        ToolTipSystem.instance.tooltip.gameObject.SetActive(false);
+        playerInput.SwitchCurrentActionMap("Player");
     }
     
     //Called anytime the player removes an item from their inventory
@@ -66,9 +83,8 @@ public class InventoryUI : MonoBehaviour
     {
         if (!items.ContainsKey(itemData)) { return; }
         
-        GameObject itemHolder = items[itemData];
+        items[itemData].RemoveUI();
         items.Remove(itemData);
-        Destroy(itemHolder);
     }
     
     private void OnDestroy()
@@ -76,6 +92,6 @@ public class InventoryUI : MonoBehaviour
         //Unsubscribe from all events
         PlayerInventory.OnItemRemoved -= RemoveItemFromUI;
         PlayerInventory.OnItemPickedUp -= AddItemToUI;
-        inventoryAction.action.performed -= OnInventoryPressed;
+        openInventoryAction.action.performed -= OnInventoryOpen;
     }
 }

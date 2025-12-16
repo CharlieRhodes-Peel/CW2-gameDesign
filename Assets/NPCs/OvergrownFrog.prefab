@@ -326,7 +326,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9357443818c89327c94d0c7b6ba9c448, type: 2}
   - {fileID: 11400000, guid: ab09b366c6c156fc0b6ae37417fd922b, type: 2}
   popupPos: {fileID: 784491077430450403}
-  popupText: 
+  popupText: Speak
   feeling: {fileID: 55043106963687979}
 --- !u!114 &5711295997224705625
 MonoBehaviour:

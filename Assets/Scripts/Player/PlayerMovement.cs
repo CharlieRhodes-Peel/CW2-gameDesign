@@ -61,10 +61,11 @@ public class PlayerMovement : MonoBehaviour
     
     public bool dashUnlocked = false;
     private bool dashPerformed = false;
-    private bool isDashing = false;
+    [HideInInspector] public bool isDashing = false;
     private bool dashOnCooldown = false;
 
     public bool wallClimbingUnlocked = false;
+    [HideInInspector] public bool isWallClimbing = false;
     private bool isWallJumping = false;
     private float baseGravity;
     private bool hitWallYet = false;
@@ -120,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         //Wall Cling Stuff
         if (IsWallClimbing() && !isWallJumping && wallClimbingUnlocked)
         {
+            isWallClimbing = true;
             rb.gravityScale = wallClimbGravity;
             if (!hitWallYet)
             {
@@ -129,7 +131,10 @@ public class PlayerMovement : MonoBehaviour
             
             animator.SetBool("IsWallClimbing", true);
         }
-        else {rb.gravityScale = baseGravity;
+        else
+        {
+            isWallClimbing = false;
+            rb.gravityScale = baseGravity;
             hitWallYet = false;
             animator.SetBool("IsWallClimbing", false);
         }
@@ -164,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
     //Called when the dash button is pressed
     private void Dash(InputAction.CallbackContext ctx)
     {
-        if (!dashUnlocked || dashOnCooldown)
+        if (!dashUnlocked || dashOnCooldown || isWallClimbing)
         {
             return;
         }

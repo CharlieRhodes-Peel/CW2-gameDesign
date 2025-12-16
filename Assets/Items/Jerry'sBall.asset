@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48bc8b222685472af885d28b69f17e6d, type: 3}
-  m_Name: TestItemData
+  m_Name: Jerry'sBall
   m_EditorClassIdentifier: 
-  itemName: Jerry's Ball
-  itemUIIcon: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
   itemType: 0
+  itemName: Jerry's Ball
+  itemUIIcon: {fileID: -5662045943124688433, guid: 50e63ffc2afee3e609a3a5ea423dadff, type: 3}
+  description: Not to long ago jerry lost his ball, it's not that good of a ball.
+    It looks to be deflating slowly. There must be a jerry out there who's ball this
+    is. I mean it has his name written right over it

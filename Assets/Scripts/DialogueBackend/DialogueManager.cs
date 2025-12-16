@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     //Type write effect
     [SerializeField] private float timeBetweenLettersTyped = 0.01f;
+    private bool isTyping = false;
     
     private void Awake()
     {
@@ -72,15 +73,28 @@ public class DialogueManager : MonoBehaviour
             eventSystem.SetSelectedGameObject(buttonObj);
  
             // Setup button to trigger SelectResponse when clicked
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => SelectResponse(response, title));
+            buttonObj.GetComponent<Button>().onClick.AddListener(() => ResponseButtonClicked(response, title, node.dialogueText));
         }
         
         playerInput.SwitchCurrentActionMap("UI"); //Switch player input to UI, will stop them moving as a result
+    }
+
+    private void ResponseButtonClicked(DialogueResponse response, string title, string currentDialogueText)
+    {
+        if (isTyping)
+        {
+            FinishTyping(currentDialogueText);
+            isTyping = false;
+            return;
+        }
+        
+        SelectResponse(response, title);
     }
  
     // Handles response selection and triggers next dialogue node
     public void SelectResponse(DialogueResponse response, string title)
     {
+        
         // Check if there's a follow-up node
         if (!response.nextNode.IsLastNode())
         {
@@ -115,6 +129,8 @@ public class DialogueManager : MonoBehaviour
     //Recursive function be careful!
     private IEnumerator TypingEffect(string finishedText, int charIndex)
     {
+        isTyping = true;
+        
         //Update text
         charIndex++;
         string newText = finishedText.Substring(0, charIndex);
@@ -122,6 +138,7 @@ public class DialogueManager : MonoBehaviour
 
         if (charIndex >= finishedText.Length)
         {
+            isTyping = false;
             yield return null;
         }
 
@@ -130,6 +147,12 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenLettersTyped);
             StartCoroutine(TypingEffect(finishedText, charIndex));
         }
+    }
+
+    private void FinishTyping(string finishedText)
+    {
+        StopAllCoroutines();
+        DialogBodyText.text = finishedText;
     }
  
     // Show the dialogue UI
