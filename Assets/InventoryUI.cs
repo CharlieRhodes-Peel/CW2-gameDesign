@@ -66,6 +66,8 @@ public class InventoryUI : MonoBehaviour
         
         gameObject.SetActive(true);
         playerInput.SwitchCurrentActionMap("UI");
+        
+        Time.timeScale = 0;
     }
 
     //Called anytime the player presses the inventory button while using the "UI" action map
@@ -76,6 +78,8 @@ public class InventoryUI : MonoBehaviour
         
         ToolTipSystem.instance.tooltip.gameObject.SetActive(false);
         playerInput.SwitchCurrentActionMap("Player");
+
+        Time.timeScale = 1;
     }
     
     //Called anytime the player removes an item from their inventory
