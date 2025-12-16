@@ -24,6 +24,13 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
+    - responseText: Another option. This also just does nothing
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
