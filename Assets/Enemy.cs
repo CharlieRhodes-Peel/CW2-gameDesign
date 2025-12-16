@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         
         //Force
+        rb.linearVelocity = Vector2.zero; //Reset velocity
         Vector2 direction = (rb.position - knockbackForcePos).normalized + Vector2.up;
         rb.AddForce(direction * knockback, ForceMode2D.Impulse);
         
@@ -38,7 +39,8 @@ public class Enemy : MonoBehaviour
         StartCoroutine(TimeStop());
         
         //Change States
-        npcStates.SetCurrentState(NpcStates.State.Angry);
+        if (npcStates != null)
+        { npcStates.SetCurrentState(NpcStates.State.Angry); }
         
         //Death Logic
         CheckHealth();

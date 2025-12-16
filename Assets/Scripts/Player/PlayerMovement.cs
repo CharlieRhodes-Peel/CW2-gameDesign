@@ -20,6 +20,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float coyoteJumpRadius;
 
     [SerializeField] private float invulMovementPauseTime;
+
+    [Header("Movement Power up Stats")] 
+    [SerializeField] private float doubleJumpForce;
+    [SerializeField] private float dashForce;
+    [SerializeField] private float dashTime;
+    [SerializeField] private float dashCooldown;
+    [SerializeField] private Transform wallCheckPos;
+    [SerializeField] private float wallClimbGravity;
+    [SerializeField] private float wallJumpTime;
+    [SerializeField] private float wallJumpForceX;
+    [SerializeField] private float wallJumpForceY;
     
     [Header("References")]
     [SerializeField] private LayerMask groundLayer;
@@ -28,12 +39,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movingInput;
     [SerializeField] private InputActionReference jumpInput;
+    [SerializeField] private InputActionReference dashInput;
 
     [Header("Visuals")] 
     [SerializeField] private Transform groundPartcilesPos;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject jumpParticles;
     [SerializeField] private GameObject landParticles;
+    [SerializeField] private GameObject dashParticles;
     
     //Privates
     private Vector2 moveDirection;
@@ -42,6 +55,20 @@ public class PlayerMovement : MonoBehaviour
     private bool movementDisabled = false;
     private bool falling = false;
     
+    //Movement PowerUps Flags
+    public bool doubleJumpUnlocked = false;
+    private bool doubleJumpPerformed = false;
+    
+    public bool dashUnlocked = false;
+    private bool dashPerformed = false;
+    private bool isDashing = false;
+    private bool dashOnCooldown = false;
+
+    public bool wallClimbingUnlocked = false;
+    private bool isWallJumping = false;
+    private float baseGravity;
+    private bool hitWallYet = false;
+        
     //Events
     [HideInInspector] public static event Action<Vector2> ChangedLookDir;
     
@@ -49,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        baseGravity = rb.gravityScale;
+        
         PlayerHealth.OnPlayerHit += (float idc) => StartCoroutine(DisableMovementFor(invulMovementPauseTime));
     }
     
@@ -58,12 +87,14 @@ public class PlayerMovement : MonoBehaviour
         //Input events
         jumpInput.action.started += Jump;
         jumpInput.action.canceled += CancelJump;
+        dashInput.action.started += Dash;
     }
 
     private void OnDisable()
     {
         jumpInput.action.started -= Jump;
         jumpInput.action.canceled -= CancelJump;
+        dashInput.action.started -= Dash;
     }
     
     //Get player input
@@ -75,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
     //Move player
     private void FixedUpdate()
     {
+        if (isDashing) { rb.linearVelocityY = 0;}
+        
         if (movementDisabled) { return; }
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
@@ -83,6 +116,24 @@ public class PlayerMovement : MonoBehaviour
         //Animator
         animator.SetFloat("Move", Mathf.Abs(rb.linearVelocityX));
         animator.SetBool("isGrounded", isGrounded);
+        
+        //Wall Cling Stuff
+        if (IsWallClimbing() && !isWallJumping && wallClimbingUnlocked)
+        {
+            rb.gravityScale = wallClimbGravity;
+            if (!hitWallYet)
+            {
+                ApplyVerticalDamping();
+                hitWallYet = true;
+            }
+            
+            animator.SetBool("IsWallClimbing", true);
+        }
+        else {rb.gravityScale = baseGravity;
+            hitWallYet = false;
+            animator.SetBool("IsWallClimbing", false);
+        }
+        
 
         //Max velocity
         if (rb.linearVelocityY < -maxVelocity)
@@ -110,12 +161,60 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    //Called when the dash button is pressed
+    private void Dash(InputAction.CallbackContext ctx)
+    {
+        if (!dashUnlocked || dashOnCooldown)
+        {
+            return;
+        }
+
+        if (!IsGrounded() && dashPerformed)
+        {
+            return;
+        } //If we are not grounded and dash is already been performed then NO!
+
+        rb.linearVelocity = Vector2.zero; //Reset velocity
+        //Flags
+        isDashing = true;
+        dashPerformed = true;
+        
+        animator.SetBool("isDashing", true);
+
+        DoDashParticles();
+
+        StartCoroutine(DashTimings(dashTime, dashCooldown));
+        StartCoroutine(DisableMovementFor(dashTime));
+        rb.AddForceX(transform.right.x * dashForce, ForceMode2D.Impulse);
+    }
+
     //Called when jump button pressed down
     private void Jump(InputAction.CallbackContext ctx)
     {
+        if (isDashing) { JumpDashTech(); } //Jump dash tech!
+
+        if (IsWallClimbing() && !isWallJumping && wallClimbingUnlocked)
+        {
+            PerformWallJump();
+            return;
+        }
+        
+        //Double Jump Code
+        if (doubleJumpUnlocked && !doubleJumpPerformed)
+        {
+            PerformJump(doubleJumpForce);
+            doubleJumpPerformed = true;
+        }
+        
+        //Normal Jump Code
         if(!IsGrounded()) { return; } //Don't jump if alr in air
         if(movementDisabled) { return; }
         
+        PerformJump(jumpForce);
+    }
+
+    private void PerformJump(float jumpForce)
+    {
         //Jump
         rb.linearVelocityY = 0;
         rb.AddForceY(jumpForce, ForceMode2D.Impulse);
@@ -124,6 +223,20 @@ public class PlayerMovement : MonoBehaviour
         
         Instantiate(jumpParticles, groundPartcilesPos.position, Quaternion.identity);
     }
+    
+    private void PerformWallJump()
+    {
+        if (!wallClimbingUnlocked) { return;}
+        
+        StartCoroutine(WallJumpTimer());
+        StartCoroutine(DisableMovementFor(wallJumpTime));
+        
+        rb.linearVelocityY = 0; //Reset Velocity
+        rb.gravityScale = baseGravity; // Reset gravity if already hasn't been
+        
+        rb.AddForceY(wallJumpForceY, ForceMode2D.Impulse);
+        rb.AddForceX(-transform.right.x * wallJumpForceX, ForceMode2D.Impulse);
+    }
 
     //Called when jump button released
     private void CancelJump(InputAction.CallbackContext ctx)
@@ -131,15 +244,26 @@ public class PlayerMovement : MonoBehaviour
         if (movementDisabled) { return; }
         if (rb.linearVelocity.y > 0)
         {
-            rb.linearVelocityY *= (1/jumpReleaseDamping);
+            ApplyVerticalDamping();
         }
+    }
+
+    private void ApplyVerticalDamping()
+    {
+        rb.linearVelocityY *= (1/jumpReleaseDamping);
     }
 
     //Checks if the player is grounded when called
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer) 
-               || Physics2D.OverlapCircle(coyoteJumpPos.position, coyoteJumpRadius, groundLayer);
+        if (Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer)
+            || Physics2D.OverlapCircle(coyoteJumpPos.position, coyoteJumpRadius, groundLayer))
+        {
+            doubleJumpPerformed = false; //Reset double jump
+            dashPerformed = false;       //Reset dash
+            return true;
+        }
+        return false;
     }
     
     private void Flip()
@@ -147,6 +271,16 @@ public class PlayerMovement : MonoBehaviour
         facingRight = !facingRight;
         LeanTween.rotateY(gameObject, facingRight ? 0 : 180, flipTime).setEaseInOutSine();
         ChangedLookDir?.Invoke(moveDirection);
+    }
+    
+    private void DoDashParticles()
+    {
+        //Visuals
+        if (transform.right.x < 0)
+        {
+            Instantiate(dashParticles, transform.position, Quaternion.identity);
+        } 
+        else {Instantiate(dashParticles, transform.position, new Quaternion(0f, -180f, 0f, 0f));}
     }
 
     public bool GetIsGrounded()
@@ -157,7 +291,45 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DisableMovementFor(float duration)
     {
         movementDisabled = true;
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         movementDisabled = false;
     }
+
+    private IEnumerator DashTimings(float dashTime, float dashCooldown)
+    {
+        yield return new WaitForSecondsRealtime(dashTime);
+        isDashing = false;
+        animator.SetBool("isDashing", false);
+        StartCoroutine(DashCooldown(dashCooldown));
+    }
+
+    private IEnumerator DashCooldown(float duration)
+    {
+        dashOnCooldown = true;
+        yield return new WaitForSecondsRealtime(duration);
+        dashOnCooldown = false;
+    }
+
+    private IEnumerator WallJumpTimer()
+    {
+        isWallJumping = true;
+        animator.SetBool("isWallJumping", isWallJumping);
+        yield return new WaitForSecondsRealtime(wallJumpTime);
+        isWallJumping = false;
+        animator.SetBool("isWallJumping", isWallJumping);
+    }
+
+    private void JumpDashTech()
+    {
+        StopCoroutine("DashTimings");
+        isDashing = false;
+    }
+
+    private bool IsWallClimbing()
+    {
+        return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, groundLayer) && !IsGrounded() && falling;
+    }
+    
+    //All wall stuff
+    
 }

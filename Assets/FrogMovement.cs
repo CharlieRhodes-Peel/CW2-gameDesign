@@ -56,17 +56,22 @@ public class FrogMovement : MonoBehaviour
         if (npcStates.GetCurrentState() == NpcStates.State.Angry)
         {
             if (!playerPos.gameObject.activeInHierarchy) { return; } //Player is dead don't bother
-            
-            //Face the player
-            bool shouldFaceLeft = playerPos.position.x - transform.position.x < 0;
 
-            if (shouldFaceLeft && !facingLeft) { Flip(); }
-            else if (!shouldFaceLeft && facingLeft) { Flip(); }
+            FacePlayer();
         }
         
         if  (hitWallCheck()) {Flip();}
     }
-    
+
+    private void FacePlayer()
+    {
+        //Face the player
+        bool shouldFaceLeft = playerPos.position.x - transform.position.x < 0;
+
+        if (shouldFaceLeft && !facingLeft) { Flip(); }
+        else if (!shouldFaceLeft && facingLeft) { Flip(); }
+    }
+
     private void FixedUpdate()
     {
         if (stop) { StopAllCoroutines(); }
@@ -106,6 +111,7 @@ public class FrogMovement : MonoBehaviour
         if (caller != this.gameObject) {return;}
         
         stop = true;
+        FacePlayer();
     }
 
     //Look at the function above and think about when this one gets called... it's the same
@@ -114,6 +120,7 @@ public class FrogMovement : MonoBehaviour
         if (caller != this.gameObject) { return; }
         
         stop = false;
+        FacePlayer();
     }
     
     //Called when the scene loads
