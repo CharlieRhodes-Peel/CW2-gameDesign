@@ -16,8 +16,7 @@ public class NpcStateManager : MonoBehaviour
 
     public void UpdateState(string name,  NpcStates.State state)
     {
-        if (!npcStates.ContainsKey(name)) { npcStates.Add(name, state); }
-        else  { npcStates[name] = state; }
+        npcStates[name] = state;
     }
 
     public bool KeepingTrackOf(string name)

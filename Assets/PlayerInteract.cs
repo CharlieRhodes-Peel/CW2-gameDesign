@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
     //This gets triggered everytime the player presses the interact key
     private void Interact(InputAction.CallbackContext ctx)
     {
-        NpcActor closestNpcActor = InteractManager.GetClosestActor();
+        NpcActor closestNpcActor = NpcInteractManager.GetClosestActor();
 
         if (closestNpcActor == null) { return; }
         

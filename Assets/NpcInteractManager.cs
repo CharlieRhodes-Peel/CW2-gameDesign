@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InteractManager : MonoBehaviour
+public class NpcInteractManager : MonoBehaviour
 {
     private static List<NpcActor> npcsWantingToInteract = new List<NpcActor>();
     [SerializeField] private TextMeshProUGUI popupText;

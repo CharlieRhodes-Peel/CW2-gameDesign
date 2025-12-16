@@ -78,7 +78,7 @@ public class NpcActor : MonoBehaviour
         playerTransformOnEnter = playerTransform;
             
         PlayerInteract.PlayerInteractWith += PlayerTalkedToMe; //Subscribe to interact event from player
-        InteractManager.TellPlayerIWantThem(this); //Tells the manager that I want to talk to the player
+        NpcInteractManager.TellPlayerIWantThem(this); //Tells the manager that I want to talk to the player
         
         playerEnterRangeEvent?.Invoke(gameObject);
         
@@ -91,7 +91,7 @@ public class NpcActor : MonoBehaviour
         playerInRange = false;
         
         PlayerInteract.PlayerInteractWith -= PlayerTalkedToMe; //Unsubscribe from player interact event so we are not spammed!
-        InteractManager.TellPlayerIDontWantThem(this); //Tell the manager that we don't want to interact with the player anymore
+        NpcInteractManager.TellPlayerIDontWantThem(this); //Tell the manager that we don't want to interact with the player anymore
 
         playerExitRangeEvent?.Invoke(gameObject);
 
