@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitUntil(()=> Time.timeScale == 1);
         
         Instantiate(deathParticles, transform.position, Quaternion.identity);
+        
         Destroy(gameObject);
     }
 

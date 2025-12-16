@@ -2,6 +2,7 @@
 //manager
 
 using System;
+using System.Collections;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Other references")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private EventSystem eventSystem;
+
+    //Type write effect
+    [SerializeField] private float timeBetweenLettersTyped = 0.01f;
     
     private void Awake()
     {
@@ -49,7 +53,8 @@ public class DialogueManager : MonoBehaviour
  
         // Set dialogue title and body text
         DialogTitleText.text = title;
-        DialogBodyText.text = node.dialogueText;
+        
+        StartCoroutine(TypingEffect(node.dialogueText, 0));
  
         // Remove any existing response buttons
         foreach (Transform child in responseButtonContainer)
@@ -105,6 +110,26 @@ public class DialogueManager : MonoBehaviour
         playerInput.SwitchCurrentActionMap("Player"); //Switch player input back to the player
         
         
+    }
+
+    //Recursive function be careful!
+    private IEnumerator TypingEffect(string finishedText, int charIndex)
+    {
+        //Update text
+        charIndex++;
+        string newText = finishedText.Substring(0, charIndex);
+        DialogBodyText.text = newText;
+
+        if (charIndex >= finishedText.Length)
+        {
+            yield return null;
+        }
+
+        else
+        {
+            yield return new WaitForSeconds(timeBetweenLettersTyped);
+            StartCoroutine(TypingEffect(finishedText, charIndex));
+        }
     }
  
     // Show the dialogue UI
