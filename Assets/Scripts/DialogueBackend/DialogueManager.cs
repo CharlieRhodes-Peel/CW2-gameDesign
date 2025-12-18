@@ -30,6 +30,8 @@ public class DialogueManager : MonoBehaviour
     //Type write effect
     [SerializeField] private float timeBetweenLettersTyped = 0.01f;
     private bool isTyping = false;
+
+    private const string HTML_ALPHA = "<color=#00000000>";
     
     private void Awake()
     {
@@ -129,53 +131,74 @@ public class DialogueManager : MonoBehaviour
 
     private void StartTypingEffect(string finishedText)
     {
-        StartCoroutine(TypingEffect(finishedText, 0, timeBetweenLettersTyped, false, ""));
+        StartCoroutine(TypingEffect(finishedText));
     }
-    
-    //Recursive function be careful!
-    private IEnumerator TypingEffect(string finishedText, int charIndex, float timeToWait, bool parsingSpeed, string speedParsing)
+    private IEnumerator TypingEffect(string finishedText)
     {
         isTyping = true;
-        //Update counter
-        charIndex++;
+        DialogBodyText.text = "";
+    
+        string originalText = ParseText(finishedText);
+        int charIndex = -1;
+        int rawIndex = -1;
+        float timeToWait = timeBetweenLettersTyped;
+        bool parsingSpeed = false;
+        string speedParsing = "";
+    
+        while (charIndex < originalText.Length - 1)
+        {
+            //Tracks the unparsed code
+            rawIndex++;
+            if (rawIndex >= finishedText.Length) { break; }
         
-        if (charIndex >= finishedText.Length)
-        {
-            isTyping = false;
-            yield break;
+            // Check the new char for parsing purposes
+            char newChar = finishedText[rawIndex];
+        
+            // End speed parsing with default speed
+            if (parsingSpeed && newChar == '/')
+            {
+                timeToWait = timeBetweenLettersTyped;
+                rawIndex++; // Skip the '>'
+                parsingSpeed = false;
+                speedParsing = "";
+                continue;
+            }
+            
+            // End speed parsing with custom speed
+            if (parsingSpeed && newChar == '>')
+            {
+                timeToWait = float.Parse(speedParsing);
+                parsingSpeed = false;
+                speedParsing = "";
+                continue;
+            }
+            
+            if (parsingSpeed)
+            {
+                speedParsing += newChar;
+                continue;
+            }
+        
+            // Start speed parsing
+            if (newChar == '<')
+            {
+                parsingSpeed = true;
+                continue;
+            }
+        
+            // This is an actual character to display
+            charIndex++;
+            
+            //Display screen
+            DialogBodyText.text = originalText;
+            string displayedText = DialogBodyText.text.Insert(charIndex + 1, HTML_ALPHA);
+            DialogBodyText.text = displayedText;
+        
+            yield return new WaitForSeconds(timeToWait);
         }
         
-        //Speed parsing (HOLY SHIT ALL THOSE HOURS OF HASKELL ARE PAYING OFF IN THIS VERY MOMENT OMG OMG I CAN'T BELIEVE
-        char newChar = finishedText[charIndex];
-        if (parsingSpeed && newChar == '/')
-        {
-            timeToWait = timeBetweenLettersTyped;
-            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 2), charIndex, timeToWait, false, ""));
-            yield break;
-        }
-        
-        if (parsingSpeed && newChar == '>')
-        {
-            timeToWait = float.Parse(speedParsing);
-            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 1), charIndex - 1, timeToWait, false, ""));
-            yield break; //Skip doing the rest
-        }
-        if (parsingSpeed)
-        {
-            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 1), charIndex - 1, timeToWait, true, speedParsing + newChar));
-            yield break; //Skip doing the rest
-        }
-        if (newChar == '<')
-        {
-            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 1), charIndex - 1, timeToWait, true, ""));
-            yield break; //Skips doing the rest
-        }
-        
-        //Actually writing it
-        string newText = finishedText.Substring(0, charIndex);
-        DialogBodyText.text = newText;
-        yield return new WaitForSeconds(timeToWait);
-        StartCoroutine(TypingEffect(finishedText, charIndex, timeToWait, false, ""));
+        DialogBodyText.text = originalText;
+        isTyping = false;
     }
 
     private void FinishTyping(string finishedText)
