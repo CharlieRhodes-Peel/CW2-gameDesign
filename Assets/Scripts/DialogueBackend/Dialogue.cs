@@ -4,7 +4,7 @@
 using System;
 using UnityEngine;
  
-[CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/Dialogue Asset")]
+[CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/Root Node")]
 public class Dialogue : ScriptableObject
 {
     //First node of the conversation

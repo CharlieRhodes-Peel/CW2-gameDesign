@@ -100,8 +100,13 @@ public class DialogueManager : MonoBehaviour
         
         // Check if there's a follow-up node
         if (!response.nextNode.IsLastNode())
-        {
+        { 
             StartDialogue(title, response.nextNode); // Start next dialogue
+        }
+        //Check if there's a follow up tree
+        else if (response.optionalNextDialogueTree != null)
+        {
+            StartDialogue(title, response.optionalNextDialogueTree.RootNode);
         }
         else
         {

@@ -5,4 +5,5 @@ public class DialogueResponse
 {
     public string responseText;
     public DialogueNode nextNode;
+    public Dialogue optionalNextDialogueTree;
 }
