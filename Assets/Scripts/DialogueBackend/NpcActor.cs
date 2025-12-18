@@ -19,6 +19,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     
     private Transform playerTransformOnEnter;
     private NpcStates npcStates;
+    private bool usingNpcStates = false;
     
     public static event Action<GameObject> playerEnterRangeEvent; //Called to let other scripts know player is in range of US
     public static event Action<GameObject> playerExitRangeEvent; //Called to let other scripts know player is OUT of range of us
@@ -29,6 +30,11 @@ public class NpcActor : MonoBehaviour, IInteractable
     private void Start()
     {
         npcStates = GetComponent<NpcStates>();
+        
+        if (npcStates == null) {usingNpcStates = false; return; }
+        usingNpcStates = true;
+        
+        feeling.SetActive(false);
     }
 
     // Trigger dialogue for this actor
@@ -86,7 +92,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         
         NpcActorNameManager.UnregisterActor(this);
         
-        feeling.SetActive(true);
+        if (usingNpcStates) {feeling.SetActive(true);}
     }
 
     //Called when the player leaves the speaking range
@@ -102,6 +108,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         if (spokenTo) {NpcActorNameManager.RegisterActor(this);}
 
         //If we're not angry then when we leave disable the indicator
+        if (!usingNpcStates) { return; }
         if (npcStates.GetCurrentState() != NpcStates.State.Angry)
         {
             feeling.SetActive(false);

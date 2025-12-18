@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1415480494471158986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.22, z: 0}
+  m_LocalPosition: {x: 0, y: 1.22, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 9e2281993c13d2e74b5f9e52b4ff71a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 9e2281993c13d2e74b5f9e52b4ff71a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -251,7 +251,6 @@ MonoBehaviour:
   wishPromptPos: {fileID: 1320590789207406974}
   wishPromptText: Wish
   anticipationTime: 1.5
-  light: {fileID: 6894333764010140570}
   checkpointActiviatedParticles: {fileID: 3932032286212855306, guid: 3960be60feafabdf7b20e994576ff9a6, type: 3}
   checkpointAnticipationParticles: {fileID: 5861097526927553238, guid: 093e39e9cd7ed8d88a9dcdad48a16647, type: 3}
 --- !u!58 &5216518814670782420

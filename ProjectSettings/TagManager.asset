@@ -50,6 +50,9 @@ TagManager:
   - name: BehindBackground
     uniqueID: 2451671945
     locked: 0
+  - name: WaterfallBackground
+    uniqueID: 2940245571
+    locked: 0
   - name: Background
     uniqueID: 1961162603
     locked: 0
@@ -61,6 +64,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3553804957
+    locked: 0
+  - name: ForeForeground
+    uniqueID: 2123221397
     locked: 0
   - name: WorldUI
     uniqueID: 2420965767

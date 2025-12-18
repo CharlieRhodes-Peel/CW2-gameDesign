@@ -110,7 +110,10 @@ public class NpcStates : MonoBehaviour
         feelingRenderer.sprite = angrySprite;
         
         hitbox.SetActive(true);
-        frogMovement.enabled = true;
+        if (frogMovement != null)
+        {
+            frogMovement.enabled = true;
+        }
     }
 
     private void OnAngryExit()
@@ -154,6 +157,7 @@ public class NpcStates : MonoBehaviour
         NpcStateManager.Instance.UpdateState(npcName, currentState);
     }
 
+    //Unity Events (called from dialogue usually)
     public static void SetStateTo(string stateName)
     {
         NpcStates callingInstance = ClosestNpcTracker.GetClosestNpcActor().GetComponent<NpcStates>();
