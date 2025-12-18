@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.iOS;
 public class NpcStates : MonoBehaviour
 {
     [SerializeField] private State defaultState;
+    [SerializeField] private bool angryActivatesMovement = true;
 
     [Header("States")] 
     [SerializeField] private SpriteRenderer feelingRenderer;
@@ -110,7 +111,8 @@ public class NpcStates : MonoBehaviour
         feelingRenderer.sprite = angrySprite;
         
         hitbox.SetActive(true);
-        if (frogMovement != null)
+        
+        if (frogMovement != null && angryActivatesMovement)
         {
             frogMovement.enabled = true;
         }

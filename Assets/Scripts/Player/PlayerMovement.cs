@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject jumpParticles;
     [SerializeField] private GameObject landParticles;
+    [SerializeField] private float landParticleSpeedExponent;
+    [SerializeField] private float landParticleSizeMultiplier;
     [SerializeField] private GameObject dashParticles;
     
     //Privates
@@ -69,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isWallJumping = false;
     private float baseGravity;
     private bool hitWallYet = false;
+
+    private float fallVelocityReached;
         
     //Events
     [HideInInspector] public static event Action<Vector2> ChangedLookDir;
@@ -157,11 +161,12 @@ public class PlayerMovement : MonoBehaviour
         {
             falling = true;
             animator.SetBool("isFalling", true);
+            fallVelocityReached = rb.linearVelocityY;
         }
         else if (falling && isGrounded) //If we have stopped falling and "falling" still true
         {
             animator.SetBool("isFalling", false);
-            Instantiate(landParticles, groundPartcilesPos.position, Quaternion.identity);
+            DoLandParticles(fallVelocityReached);
             falling = false;
         }
     }
@@ -333,6 +338,16 @@ public class PlayerMovement : MonoBehaviour
     private bool IsWallClimbing()
     {
         return Physics2D.OverlapCircle(wallCheckPos.position, 0.2f, groundLayer) && !IsGrounded() && falling;
+    }
+
+    private void DoLandParticles(float fallVelocity)
+    {
+        GameObject particle = Instantiate(landParticles, groundPartcilesPos.position, Quaternion.identity);
+        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+        
+        var main = ps.main;
+        main.startSpeed = Mathf.Pow(Mathf.Abs(fallVelocity) ,landParticleSpeedExponent);
+        main.startSize = (Mathf.Abs(fallVelocity) / maxVelocity) * landParticleSizeMultiplier;
     }
     
     //All wall stuff

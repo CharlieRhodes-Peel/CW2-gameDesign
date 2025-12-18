@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Threading;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -55,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         // Set dialogue title and body text
         DialogTitleText.text = title;
         
-        StartCoroutine(TypingEffect(node.dialogueText, 0));
+        StartTypingEffect(node.dialogueText);
  
         // Remove any existing response buttons
         foreach (Transform child in responseButtonContainer)
@@ -126,33 +127,82 @@ public class DialogueManager : MonoBehaviour
         
     }
 
+    private void StartTypingEffect(string finishedText)
+    {
+        StartCoroutine(TypingEffect(finishedText, 0, timeBetweenLettersTyped, false, ""));
+    }
+    
     //Recursive function be careful!
-    private IEnumerator TypingEffect(string finishedText, int charIndex)
+    private IEnumerator TypingEffect(string finishedText, int charIndex, float timeToWait, bool parsingSpeed, string speedParsing)
     {
         isTyping = true;
-        
-        //Update text
+        //Update counter
         charIndex++;
-        string newText = finishedText.Substring(0, charIndex);
-        DialogBodyText.text = newText;
-
+        
         if (charIndex >= finishedText.Length)
         {
             isTyping = false;
-            yield return null;
+            yield break;
         }
-
-        else
+        
+        //Speed parsing (HOLY SHIT ALL THOSE HOURS OF HASKELL ARE PAYING OFF IN THIS VERY MOMENT OMG OMG I CAN'T BELIEVE
+        char newChar = finishedText[charIndex];
+        if (parsingSpeed && newChar == '/')
         {
-            yield return new WaitForSeconds(timeBetweenLettersTyped);
-            StartCoroutine(TypingEffect(finishedText, charIndex));
+            timeToWait = timeBetweenLettersTyped;
+            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 2), charIndex, timeToWait, false, ""));
+            yield break;
         }
+        
+        if (parsingSpeed && newChar == '>')
+        {
+            timeToWait = float.Parse(speedParsing);
+            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 1), charIndex - 1, timeToWait, false, ""));
+            yield break; //Skip doing the rest
+        }
+        if (parsingSpeed)
+        {
+            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 1), charIndex - 1, timeToWait, true, speedParsing + newChar));
+            yield break; //Skip doing the rest
+        }
+        if (newChar == '<')
+        {
+            StartCoroutine(TypingEffect(finishedText.Remove(charIndex, 1), charIndex - 1, timeToWait, true, ""));
+            yield break; //Skips doing the rest
+        }
+        
+        //Actually writing it
+        string newText = finishedText.Substring(0, charIndex);
+        DialogBodyText.text = newText;
+        yield return new WaitForSeconds(timeToWait);
+        StartCoroutine(TypingEffect(finishedText, charIndex, timeToWait, false, ""));
     }
 
     private void FinishTyping(string finishedText)
     {
         StopAllCoroutines();
-        DialogBodyText.text = finishedText;
+        DialogBodyText.text = ParseText(finishedText);
+    }
+    
+    private string ParseText(string finishedText)
+    {
+        string accumulator = "";
+        bool ignoring = false;
+        int charIndex = 0;
+    
+        while (charIndex < finishedText.Length)
+        {
+            char newChar = finishedText[charIndex];
+            if (newChar == '<')
+            { ignoring = true; }
+            else if (newChar == '>')
+            { ignoring = false; }
+            else if (!ignoring)
+            { accumulator += newChar; }
+            charIndex++;
+        }
+    
+        return accumulator;
     }
  
     // Show the dialogue UI
