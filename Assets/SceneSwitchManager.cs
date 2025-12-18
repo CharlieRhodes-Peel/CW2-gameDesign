@@ -34,8 +34,6 @@ public class SceneSwitchManager : MonoBehaviour
         {
             instance = this;
         }
-        
-        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     private void OnEnable()

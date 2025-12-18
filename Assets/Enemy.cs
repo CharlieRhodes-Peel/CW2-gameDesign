@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Color damageFlashColor;
     [SerializeField] private float timeStopDuration;
     [SerializeField] private GameObject deathParticles;
+
+    [SerializeField] private float disableMovementTime = 0.5f;
+    [SerializeField] private float knockbackX;
+    [SerializeField] private float knockbackY;
     
     private Rigidbody2D rb;
     private NpcStates npcStates;
@@ -24,23 +28,27 @@ public class Enemy : MonoBehaviour
         
     }
     
-    public void TakeDamage(float damage, float knockback, Vector2 knockbackForcePos)
+    public void TakeDamage(float damage, Vector2 knockbackForcePos)
     {
         //Damage
         health -= damage;
         
+        //Change States
+        if (npcStates != null)
+        { npcStates.SetCurrentState(NpcStates.State.Angry); }
+        
         //Force
+        StartCoroutine(DisableMovement());
+        
         rb.linearVelocity = Vector2.zero; //Reset velocity
-        Vector2 direction = (rb.position - knockbackForcePos).normalized + Vector2.up;
-        rb.AddForce(direction * knockback, ForceMode2D.Impulse);
+        Vector2 direction = (rb.position - knockbackForcePos).normalized;
+        
+        rb.AddForceX(direction.x * knockbackX, ForceMode2D.Impulse);
+        rb.AddForceY(Vector2.up.y * knockbackY, ForceMode2D.Impulse);
         
         //Visual Impact
         StartCoroutine(DamageFlash());
         StartCoroutine(TimeStop());
-        
-        //Change States
-        if (npcStates != null)
-        { npcStates.SetCurrentState(NpcStates.State.Angry); }
         
         //Death Logic
         CheckHealth();
@@ -76,5 +84,16 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(timeStopDuration);
         Time.timeScale = 1;
+    }
+
+    private IEnumerator DisableMovement()
+    {
+        FrogMovement frogMovement = GetComponent<FrogMovement>();
+
+        if (!frogMovement.enabled) { yield break; }
+        
+        frogMovement.SetStopTo(true);
+        yield return new WaitForSecondsRealtime(disableMovementTime);
+        frogMovement.SetStopTo(false);
     }
 }

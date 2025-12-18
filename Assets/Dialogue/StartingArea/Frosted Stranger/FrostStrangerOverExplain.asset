@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: FrostStrangerOverExplain
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Well.<0.3>..</> How do I put this<0.3>...<0.000001>Well let me
+      start with the tale of the lake above. Above here is a lake and on that lake
+      are trees, and near the trees there is a lake. The lake is still but also moving,
+      moving but still at the same time. What a paradox, did I mention the trees?
+      So basically it was like always nighttime there, I found myself constantly
+      staring at the moon. It seems all the other frogs see the moon the same, there's
+      something enchanting about it really! There must be something there making
+      the moon so enchanting. Oh yeah it was also RIDDLED with electricity and electricy
+      and water don't mix, or I guess they mix a little too well, be careful there.
+      But it was tool warm for my liking. That's why I'm out here! I like how cold
+      it is, reminds me of home. Oh yeah and then there's the undergrowth oh my god
+      they're so lazy! All of them. I mean I don't really blame them I they're kingdom's
+      leader is a literral log. Like what is it going to do really? Like honestly?
+      I don't know. Oh and finally before I forget there is there church of the heron.
+      They're really crazy people man! They think that to put an end to the struggle
+      over the castle is to summon and heron to eat all the frogs! They call it salvation,
+      bunch of freaks bunch of freaks! Did you catch all that, I can go over it all
+      again if you like?
+    responses:
+    - responseText: I'm not reading all that
+      nextNode:
+        dialogueText: Heh, yeah sorry I do that sometimes.<0.3> </>Listen to me though.<0.3>
+          </>Please just help the castle, stop it from crumbling I miss how it used
+          to be!
+        responses:
+        - responseText: Okay!
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: I read all that
+      nextNode:
+        dialogueText: <0.3>...</> No you didn't
+        responses:
+        - responseText: Yes I did
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: 227c57cc3148977d5acd9d2afca559a3, type: 2}
+        - responseText: You're right I lied
+          nextNode:
+            dialogueText: It's okay.<0.3> </>I do that sometimes.<0.3> </>Listen
+              to me though.<0.3> </>Please just help the castle, stop it from crumbling
+              I miss how it used to be!
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

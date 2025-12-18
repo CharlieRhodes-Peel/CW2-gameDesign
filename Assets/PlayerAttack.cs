@@ -15,7 +15,6 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Enemy Affectors")] 
     [SerializeField] private float damagePerHit;
-    [SerializeField] private float knockbackPerHit;
 
     [Header("References")] 
     [SerializeField] private GameObject sideAttackHitBox;
@@ -92,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Neutral"))
         {
-            other.GetComponent<Enemy>().TakeDamage(damagePerHit,  knockbackPerHit, transform.position);
+            other.GetComponent<Enemy>().TakeDamage(damagePerHit, transform.position);
 
             if (currentHitbox == downAttackHitBox) //If we are attacking down when we hit the enemy we want to bounce off them
             {

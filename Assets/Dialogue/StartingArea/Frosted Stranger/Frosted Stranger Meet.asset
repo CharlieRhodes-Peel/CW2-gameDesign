@@ -18,9 +18,18 @@ MonoBehaviour:
     responses:
     - responseText: Yeah I'm fine!
       nextNode:
-        dialogueText: Alright I guess...
+        dialogueText: Alright.<0.3>..</> You do you man.<0.3> </> Listen<0.1>,</>
+          i'll just save you the hastle, it's not worth going any further
         responses:
-        - responseText: Close
+        - responseText: Why not?
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: ab4cd0f217686c48fa3a48c5ec9b820b, type: 2}
+        - responseText: I'm going!
           nextNode:
             dialogueText: 
             responses: []
@@ -28,17 +37,21 @@ MonoBehaviour:
               m_PersistentCalls:
                 m_Calls: []
           optionalNextDialogueTree: {fileID: 0}
-        - responseText: Go to the top of the dialogue again
-          nextNode:
-            dialogueText: 
-            responses: []
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 11400000}
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 8251622368369629549, guid: c8df792fc9db1c585b953d978e5ce602, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: MakeDialogueInactive
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000}
+                m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:

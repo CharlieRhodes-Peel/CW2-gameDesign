@@ -1,11 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class FrogMovement : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Movement Types")]
+    [SerializeField] private MovementType movementType;
+    
+    //Walking
+    [ShowIf("movementType", MovementType.WalkOnly)] [SerializeField] private float walkSpeed;
+    
+    //Jumping
     [SerializeField] private float jumpInterval;
     [SerializeField] private float jumpForceY;
     [SerializeField] private float jumpForceX;
@@ -28,26 +35,35 @@ public class FrogMovement : MonoBehaviour
     
     //Others
     private Transform playerPos; //Player gets found on scene load
+
+    public enum MovementType
+    {
+        WalkOnly,
+        JumpOnly,
+        WalkAndJump
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         npcStates = GetComponent<NpcStates>();
+        SceneSwitchManager.onSceneLoaded += FindPlayer;
     }
 
     void OnEnable()
     {
         NpcActor.playerEnterRangeEvent += PlayerEnterRange;
         NpcActor.playerExitRangeEvent += PlayerExitRange;
-        SceneSwitchManager.onSceneLoaded += FindPlayer;
+        
+        //Find the player when the script is enabled
+        FindPlayer();
     }
 
     void OnDisable()
     {
         NpcActor.playerEnterRangeEvent -= PlayerEnterRange;
         NpcActor.playerExitRangeEvent -= PlayerExitRange;
-        SceneSwitchManager.onSceneLoaded -= FindPlayer;
     }
 
     private void Update()
@@ -59,8 +75,18 @@ public class FrogMovement : MonoBehaviour
 
             FacePlayer();
         }
-        
-        if  (hitWallCheck()) {Flip();}
+
+        if (hitWallCheck())
+        {
+            if (movementType == MovementType.WalkOnly && !jumping)
+            {
+                StartCoroutine(Jump());
+            }
+            else if (movementType == MovementType.JumpOnly)
+            {
+                Flip();
+            }
+        }
     }
 
     private void FacePlayer()
@@ -74,10 +100,20 @@ public class FrogMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (stop) { StopAllCoroutines(); }
-        else if (jumping) { return; }
-
-        StartCoroutine(Jump());
+        if (stop) { StopAllCoroutines(); return; }
+        
+        //Jump only
+        if (movementType == MovementType.JumpOnly)
+        {
+            if (jumping) { return; }
+            StartCoroutine(Jump());
+        }
+        
+        //Walk
+        else if (movementType == MovementType.WalkOnly)
+        {
+            rb.linearVelocityX = -transform.right.x * walkSpeed;
+        }
     }
     
     private IEnumerator Jump()
@@ -126,6 +162,29 @@ public class FrogMovement : MonoBehaviour
     //Called when the scene loads
     private void FindPlayer()
     {
+        if (playerPos != null) { return; }
+        
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        if (playerPos == null) { StartCoroutine(LookForPlayerAgain());
+            return;
+        }
+        
+        Debug.Log($"I think I found player! He is at {playerPos}");
+    }
+
+    private IEnumerator LookForPlayerAgain()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        FindPlayer();
+    }
+
+    private void OnDestroy()
+    {
+        SceneSwitchManager.onSceneLoaded -= FindPlayer;
+    }
+
+    public void SetStopTo(bool stop)
+    {
+        this.stop = stop;
     }
 }

@@ -294,7 +294,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 15
+  m_Mass: 7
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 6
@@ -324,6 +324,7 @@ MonoBehaviour:
   Name: Frosted Stranger
   DialogueTrees:
   - {fileID: 11400000, guid: c9ce1562535b3828cb462e87265d2cfa, type: 2}
+  - {fileID: 11400000, guid: ae01d6790eaaf2e829f9cab5df2dca5a, type: 2}
   popupPos: {fileID: 784491077430450403}
   popupText: Speak
   feeling: {fileID: 55043106963687979}
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultState: 0
-  angryActivatesMovement: 0
+  angryActivatesMovement: 1
   feelingRenderer: {fileID: 25828952888358841}
   frogRenderer: {fileID: 7115634320739923198}
   happySprite: {fileID: -5662045943124688433, guid: 50e63ffc2afee3e609a3a5ea423dadff, type: 3}
@@ -362,11 +363,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7f9667e1969eee9af8eb0340382365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 100
   damageFlashDuration: 0.1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
   deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
+  disableMovementTime: 0.5
+  knockbackX: 40
+  knockbackY: 40
   renderer: {fileID: 7115634320739923198}
 --- !u!61 &1487424892965331796
 BoxCollider2D:
@@ -426,6 +430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a93f8af054ecff2d89e8b5b17b1f531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementType: 0
+  walkSpeed: 3
   jumpInterval: 1
   jumpForceY: 100
   jumpForceX: 100
