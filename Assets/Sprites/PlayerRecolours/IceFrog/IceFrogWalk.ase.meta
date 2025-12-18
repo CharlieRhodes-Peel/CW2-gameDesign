@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639016206394915350
+  platformSettingsDirtyTick: 639016947839021960
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -135,7 +135,7 @@ ScriptedImporter:
       y: 37
       width: 19
       height: 26
-    spriteID: 9ff50ceb5866e57a4a0a6e6837f565a2
+    spriteID: 1af0ec08cc58fa0868b8f375533feea6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -156,7 +156,7 @@ ScriptedImporter:
       y: 71
       width: 17
       height: 23
-    spriteID: 752f5d69644cbe2cfb9bdb17c7dd889e
+    spriteID: eca4daa92bd30d66599e81dc89cd270d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -177,7 +177,7 @@ ScriptedImporter:
       y: 4
       width: 20
       height: 25
-    spriteID: 05dc6f0dcfae3ac4690dd40de94918f7
+    spriteID: 2670970227393a7c2989bfdc9ab0b2b8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,7 +198,7 @@ ScriptedImporter:
       y: 4
       width: 17
       height: 23
-    spriteID: 37a4b791aa7bcda478519a4f82a4ff78
+    spriteID: 9bf418368b87268bea85c49ade879ea7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -229,7 +229,7 @@ ScriptedImporter:
         y: 32
         width: 19
         height: 26
-      spriteId: 9ff50ceb5866e57a4a0a6e6837f565a2
+      spriteId: 1af0ec08cc58fa0868b8f375533feea6
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -238,7 +238,7 @@ ScriptedImporter:
         y: 32
         width: 17
         height: 23
-      spriteId: 752f5d69644cbe2cfb9bdb17c7dd889e
+      spriteId: eca4daa92bd30d66599e81dc89cd270d
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -247,7 +247,7 @@ ScriptedImporter:
         y: 32
         width: 20
         height: 25
-      spriteId: 05dc6f0dcfae3ac4690dd40de94918f7
+      spriteId: 2670970227393a7c2989bfdc9ab0b2b8
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -256,7 +256,7 @@ ScriptedImporter:
         y: 32
         width: 17
         height: 23
-      spriteId: 37a4b791aa7bcda478519a4f82a4ff78
+      spriteId: 9bf418368b87268bea85c49ade879ea7
     linkedCells: []
     parentIndex: -1
   platformSettings:

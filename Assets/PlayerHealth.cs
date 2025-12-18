@@ -62,10 +62,21 @@ public class PlayerHealth : MonoBehaviour
         baseColor = renderer.color;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (isInvulnerable) { return; }
-        if (playerAttack.IsWindup()) { return; }
+        EnemyHitPlayer(other);
+    }
+
+    private void EnemyHitPlayer(Collider2D other)
+    {
+        if (isInvulnerable)
+        {
+            return;
+        }
+        if (playerAttack.IsWindup())
+        {
+            return;
+        }
         
         if (other.gameObject.CompareTag("EnemyAttack"))
         {

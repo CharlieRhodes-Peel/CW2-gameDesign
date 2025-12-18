@@ -11,6 +11,10 @@ public class FrogMovement : MonoBehaviour
     
     //Walking
     [ShowIf("movementType", MovementType.WalkOnly)] [SerializeField] private float walkSpeed;
+
+    [SerializeField] private bool walkingBetweenPoints = false;
+    [SerializeField] private bool wallMakesFrogTurnAround = false;
+    [ShowIf("wallMakesFrogTurnAround")] [SerializeField] private Transform wallCheck;
     
     //Jumping
     [SerializeField] private float jumpInterval;
@@ -18,7 +22,6 @@ public class FrogMovement : MonoBehaviour
     [SerializeField] private float jumpForceX;
     
     [Header("References")]
-    [SerializeField] private Transform wallCheck;
     [SerializeField] private Collider2D behindCollider;
     
     [SerializeField] private LayerMask whatIsWall;
@@ -75,6 +78,7 @@ public class FrogMovement : MonoBehaviour
 
             FacePlayer();
         }
+        
 
         if (hitWallCheck())
         {
@@ -100,6 +104,8 @@ public class FrogMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetFloat("moveSpeed", Mathf.Abs(rb.linearVelocityX));
+        
         if (stop) { StopAllCoroutines(); return; }
         
         //Jump only
@@ -130,6 +136,7 @@ public class FrogMovement : MonoBehaviour
 
     private bool hitWallCheck()
     {
+        if (!wallMakesFrogTurnAround) { return false; }
         return Physics2D.OverlapCircle(wallCheck.position, 0.1f, whatIsWall);
     }
     
@@ -159,6 +166,18 @@ public class FrogMovement : MonoBehaviour
         FacePlayer();
     }
     
+    //Walking between points
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (npcStates.GetCurrentState() == NpcStates.State.Angry) { return; }
+        if (!walkingBetweenPoints) { return;}
+
+        if (other.CompareTag("PathfindingPoint"))
+        {
+            Flip();
+        }
+    }
+
     //Called when the scene loads
     private void FindPlayer()
     {

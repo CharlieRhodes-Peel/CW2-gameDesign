@@ -120,6 +120,9 @@ public class NpcActor : MonoBehaviour, IInteractable
     {
         SpeakTo();
         spokenTo = true;
+        
+        //Don't let interact
+        InteractManager.UnregisterInteractable(this);
     }
 
     private void FacePlayer()
