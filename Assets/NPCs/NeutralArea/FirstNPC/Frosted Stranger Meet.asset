@@ -13,30 +13,14 @@ MonoBehaviour:
   m_Name: Frosted Stranger Meet
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: Hey man.<0.3>..</> that fall looked like it hurt.<0.3> </>Are you
-      okay?
+    dialogueText: Hello traveller.<0.3> </> Welcome to the neutral region, no wars
+      here haha.<0.3> </>I'll be your guide. <0.3> </> You can find Moon Lake above,
+      Undergrowth below and The Curch of The Heron to the right. <0.3> </> Safe travels!
     responses:
-    - responseText: Yeah I'm fine!
+    - responseText: Thanks for the info!
       nextNode:
-        dialogueText: Alright.<0.3>..</> You do you man.<0.3> </> Listen<0.1>,</>
-          i'll just save you the hastle, it's not worth going any further
-        responses:
-        - responseText: Why not?
-          nextNode:
-            dialogueText: 
-            responses: []
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 11400000, guid: ab4cd0f217686c48fa3a48c5ec9b820b, type: 2}
-        - responseText: I'm going!
-          nextNode:
-            dialogueText: 
-            responses: []
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
+        dialogueText: 
+        responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls:
@@ -53,6 +37,14 @@ MonoBehaviour:
                 m_BoolArgument: 0
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
+    - responseText: Sorry, can you repeat that?
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

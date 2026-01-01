@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FrostedStrangerAgain
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: What are you doing?<0.5> </>Go play the game!
+    dialogueText: Do you need me to repeat?<0.5> </>Moon Lake is above, Undergrowth
+      is below and The Curch of The Heron is to the right.
     responses:
-    - responseText: Okay
+    - responseText: Thank you
       nextNode:
         dialogueText: 
         responses: []
