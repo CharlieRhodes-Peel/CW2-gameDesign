@@ -143,7 +143,10 @@ public class SceneSwitchManager : MonoBehaviour
         GameObject bossRoomCamPos = GameObject.FindGameObjectWithTag("BossRoomCamera");
         if (bossRoomCamPos != null) //If there is a boss room camera
         {
-            bossCamera.Follow = bossRoomCamPos.transform;
+            Transform bossCamPos = bossRoomCamPos.transform;
+            
+            if (bossCamera == null) {return;}
+            bossCamera.Follow = bossCamPos;
         }
     }
     private void MovePlayerAndCamTo(Vector3 targetPosition)

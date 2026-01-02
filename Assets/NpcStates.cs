@@ -6,6 +6,9 @@ public class NpcStates : MonoBehaviour
 {
     [SerializeField] private State defaultState;
     [SerializeField] private bool angryActivatesMovement = true;
+    
+    [SerializeField] private int angryTrustMeterAffect = -5;
+    [SerializeField] private int happyTrustMeterAffect = 10;
 
     [Header("States")] 
     [SerializeField] private SpriteRenderer feelingRenderer;
@@ -84,6 +87,8 @@ public class NpcStates : MonoBehaviour
 
         
         hitbox.SetActive(false);
+        
+        FriendshipManager.Instance.AddToFriendshipLevel(happyTrustMeterAffect);
     }
 
     private void OnHappyExit()
@@ -116,6 +121,8 @@ public class NpcStates : MonoBehaviour
         {
             frogMovement.enabled = true;
         }
+        
+        FriendshipManager.Instance.AddToFriendshipLevel(angryTrustMeterAffect);
     }
 
     private void OnAngryExit()
@@ -131,8 +138,11 @@ public class NpcStates : MonoBehaviour
     {
         State oldState = currentState; //Just giving it a more understandable name
         
+        if (oldState == newState && newState != State.Neutral) {return;} //Don't ask
+        
         //Perform Exit State functions
         switch (oldState)
+        
         {
             case State.Neutral:
                 OnNeutralExit(); break;

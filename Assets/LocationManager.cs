@@ -11,9 +11,15 @@ public class LocationManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI locationText;
     
-    private static HashSet<string> visitedLocations = new HashSet<string>();
+    private static HashSet<Location> visitedLocations = new HashSet<Location>();
+
+    public static Location currentLocation; //Current region
 
     public static event Action<string> OnLocationVisited;
+
+    [SerializeField] private Location startingLocation;
+
+    public static event Action<Location> OnLocationChanged;
     
     private void Awake()
     {
@@ -24,23 +30,30 @@ public class LocationManager : MonoBehaviour
         else{Destroy(gameObject);}
     }
 
-    public static void LocationVisted(string location)
+    private void Start()
     {
-        location = location.ToLower();
-        
-        OnLocationVisited?.Invoke(location);
+        currentLocation = startingLocation;
+    }
 
-        foreach (string visitedLocation in visitedLocations)
+    public static void LocationVisted(Location location)
+    {
+        currentLocation = location;
+        
+        OnLocationChanged?.Invoke(location);
+
+        foreach (Location visitedLocation in visitedLocations)
         {
-            Debug.Log("We have already visited: " + visitedLocation);
+            Debug.Log("We have already visited: " + visitedLocation.name);
         }
 
         if (visitedLocations.Contains(location)) {return;} //If we have already visited the trigger then don't do anything!
         
         visitedLocations.Add(location);
         
-        Instance.locationText.text = location;
+        Instance.locationText.text = location.Name;
         
         Instance.animator.SetTrigger("showLocation");
+        
+        OnLocationVisited?.Invoke(location.Name);
     }
 }

@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Location : MonoBehaviour
+public class LocationTrigger : MonoBehaviour
 {
-    [SerializeField] private string locationName;
+    [SerializeField] private Location location;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            LocationManager.LocationVisted(locationName);
+            LocationManager.LocationVisted(location);
         }
     }
 }

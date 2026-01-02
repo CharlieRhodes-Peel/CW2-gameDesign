@@ -257,6 +257,7 @@ MonoBehaviour:
   popupPos: {fileID: 8823836871891366668}
   popupText: Speak
   feeling: {fileID: 1208536331212841207}
+  moneySpawnerPrefab: {fileID: 0}
 --- !u!114 &7911962290555471156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +302,7 @@ MonoBehaviour:
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
   deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
+  deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
   renderer: {fileID: 6752009486952702923}
 --- !u!61 &8124413403803462708
