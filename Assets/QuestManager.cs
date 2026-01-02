@@ -60,6 +60,17 @@ public class QuestManager : MonoBehaviour
     private void KillEnemyProgress(string enemyName)
     {
         //Should only increment ACTIVE quests, unlike the item quests
+        List<Quest> quests =  new List<Quest>(this.activeQuests.Keys);
+        foreach (Quest quest in quests)
+        {
+            if (quest.questType != Quest.QuestType.KillEnemies) { continue; } //Only worry about kill enemy quests
+
+            if (quest.enemyName == enemyName)
+            {
+                activeQuests[quest]++;
+                CheckIfQuestComplete(activeQuests, quest);
+            }
+        }
     }
 
     private void CheckIfQuestComplete(Dictionary<Quest, int> dictionary, Quest quest)
@@ -126,10 +137,12 @@ public class QuestManager : MonoBehaviour
     private void OnEnable()
     {
         Item.OnItemPicked += ItemQuestProgress;
+        Enemy.OnEnemyDeathEvent += KillEnemyProgress;
     }
     
     private void OnDisable()
     {
         Item.OnItemPicked -= ItemQuestProgress;
+        Enemy.OnEnemyDeathEvent -= KillEnemyProgress;
     }
 }

@@ -1,21 +1,34 @@
+using System;
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Identifying")]
+    [SerializeField] private bool nonNpcEnemy = true;
+    [ShowIf("nonNpcEnemy")] [SerializeField] private string enemyName; //DON'T NEED to fill this in if NPC Actor, this assigns names to non npc enemies
+    
+    [Header("Stats")]
     [SerializeField] private float health = 2;
+        
+    [SerializeField] private float knockbackX;
+    [SerializeField] private float knockbackY;
+    
+    [Header("Visuals")]
     [SerializeField] private float damageFlashDuration;
     [SerializeField] private Color damageFlashColor;
     [SerializeField] private float timeStopDuration;
     [SerializeField] private GameObject deathParticles;
-
     [SerializeField] private float disableMovementTime = 0.5f;
-    [SerializeField] private float knockbackX;
-    [SerializeField] private float knockbackY;
     
+    [Header("References")]
     private Rigidbody2D rb;
     private NpcStates npcStates;
     [SerializeField] private SpriteRenderer renderer;
+    
+    //Events
+    public static event Action<string> OnEnemyDeathEvent; //Called to let other scripts know the name of the enemy that just died
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,7 +80,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitUntil(()=> Time.timeScale == 1);
         
         Instantiate(deathParticles, transform.position, Quaternion.identity);
-        
+
         Destroy(gameObject);
     }
 
@@ -95,5 +108,18 @@ public class Enemy : MonoBehaviour
         frogMovement.SetStopTo(true);
         yield return new WaitForSecondsRealtime(disableMovementTime);
         frogMovement.SetStopTo(false);
+    }
+
+    private void OnDestroy()
+    {
+        NpcActor actor = GetComponent<NpcActor>();
+        if (actor != null) //If this is an Npc then take the npc name
+        {
+            OnEnemyDeathEvent?.Invoke(actor.Name);
+        }
+        else if (nonNpcEnemy)
+        {
+            OnEnemyDeathEvent?.Invoke(enemyName);
+        }
     }
 }

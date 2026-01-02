@@ -3,6 +3,9 @@ using NaughtyAttributes;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Quest", menuName = "Quests/Quest")]
+
+//Quests HAVE to be placed Resources/Quests to be picked up by the Quest manager
+
 public class Quest : ScriptableObject
 {
     

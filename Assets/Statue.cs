@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
  
-public class NpcActor : MonoBehaviour, IInteractable
+public class Statue : MonoBehaviour, IInteractable
 {
     public string Name;
 
@@ -12,17 +12,13 @@ public class NpcActor : MonoBehaviour, IInteractable
     
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
     [SerializeField] private string popupText;
-    [SerializeField] private GameObject feeling;
 
     private bool playerInRange = false;
-    private bool facingLeft = true;
     
     private Transform playerTransformOnEnter;
     private NpcStates npcStates;
     private bool usingNpcStates = false;
-    
-    public static event Action<GameObject> playerEnterRangeEvent; //Called to let other scripts know player is in range of US
-    public static event Action<GameObject> playerExitRangeEvent; //Called to let other scripts know player is OUT of range of us
+
 
     private static bool activeQuest = false;
     private static bool spokenTo = false;
@@ -33,8 +29,6 @@ public class NpcActor : MonoBehaviour, IInteractable
         
         if (npcStates == null) {usingNpcStates = false; return; }
         usingNpcStates = true;
-        
-        feeling.SetActive(false);
     }
 
     // Trigger dialogue for this actor
@@ -71,48 +65,17 @@ public class NpcActor : MonoBehaviour, IInteractable
         }
     }
 
-    public void Update()
-    {
-        if (playerInRange)
-        {
-            FacePlayer();
-        }
-    }
-
     //Called when the player gets into speaking range
     public void PlayerEnterSpeakingRange(Transform playerTransform)
     {
         playerInRange = true;
         playerTransformOnEnter = playerTransform;
-        
-        playerEnterRangeEvent?.Invoke(gameObject);
-        
-        InteractManager.RegisterInteractable(this);
-        ClosestNpcTracker.RegisterActor(this);
-        
-        NpcActorNameManager.UnregisterActor(this);
-        
-        if (usingNpcStates) {feeling.SetActive(true);}
     }
 
     //Called when the player leaves the speaking range
     public void PlayerExitSpeakingRange(Transform playerTransform)
     {
         playerInRange = false;
-
-        playerExitRangeEvent?.Invoke(gameObject);
-        
-        InteractManager.UnregisterInteractable(this);
-        ClosestNpcTracker.UnregisterActor(this);
-        
-        if (spokenTo) {NpcActorNameManager.RegisterActor(this);}
-
-        //If we're not angry then when we leave disable the indicator
-        if (!usingNpcStates) { return; }
-        if (npcStates.GetCurrentState() != NpcStates.State.Angry)
-        {
-            feeling.SetActive(false);
-        }
     }
     
     //Called when the player interact with them :)
@@ -120,20 +83,9 @@ public class NpcActor : MonoBehaviour, IInteractable
     {
         SpeakTo();
         spokenTo = true;
-    }
-
-    private void FacePlayer()
-    {
-        if (playerTransformOnEnter.position.x - transform.position.x > 0 && facingLeft) { Flip(); }
-        else if (playerTransformOnEnter.position.x - transform.position.x < 0 && !facingLeft) { Flip(); }
-    }
-
-    private void Flip()
-    {
-        if (facingLeft) { transform.rotation = Quaternion.Euler(0f, -180f, 0f); }
-        else { transform.rotation = Quaternion.Euler(0f, 0f, 0f); }
         
-        facingLeft = !facingLeft;
+        //Don't let interact
+        InteractManager.UnregisterInteractable(this);
     }
 
     //This is for unity events
