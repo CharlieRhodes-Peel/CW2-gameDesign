@@ -14,7 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     dialogueText: Look man I've told you they're down there to the left
-    responses: []
+    responses:
+    - responseText: Wait where?
+      nextNode:
+        dialogueText: You know if you want to fight, we can fight, but i'm not gunna
+          fight back
+        responses:
+        - responseText: Fight
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls:
+                - m_Target: {fileID: 2854314398567917715, guid: 375059bd2f8494ff990a8331b98516c6, type: 3}
+                  m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+                  m_MethodName: SetStateTo
+                  m_Mode: 5
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 0}
+                    m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: Angry
+                    m_BoolArgument: 0
+                  m_CallState: 2
+          optionalNextDialogueTree: {fileID: 0}
+        - responseText: Sorry I'll do it now
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Thank you
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
