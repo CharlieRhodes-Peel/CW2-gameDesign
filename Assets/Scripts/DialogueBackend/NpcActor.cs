@@ -27,7 +27,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     public static event Action<string> OnPlayerInteractEvent; //Called when the player interacts with us to let other scripts know the name of the character we are talking to
 
     private bool activeQuest = false;
-    private static bool spokenTo = false;
+    private bool spokenTo = false;
     
     private void Start()
     {
