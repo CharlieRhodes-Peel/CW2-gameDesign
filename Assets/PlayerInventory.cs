@@ -8,6 +8,8 @@ public class PlayerInventory : MonoBehaviour
     
     public List<ItemData> itemsPickedUp = new List<ItemData>(); //This should only be ADDED to
 
+    public int currency = 0;
+
     public static event Action<ItemData> OnItemRemoved;
     public static event Action<ItemData> OnItemPickedUp;
     
@@ -24,6 +26,11 @@ public class PlayerInventory : MonoBehaviour
         items.Remove(item);
         OnItemRemoved?.Invoke(item);
     }
+
+    private void MoneyPickedUp(int amount)
+    {
+        currency+= amount;
+    }
     
     
     //Event stuff
@@ -31,12 +38,14 @@ public class PlayerInventory : MonoBehaviour
     {
         Item.OnItemPicked += ItemPickedUp;
         QuestManager.OnItemGivenAway += ItemRemoved;
+        Money.OnMoneyPickup += MoneyPickedUp;
     }
 
     private void OnDisable()
     {
         Item.OnItemPicked -= ItemPickedUp;
         QuestManager.OnItemGivenAway -= ItemRemoved;
+        Money.OnMoneyPickup -= MoneyPickedUp;
     }
 
     public bool HavePickedUpBefore(ItemData itemData)

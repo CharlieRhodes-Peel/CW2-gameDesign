@@ -13,6 +13,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
     [SerializeField] private string popupText;
     [SerializeField] private GameObject feeling;
+    [SerializeField] private GameObject moneySpawnerPrefab;
 
     private bool playerInRange = false;
     private bool facingLeft = true;
@@ -158,6 +159,16 @@ public class NpcActor : MonoBehaviour, IInteractable
         ClosestNpcTracker.GetClosestNpcActor().activeQuest = false;
         QuestManager.Instance.QuestComplete(quest);
         QuestManager.Instance.QuestExitProcessing(quest);
+    }
+
+    public void SpawnMoney()
+    {
+        Instantiate(moneySpawnerPrefab, popupPos.position, Quaternion.identity);
+    }
+
+    public static void SpawnMoneyOnMe()
+    {
+        ClosestNpcTracker.GetClosestNpcActor().SpawnMoney();
     }
     
     public static void QuestExitProcessing(Quest quest)

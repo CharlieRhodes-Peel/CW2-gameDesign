@@ -244,10 +244,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tired Frog
   DialogueTrees:
-  - {fileID: 11400000, guid: 8603004f1ea99a44492c8288ea79617c, type: 2}
+  - {fileID: 11400000, guid: 3efb61e2a99cb6d7e823bc3efdfe008d, type: 2}
+  - {fileID: 11400000, guid: 43605fd0975250d109873f036ee9d233, type: 2}
   popupPos: {fileID: 5664247892007164946}
   popupText: Speak
   feeling: {fileID: 5398543763880543053}
+  moneySpawnerPrefab: {fileID: 6503364584388190247, guid: a4a2cc035ebdf1ab9a35dffa3b4f8023, type: 3}
 --- !u!114 &2854314398567917715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +350,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577667574788724199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a93f8af054ecff2d89e8b5b17b1f531, type: 3}
   m_Name: 
