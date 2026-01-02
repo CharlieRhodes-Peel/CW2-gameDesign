@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
-  m_Name: QuestBribe
+  m_Name: VineQuest
   m_EditorClassIdentifier: 
-  questId: 1
-  questName: BribeQuest
-  questGiverName: Soldiers Bonk & Zonk
-  questDescription: Get rid of the frog-eating vines
-  questInProgressDialogue: {fileID: 11400000, guid: b3d95798fac22304b9ad85919c05a258, type: 2}
-  questCompleteDialogue: {fileID: 11400000, guid: a664cf018cabccd4b9372e3131263aea, type: 2}
+  questId: Vine
+  questName: Vines
+  questGiverName: Crazy Mr Gobbo
+  questDescription: 
+  questInProgressDialogue: {fileID: 11400000, guid: faeaa582105c70448a75542c259b1695, type: 2}
+  questCompleteDialogue: {fileID: 11400000, guid: 87dfc18a1dbcc6b4bb63eeba375c7307, type: 2}
   questType: 1
   itemData: {fileID: 0}
   itemCount: 0
-  enemyName: Frog-eating Vines
-  requiredKills: 1
+  enemyName: Vines
+  requiredKills: 9
   npcName: 
   locationName: 
