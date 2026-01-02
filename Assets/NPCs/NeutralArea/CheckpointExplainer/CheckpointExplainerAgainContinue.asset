@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: CheckpointExplainerAgainContinue
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Well only if I see you back here
+    responses:
+    - responseText: Deal
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: No Deal
+      nextNode:
+        dialogueText: You know?<0.3> </>You're really starting piss me off,<0.3>
+          </>you just come in here and be rude to me, THIS IS ALL I EVER WANTED
+        responses:
+        - responseText: Okay I'm sorry
+          nextNode:
+            dialogueText: I'm just jealous is all!
+            responses:
+            - responseText: Say Goodbye
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        - responseText: Well I don't like you
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: 7cb500837935b1ea89d68aa18cbde9b2, type: 2}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
