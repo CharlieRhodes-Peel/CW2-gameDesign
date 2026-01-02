@@ -7,6 +7,7 @@ public class NpcStateManager : MonoBehaviour
 
     //Used to save npc states
     private Dictionary<string, NpcStates.State> npcStates = new Dictionary<string, NpcStates.State>();
+    private HashSet<string> npcDeaths = new HashSet<string>();
 
     public NpcStates.State GetState(string name)
     {

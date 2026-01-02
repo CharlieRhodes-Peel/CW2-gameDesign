@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: IntroFrogMeet
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Hey have I seen you here before?<0.3> </>How are you walking so
+      easily like that! Are you a traveler??
+    responses:
+    - responseText: Yes, what is this place?
+      nextNode:
+        dialogueText: The undergrowth. I'm surprised you didn't manage to read the
+          massive text show up as you walked in!
+        responses:
+        - responseText: Can you tell me about it
+          nextNode:
+            dialogueText: We're ruled by a pretty lazy king, I mean just look around,
+              no one's cut the grass in years!
+            responses:
+            - responseText: Next
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 11400000, guid: 8603004f1ea99a44492c8288ea79617c, type: 2}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: 8603004f1ea99a44492c8288ea79617c, type: 2}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Just passing through
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 8603004f1ea99a44492c8288ea79617c, type: 2}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

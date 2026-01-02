@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: IntroFrogExplaintion
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Oh, well king log is super lazy, all he does is stare at his reflection
+      in the pond.<0.3> </>If you want to meet him you should ask the guards. Maybe
+      make yourself known to some of the locals beforehand though.
+    responses:
+    - responseText: I'm on my way
+      nextNode:
+        dialogueText: Safe Travels!
+        responses:
+        - responseText: End Conversation
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 8953810886006781254, guid: e5d825536d15f6f409d3d85eb9600b2a, type: 3}
+              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+              m_MethodName: SetStateTo
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: Happy
+                m_BoolArgument: 0
+              m_CallState: 2
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

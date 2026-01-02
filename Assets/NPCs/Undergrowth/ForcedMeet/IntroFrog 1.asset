@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: IntroFrog
+  m_Name: IntroFrog 1
   m_EditorClassIdentifier: 
   RootNode:
     dialogueText: Well then<0.3>...</> What are you here for?

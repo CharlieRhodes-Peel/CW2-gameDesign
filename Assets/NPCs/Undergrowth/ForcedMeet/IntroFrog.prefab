@@ -592,10 +592,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jerry
   DialogueTrees:
-  - {fileID: 11400000, guid: 8603004f1ea99a44492c8288ea79617c, type: 2}
+  - {fileID: 11400000, guid: 17b49f4ccff701dc1a7ae19790b48372, type: 2}
   popupPos: {fileID: 2584130441708691312}
   popupText: Speak
   feeling: {fileID: 4101644865623429610}
+  moneySpawnerPrefab: {fileID: 0}
 --- !u!114 &8953810886006781254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,14 +632,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7f9667e1969eee9af8eb0340382365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nonNpcEnemy: 1
+  enemyName: 
   health: 4
+  knockbackX: 0
+  knockbackY: 0
   damageFlashDuration: 0.1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
   deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
+  deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
-  knockbackX: 0
-  knockbackY: 0
   renderer: {fileID: 7041169270472489780}
 --- !u!61 &6673632312419270762
 BoxCollider2D:
