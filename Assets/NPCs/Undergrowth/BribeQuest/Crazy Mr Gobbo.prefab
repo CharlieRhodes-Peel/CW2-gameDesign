@@ -193,12 +193,96 @@ Transform:
   m_GameObject: {fileID: 2489830699829796120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.24, z: 0}
+  m_LocalPosition: {x: -0.321, y: 1.478, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7407606034817406265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2919263793702674522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4370022197805612672}
+  - component: {fileID: 3062561558055636728}
+  m_Layer: 0
+  m_Name: Spot Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4370022197805612672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919263793702674522}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.071460724, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7407606034817406265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3062561558055636728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919263793702674522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 2
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.59
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 898b2192439640af6bf7e474000000005d273e939dc2d2d395c98d7e87014d90
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &3992215112653235353
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +299,7 @@ GameObject:
   - component: {fileID: 2169394215909909414}
   - component: {fileID: 8400452242899484177}
   m_Layer: 9
-  m_Name: InsaneFrog
+  m_Name: Crazy Mr Gobbo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +324,7 @@ Transform:
   - {fileID: 6890616525349270740}
   - {fileID: 7328978179178511798}
   - {fileID: 448054597781276584}
+  - {fileID: 4370022197805612672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &841859972983017071
@@ -283,7 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Crazy Mr Gobbo
   DialogueTrees:
-  - {fileID: 11400000, guid: 3fdea8f494709e74c88b9dc48a311246, type: 2}
+  - {fileID: 11400000, guid: 11f9f82b590cbfdd5be53968c12c0463, type: 2}
   popupPos: {fileID: 529003486823884441}
   popupText: Speak
   feeling: {fileID: 1283619388057035741}
@@ -322,14 +407,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7f9667e1969eee9af8eb0340382365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  nonNpcEnemy: 0
+  enemyName: 
+  health: 6
+  knockbackX: 20
+  knockbackY: 20
   damageFlashDuration: 0.1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
   deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
   disableMovementTime: 0.5
-  knockbackX: 0
-  knockbackY: 0
   renderer: {fileID: 5174859552007418053}
 --- !u!61 &2169394215909909414
 BoxCollider2D:
@@ -365,7 +452,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.07146108}
+  m_Offset: {x: -0.29041672, y: 0.12911463}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -375,7 +462,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.53, y: 0.8755939}
+  m_Size: {x: 1.0410957, y: 1.3937483}
   m_EdgeRadius: 0
 --- !u!114 &8400452242899484177
 MonoBehaviour:
@@ -384,13 +471,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3992215112653235353}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a93f8af054ecff2d89e8b5b17b1f531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementType: 0
-  walkSpeed: 0
+  walkSpeed: 3
   walkingBetweenPoints: 0
   wallMakesFrogTurnAround: 0
   wallCheck: {fileID: 6890616525349270740}
@@ -589,7 +676,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03652668, y: -0.0652253}
+  m_Offset: {x: -0.31231785, y: 0.14788628}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -599,7 +686,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.7513943, y: 0.8695494}
+  m_Size: {x: 1.1496677, y: 1.4629192}
   m_EdgeRadius: 0
 --- !u!1 &8471468446439402348
 GameObject:
@@ -678,7 +765,7 @@ SpriteRenderer:
   m_SortingLayerID: 1961162603
   m_SortingLayer: -1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1902898441605261677, guid: 6fba4659fab2f6e2c9f3004307eead6d, type: 3}
+  m_Sprite: {fileID: -174518275360115354, guid: 93b565ce4f24d5149815a78cf1a4bca4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -699,7 +786,7 @@ Animator:
   m_GameObject: {fileID: 8471468446439402348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 91c3b5197798c3e82a4515547c75cbbb, type: 2}
+  m_Controller: {fileID: -2252994817997277161, guid: 93b565ce4f24d5149815a78cf1a4bca4, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

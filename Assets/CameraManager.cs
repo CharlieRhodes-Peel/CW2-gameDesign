@@ -1,3 +1,4 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -5,6 +6,12 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineCamera mainCamera;
     [SerializeField] private CinemachineCamera bossCamera;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     void OnEnable()
     {

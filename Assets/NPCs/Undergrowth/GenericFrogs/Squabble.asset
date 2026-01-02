@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: Squabble
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: I love watching my brother jump around
+    responses:
+    - responseText: Why don't you?
+      nextNode:
+        dialogueText: The growth is too much! It creeps up on you slowly but nothing
+          gets done around here. I just want to jump around with squibble!
+        responses:
+        - responseText: I'll talk to the king
+          nextNode:
+            dialogueText: Don't bother he's so lazy
+            responses:
+            - responseText: I will try
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        - responseText: I'll KILL the king
+          nextNode:
+            dialogueText: Don't go that far!! Just talk him out ruling this place,
+              get someone in who WANTS to do something
+            responses:
+            - responseText: I will try
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Goodbye
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

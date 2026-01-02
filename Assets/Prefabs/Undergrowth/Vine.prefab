@@ -217,14 +217,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7f9667e1969eee9af8eb0340382365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nonNpcEnemy: 1
+  enemyName: 
   health: 1
+  knockbackX: 0
+  knockbackY: 0
   damageFlashDuration: 0.1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
-  deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
+  deathParticles: {fileID: 1676722502338841680, guid: 3c668edf6e5b88e2080bfcc34444c048, type: 3}
+  deathParticles2: {fileID: 1676722502338841680, guid: ecd3e4bfc428e8da6967f3b3f2b3b2b7, type: 3}
   disableMovementTime: 0.5
-  knockbackX: 0
-  knockbackY: 0
   renderer: {fileID: 0}
 --- !u!50 &1286907725992592532
 Rigidbody2D:

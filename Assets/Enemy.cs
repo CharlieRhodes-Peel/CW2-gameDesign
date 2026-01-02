@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Color damageFlashColor;
     [SerializeField] private float timeStopDuration;
     [SerializeField] private GameObject deathParticles;
+    [SerializeField] private GameObject deathParticles2;
     [SerializeField] private float disableMovementTime = 0.5f;
     
     [Header("References")]
@@ -80,6 +81,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitUntil(()=> Time.timeScale == 1);
         
         Instantiate(deathParticles, transform.position, Quaternion.identity);
+        if (deathParticles2 != null) {Instantiate(deathParticles2, transform.position, Quaternion.identity);}
 
         Destroy(gameObject);
     }

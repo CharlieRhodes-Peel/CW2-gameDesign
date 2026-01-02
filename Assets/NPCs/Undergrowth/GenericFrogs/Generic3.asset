@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Generic3
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: You should taste our flies, they are really yummy!
+    dialogueText: You should taste the flies in here, they are really yummy!
     responses:
-    - responseText: End Conversation
+    - responseText: Goodbye
       nextNode:
         dialogueText: 
         responses: []
