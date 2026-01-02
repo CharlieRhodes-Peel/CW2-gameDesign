@@ -26,8 +26,8 @@ public class Quest : ScriptableObject
     [ShowIf("questType", QuestType.CollectItems)] public ItemData itemData;
     [ShowIf("questType", QuestType.CollectItems)] public int itemCount;
     
-    [ShowIf("questType", QuestType.KillEnemies)] public string enemyName;
-    [ShowIf("questType", QuestType.KillEnemies)] public int requiredKills;
+    [ShowIf(EConditionOperator.Or, "IsKillEnemiesQuest", "IsKillEnemiesPassiveQuest")] public string enemyName;
+    [ShowIf(EConditionOperator.Or, "IsKillEnemiesQuest", "IsKillEnemiesPassiveQuest")]  public int requiredKills;
     
     [ShowIf("questType", QuestType.TalkToNpc)] public string npcName;
 
@@ -37,9 +37,14 @@ public class Quest : ScriptableObject
     {
         CollectItems,
         KillEnemies,
+        KillEnemiesPassive,
         TalkToNpc,
         ReachLocation,
         Other,
     }
+    
+    // Helper methods for ShowIf conditions
+    private bool IsKillEnemiesQuest() => questType == QuestType.KillEnemies;
+    private bool IsKillEnemiesPassiveQuest() => questType == QuestType.KillEnemiesPassive;
 }
 

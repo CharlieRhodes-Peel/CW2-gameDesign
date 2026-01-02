@@ -72,6 +72,24 @@ public class QuestManager : MonoBehaviour
             }
         }
     }
+    
+    //Should be called anytime an enemy is killed
+    private void KillEnemyPassiveProgress(string enemyName)
+    {
+        //Should increment all quests
+        List<Quest> quests =  new List<Quest>(this.allQuests.Keys);
+        foreach (Quest quest in quests)
+        {
+            if (quest.questType != Quest.QuestType.KillEnemiesPassive) { continue; } //Only worry about kill enemy quests
+
+            if (quest.enemyName == enemyName)
+            {
+                allQuests[quest]++;
+                CheckIfQuestComplete(allQuests, quest);
+            }
+        }
+    }
+
 
     private void TalkToNPCProgress(string npcName)
     {
@@ -116,6 +134,8 @@ public class QuestManager : MonoBehaviour
             case Quest.QuestType.CollectItems:
                 questComplete = dictionary[quest] >= quest.itemCount; break;
             case Quest.QuestType.KillEnemies: 
+                questComplete = dictionary[quest] >= quest.requiredKills; break;
+            case Quest.QuestType.KillEnemiesPassive: 
                 questComplete = dictionary[quest] >= quest.requiredKills; break;
             case Quest.QuestType.TalkToNpc:
                 questComplete = dictionary[quest] >= 1; break;
@@ -170,6 +190,7 @@ public class QuestManager : MonoBehaviour
     {
         Item.OnItemPicked += ItemQuestProgress;
         Enemy.OnEnemyDeathEvent += KillEnemyProgress;
+        Enemy.OnEnemyDeathEvent += KillEnemyPassiveProgress;
         NpcActor.OnPlayerInteractEvent += TalkToNPCProgress;
         LocationManager.OnLocationVisited += ReachLocationProgress;
     }
@@ -178,6 +199,7 @@ public class QuestManager : MonoBehaviour
     {
         Item.OnItemPicked -= ItemQuestProgress;
         Enemy.OnEnemyDeathEvent -= KillEnemyProgress;
+        Enemy.OnEnemyDeathEvent -= KillEnemyPassiveProgress;
         NpcActor.OnPlayerInteractEvent -= TalkToNPCProgress;
         LocationManager.OnLocationVisited -= ReachLocationProgress;
     }

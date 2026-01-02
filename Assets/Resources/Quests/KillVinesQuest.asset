@@ -18,7 +18,7 @@ MonoBehaviour:
   questDescription: He's really tired come on, just do it!
   questInProgressDialogue: {fileID: 11400000, guid: d9fc10ff3cd38d0e18d1d9a7bbd3b83a, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: 2ee1fd50486c33857b111bffe37d6b22, type: 2}
-  questType: 1
+  questType: 2
   itemData: {fileID: 0}
   itemCount: 0
   enemyName: Vine
