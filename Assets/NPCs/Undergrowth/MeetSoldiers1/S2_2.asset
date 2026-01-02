@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: S2_2
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: 'Zonk: They are super dangerous and scary, they say that frogs
+      who get too close become tangled up and eaten by the vines!'
+    responses:
+    - responseText: Next
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 2926d03472b319d4094040d95cdc45e5, type: 2}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
