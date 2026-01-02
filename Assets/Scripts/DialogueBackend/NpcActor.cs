@@ -24,6 +24,8 @@ public class NpcActor : MonoBehaviour, IInteractable
     public static event Action<GameObject> playerEnterRangeEvent; //Called to let other scripts know player is in range of US
     public static event Action<GameObject> playerExitRangeEvent; //Called to let other scripts know player is OUT of range of us
 
+    public static event Action<string> OnPlayerInteractEvent; //Called when the player interacts with us to let other scripts know the name of the character we are talking to
+
     private static bool activeQuest = false;
     private static bool spokenTo = false;
     
@@ -118,6 +120,8 @@ public class NpcActor : MonoBehaviour, IInteractable
     //Called when the player interact with them :)
     public void Interact()
     {
+        OnPlayerInteractEvent?.Invoke(Name);
+        
         SpeakTo();
         spokenTo = true;
     }

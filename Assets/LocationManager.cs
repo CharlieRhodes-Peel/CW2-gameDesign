@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,8 @@ public class LocationManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI locationText;
     
     private static HashSet<string> visitedLocations = new HashSet<string>();
+
+    public static event Action<string> OnLocationVisited;
     
     private void Awake()
     {
@@ -24,6 +27,8 @@ public class LocationManager : MonoBehaviour
     public static void LocationVisted(string location)
     {
         location = location.ToLower();
+        
+        OnLocationVisited?.Invoke(location);
 
         foreach (string visitedLocation in visitedLocations)
         {

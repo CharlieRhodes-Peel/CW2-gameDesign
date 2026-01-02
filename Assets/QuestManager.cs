@@ -73,6 +73,38 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    private void TalkToNPCProgress(string npcName)
+    {
+        List<Quest> quests = new List<Quest>(this.allQuests.Keys); //Checks all quests to see if you have spoken to a certain npc
+
+        foreach (Quest quest in quests)
+        {
+            if (quest.questType != Quest.QuestType.TalkToNpc) { continue; } //Only worry about talk to quests
+
+            if (quest.npcName == npcName)
+            {
+                activeQuests[quest]++;
+                CheckIfQuestComplete(activeQuests, quest);
+            }
+        }
+    }
+
+    private void ReachLocationProgress(string locationName)
+    {
+        List<Quest> quests = new List<Quest>(this.allQuests.Keys); //Checks all quests to see if you have reached that location
+
+        foreach (Quest quest in quests)
+        {
+            if (quest.questType != Quest.QuestType.ReachLocation) { continue; } //Only worry about reach location quests
+
+            if (quest.locationName.ToLower() == locationName)
+            {
+                activeQuests[quest]++;
+                CheckIfQuestComplete(activeQuests, quest);
+            }
+        }
+    }
+
     private void CheckIfQuestComplete(Dictionary<Quest, int> dictionary, Quest quest)
     {
         bool questComplete = false;
@@ -138,11 +170,15 @@ public class QuestManager : MonoBehaviour
     {
         Item.OnItemPicked += ItemQuestProgress;
         Enemy.OnEnemyDeathEvent += KillEnemyProgress;
+        NpcActor.OnPlayerInteractEvent += TalkToNPCProgress;
+        LocationManager.OnLocationVisited += ReachLocationProgress;
     }
     
     private void OnDisable()
     {
         Item.OnItemPicked -= ItemQuestProgress;
         Enemy.OnEnemyDeathEvent -= KillEnemyProgress;
+        NpcActor.OnPlayerInteractEvent -= TalkToNPCProgress;
+        LocationManager.OnLocationVisited -= ReachLocationProgress;
     }
 }
