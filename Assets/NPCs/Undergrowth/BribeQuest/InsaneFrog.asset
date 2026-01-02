@@ -35,11 +35,23 @@ MonoBehaviour:
                 m_StringArgument: Angry
                 m_BoolArgument: 1
               m_CallState: 2
+            - m_Target: {fileID: 7986375844355093370, guid: a3fd5564f5fd3d748a20d79e00bc8b97, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: FinishQuest
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: 1af7ea2cbc800374094650caee52bd67, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 1
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Are these your vines? Why are they eating frogs?
       nextNode:
-        dialogueText: "Yessss these are my gorgeous vines. The other frogs are careless,
-          it\u2019s not my vines fault they\u2019re tasty"
+        dialogueText: "YessSs theSe aRe My gOrgEous vInEs. THE oTHer fRogs aRe cArelEss!
+          It\u2019s nOt my VINES fault they\u2019re sO So sO so tasty"
         responses:
         - responseText: End Conversation
           nextNode:
@@ -51,7 +63,19 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 7986375844355093370, guid: a3fd5564f5fd3d748a20d79e00bc8b97, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: StartQuest
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: 1af7ea2cbc800374094650caee52bd67, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Gross, why would you like these ugly vines
       nextNode:
