@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
   m_Name: BribeQuest
   m_EditorClassIdentifier: 
-  questId: BribeQuest
-  questName: Kill Vines
+  questId: 1
+  questName: Bribe
   questGiverName: Soldiers Bonk & Zonk
-  questDescription: Get rid of the frog-eating vines
+  questDescription: Kill the frog-eating vines
   questInProgressDialogue: {fileID: 11400000, guid: b3d95798fac22304b9ad85919c05a258, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: a664cf018cabccd4b9372e3131263aea, type: 2}
   questType: 1
   itemData: {fileID: 0}
   itemCount: 0
   enemyName: Vine
-  requiredKills: 16
+  requiredKills: 6
   npcName: 
   locationName: 

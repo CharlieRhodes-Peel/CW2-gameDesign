@@ -88,6 +88,7 @@ MonoBehaviour:
   popupPos: {fileID: 1802425711223468582}
   popupText: Speak
   feeling: {fileID: 4861570288610864280}
+  moneySpawnerPrefab: {fileID: 0}
 --- !u!114 &9120359659095058037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +133,7 @@ MonoBehaviour:
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   timeStopDuration: 0.075
   deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
+  deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
   renderer: {fileID: 8693302024590433050}
 --- !u!61 &4214333454321517190
@@ -141,7 +143,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352366836499543191}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

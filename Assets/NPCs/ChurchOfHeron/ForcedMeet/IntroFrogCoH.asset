@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: IntroFrogCoH
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "I haven\u2019t seen you around here before. What are you doing
+      here?"
+    responses:
+    - responseText: I want to meet your king.
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: dc7b9c1207a173746a8d79d217198faf, type: 2}
+    - responseText: Lead me to the king!
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: dc7b9c1207a173746a8d79d217198faf, type: 2}
+    - responseText: Could you tell me about your king?
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: dc7b9c1207a173746a8d79d217198faf, type: 2}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
