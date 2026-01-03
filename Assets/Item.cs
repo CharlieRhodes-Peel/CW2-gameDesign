@@ -6,6 +6,7 @@ public class Item : MonoBehaviour, IInteractable
     public ItemData itemData;
     [SerializeField] private Transform popUpPos;
     [SerializeField] private string popUpText;
+    [SerializeField] private GameObject pickupParticles;
     public static event Action<ItemData> OnItemPicked;
 
     private void Start()
@@ -47,6 +48,8 @@ public class Item : MonoBehaviour, IInteractable
 
     private void OnDestroy()
     {
+        Instantiate(pickupParticles, transform.position, Quaternion.identity);
+        
         //Unsubscribe from all events
         SceneSwitchManager.onSceneLoaded -= AlreadyCollectedCheck;
     }

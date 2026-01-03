@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 4475930105959711303}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.86, y: 13.968539, z: 0}
+  m_LocalPosition: {x: -0.04, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -413,8 +413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7668d260df5e89bfaa66f96db2c88a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Soldier Bonk
-  DialogueTrees: []
+  Name: Soldiers Bonk & Zonk
+  DialogueTrees:
+  - {fileID: 11400000, guid: bc8077f2811ca424cad64dae8c76f247, type: 2}
+  - {fileID: 11400000, guid: 00e798ab54e1c1a459f54a93d59dccee, type: 2}
   popupPos: {fileID: 272171750359207789}
   popupText: Speak
   feeling: {fileID: 415614175089710870}
@@ -433,6 +435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   angryActivatesMovement: 1
+  angryTrustMeterAffect: -5
+  happyTrustMeterAffect: 10
   feelingRenderer: {fileID: 4653427375682964200}
   frogRenderer: {fileID: 7832170783362394233}
   happySprite: {fileID: -5662045943124688433, guid: 50e63ffc2afee3e609a3a5ea423dadff, type: 3}
@@ -457,6 +461,7 @@ MonoBehaviour:
   nonNpcEnemy: 1
   enemyName: 
   health: 4
+  moneyOnDeath: 0
   knockbackX: 0
   knockbackY: 0
   damageFlashDuration: 0.1
@@ -466,6 +471,7 @@ MonoBehaviour:
   deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
   renderer: {fileID: 7832170783362394233}
+  moneySpawner: {fileID: 0}
 --- !u!61 &8694013268705624077
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -473,7 +479,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6172386998814996076}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

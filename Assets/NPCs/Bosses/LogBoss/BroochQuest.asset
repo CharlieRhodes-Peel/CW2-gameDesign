@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: 2
   questName: Brooch Quest
-  questGiverName: 
+  questGiverName: King Log
   questDescription: Find King Log's special brooch
-  questInProgressDialogue: {fileID: 0}
+  questInProgressDialogue: {fileID: 11400000, guid: 600705588a1a2895f99879c1003cc0ac, type: 2}
   questCompleteDialogue: {fileID: 0}
-  questType: 0
+  questType: 3
   itemData: {fileID: 0}
   itemCount: 0
   enemyName: 

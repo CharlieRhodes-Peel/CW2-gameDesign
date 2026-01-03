@@ -103,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   angryActivatesMovement: 1
+  angryTrustMeterAffect: -5
+  happyTrustMeterAffect: 10
   feelingRenderer: {fileID: 1383591287804748960}
   frogRenderer: {fileID: 8693302024590433050}
   happySprite: {fileID: -5662045943124688433, guid: 50e63ffc2afee3e609a3a5ea423dadff, type: 3}
@@ -127,6 +129,7 @@ MonoBehaviour:
   nonNpcEnemy: 1
   enemyName: 
   health: 4
+  moneyOnDeath: 0
   knockbackX: 0
   knockbackY: 0
   damageFlashDuration: 0.1
@@ -136,6 +139,7 @@ MonoBehaviour:
   deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
   renderer: {fileID: 8693302024590433050}
+  moneySpawner: {fileID: 0}
 --- !u!61 &4214333454321517190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,7 +147,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352366836499543191}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -392,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 2893519377819698885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.43, y: 14.018538, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

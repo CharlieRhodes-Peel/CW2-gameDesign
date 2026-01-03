@@ -474,6 +474,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3abe64eb-9efe-4ff4-ac61-78283a3372d2",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2f0104ce-59a9-4317-a17a-647854a8aaa0",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -977,6 +988,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "CloseInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdc0f1b3-81f0-4bd4-b454-e9662ac3277e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "CloseInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
