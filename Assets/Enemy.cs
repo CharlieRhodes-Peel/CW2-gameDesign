@@ -88,6 +88,16 @@ public class Enemy : MonoBehaviour
         if (deathParticles2 != null) {Instantiate(deathParticles2, transform.position, Quaternion.identity);}
 
         SpawnMoney();
+        
+        NpcActor actor = GetComponent<NpcActor>();
+        if (actor != null) //If this is an Npc then take the npc name
+        {
+            OnEnemyDeathEvent?.Invoke(actor.Name);
+        }
+        else if (nonNpcEnemy)
+        {
+            OnEnemyDeathEvent?.Invoke(enemyName);
+        }
 
         Destroy(gameObject);
     }
@@ -126,18 +136,5 @@ public class Enemy : MonoBehaviour
         frogMovement.SetStopTo(true);
         yield return new WaitForSecondsRealtime(disableMovementTime);
         frogMovement.SetStopTo(false);
-    }
-
-    private void OnDestroy()
-    {
-        NpcActor actor = GetComponent<NpcActor>();
-        if (actor != null) //If this is an Npc then take the npc name
-        {
-            OnEnemyDeathEvent?.Invoke(actor.Name);
-        }
-        else if (nonNpcEnemy)
-        {
-            OnEnemyDeathEvent?.Invoke(enemyName);
-        }
     }
 }

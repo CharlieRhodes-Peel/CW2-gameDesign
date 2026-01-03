@@ -29,6 +29,8 @@ public class NpcStates : MonoBehaviour
 
     private string npcName;
 
+    private bool startingChange = false;
+
     private void Start()
     {
         frogMovement = GetComponent<FrogMovement>();
@@ -36,6 +38,7 @@ public class NpcStates : MonoBehaviour
         npcName = GetComponent<NpcActor>().Name;
         if (NpcStateManager.Instance.KeepingTrackOf(npcName))
         {
+            startingChange = true;
             SetCurrentState(NpcStateManager.Instance.GetState(npcName));
         }
         else
@@ -67,6 +70,8 @@ public class NpcStates : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Neutral");
         
         hitbox.SetActive(false);
+
+        startingChange = false;
     }
 
     private void OnNeutralExit()
@@ -84,11 +89,18 @@ public class NpcStates : MonoBehaviour
 
         frogRenderer.sortingLayerID = SortingLayer.NameToID("Background");
         frogRenderer.sortingOrder = 1; //Puts it just above everything in the background
-
         
         hitbox.SetActive(false);
+
+        //If this is done on scene load, we don't want to affect friendship level
+        if (startingChange)
+        {
+            startingChange = false;
+            return;
+        }
         
         FriendshipManager.Instance.AddToFriendshipLevel(happyTrustMeterAffect);
+        startingChange = false;
     }
 
     private void OnHappyExit()
@@ -122,7 +134,15 @@ public class NpcStates : MonoBehaviour
             frogMovement.enabled = true;
         }
         
+        //If this is done on scene load, we don't want to affect friendship level
+        if (startingChange)
+        {
+            startingChange = false;
+            return;
+        }
+        
         FriendshipManager.Instance.AddToFriendshipLevel(angryTrustMeterAffect);
+        startingChange = false;
     }
 
     private void OnAngryExit()
