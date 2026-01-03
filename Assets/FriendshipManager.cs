@@ -75,4 +75,9 @@ public class FriendshipManager : MonoBehaviour
         // SET the position, don't ADD to it
         pointer.position = new Vector3(targetX, pointer.position.y, pointer.position.z);
     }
+
+    public static int GetCurrentFriendshipLevel()
+    {
+        return friendshipLevels[LocationManager.currentLocation.Name];
+    }
 }

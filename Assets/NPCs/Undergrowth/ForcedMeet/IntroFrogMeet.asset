@@ -17,16 +17,19 @@ MonoBehaviour:
       easily like that! Are you a traveler??
     responses:
     - responseText: Yes, what is this place?
+      friendshipThreshold: 0
       nextNode:
         dialogueText: The undergrowth. I'm surprised you didn't manage to read the
           massive text show up as you walked in!
         responses:
         - responseText: Can you tell me about it
+          friendshipThreshold: 0
           nextNode:
             dialogueText: We're ruled by a pretty lazy king, I mean just look around,
               no one's cut the grass in years!
             responses:
             - responseText: Next
+              friendshipThreshold: 0
               nextNode:
                 dialogueText: 
                 responses: []
@@ -43,6 +46,7 @@ MonoBehaviour:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Just passing through
+      friendshipThreshold: 0
       nextNode:
         dialogueText: 
         responses: []

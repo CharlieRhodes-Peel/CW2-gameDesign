@@ -69,17 +69,44 @@ public class DialogueManager : MonoBehaviour
         // Create and setup response buttons based on current dialogue node
         foreach (DialogueResponse response in node.responses)
         {
-            GameObject buttonObj = Instantiate(responseButtonPrefab, responseButtonContainer);
-            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = response.responseText;
-            
-            //Selects a button so we can navigate
-            eventSystem.SetSelectedGameObject(buttonObj);
- 
-            // Setup button to trigger SelectResponse when clicked
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => ResponseButtonClicked(response, title, node.dialogueText));
+            MakeResponse(title, node, response);
         }
         
         playerInput.SwitchCurrentActionMap("UI"); //Switch player input to UI, will stop them moving as a result
+    }
+
+    private void MakeResponse(string title, DialogueNode node, DialogueResponse response)
+    {
+        if (!WithinFriendshipThreshold(response)) {return;}
+        
+        GameObject buttonObj = Instantiate(responseButtonPrefab, responseButtonContainer);
+        buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = response.responseText;
+            
+        //Selects a button so we can navigate
+        eventSystem.SetSelectedGameObject(buttonObj);
+ 
+        // Setup button to trigger SelectResponse when clicked
+        buttonObj.GetComponent<Button>().onClick.AddListener(() => ResponseButtonClicked(response, title, node.dialogueText));
+    }
+
+    private bool WithinFriendshipThreshold(DialogueResponse response)
+    {
+        //If zero then no threshold considered
+        if (response.friendshipThreshold == 0) { return true; }
+
+        //Does thresholding
+        int threshold = FriendshipManager.GetCurrentFriendshipLevel();
+        
+        if (response.friendshipThreshold < 0 && threshold <= response.friendshipThreshold)
+        {
+            return true;
+        }
+        if (response.friendshipThreshold > 0 && threshold >= response.friendshipThreshold)
+        {
+            return true;
+        }
+        
+        return false;
     }
 
     private void ResponseButtonClicked(DialogueResponse response, string title, string currentDialogueText)
