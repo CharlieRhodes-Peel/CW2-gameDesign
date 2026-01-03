@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8582774510241008281}
   - component: {fileID: 7041169270472489780}
   - component: {fileID: 5187330191208019639}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SpriteHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7047963620698553783}
   - component: {fileID: 6522909979113528652}
   - component: {fileID: 8399379291880008854}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 9006355727289088608}
   - component: {fileID: 5320099403710116140}
   - component: {fileID: 7171916993724428139}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SpeakIndicatorRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2584130441708691312}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SpeakIndicatorPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198419055683201829}
   - component: {fileID: 2064417872815824607}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyHitbox
   m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7682317924095308202}
   - component: {fileID: 7106628048137504886}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Feeling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 7068637954472501979}
   - component: {fileID: 6673632312419270762}
   - component: {fileID: 7758575966838416296}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: IntroFrog
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -593,10 +593,11 @@ MonoBehaviour:
   Name: Jerry
   DialogueTrees:
   - {fileID: 11400000, guid: 17b49f4ccff701dc1a7ae19790b48372, type: 2}
+  - {fileID: 11400000, guid: 4842f3ea18924f351a19e5719cf69899, type: 2}
   popupPos: {fileID: 2584130441708691312}
   popupText: Speak
   feeling: {fileID: 4101644865623429610}
-  moneySpawnerPrefab: {fileID: 0}
+  moneySpawnerPrefab: {fileID: 6503364584388190247, guid: a4a2cc035ebdf1ab9a35dffa3b4f8023, type: 3}
 --- !u!114 &8953810886006781254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   angryActivatesMovement: 1
+  angryTrustMeterAffect: -5
+  happyTrustMeterAffect: 10
   feelingRenderer: {fileID: 7106628048137504886}
   frogRenderer: {fileID: 7041169270472489780}
   happySprite: {fileID: -5662045943124688433, guid: 50e63ffc2afee3e609a3a5ea423dadff, type: 3}
@@ -632,9 +635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7f9667e1969eee9af8eb0340382365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonNpcEnemy: 1
+  nonNpcEnemy: 0
   enemyName: 
   health: 4
+  moneyOnDeath: 20
   knockbackX: 0
   knockbackY: 0
   damageFlashDuration: 0.1
@@ -644,6 +648,7 @@ MonoBehaviour:
   deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
   renderer: {fileID: 7041169270472489780}
+  moneySpawner: {fileID: 6503364584388190247, guid: a4a2cc035ebdf1ab9a35dffa3b4f8023, type: 3}
 --- !u!61 &6673632312419270762
 BoxCollider2D:
   m_ObjectHideFlags: 0

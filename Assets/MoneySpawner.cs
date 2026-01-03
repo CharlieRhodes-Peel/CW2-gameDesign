@@ -5,13 +5,13 @@ using Random = UnityEngine.Random;
 
 public class MoneySpawner : MonoBehaviour
 {
-    [SerializeField] private int moneyToSpawn;
+    [SerializeField] public int moneyToSpawn;
     [SerializeField] private GameObject moneyPrefab;
 
     [MinMaxSlider(-50f, 50f)] [SerializeField] private Vector2 xForceRange;
     [MinMaxSlider(-50f, 50f)] [SerializeField] private Vector2 yForceRange;
 
-    private void Start()
+    public void Spawn()
     {
         for (int i = 0; i < moneyToSpawn; i++)
         {

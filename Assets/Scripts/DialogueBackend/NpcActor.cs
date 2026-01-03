@@ -161,14 +161,19 @@ public class NpcActor : MonoBehaviour, IInteractable
         QuestManager.Instance.QuestExitProcessing(quest);
     }
 
-    public void SpawnMoney()
+    private void SpawnMoney(int amount)
     {
-        Instantiate(moneySpawnerPrefab, popupPos.position, Quaternion.identity);
-    }
+        if (amount < 1) {return;}
+        if (moneySpawnerPrefab == null) {return;}
 
-    public static void SpawnMoneyOnMe()
+        MoneySpawner moneySpawnerInScene = Instantiate(moneySpawnerPrefab, transform.position, Quaternion.identity).GetComponent<MoneySpawner>();
+        moneySpawnerInScene.moneyToSpawn = amount;
+        moneySpawnerInScene.Spawn();
+    }
+    
+    public static void SpawnMoneyOnMe(int amount)
     {
-        ClosestNpcTracker.GetClosestNpcActor().SpawnMoney();
+        ClosestNpcTracker.GetClosestNpcActor().SpawnMoney(amount);
     }
     
     public static void QuestExitProcessing(Quest quest)

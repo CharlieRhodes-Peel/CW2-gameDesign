@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -9,10 +10,17 @@ public class PlayerInventory : MonoBehaviour
     public List<ItemData> itemsPickedUp = new List<ItemData>(); //This should only be ADDED to
 
     public int currency = 0;
+    
+    [SerializeField] private TextMeshProUGUI currencyUI;
 
     public static event Action<ItemData> OnItemRemoved;
     public static event Action<ItemData> OnItemPickedUp;
-    
+
+    private void Start()
+    {
+        currencyUI.text = currency.ToString();
+    }
+
     private void ItemPickedUp(ItemData item)
     {
         items.Add(item);
@@ -30,6 +38,7 @@ public class PlayerInventory : MonoBehaviour
     private void MoneyPickedUp(int amount)
     {
         currency+= amount;
+        currencyUI.text = currency.ToString();
     }
     
     

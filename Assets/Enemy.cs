@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using NaughtyAttributes;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -11,6 +12,8 @@ public class Enemy : MonoBehaviour
     
     [Header("Stats")]
     [SerializeField] private float health = 2;
+
+    [SerializeField] private int moneyOnDeath;
         
     [SerializeField] private float knockbackX;
     [SerializeField] private float knockbackY;
@@ -27,6 +30,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private NpcStates npcStates;
     [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private GameObject moneySpawner;
     
     //Events
     public static event Action<string> OnEnemyDeathEvent; //Called to let other scripts know the name of the enemy that just died
@@ -83,7 +87,19 @@ public class Enemy : MonoBehaviour
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         if (deathParticles2 != null) {Instantiate(deathParticles2, transform.position, Quaternion.identity);}
 
+        SpawnMoney();
+
         Destroy(gameObject);
+    }
+
+    private void SpawnMoney()
+    {
+        if (moneyOnDeath < 1) {return;}
+        if (moneySpawner == null) {return;}
+
+        MoneySpawner moneySpawnerInScene = Instantiate(moneySpawner, transform.position, Quaternion.identity).GetComponent<MoneySpawner>();
+        moneySpawnerInScene.moneyToSpawn = moneyOnDeath;
+        moneySpawnerInScene.Spawn();
     }
 
     private IEnumerator DamageFlash()
