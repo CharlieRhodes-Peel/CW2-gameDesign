@@ -17,6 +17,8 @@ public class Chest : MonoBehaviour, IInteractable
     
     [Header("References")]
     [SerializeField] private Sprite openedSprite;
+    [SerializeField] private GameObject openParticles;
+    [SerializeField] private SpriteRenderer chestSprite;
     [ShowIf("spawnsMoney")] [SerializeField] private GameObject moneySpawnerPrefab;
     [ShowIf("spawnsItem")] [SerializeField] private Transform itemSpawnPos;
     
@@ -29,7 +31,11 @@ public class Chest : MonoBehaviour, IInteractable
         
         //Should check if chest has already been opened
         uniqueID = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_{moneyToSpawn}";
-        if (ChestStateManager.openedChests.Contains(uniqueID)) {opened = true;}
+        if (ChestStateManager.openedChests.Contains(uniqueID))
+        {
+            opened = true;
+            chestSprite.sprite = openedSprite;
+        }
     }
     
     public void Interact()
@@ -43,7 +49,8 @@ public class Chest : MonoBehaviour, IInteractable
         ChestStateManager.ChestOpened(uniqueID);
         
         //Visually show opened
-        GetComponent<SpriteRenderer>().sprite = openedSprite;
+        chestSprite.sprite = openedSprite;
+        Instantiate(openParticles, transform.position, Quaternion.identity);
     }
 
     private void SpawnMoney()
