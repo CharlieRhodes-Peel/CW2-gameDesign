@@ -10,6 +10,7 @@ public class ItemDescriptorUI : MonoBehaviour
 
     public TextMeshProUGUI title;
     public TextMeshProUGUI description;
+    public Image icon;
     
     public GameObject backbutton;
     
@@ -27,15 +28,16 @@ public class ItemDescriptorUI : MonoBehaviour
         instance.gameObject.SetActive(false);
     }
 
-    public void SetText(string titleText, string descriptionText = "")
+    public void Set(ItemUI itemUI)
     {
-        title.text = titleText;
-        description.text = descriptionText;
+        title.text = itemUI.itemName.text;
+        description.text = itemUI.description;
+        icon.sprite = itemUI.itemIcon.sprite;
     }
 
-    public void Show(string title, string description)
+    public void Show(ItemUI itemUI)
     {
-        SetText(title, description);
+        Set(itemUI);
         instance.gameObject.SetActive(true);
         
         //Select Back button

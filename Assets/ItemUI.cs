@@ -8,7 +8,6 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] public Image itemIcon;
     [SerializeField] public TextMeshProUGUI itemName;
-    
     [HideInInspector] public string description;
 
     public void RemoveUI()
@@ -28,6 +27,6 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void ItemSelected()
     {
-        ItemDescriptorUI.instance.Show(itemName.text, description);
+        ItemDescriptorUI.instance.Show(this);
     }
 }

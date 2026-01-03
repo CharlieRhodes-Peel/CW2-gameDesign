@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   itemName: Log King's Brooch
-  itemUIIcon: {fileID: -8906381061625095116, guid: 0cd2a5f40635816e6984a9f78a01a583, type: 3}
+  itemUIIcon: {fileID: 5029489827322403397, guid: 47c48598a72601087928084d0ddde6ed, type: 3}
   description: How is he going to sit at a pond the same way without it! Though,
     it is slightly stained from Crazy Mr Gobbo's vines, it still has a sparkle that
     I assume it always had
