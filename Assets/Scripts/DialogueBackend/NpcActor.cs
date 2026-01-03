@@ -34,10 +34,15 @@ public class NpcActor : MonoBehaviour, IInteractable
     {
         npcStates = GetComponent<NpcStates>();
         
-        if (npcStates == null) {usingNpcStates = false; return; }
-        usingNpcStates = true;
+        if (npcStates == null) {usingNpcStates = false;}
+        else
+        {
+            usingNpcStates = true;
+            feeling.SetActive(false);
+        }
         
-        feeling.SetActive(false);
+        //Check for any active quest
+        activeQuest = QuestManager.Instance.HasActiveQuestWithNPC(Name);
     }
 
     // Trigger dialogue for this actor

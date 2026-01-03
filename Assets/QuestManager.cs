@@ -188,6 +188,15 @@ public class QuestManager : MonoBehaviour
         return activeQuestDialogue;
     }
 
+    public bool HasActiveQuestWithNPC(string npcName)
+    {
+        foreach (Quest quest in activeQuests.Keys)
+        {
+            if (quest.questGiverName == npcName) { return true; }
+        }
+        return false;
+    }
+
     public int GetActiveQuestProgress(Quest quest)
     {
         if (!activeQuests.ContainsKey(quest)) { return 0; }
