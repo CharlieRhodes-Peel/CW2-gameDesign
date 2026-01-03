@@ -22,7 +22,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 41743768c0852a54693435875caed749, type: 2}
     - responseText: "I don\u2019t need any stupid blessings, I just want to meet
         The Heron!"
       nextNode:
@@ -31,7 +31,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 41743768c0852a54693435875caed749, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
