@@ -3,12 +3,16 @@ using System.Collections;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
     [Header("Identifying")]
     [SerializeField] private bool nonNpcEnemy = true;
     [ShowIf("nonNpcEnemy")] [SerializeField] private string enemyName; //DON'T NEED to fill this in if NPC Actor, this assigns names to non npc enemies
+
+    [SerializeField] private bool permaDeath;
+    private string runtimeEnemyID;
     
     [Header("Stats")]
     [SerializeField] private float health = 2;
@@ -34,16 +38,20 @@ public class Enemy : MonoBehaviour
     
     //Events
     public static event Action<string> OnEnemyDeathEvent; //Called to let other scripts know the name of the enemy that just died
+
+    private void Awake()
+    {
+        if (!permaDeath) { return; }
+        runtimeEnemyID = GenerateUniqueID();
+
+        if (!EnemyPermaDeathManager.permaDeadEnemies.Contains(runtimeEnemyID)) { return; }
+        Destroy(gameObject);
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         npcStates = GetComponent<NpcStates>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     public void TakeDamage(float damage, Vector2 knockbackForcePos)
@@ -99,6 +107,11 @@ public class Enemy : MonoBehaviour
             OnEnemyDeathEvent?.Invoke(enemyName);
         }
 
+        if (permaDeath)
+        {
+            EnemyPermaDeathManager.GrantPermaDeath(runtimeEnemyID);
+        }
+
         Destroy(gameObject);
     }
 
@@ -136,5 +149,13 @@ public class Enemy : MonoBehaviour
         frogMovement.SetStopTo(true);
         yield return new WaitForSecondsRealtime(disableMovementTime);
         frogMovement.SetStopTo(false);
+    }
+
+    private string GenerateUniqueID()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        string objectName = gameObject.name;
+        
+        return $"{sceneName}_{objectName}";
     }
 }
