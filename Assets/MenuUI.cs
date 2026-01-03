@@ -116,7 +116,7 @@ public class MenuUI : MonoBehaviour
     private QuestUI QuestToUIBridge(Quest quest, QuestUI questUI)
     {
         //Settings things
-        questUI.questIcon.sprite = questIcons[(int)questUI.questType];
+        questUI.questIcon.sprite = questIcons[(int)quest.questType];
         questUI.questName.text = quest.questName;
         questUI.description = quest.questDescription;
         questUI.questType = quest.questType;

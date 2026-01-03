@@ -25,7 +25,7 @@ public class MenuPopupUI : MonoBehaviour
 
     public void ShowPopup(ItemData item)
     {
-        popupText.text = $"Item: {item.name} \nAcquired [TAB]";
+        popupText.text = $"Item: {item.itemName} \nAcquired [TAB]";
         animator.SetTrigger("Show");
     }
 
@@ -33,11 +33,11 @@ public class MenuPopupUI : MonoBehaviour
     {
         if (acquired)
         {
-            popupText.text = $"Quest: {quest.name} \nStarted [TAB]";
+            popupText.text = $"Quest: {quest.questName} \nStarted [TAB]";
         }
         else
         {
-            popupText.text = $"Quest: {quest.name} \nCompleted";
+            popupText.text = $"Quest: {quest.questName} \nCompleted";
         }
         animator.SetTrigger("Show");
     }

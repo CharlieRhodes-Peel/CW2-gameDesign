@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
   m_Name: KillVinesQuest
   m_EditorClassIdentifier: 
-  questId: CarveTheWay
-  questName: KillVines
+  questId: KillVinesTiredFrog
+  questName: Carve The Way
   questGiverName: Tired Frog
-  questDescription: He's really tired come on, just do it!
+  questDescription: I mean they are literally right infront of that tired frog, I
+    should try hit the vines to his left with my sword to get rid of them
   questInProgressDialogue: {fileID: 11400000, guid: d9fc10ff3cd38d0e18d1d9a7bbd3b83a, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: 2ee1fd50486c33857b111bffe37d6b22, type: 2}
   questType: 2
+  questShownInMenu: 1
   itemData: {fileID: 0}
   itemCount: 0
   enemyName: Vine
