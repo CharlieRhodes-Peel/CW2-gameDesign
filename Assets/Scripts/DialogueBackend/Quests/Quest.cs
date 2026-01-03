@@ -22,6 +22,7 @@ public class Quest : ScriptableObject
     
     [Header("Quest Settings")]
     public QuestType questType;
+    public bool questShownInMenu = true;
     
     [ShowIf("questType", QuestType.CollectItems)] public ItemData itemData;
     [ShowIf("questType", QuestType.CollectItems)] public int itemCount;

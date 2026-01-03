@@ -19,6 +19,7 @@ MonoBehaviour:
   questInProgressDialogue: {fileID: 11400000, guid: faeaa582105c70448a75542c259b1695, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: 87dfc18a1dbcc6b4bb63eeba375c7307, type: 2}
   questType: 1
+  questShownInMenu: 0
   itemData: {fileID: 0}
   itemCount: 0
   enemyName: Gobbo Vine

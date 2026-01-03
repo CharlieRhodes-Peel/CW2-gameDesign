@@ -25,4 +25,9 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         ToolTipSystem.Hide();
     }
+
+    public void ItemSelected()
+    {
+        ItemDescriptorUI.instance.Show(itemName.text, description);
+    }
 }

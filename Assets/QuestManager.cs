@@ -171,17 +171,34 @@ public class QuestManager : MonoBehaviour
         activeQuests.Add(quest, 0);
         activeQuestDialogue = quest.questInProgressDialogue;
         
+        if (quest.questShownInMenu) {MenuUI.Instance.AddQuestToUI(quest);}
+        
         CheckIfQuestComplete(allQuests, quest); //Checks if this quest has already been done!
     }
     public void QuestComplete(Quest quest)
     {
         activeQuests.Remove(quest);
         activeQuestDialogue = quest.questCompleteDialogue;
+        
+        if (quest.questShownInMenu) {MenuUI.Instance.RemoveQuestFromUI(quest);}
     }
 
     public Dialogue GetActiveDialogue()
     {
         return activeQuestDialogue;
+    }
+
+    public int GetActiveQuestProgress(Quest quest)
+    {
+        if (!activeQuests.ContainsKey(quest)) { return 0; }
+        
+        return activeQuests[quest];
+    }
+
+    public int GetAllQuestProgress(Quest quest)
+    {
+        if (!allQuests.ContainsKey(quest)) { return 0; }
+        return allQuests[quest];
     }
     
     //Subscribing to events that might affect quest objectives
