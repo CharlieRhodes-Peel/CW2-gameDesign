@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class QuestDescriptorUI : MonoBehaviour
 {
-    [SerializeField] private GameObject questUIPrefab;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private TextMeshProUGUI questGiverName;
     [SerializeField] private TextMeshProUGUI currentProgress;
@@ -33,8 +32,8 @@ public class QuestDescriptorUI : MonoBehaviour
 
     public void SetText(QuestUI quest)
     {
-        titleText = quest.questName;
-        icon = quest.questIcon;
+        titleText.text = quest.questName.text;
+        icon.sprite = quest.questIcon.sprite;
         description.text = quest.description;
         questGiverName.text = quest.questGiver;
         currentProgress.text = MenuUI.Instance.QueryQuestProgress(quest).ToString();
