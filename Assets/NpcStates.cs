@@ -7,6 +7,7 @@ public class NpcStates : MonoBehaviour
 {
     [SerializeField] private State defaultState;
     [SerializeField] private bool angryActivatesMovement = true;
+    [SerializeField] private bool stateRemembered = true;
     
     [SerializeField] private int angryTrustMeterAffect = -5;
     [SerializeField] private int happyTrustMeterAffect = 5;
@@ -37,7 +38,7 @@ public class NpcStates : MonoBehaviour
         frogMovement = GetComponent<FrogMovement>();
 
         npcName = GetComponent<NpcActor>().Name;
-        if (NpcStateManager.Instance.KeepingTrackOf(npcName))
+        if (NpcStateManager.Instance.KeepingTrackOf(npcName) && stateRemembered)
         {
             startingChange = true;
             SetCurrentState(NpcStateManager.Instance.GetState(npcName));
@@ -148,10 +149,10 @@ public class NpcStates : MonoBehaviour
 
     private void OnAngryExit()
     {
-        //interactDetector.SetActive(true);
-        //feelingDisplay.SetActive(false);
+        interactDetector.SetActive(true);
+        feelingDisplay.SetActive(false);
         
-        //hitbox.SetActive(false);
+        hitbox.SetActive(false);
     }
     
     //Changes states, called from outside

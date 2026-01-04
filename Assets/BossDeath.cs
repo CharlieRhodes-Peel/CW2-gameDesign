@@ -6,6 +6,7 @@ public class BossDeath : MonoBehaviour
 {
     [SerializeField] private List<Dialogue> dialoguesToMakeInactive;
     [SerializeField] private List<Dialogue> dialoguesToMakeActive;
+    [SerializeField] private GameObject doorBlock;
 
     public void DoBossDeathDialoguesToggles()
     {
@@ -18,5 +19,7 @@ public class BossDeath : MonoBehaviour
         {
             NpcActor.MakeDialogueActive(dialogue);
         }
+        
+        doorBlock.SetActive(false);
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class CheckpointManager : MonoBehaviour
 {
     [SerializeField] private float respawnDelayTimer;
-    
     private string checkpointSceneName;
     public static event Action<string> PlayerShouldRespawn;
 
@@ -39,6 +38,12 @@ public class CheckpointManager : MonoBehaviour
         yield return new WaitForSeconds(respawnDelayTimer);
         
         PlayerShouldRespawn?.Invoke(checkpointSceneName); // Tells scene manager that player should respawn
+        GameObject[] doorBlocks = GameObject.FindGameObjectsWithTag("DoorBlock");
+
+        foreach (GameObject doorBlock in doorBlocks)
+        {
+            doorBlock.SetActive(false);
+        }
     }
 
     //Called anytime a player enters a checkpoint

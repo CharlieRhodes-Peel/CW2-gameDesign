@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private bool isBoss = false;
     [ShowIf("isBoss")] [SerializeField] private BossDeath boss;
+    [ShowIf("isBoss")] [SerializeField] private GameObject doorBlock;
     
     [Header("Stats")]
     [SerializeField] private float health = 2;
@@ -31,7 +32,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float timeStopDuration;
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private GameObject deathParticles2;
-    [SerializeField] private float disableMovementTime = 0.5f;
+
+    [SerializeField] private bool hitDisablesMovement = true;
+    [ShowIf("hitDisablesMovement")] [SerializeField] private float disableMovementTime = 0.5f;
     
     [Header("References")]
     private Rigidbody2D rb;
@@ -65,11 +68,18 @@ public class Enemy : MonoBehaviour
         //Change States
         if (npcStates != null)
         { npcStates.SetCurrentState(NpcStates.State.Angry); }
-        
-        //Force
-        StartCoroutine(DisableMovement());
-        
-        rb.linearVelocity = Vector2.zero; //Reset velocity
+
+        if (isBoss)
+        {
+            doorBlock.SetActive(true);
+        }
+
+        if (hitDisablesMovement)
+        {
+            //Force
+            StartCoroutine(DisableMovement());
+            rb.linearVelocity = Vector2.zero; //Reset velocity
+        }
         Vector2 direction = (rb.position - knockbackForcePos).normalized;
         
         rb.AddForceX(direction.x * knockbackX, ForceMode2D.Impulse);
