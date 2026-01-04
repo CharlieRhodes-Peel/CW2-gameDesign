@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
   m_Name: CrazyFrog
   m_EditorClassIdentifier: 
-  questId: 2
+  questId: U2
   questName: Crazy Frog
   questGiverName: Crazy Mr Gobbo
   questDescription: 

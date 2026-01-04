@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: SacrificeQCompleted
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Were you successful?
+    responses:
+    - responseText: Yeah, I stopped the sacrifice. Will you help me sneak in now?
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: Thank you so much traveller! Head to the right to find The
+          Heron
+        responses:
+        - responseText: End Conversation
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: "Shut up, I don\u2019t need you anymore"
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

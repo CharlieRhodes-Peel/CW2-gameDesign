@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: PagesCompleted
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Have you found all my pages?
+    responses:
+    - responseText: Yes, I found all three!
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: "Ah! You\u2019ve indeed recovered my missing pages. These holy
+          texts are of great importance and will aid me in my future decisions. For
+          your efforts I reward you with these riches."
+        responses:
+        - responseText: Take money
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

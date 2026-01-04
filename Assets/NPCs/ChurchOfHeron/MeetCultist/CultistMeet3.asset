@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: CultistMeet3
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: The Heron has ordered a sacrifice, saying it will increase his
+      holy power. I disagree though. I see you have a weapon, please help me stop
+      the sacrifice.
+    responses:
+    - responseText: "How awful! i\u2019ll help you out"
+      nextNode:
+        dialogueText: "Thank you kind traveler! Come find me when you\u2019re done"
+        responses:
+        - responseText: End Conversation
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Is this a setup?
+      nextNode:
+        dialogueText: "No no\u2026I just need help to stop the sacrifice, once it\u2019s
+          been stopped I can sneak you into the church."
+        responses:
+        - responseText: End Conversation
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: Peaceful
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "What do you think traveller. Aren\u2019t I the most powerful and
+      righteous ruler in the region?"
+    responses:
+    - responseText: Your power is admirable. Undergrowth has surely been unruly for
+        too long, I will agree to aid you in your ambitions.
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: Wonderful! Your orders are to infiltrate Undergrowth!
+        responses:
+        - responseText: Join The Heron
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: You may be the most powerful, but your church is hurting the
+        frogs. Maybe you can stop worrying about Undergrowth and focus on what the
+        frogs really want from you.
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: "Perhaps there is some truth in your words. I\u2019ll organise
+          a meeting with the frogs to see what changes they want? But first can you
+          find the three missing pages from my golden book?"
+        responses:
+        - responseText: Accept
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: 
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

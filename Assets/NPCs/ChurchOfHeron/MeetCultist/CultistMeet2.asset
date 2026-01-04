@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: CultistMeet2
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "You\u2019ll need an appointment to get in. What if we make a deal?"
+    responses:
+    - responseText: "I\u2019m not in the mood to make a deal!"
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: ca97848bd9d5e4b4794252f137737320, type: 2}
+    - responseText: What kind of deal?
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: ca97848bd9d5e4b4794252f137737320, type: 2}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: Sacrifice2
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "Scared Frog: Aahhhh! Please noooooooooo!\n\nAngry Frog:We don\u2019t
+      want a sacrifice, go away you crazy cultist!"
+    responses:
+    - responseText: Fight
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: "I don\u2019t care about this sacrifice stuff, just give me your
+        uniform or else."
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: Ah haha, uhhh...Fine, take my uniform I guess weirdo. Now,
+          who volunteers as the sacrifice?
+        responses:
+        - responseText: Take uniform
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: "Hey, stop this crazy cult stuff and give me your keys or I\u2019ll
+        kill you!"
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: "Ah! Ok, ok. Just take my keys and leave! You\u2019ll pay for
+          this though."
+        responses:
+        - responseText: Stop sacrifice and take keys.
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
