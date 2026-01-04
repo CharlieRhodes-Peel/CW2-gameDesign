@@ -318,6 +318,7 @@ Transform:
   - {fileID: 5673874913977134918}
   - {fileID: 7384103349915171786}
   - {fileID: 7939609250542429336}
+  - {fileID: 425684522892799206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4725348066791503078
@@ -361,12 +362,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: King Log
   DialogueTrees:
-  - {fileID: 11400000, guid: 2237cbdf579fd0244968e3ac007cc21f, type: 2}
+  - {fileID: 11400000, guid: ba21f5057f0891a039683c6ad14dde8a, type: 2}
   popupPos: {fileID: 2886736401339181615}
   popupText: Speak
   feeling: {fileID: 9164555153372580779}
   givesMoney: 0
   moneySpawnerPrefab: {fileID: 0}
+  givesItem: 1
+  itemGivePos: {fileID: 425684522892799206}
 --- !u!114 &9193070994858728140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,11 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7f9667e1969eee9af8eb0340382365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonNpcEnemy: 1
+  nonNpcEnemy: 0
   enemyName: 
-  permaDeath: 0
+  permaDeath: 1
   health: 4
-  moneyOnDeath: 0
+  moneyOnDeath: 50
   knockbackX: 0
   knockbackY: 0
   damageFlashDuration: 0.1
@@ -418,7 +421,7 @@ MonoBehaviour:
   deathParticles2: {fileID: 0}
   disableMovementTime: 0.5
   renderer: {fileID: 3411706412850370683}
-  moneySpawner: {fileID: 0}
+  moneySpawner: {fileID: 6503364584388190247, guid: a4a2cc035ebdf1ab9a35dffa3b4f8023, type: 3}
 --- !u!114 &4425806093181838442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1329,6 +1332,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.33, y: 1.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8431549263555950166}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8114886071498675944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425684522892799206}
+  m_Layer: 9
+  m_Name: ItemGivePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425684522892799206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114886071498675944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.4, y: -2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
