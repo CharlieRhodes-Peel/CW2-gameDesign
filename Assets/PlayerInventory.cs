@@ -12,6 +12,8 @@ public class PlayerInventory : MonoBehaviour
     public int currency = 0;
     
     [SerializeField] private TextMeshProUGUI currencyUI;
+    
+    private PlayerMovement playerMovement;
 
     public static event Action<ItemData> OnItemRemoved;
     public static event Action<ItemData> OnItemPickedUp;
@@ -19,6 +21,8 @@ public class PlayerInventory : MonoBehaviour
     private void Start()
     {
         currencyUI.text = currency.ToString();
+        playerMovement = GetComponent<PlayerMovement>();
+        
     }
 
     private void ItemPickedUp(ItemData item)
@@ -27,6 +31,10 @@ public class PlayerInventory : MonoBehaviour
         itemsPickedUp.Add(item);
         
         OnItemPickedUp?.Invoke(item); //This is to tell the Inventory UI
+
+        //If this item doesn't do anything then skip 
+        if (item.abilityUnlocks == PlayerMovement.AbilityUnlocks.None) { return; }
+        UnlockAbility(item.abilityUnlocks); 
     }
     
     private void ItemRemoved(ItemData item)
@@ -60,5 +68,18 @@ public class PlayerInventory : MonoBehaviour
     public bool HavePickedUpBefore(ItemData itemData)
     {
         return itemsPickedUp.Contains(itemData);
+    }
+
+    private void UnlockAbility(PlayerMovement.AbilityUnlocks abilityUnlock)
+    {
+        switch (abilityUnlock)
+        {
+            case PlayerMovement.AbilityUnlocks.Dash:
+                playerMovement.dashUnlocked = true; break;
+            case PlayerMovement.AbilityUnlocks.DoubleJump:
+                playerMovement.doubleJumpUnlocked = true; break;
+            case PlayerMovement.AbilityUnlocks.WallClimbing:
+                playerMovement.wallClimbingUnlocked = true; break;
+        }
     }
 }

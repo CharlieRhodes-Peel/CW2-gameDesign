@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bc8b222685472af885d28b69f17e6d, type: 3}
+  m_Name: VineClaws
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: Vine Claws
+  itemUIIcon: {fileID: 4627743145093286240, guid: b02961a5cde28a7c1925f760667595c5, type: 3}
+  description: Attachs perfectly to a frogs hands, allowing them to dig into walls
+    and climb with!
+  abilityUnlocks: 3

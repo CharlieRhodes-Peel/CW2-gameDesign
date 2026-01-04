@@ -15,7 +15,16 @@ MonoBehaviour:
   RootNode:
     dialogueText: Ughhh, they don't know how good we have it, we have flies, lovely
       and comfy moss, what isn't there to like!
-    responses: []
+    responses:
+    - responseText: Next
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 1127eec223061f661bbf6818732ed27d, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: BroochQuestOffer
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: But maybe the people here are right, maybe I have been too lazy.
+      When I first got here I lost my brooch, my sweet sweet golden brooch. I know
+      it's a big ask but I don't suppose you could get it back for me?
+    responses:
+    - responseText: Sure
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 0958ebfb60a89365b9985f31e3465bef, type: 2}
+    - responseText: No Thanks
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: b57b64099316ebe4da3d84d45471b3bc, type: 2}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

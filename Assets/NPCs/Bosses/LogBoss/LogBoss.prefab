@@ -365,6 +365,7 @@ MonoBehaviour:
   popupPos: {fileID: 2886736401339181615}
   popupText: Speak
   feeling: {fileID: 9164555153372580779}
+  givesMoney: 0
   moneySpawnerPrefab: {fileID: 0}
 --- !u!114 &9193070994858728140
 MonoBehaviour:
@@ -380,8 +381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: 0
   angryActivatesMovement: 1
-  angryTrustMeterAffect: -5
-  happyTrustMeterAffect: 10
+  angryTrustMeterAffect: -50
+  happyTrustMeterAffect: 50
   feelingRenderer: {fileID: 4867701586873955780}
   frogRenderer: {fileID: 3411706412850370683}
   happySprite: {fileID: -5662045943124688433, guid: 50e63ffc2afee3e609a3a5ea423dadff, type: 3}
@@ -405,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonNpcEnemy: 1
   enemyName: 
+  permaDeath: 0
   health: 4
   moneyOnDeath: 0
   knockbackX: 0

@@ -7,8 +7,9 @@ public class Item : MonoBehaviour, IInteractable
     [SerializeField] private Transform popUpPos;
     [SerializeField] private string popUpText;
     [SerializeField] private GameObject pickupParticles;
+    
     public static event Action<ItemData> OnItemPicked;
-
+    
     private void Start()
     {
         SceneSwitchManager.onSceneLoaded += AlreadyCollectedCheck;

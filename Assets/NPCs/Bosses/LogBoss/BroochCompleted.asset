@@ -13,13 +13,41 @@ MonoBehaviour:
   m_Name: BroochCompleted
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: "Ah! You\u2019ve found my brooch. Thank you, it will surely help
-      me focus more on my official duties. For your efforts you can have this money"
+    dialogueText: Have you found it yet?
     responses:
-    - responseText: End Conversation
+    - responseText: Yes
+      friendshipThreshold: 0
       nextNode:
-        dialogueText: 
-        responses: []
+        dialogueText: Oh my god thank you so much!! I order you as king of this place
+          to hand it over to me!<0.3> </>hahahahahaha<0.3> </>I'm only playing
+        responses:
+        - responseText: Give Brooch
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: a1d08c1f954e5b7dbb25e7300520f8a0, type: 2}
+        - responseText: Keep Brooch
+          friendshipThreshold: -10
+          nextNode:
+            dialogueText: I will not have it!<0.3> </>Fight me!!
+            responses:
+            - responseText: Fight
+              friendshipThreshold: 0
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 11400000, guid: b57b64099316ebe4da3d84d45471b3bc, type: 2}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

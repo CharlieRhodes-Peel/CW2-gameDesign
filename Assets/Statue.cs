@@ -105,11 +105,9 @@ public class Statue : MonoBehaviour, IInteractable
     {
         activeQuest = false;
         QuestManager.Instance.QuestComplete(quest);
-        QuestManager.Instance.QuestExitProcessing(quest);
+        QuestManager.Instance.FinishQuest(quest);
     }
     
-    public static void QuestExitProcessing(Quest quest)
-    { QuestManager.Instance.QuestExitProcessing(quest); }
     
 
     public Vector3 GetInteractPopupPosition()

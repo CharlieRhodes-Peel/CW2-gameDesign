@@ -1,6 +1,7 @@
 //Adapted from: https://pastebin.com/DgyxWJ5T Accessed: November 26, 2025
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
  
@@ -13,7 +14,12 @@ public class NpcActor : MonoBehaviour, IInteractable
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
     [SerializeField] private string popupText;
     [SerializeField] private GameObject feeling;
-    [SerializeField] private GameObject moneySpawnerPrefab;
+    
+    [SerializeField] private bool givesMoney;
+    [ShowIf("givesMoney")] [SerializeField] private GameObject moneySpawnerPrefab;
+    [SerializeField] private bool givesItem;
+    [ShowIf("givesItem")] [SerializeField] private Transform itemGivePos;
+    
 
     private bool playerInRange = false;
     private bool facingLeft = true;
@@ -42,7 +48,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         }
         
         //Check for any active quest
-        activeQuest = QuestManager.Instance.HasActiveQuestWithNPC(Name);
+        activeQuest = QuestManager.Instance.HasQuestWithNPC(Name);
     }
 
     // Trigger dialogue for this actor
@@ -162,8 +168,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     public static void FinishQuest(Quest quest)
     {
         ClosestNpcTracker.GetClosestNpcActor().activeQuest = false;
-        QuestManager.Instance.QuestComplete(quest);
-        QuestManager.Instance.QuestExitProcessing(quest);
+        QuestManager.Instance.FinishQuest(quest);
     }
 
     private void SpawnMoney(int amount)
@@ -180,9 +185,16 @@ public class NpcActor : MonoBehaviour, IInteractable
     {
         ClosestNpcTracker.GetClosestNpcActor().SpawnMoney(amount);
     }
-    
-    public static void QuestExitProcessing(Quest quest)
-    { QuestManager.Instance.QuestExitProcessing(quest); }
+
+    public static void SpawnItemOnMe(GameObject item)
+    {
+        ClosestNpcTracker.GetClosestNpcActor().SpawnItem(item);
+    }
+
+    private void SpawnItem(GameObject item)
+    {
+        Instantiate(item, itemGivePos.position, Quaternion.identity);
+    }
     
 
     public Vector3 GetInteractPopupPosition()

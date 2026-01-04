@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: BroochQuest
   m_EditorClassIdentifier: 
   questId: U3
-  questName: Brooch
-  questGiverName: Log King
-  questDescription: Find the Log King's special brooch
+  questName: In Search of a golden frog
+  questGiverName: King Log
+  questDescription: King Log has asked you to find his golden brooch. He said that
+    he misses looking at the pond with it. I have a suspicision that this won't help
+    him not be lazy...
   questInProgressDialogue: {fileID: 11400000, guid: 600705588a1a2895f99879c1003cc0ac, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: d7f460d552fe7474ba9cd7e9ea3ef30a, type: 2}
   questType: 0
   questShownInMenu: 1
-  itemData: {fileID: 0}
+  itemData: {fileID: 11400000, guid: 5084d84d91fd5281b88f063928606c72, type: 2}
   itemCount: 1
   enemyName: 
   requiredKills: 0

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/ItemData")]
@@ -11,9 +12,12 @@ public class ItemData : ScriptableObject
     [TextArea(3,5)]
     public string description;
     
+    [ShowIf("itemType", ItemType.Power)] public PlayerMovement.AbilityUnlocks abilityUnlocks = PlayerMovement.AbilityUnlocks.None;
+    
     public enum ItemType
     {
         QuestObjective,
+        Power,
         Other
     }
 }

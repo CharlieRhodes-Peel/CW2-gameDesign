@@ -73,6 +73,14 @@ public class PlayerMovement : MonoBehaviour
     private bool hitWallYet = false;
 
     private float fallVelocityReached;
+
+    public enum AbilityUnlocks
+    {
+        None,
+        DoubleJump,
+        Dash,
+        WallClimbing
+    }
         
     //Events
     [HideInInspector] public static event Action<Vector2> ChangedLookDir;

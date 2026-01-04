@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour
     //In the form <activeQuest, currentProgress>
     private Dictionary<Quest, int> activeQuests = new Dictionary<Quest, int>();
     private Dictionary<Quest, int> allQuests = new Dictionary<Quest, int>();
+    private HashSet<Quest> completedQuests = new HashSet<Quest>(); // This is for quests that are completed but not FINISHED
     public static event Action<Quest> OnQuestStart;
     public static event Action<Quest> OnQuestComplete;
 
@@ -147,9 +148,27 @@ public class QuestManager : MonoBehaviour
         { QuestComplete(quest); }
     }
 
-    //Called by NPC actor one FinishQuest method
-    public void QuestExitProcessing(Quest quest)
+    public void StartQuest(Quest quest)
     {
+        activeQuests.Add(quest, 0);
+        activeQuestDialogue = quest.questInProgressDialogue;
+        
+        if (quest.questShownInMenu) {MenuUI.Instance.AddQuestToUI(quest);}
+        
+        CheckIfQuestComplete(allQuests, quest); //Checks if this quest has already been done!
+    }
+    public void QuestComplete(Quest quest)
+    {
+        activeQuests.Remove(quest);
+        activeQuestDialogue = quest.questCompleteDialogue;
+        completedQuests.Add(quest);
+        
+        if (quest.questShownInMenu) {MenuUI.Instance.RemoveQuestFromUI(quest);}
+    }
+
+    public void FinishQuest(Quest quest)
+    {
+        completedQuests.Remove(quest);
         Quest.QuestType questType = quest.questType;
         switch (questType)
         {
@@ -166,31 +185,19 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public void StartQuest(Quest quest)
-    {
-        activeQuests.Add(quest, 0);
-        activeQuestDialogue = quest.questInProgressDialogue;
-        
-        if (quest.questShownInMenu) {MenuUI.Instance.AddQuestToUI(quest);}
-        
-        CheckIfQuestComplete(allQuests, quest); //Checks if this quest has already been done!
-    }
-    public void QuestComplete(Quest quest)
-    {
-        activeQuests.Remove(quest);
-        activeQuestDialogue = quest.questCompleteDialogue;
-        
-        if (quest.questShownInMenu) {MenuUI.Instance.RemoveQuestFromUI(quest);}
-    }
-
     public Dialogue GetActiveDialogue()
     {
         return activeQuestDialogue;
     }
 
-    public bool HasActiveQuestWithNPC(string npcName)
+    public bool HasQuestWithNPC(string npcName)
     {
         foreach (Quest quest in activeQuests.Keys)
+        {
+            if (quest.questGiverName == npcName) { return true; }
+        }
+
+        foreach (Quest quest in completedQuests)
         {
             if (quest.questGiverName == npcName) { return true; }
         }
