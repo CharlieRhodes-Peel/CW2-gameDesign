@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.iOS;
 
@@ -8,7 +9,7 @@ public class NpcStates : MonoBehaviour
     [SerializeField] private bool angryActivatesMovement = true;
     
     [SerializeField] private int angryTrustMeterAffect = -5;
-    [SerializeField] private int happyTrustMeterAffect = 10;
+    [SerializeField] private int happyTrustMeterAffect = 5;
 
     [Header("States")] 
     [SerializeField] private SpriteRenderer feelingRenderer;
@@ -118,7 +119,7 @@ public class NpcStates : MonoBehaviour
         interactDetector.SetActive(false);
         
         //Put the indicator above the player
-        feelingDisplay.SetActive(true);
+        StartCoroutine(TurnOnFeelingDisplay());
         feelingDisplay.transform.position = aboveHeadPos.position;
         
         gameObject.tag = "Enemy";
@@ -147,10 +148,10 @@ public class NpcStates : MonoBehaviour
 
     private void OnAngryExit()
     {
-        interactDetector.SetActive(true);
-        feelingDisplay.SetActive(false);
+        //interactDetector.SetActive(true);
+        //feelingDisplay.SetActive(false);
         
-        hitbox.SetActive(false);
+        //hitbox.SetActive(false);
     }
     
     //Changes states, called from outside
@@ -192,7 +193,7 @@ public class NpcStates : MonoBehaviour
     //Unity Events (called from dialogue usually)
     public static void SetStateTo(string stateName)
     {
-        NpcStates callingInstance = ClosestNpcTracker.GetClosestNpcActor().GetComponent<NpcStates>();
+        NpcStates callingInstance = NpcTracker.GetClosestNpcActor().GetComponent<NpcStates>();
         callingInstance.SetCurrentState(stringToState(stateName)); 
     }
 
@@ -207,5 +208,11 @@ public class NpcStates : MonoBehaviour
             default:
                 return State.Neutral;
         }
+    }
+
+    private IEnumerator TurnOnFeelingDisplay()
+    {
+        yield return new WaitForFixedUpdate();
+        feelingDisplay.SetActive(true);
     }
 }

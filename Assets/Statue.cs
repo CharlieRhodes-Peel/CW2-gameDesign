@@ -39,14 +39,6 @@ public class Statue : MonoBehaviour, IInteractable
 
     private void PickDialogueTree()
     {
-        //If the player has an active quest with the NPC it takes precedent over any dialogue trees
-        if (activeQuest)
-        {
-            //Do the quest Dialogue
-            DialogueManager.Instance.StartDialogue(Name, QuestManager.Instance.GetActiveDialogue().RootNode);
-            return;
-        }
-        
         //Pick the first option in the list who's conditional is met
         bool dialoguePicked = false;
         foreach (Dialogue dialogue in DialogueTrees)

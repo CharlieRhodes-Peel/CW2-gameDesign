@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: S2_2
+  m_Name: HelpedInfinite
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: 'Zonk: A few days ago I saw a frog get too close then and they
-      became tangled up and eaten by the vines!'
+    dialogueText: I will be in your debt forever!
     responses:
-    - responseText: Next
+    - responseText: End Conversation
       friendshipThreshold: 0
       nextNode:
         dialogueText: 
@@ -24,7 +23,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 11400000, guid: 2926d03472b319d4094040d95cdc45e5, type: 2}
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

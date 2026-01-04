@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: CheckpointExplainerAgainContinue
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: Well only if I see you back here
+    dialogueText: Of course you are
     responses:
-    - responseText: Deal
+    - responseText: Hug and Leave
+      friendshipThreshold: 0
       nextNode:
         dialogueText: 
         responses: []
@@ -23,16 +24,19 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: No Deal
+    - responseText: Make a mean face
+      friendshipThreshold: 0
       nextNode:
         dialogueText: You know?<0.3> </>You're really starting piss me off,<0.3>
           </>you just come in here and be rude to me, THIS IS ALL I EVER WANTED
         responses:
         - responseText: Okay I'm sorry
+          friendshipThreshold: 0
           nextNode:
             dialogueText: I'm just jealous is all!
             responses:
             - responseText: Say Goodbye
+              friendshipThreshold: 0
               nextNode:
                 dialogueText: 
                 responses: []
@@ -45,6 +49,7 @@ MonoBehaviour:
                 m_Calls: []
           optionalNextDialogueTree: {fileID: 0}
         - responseText: Well I don't like you
+          friendshipThreshold: 0
           nextNode:
             dialogueText: 
             responses: []

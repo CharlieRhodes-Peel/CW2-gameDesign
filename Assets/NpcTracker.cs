@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ClosestNpcTracker : MonoBehaviour
+public class NpcTracker : MonoBehaviour
 {
     private static List<NpcActor> npcCloseEnoughToInterect = new List<NpcActor>();
+    private static HashSet<NpcActor> allNpcs = new HashSet<NpcActor>();
     
     public Transform playerPos;
     
@@ -57,5 +58,42 @@ public class ClosestNpcTracker : MonoBehaviour
     public static NpcActor GetClosestNpcActor()
     {
         return closestNpcActor;
+    }
+    
+    public static NpcActor GetNpcActorInstance(NpcActor actorToFind)
+    {
+        foreach (NpcActor actor in allNpcs)
+        {
+            if (actor.Name == actorToFind.Name) { return actor; }
+        }
+        return null;
+    }
+    
+    public static NpcActor GetNpcActorInstance(string actorName)
+    {
+        foreach (NpcActor actor in allNpcs)
+        {
+            if (actor.Name == actorName) { return actor; }
+        }
+        return null;
+    }
+
+    private void trackNPCsOnSceneLoad()
+    {
+        NpcActor[] actorsInScene = FindObjectsOfType<NpcActor>();
+        foreach (NpcActor actor in actorsInScene)
+        {
+            allNpcs.Add(actor);
+        }
+    }
+    
+    private void OnEnable()
+    {
+        SceneSwitchManager.onSceneLoaded += trackNPCsOnSceneLoad;
+    }
+
+    private void OnDisable()
+    {
+        SceneSwitchManager.onSceneLoaded -= trackNPCsOnSceneLoad;
     }
 }

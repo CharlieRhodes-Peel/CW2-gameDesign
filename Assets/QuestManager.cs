@@ -10,10 +10,9 @@ public class QuestManager : MonoBehaviour
     private Dictionary<Quest, int> activeQuests = new Dictionary<Quest, int>();
     private Dictionary<Quest, int> allQuests = new Dictionary<Quest, int>();
     private HashSet<Quest> completedQuests = new HashSet<Quest>(); // This is for quests that are completed but not FINISHED
-    public static event Action<Quest> OnQuestStart;
-    public static event Action<Quest> OnQuestComplete;
 
-    private Dialogue activeQuestDialogue;
+    //Maps quests to npc actors names
+    private static Dictionary<Quest, Dialogue> currentQuestDialogue = new Dictionary<Quest, Dialogue>();
 
     public static event Action<ItemData> OnItemGivenAway;
 
@@ -36,6 +35,7 @@ public class QuestManager : MonoBehaviour
         foreach (Quest quest in quests)
         {
             allQuests.Add(quest, 0);
+            currentQuestDialogue.Add(quest, quest.questInProgressDialogue);
         }
         
         Debug.Log($"Loaded {allQuests.Count} quests in total!");
@@ -44,6 +44,7 @@ public class QuestManager : MonoBehaviour
     //Called when an item is picked up, see if it can increment ANY quest
     private void ItemQuestProgress(ItemData itemData)
     {
+        Debug.Log($"Item was picked up {itemData.itemName}");
         List<Quest> quests = new List<Quest>(allQuests.Keys);
         foreach (Quest quest in quests)
         {
@@ -151,7 +152,7 @@ public class QuestManager : MonoBehaviour
     public void StartQuest(Quest quest)
     {
         activeQuests.Add(quest, 0);
-        activeQuestDialogue = quest.questInProgressDialogue;
+        currentQuestDialogue[quest] = quest.questInProgressDialogue;
         
         if (quest.questShownInMenu) {MenuUI.Instance.AddQuestToUI(quest);}
         
@@ -159,8 +160,8 @@ public class QuestManager : MonoBehaviour
     }
     public void QuestComplete(Quest quest)
     {
-        activeQuests.Remove(quest);
-        activeQuestDialogue = quest.questCompleteDialogue;
+        Debug.Log($"Ending quest with {quest.questGiverName}");
+        currentQuestDialogue[quest] = quest.questCompleteDialogue;
         completedQuests.Add(quest);
         
         if (quest.questShownInMenu) {MenuUI.Instance.RemoveQuestFromUI(quest);}
@@ -169,6 +170,8 @@ public class QuestManager : MonoBehaviour
     public void FinishQuest(Quest quest)
     {
         completedQuests.Remove(quest);
+        currentQuestDialogue.Remove(quest);
+        activeQuests.Remove(quest);
         Quest.QuestType questType = quest.questType;
         switch (questType)
         {
@@ -185,19 +188,21 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public Dialogue GetActiveDialogue()
+    public Dialogue GetActiveDialogue(string name)
     {
-        return activeQuestDialogue;
+        foreach (Quest quest in allQuests.Keys)
+        {
+            if (quest.questGiverName == name)
+            {
+                return currentQuestDialogue[quest];
+            }
+        }
+        return null;
     }
 
     public bool HasQuestWithNPC(string npcName)
     {
         foreach (Quest quest in activeQuests.Keys)
-        {
-            if (quest.questGiverName == npcName) { return true; }
-        }
-
-        foreach (Quest quest in completedQuests)
         {
             if (quest.questGiverName == npcName) { return true; }
         }
@@ -218,7 +223,6 @@ public class QuestManager : MonoBehaviour
     }
     
     //Subscribing to events that might affect quest objectives
-    
     private void OnEnable()
     {
         Item.OnItemPicked += ItemQuestProgress;

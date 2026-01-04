@@ -33,6 +33,7 @@ public class Item : MonoBehaviour, IInteractable
 
     private void Pickup()
     {
+        Debug.Log("Item picked up");
         OnItemPicked?.Invoke(itemData);
         Destroy(gameObject);
     }

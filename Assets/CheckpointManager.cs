@@ -9,7 +9,6 @@ public class CheckpointManager : MonoBehaviour
     [SerializeField] private float respawnDelayTimer;
     
     private string checkpointSceneName;
-
     public static event Action<string> PlayerShouldRespawn;
 
     private void Start()

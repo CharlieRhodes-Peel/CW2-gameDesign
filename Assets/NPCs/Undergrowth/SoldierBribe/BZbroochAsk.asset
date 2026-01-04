@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: BZbroochAsk
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: 'Zonk: Don''t even start with the brooch thing.<0.3> </>I swear
+      it''s all he talks about.<0.3> </> I had one shift where he was just crying
+      the whole time<0.3>.....</> Six hours.<0.3> </>It was for SIX<0.3> </>HOURS.'
+    responses:
+    - responseText: So that's a no?
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 'Bonk: Yeah sorry'
+        responses:
+        - responseText: End Conversation
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

@@ -16,11 +16,13 @@ MonoBehaviour:
     dialogueText: "Bonk: We\u2019re too scared to get rid of them, maybe you can
       help us out?"
     responses:
-    - responseText: "Sure i\u2019ll help you guys out"
+    - responseText: Sure
+      friendshipThreshold: 0
       nextNode:
         dialogueText: "Bonk: Oh thank you traveler! Come back when you\u2019re done"
         responses:
         - responseText: End Conversation
+          friendshipThreshold: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -41,39 +43,17 @@ MonoBehaviour:
                 m_IntArgument: 0
                 m_FloatArgument: 0
                 m_StringArgument: 
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 5572606563790904621, guid: d12dbacc4f9245b42b99410bfb782739, type: 3}
-              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateTo
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: Happy
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 9120359659095058037, guid: 750ce55158c38d249bf73db2711e31dd, type: 3}
-              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateTo
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: Happy
                 m_BoolArgument: 0
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Is this a bribe?
+      friendshipThreshold: 0
       nextNode:
-        dialogueText: "Bonk: No no\u2026we just need to know you are trustworthy,
+        dialogueText: "Bonk: No no<0.3>\u2026</> we just need to know you are trustworthy,
           help us out and maybe we\u2019ll help you"
         responses:
         - responseText: End Conversation
+          friendshipThreshold: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -94,30 +74,6 @@ MonoBehaviour:
                 m_IntArgument: 0
                 m_FloatArgument: 0
                 m_StringArgument: 
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 5572606563790904621, guid: d12dbacc4f9245b42b99410bfb782739, type: 3}
-              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateTo
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: Neutral
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 9120359659095058037, guid: 750ce55158c38d249bf73db2711e31dd, type: 3}
-              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateTo
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: Neutral
                 m_BoolArgument: 0
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}

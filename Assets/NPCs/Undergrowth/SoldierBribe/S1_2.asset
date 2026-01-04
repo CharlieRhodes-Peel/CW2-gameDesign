@@ -13,29 +13,11 @@ MonoBehaviour:
   m_Name: S1_2
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: 'Bonk: I know, have you heard about the frog eating vines?'
+    dialogueText: 'Bonk: I know, you know the vines that are growing all around this
+      place?'
     responses:
-    - responseText: Ugh sounds gross
-      nextNode:
-        dialogueText: 
-        responses: []
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 5572606563790904621, guid: d12dbacc4f9245b42b99410bfb782739, type: 3}
-              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
-              m_MethodName: SetStateTo
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: Neutral
-                m_BoolArgument: 0
-              m_CallState: 2
-      optionalNextDialogueTree: {fileID: 11400000, guid: f552d88f923f3bb42985c21015571e59, type: 2}
-    - responseText: No, tell me more
+    - responseText: Yeah they hurt!
+      friendshipThreshold: 0
       nextNode:
         dialogueText: 
         responses: []

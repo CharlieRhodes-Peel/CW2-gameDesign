@@ -109,6 +109,7 @@ public class SceneSwitchManager : MonoBehaviour
         else if (playerToCheckpoint) //Else if the scene is loading because the player is respawning do the following
         {
             Checkpoint checkpoint = FindObjectOfType<Checkpoint>();
+            
             MovePlayerAndCamTo(checkpoint.GetCheckpointPosition());
             
             yield return null;

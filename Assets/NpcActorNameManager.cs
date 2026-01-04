@@ -28,7 +28,7 @@ public class NpcActorNameManager : MonoBehaviour
             return;
         }
         
-        NpcActor closestActor = ClosestNpcTracker.GetClosestNpcActor();
+        NpcActor closestActor = NpcTracker.GetClosestNpcActor();
         if (closestActor == null)
         {
             actorNameText.enabled = false;

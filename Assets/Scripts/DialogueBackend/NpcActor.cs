@@ -63,7 +63,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         if (activeQuest)
         {
             //Do the quest Dialogue
-            DialogueManager.Instance.StartDialogue(Name, QuestManager.Instance.GetActiveDialogue().RootNode);
+            DialogueManager.Instance.StartDialogue(Name, QuestManager.Instance.GetActiveDialogue(Name).RootNode);
             return;
         }
         
@@ -102,7 +102,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         playerEnterRangeEvent?.Invoke(gameObject);
         
         InteractManager.RegisterInteractable(this);
-        ClosestNpcTracker.RegisterActor(this);
+        NpcTracker.RegisterActor(this);
         
         NpcActorNameManager.UnregisterActor(this);
         
@@ -117,7 +117,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         playerExitRangeEvent?.Invoke(gameObject);
         
         InteractManager.UnregisterInteractable(this);
-        ClosestNpcTracker.UnregisterActor(this);
+        NpcTracker.UnregisterActor(this);
         
         if (spokenTo) {NpcActorNameManager.RegisterActor(this);}
 
@@ -158,16 +158,16 @@ public class NpcActor : MonoBehaviour, IInteractable
 
     public static void MakeDialogueActive(Dialogue dialogue)
     { DialogueStateManager.instance.MakeDialogueActive(dialogue); }
-
+    
     public static void StartQuest(Quest quest)
     {
-        ClosestNpcTracker.GetClosestNpcActor().activeQuest = true;
+        NpcTracker.GetClosestNpcActor().activeQuest = true;
         QuestManager.Instance.StartQuest(quest);
     }
     
     public static void FinishQuest(Quest quest)
     {
-        ClosestNpcTracker.GetClosestNpcActor().activeQuest = false;
+        NpcTracker.GetClosestNpcActor().activeQuest = false;
         QuestManager.Instance.FinishQuest(quest);
     }
 
@@ -183,12 +183,12 @@ public class NpcActor : MonoBehaviour, IInteractable
     
     public static void SpawnMoneyOnMe(int amount)
     {
-        ClosestNpcTracker.GetClosestNpcActor().SpawnMoney(amount);
+        NpcTracker.GetClosestNpcActor().SpawnMoney(amount);
     }
 
     public static void SpawnItemOnMe(GameObject item)
     {
-        ClosestNpcTracker.GetClosestNpcActor().SpawnItem(item);
+        NpcTracker.GetClosestNpcActor().SpawnItem(item);
     }
 
     private void SpawnItem(GameObject item)

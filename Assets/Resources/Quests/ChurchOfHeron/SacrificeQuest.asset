@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: H1
   questName: Sacrifice
-  questGiverName: 
+  questGiverName: PlaceholderName
   questDescription: Investigate the sacrifice
   questInProgressDialogue: {fileID: 11400000, guid: 414b5898dea111e439a63584cb79b9e1, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: 4e16a799a84e2b546b1979cbae206785, type: 2}

@@ -25,53 +25,44 @@ MonoBehaviour:
         responses: []
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 235401385596699048, guid: 02a7a8107d4c8df0db13cf788820668c, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: MakeDialogueInactive
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: bc8077f2811ca424cad64dae8c76f247, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 5401671782847404365, guid: d12dbacc4f9245b42b99410bfb782739, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: MakeDialogueInactive
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: 00e798ab54e1c1a459f54a93d59dccee, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 235401385596699048, guid: 02a7a8107d4c8df0db13cf788820668c, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: MakeDialogueInactive
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: dba9fd1418e955544b72cb3d8e782c9c, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 11400000, guid: 0958ebfb60a89365b9985f31e3465bef, type: 2}
-    - responseText: No Thanks
-      friendshipThreshold: 0
-      nextNode:
-        dialogueText: Oh<0.3>......</> Well that's not really that helpful
-        responses:
-        - responseText: I'll help you
-          friendshipThreshold: 0
-          nextNode:
-            dialogueText: That's more like it!
-            responses:
-            - responseText: End Conversation
-              friendshipThreshold: 0
-              nextNode:
-                dialogueText: 
-                responses: []
-                onDialogue:
-                  m_PersistentCalls:
-                    m_Calls: []
-              optionalNextDialogueTree: {fileID: 0}
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
-        - responseText: I won't help you
-          friendshipThreshold: 0
-          nextNode:
-            dialogueText: Just get out then!
-            responses:
-            - responseText: End Conversation
-              friendshipThreshold: 0
-              nextNode:
-                dialogueText: 
-                responses: []
-                onDialogue:
-                  m_PersistentCalls:
-                    m_Calls: []
-              optionalNextDialogueTree: {fileID: 0}
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

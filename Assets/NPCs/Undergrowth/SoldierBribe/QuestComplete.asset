@@ -17,10 +17,12 @@ MonoBehaviour:
     responses:
     - responseText: "Yeah, I cleared up the vines, frogs shouldn\u2019t go missing
         anymore"
+      friendshipThreshold: 0
       nextNode:
         dialogueText: 'Bonk: Great, thanks for helping us out!'
         responses:
         - responseText: End Conversation
+          friendshipThreshold: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -57,17 +59,20 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 11400000, guid: 761e12963d3631446813b5555da85506, type: 2}
     - responseText: Yeah, now let me see your lazy king
+      friendshipThreshold: 0
       nextNode:
-        dialogueText: 'Bonk: Great, thanks for helping us out!'
+        dialogueText: 'Bonk: Great, thanks for helping us out!<0.3>..........</>
+          Now get out of here'
         responses:
-        - responseText: End Conversation
+        - responseText: Next
+          friendshipThreshold: 0
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
+          optionalNextDialogueTree: {fileID: 11400000, guid: ac6865d376f6277a18cfd8678aceb3a4, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls:

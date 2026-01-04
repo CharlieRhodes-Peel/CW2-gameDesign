@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private bool permaDeath;
     private string runtimeEnemyID;
+
+    [SerializeField] private bool isBoss = false;
+    [ShowIf("isBoss")] [SerializeField] private BossDeath boss;
     
     [Header("Stats")]
     [SerializeField] private float health = 2;
@@ -112,6 +115,11 @@ public class Enemy : MonoBehaviour
             EnemyPermaDeathManager.GrantPermaDeath(runtimeEnemyID);
         }
 
+        if (isBoss)
+        {
+            boss.DoBossDeathDialoguesToggles();
+        }
+        
         Destroy(gameObject);
     }
 
