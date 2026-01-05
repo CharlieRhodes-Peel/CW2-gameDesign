@@ -23,7 +23,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 49ed7d1a0fc447c41b00739e4798be9a, type: 2}
     - responseText: Yeah, now let me see the princess
       friendshipThreshold: 0
       nextNode:
@@ -32,7 +32,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 49ed7d1a0fc447c41b00739e4798be9a, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

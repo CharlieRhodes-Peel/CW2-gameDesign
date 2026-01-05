@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
+  m_Name: CodeRiddleQuest
+  m_EditorClassIdentifier: 
+  questId: ML2
+  questName: Find Code
+  questGiverName: Eel Princess
+  questDescription: To access the voting slips, help find the Eel Princess's code.
+  questInProgressDialogue: {fileID: 11400000, guid: ac9bfe36b77b15344bd7ec8ad55b88ba, type: 2}
+  questCompleteDialogue: {fileID: 11400000, guid: d9d02434672008a448ad52fdbd1e3ebf, type: 2}
+  questType: 3
+  questShownInMenu: 1
+  itemData: {fileID: 0}
+  itemCount: 0
+  enemyName: 
+  requiredKills: 0
+  npcName: 
+  locationName: 
