@@ -9,6 +9,8 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] public Image itemIcon;
     [SerializeField] public TextMeshProUGUI itemName;
     [HideInInspector] public string description;
+    [HideInInspector] public int value;
+    [HideInInspector] public bool canBuy;
 
     public void RemoveUI()
     {

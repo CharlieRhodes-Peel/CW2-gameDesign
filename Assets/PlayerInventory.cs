@@ -25,7 +25,7 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
-    private void ItemPickedUp(ItemData item)
+    public void ItemPickedUp(ItemData item)
     {
         items.Add(item);
         itemsPickedUp.Add(item);
@@ -43,7 +43,7 @@ public class PlayerInventory : MonoBehaviour
         OnItemRemoved?.Invoke(item);
     }
 
-    private void MoneyPickedUp(int amount)
+    public void MoneyPickedUp(int amount)
     {
         currency+= amount;
         currencyUI.text = currency.ToString();

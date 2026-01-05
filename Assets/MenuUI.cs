@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,30 +11,45 @@ public class MenuUI : MonoBehaviour
 {
     public static MenuUI Instance;
 
+    [Header("Inventory Stuff")]
     [SerializeField] private GameObject inventoryGrid;
-    [SerializeField] private GameObject questGrid;
     [SerializeField] private GameObject itemHolderUIPrefab;
+    [SerializeField] private GameObject itemDescptionUI;
+    
+    [Header("Quest Stuff")]
+    [SerializeField] private TextMeshProUGUI questTitle;
+    [SerializeField] private GameObject questGrid;
     [SerializeField] private GameObject questHolderUIPrefab;
+    [SerializeField] private GameObject questDescriptionUI;
+    [SerializeField] private List<Sprite> questIcons;
+    
+    [Header("Shop Stuff")]
+    [SerializeField] private TextMeshProUGUI shopTitle;
+    [SerializeField] private GameObject shopGrid;
+    [SerializeField] private GameObject shopGridVisual;
+    
+    [Header("Generals")]
     [SerializeField] private InputActionReference openInventoryAction;
     [SerializeField] private InputActionReference closeInventoryAction;
-    [SerializeField] private GameObject itemDescptionUI;
-    [SerializeField] private GameObject questDescriptionUI;
-    
     [SerializeField] private ToolTip toolTip;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator animator;
     [SerializeField] private float animationDelay;
     
-    private Dictionary<ItemData, ItemUI> items = new Dictionary<ItemData, ItemUI>(); //Bridges ItemData to ItemUI
+    [SerializeField] private PlayerInventory playerInventory;
+    
+    
+    //Private dictionaries
+    private Dictionary<ItemData, ItemUI> inventoryItems = new Dictionary<ItemData, ItemUI>(); //Bridges ItemData to ItemUI for inventory items
+    private Dictionary<ItemData, ItemUI> shopItems = new  Dictionary<ItemData, ItemUI>(); //Bridges ItemData to ItemUI for shop items
     private Dictionary<Quest, QuestUI> questsToUI = new Dictionary<Quest, QuestUI>(); //Bridges Quest to QuestUI
     private Dictionary<QuestUI, Quest> UIToquests = new  Dictionary<QuestUI, Quest>();
-
-    [SerializeField] private List<Sprite> questIcons;
     
-    private GameObject latestUIElement; //To keep track of the latest element to be added
-
     //Logic flag
+    private GameObject latestUIElement; //To keep track of the latest element to be added
     private bool isMenuOpen = false;
+    public static bool shopShowing = false;
+    public static bool questsShowing = true;
     
     private void Awake()
     {
@@ -51,15 +67,15 @@ public class MenuUI : MonoBehaviour
         gameObject.SetActive(false);
         
         //Events
-        openInventoryAction.action.performed += OnMenuOpen;
+        openInventoryAction.action.performed += OnInventoryOpen;
         closeInventoryAction.action.performed += OnMenuClose;
 
-        PlayerInventory.OnItemPickedUp += AddItemToUI;
-        PlayerInventory.OnItemRemoved += RemoveItemFromUI;
+        PlayerInventory.OnItemPickedUp += AddItemToInventoryUI;
+        PlayerInventory.OnItemRemoved += RemoveItemFromInventoryUI;
     }
 
     //Called when an item is picked up and said item is passed through
-    private void AddItemToUI(ItemData itemData)
+    private void AddItemToInventoryUI(ItemData itemData)
     {
         //Create the item holder
         GameObject newItemHolder = Instantiate(itemHolderUIPrefab, inventoryGrid.transform);
@@ -69,21 +85,49 @@ public class MenuUI : MonoBehaviour
         itemUI.itemIcon.sprite = itemData.itemUIIcon;
         itemUI.itemName.text = itemData.itemName;
         itemUI.description = itemData.description;
+        itemUI.value = itemData.value;
+        itemUI.canBuy = false;
         
-        items.Add(itemData, itemUI);
+        inventoryItems.Add(itemData, itemUI);
         
         latestUIElement = newItemHolder;
         
         MenuPopupUI.Instance.ShowPopup(itemData);
     }
+
+    public void AddItemToShopUI(ItemData itemData)
+    {
+        //Create the item holder
+        GameObject newItemHolder = Instantiate(itemHolderUIPrefab, shopGrid.transform);
+        
+        ItemUI itemUI = newItemHolder.GetComponent<ItemUI>();
+
+        itemUI.itemIcon.sprite = itemData.itemUIIcon;
+        itemUI.itemName.text = itemData.itemName;
+        itemUI.description = itemData.description;
+        itemUI.value = itemData.value;
+        itemUI.canBuy = true;
+        
+        shopItems.Add(itemData, itemUI);
+        
+        latestUIElement = newItemHolder;
+    }
         
     //Called anytime the player removes an item from their inventory
-    public void RemoveItemFromUI(ItemData itemData)
+    public void RemoveItemFromInventoryUI(ItemData itemData)
     {
-        if (!items.ContainsKey(itemData)) { return; }
+        if (!inventoryItems.ContainsKey(itemData)) { return; }
         
-        items[itemData].RemoveUI();
-        items.Remove(itemData);
+        inventoryItems[itemData].RemoveUI();
+        inventoryItems.Remove(itemData);
+    }
+
+    public void RemoveItemFromShopUI(ItemData itemData)
+    {
+        if (!shopItems.ContainsKey(itemData)) { return; }
+        
+        shopItems[itemData].RemoveUI();
+        shopItems.Remove(itemData);
     }
 
     public void AddQuestToUI(Quest quest)
@@ -138,15 +182,59 @@ public class MenuUI : MonoBehaviour
     }
     
     //Called anytime the player presses the inventory button while using the "Player" action map
-    private void OnMenuOpen(InputAction.CallbackContext ctx)
+    private void OnInventoryOpen(InputAction.CallbackContext ctx)
+    {
+        questsShowing = true;
+        shopShowing = false;
+        OpenMenu();
+    }
+
+    public void OpenShop()
+    {
+        questsShowing = false;
+        shopShowing = true;
+        OpenMenu();
+    }
+
+    private void OpenMenu()
     {
         isMenuOpen = true;
         
-        gameObject.SetActive(true);
+        ActivateMenuItems();
+
         playerInput.SwitchCurrentActionMap("UI");
 
         animator.SetTrigger("Open");
         SelectDefaultButton();
+    }
+
+    private void ActivateMenuItems()
+    {
+        gameObject.SetActive(true);
+
+        if (questsShowing)
+        {
+            questTitle.gameObject.SetActive(true);
+            questGrid.gameObject.SetActive(true);
+        }
+        else
+        {
+            questTitle.gameObject.SetActive(false);
+            questGrid.gameObject.SetActive(false);
+        }
+        if (shopShowing)
+        {
+            shopTitle.gameObject.SetActive(true);
+            shopGrid.gameObject.SetActive(true);
+            shopGridVisual.SetActive(true);
+        }
+        else
+        {
+            shopTitle.gameObject.SetActive(false);
+            shopGrid.gameObject.SetActive(false);
+            shopGridVisual.SetActive(false);
+        }
+        
     }
 
     //Called anytime the player presses the inventory button while using the "UI" action map
@@ -166,7 +254,7 @@ public class MenuUI : MonoBehaviour
     public void SelectDefaultButton()
     {
         GameObject buttonToSelect = latestUIElement;
-        if (latestUIElement == null) {return; }
+        if (latestUIElement == null) { return; }
         EventSystem.current.SetSelectedGameObject(latestUIElement);
     }
 
@@ -198,12 +286,29 @@ public class MenuUI : MonoBehaviour
         return 0;
 
     }
+
+    public void Buy(ItemUI itemUI)
+    {
+        foreach (ItemData itemData in shopItems.Keys)
+        {
+            if (itemData.itemName == itemUI.itemName.text)
+            {
+                if (itemData.value > playerInventory.currency) { return;}
+                
+                playerInventory.MoneyPickedUp(-itemData.value);
+                playerInventory.ItemPickedUp(itemData);
+                
+                ItemDescriptorUI.Hide();
+                RemoveItemFromShopUI(itemData);
+            }
+        }
+    }
     
     private void OnDestroy()
     {
         //Unsubscribe from all events
-        PlayerInventory.OnItemRemoved -= RemoveItemFromUI;
-        PlayerInventory.OnItemPickedUp -= AddItemToUI;
-        openInventoryAction.action.performed -= OnMenuOpen;
+        PlayerInventory.OnItemRemoved -= RemoveItemFromInventoryUI;
+        PlayerInventory.OnItemPickedUp -= AddItemToInventoryUI;
+        openInventoryAction.action.performed -= OnInventoryOpen;
     }
 }

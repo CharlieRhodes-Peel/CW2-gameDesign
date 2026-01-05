@@ -8,6 +8,7 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
     public string itemName;
     public Sprite itemUIIcon;
+    public int value = 0;
     
     [TextArea(3,5)]
     public string description;
