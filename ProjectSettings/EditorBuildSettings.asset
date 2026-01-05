@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Undergrowth/UndergrowthEntrance.unity
     guid: bf5d8fe2dcbf62ff785501b1e1cbbb3c
+  - enabled: 1
+    path: Assets/Scenes/ChurchOfHeron/ChurchOfHeronDown.unity
+    guid: 8c26bcd70d4ac16e9aba3e3273ef0051
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
