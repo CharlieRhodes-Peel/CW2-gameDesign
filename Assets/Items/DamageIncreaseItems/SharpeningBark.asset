@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bc8b222685472af885d28b69f17e6d, type: 3}
+  m_Name: SharpeningBark
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemName: Sharpening Bark
+  itemUIIcon: {fileID: -709304990322500965, guid: 39749219805bf647e8663da4f6146c4a, type: 3}
+  value: 100
+  description: I could use this to sharpen my sword, It's gotten a little blunt lately,
+    this would give it some extra bite!
+  abilityUnlocks: 0
+  increaseDamageBy: 0.25

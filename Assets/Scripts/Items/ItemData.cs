@@ -14,11 +14,13 @@ public class ItemData : ScriptableObject
     public string description;
     
     [ShowIf("itemType", ItemType.Power)] public PlayerMovement.AbilityUnlocks abilityUnlocks = PlayerMovement.AbilityUnlocks.None;
+    [ShowIf("itemType", ItemType.DamageIncrease)] public float increaseDamageBy;
     
     public enum ItemType
     {
         QuestObjective,
         Power,
+        DamageIncrease,
         Other
     }
 }

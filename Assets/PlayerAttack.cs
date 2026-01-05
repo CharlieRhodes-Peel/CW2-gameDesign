@@ -127,8 +127,14 @@ public class PlayerAttack : MonoBehaviour
     }
 
     
+    
     public bool IsWindup() { return isWindup; }
 
+    public void AddToDamagePerHit(float damage)
+    {
+        damagePerHit += damage;
+    }
+    
     //Subscribes and Unsubscribes to input events when player exists or doesn't
     private void OnEnable()
     {

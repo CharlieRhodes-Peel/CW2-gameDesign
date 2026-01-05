@@ -33,8 +33,15 @@ public class PlayerInventory : MonoBehaviour
         OnItemPickedUp?.Invoke(item); //This is to tell the Inventory UI
 
         //If this item doesn't do anything then skip 
-        if (item.abilityUnlocks == PlayerMovement.AbilityUnlocks.None) { return; }
-        UnlockAbility(item.abilityUnlocks); 
+        if (item.abilityUnlocks != PlayerMovement.AbilityUnlocks.None)
+        {
+            UnlockAbility(item.abilityUnlocks); 
+        }
+
+        if (item.itemType == ItemData.ItemType.DamageIncrease)
+        {
+            IncreaseDamage(item.increaseDamageBy);
+        }
     }
     
     private void ItemRemoved(ItemData item)
@@ -81,5 +88,12 @@ public class PlayerInventory : MonoBehaviour
             case PlayerMovement.AbilityUnlocks.WallClimbing:
                 playerMovement.wallClimbingUnlocked = true; break;
         }
+    }
+
+    private void IncreaseDamage(float damageIncrease)
+    {
+        PlayerAttack pAttack = GetComponent<PlayerAttack>();
+        
+        pAttack.AddToDamagePerHit(damageIncrease);
     }
 }
