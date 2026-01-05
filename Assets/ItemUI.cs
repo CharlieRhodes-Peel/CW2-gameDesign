@@ -8,6 +8,8 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] public Image itemIcon;
     [SerializeField] public TextMeshProUGUI itemName;
+    [SerializeField] public TextMeshProUGUI quantityText;
+    [HideInInspector] public int quantity = 1;
     [HideInInspector] public string description;
     [HideInInspector] public int value;
     [HideInInspector] public bool canBuy;
@@ -16,6 +18,19 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         Destroy(gameObject);
     }
+
+    public void IncrementQuantity()
+    {
+        quantity += 1;
+        quantityText.text = quantity.ToString();
+    }
+
+    public void DecrementQuantity()
+    {
+        quantity -= 1;
+        quantityText.text = quantity > 1 ? quantity.ToString() : "";
+    }
+    
 
     public void OnPointerEnter(PointerEventData eventData)
     {

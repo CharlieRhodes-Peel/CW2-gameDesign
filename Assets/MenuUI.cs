@@ -77,6 +77,17 @@ public class MenuUI : MonoBehaviour
     //Called when an item is picked up and said item is passed through
     private void AddItemToInventoryUI(ItemData itemData)
     {
+        //Check if item already exists
+        if (inventoryItems.ContainsKey(itemData))
+        {
+            ItemUI existingUI = inventoryItems[itemData];
+            existingUI.IncrementQuantity();
+
+            latestUIElement = existingUI.gameObject;
+            MenuPopupUI.Instance.ShowPopup(itemData);
+            return;
+        }
+        
         //Create the item holder
         GameObject newItemHolder = Instantiate(itemHolderUIPrefab, inventoryGrid.transform);
         
@@ -87,6 +98,7 @@ public class MenuUI : MonoBehaviour
         itemUI.description = itemData.description;
         itemUI.value = itemData.value;
         itemUI.canBuy = false;
+        itemUI.quantity = 1;
         
         inventoryItems.Add(itemData, itemUI);
         
@@ -107,6 +119,7 @@ public class MenuUI : MonoBehaviour
         itemUI.description = itemData.description;
         itemUI.value = itemData.value;
         itemUI.canBuy = true;
+        itemUI.quantity = 1;
         
         shopItems.Add(itemData, itemUI);
         
@@ -117,6 +130,15 @@ public class MenuUI : MonoBehaviour
     public void RemoveItemFromInventoryUI(ItemData itemData)
     {
         if (!inventoryItems.ContainsKey(itemData)) { return; }
+        
+        ItemUI existingUI = inventoryItems[itemData];
+
+        //If there are multiple just decrement
+        if (existingUI.quantity > 1)
+        {
+            existingUI.DecrementQuantity();
+            return;
+        }
         
         inventoryItems[itemData].RemoveUI();
         inventoryItems.Remove(itemData);

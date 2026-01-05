@@ -15,6 +15,7 @@ MonoBehaviour:
   itemType: 1
   itemName: Vine Claws
   itemUIIcon: {fileID: 4627743145093286240, guid: b02961a5cde28a7c1925f760667595c5, type: 3}
+  value: 0
   description: Attachs perfectly to a frogs hands, allowing them to dig into walls
     and climb with!
   abilityUnlocks: 3
