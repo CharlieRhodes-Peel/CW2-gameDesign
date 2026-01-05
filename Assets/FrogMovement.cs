@@ -71,8 +71,9 @@ public class FrogMovement : MonoBehaviour
 
     private void Update()
     {
+        NpcStates.State currentState = npcStates.GetCurrentState();
         //If in angry state
-        if (npcStates.GetCurrentState() == NpcStates.State.Angry)
+        if (currentState == NpcStates.State.Angry)
         {
             if (!playerPos.gameObject.activeInHierarchy) { return; } //Player is dead don't bother
 
@@ -82,7 +83,12 @@ public class FrogMovement : MonoBehaviour
 
         if (hitWallCheck())
         {
-            if (movementType == MovementType.WalkOnly && !jumping)
+            if (movementType == MovementType.WalkOnly && currentState != NpcStates.State.Angry)
+            {
+                Flip();
+            }
+            
+            if (movementType == MovementType.WalkOnly && !jumping && currentState == NpcStates.State.Angry)
             {
                 StartCoroutine(Jump());
             }
