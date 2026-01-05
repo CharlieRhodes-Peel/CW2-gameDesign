@@ -12,22 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Test-Dialogue
   m_EditorClassIdentifier: 
+  afterBossAction: 1
+  bossesKilled: 01000000
+  bossesHelped: 
   RootNode:
     dialogueText: Hey!!! How are you standing up like that! I've been so overgrown
       for ever. Do you want to test out what states I can go into? Tell me something
       that'll affect me!
     responses:
     - responseText: I am neutral with you
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: Cool bro
         responses:
         - responseText: Walk away
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls:
@@ -43,17 +51,23 @@ MonoBehaviour:
                 m_StringArgument: Neutral
                 m_BoolArgument: 0
               m_CallState: 2
+      optionalNextDialogueTree: {fileID: 0}
     - responseText: I love you
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: I love you too!
         responses:
         - responseText: Hug and leave
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls:
@@ -69,11 +83,16 @@ MonoBehaviour:
                 m_StringArgument: Happy
                 m_BoolArgument: 0
               m_CallState: 2
+      optionalNextDialogueTree: {fileID: 0}
     - responseText: I hate you
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: Well lets settle it with a fight then!
         responses:
         - responseText: FIGHT!
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -92,10 +111,11 @@ MonoBehaviour:
                     m_StringArgument: Angry
                     m_BoolArgument: 0
                   m_CallState: 2
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
-  conditional: 0

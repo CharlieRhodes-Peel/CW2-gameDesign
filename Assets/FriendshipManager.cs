@@ -12,7 +12,13 @@ public class FriendshipManager : MonoBehaviour
 
     [SerializeField] private float updateDelay = 0.4f;
     
-    [SerializeField] private List<Location> locations;
+    [SerializeField] private List<Location> locations = new List<Location>();
+    private HashSet<Location> friendLevelChangedLocations = new HashSet<Location>();
+    
+    [SerializeField] private int positiveRelationsFriendshipAffect = 20;
+    [SerializeField] private int negativeRelationsFriendshipAffect = -20;
+    
+    [Header("References")]
     [SerializeField] private Animator animator;
 
     [SerializeField] private RectTransform minPos;
@@ -48,7 +54,7 @@ public class FriendshipManager : MonoBehaviour
         minX = minPos.position.x;
         maxX = maxPos.position.x;
         
-        StartCoroutine(UpdatePointerPosition(0));
+        StartCoroutine(UpdatePointerPosition(0, 0));
     }
 
     public void AddToFriendshipLevel(int amount)
@@ -62,10 +68,10 @@ public class FriendshipManager : MonoBehaviour
         
         Instance.animator.SetTrigger("LevelChanged");
         
-        StartCoroutine(UpdatePointerPosition(friendshipLevels[LocationManager.currentLocation.Name]));
+        StartCoroutine(UpdatePointerPosition(friendshipLevels[LocationManager.currentLocation.Name], updateDelay));
     }
     
-    private IEnumerator UpdatePointerPosition(int friendshipLevel)
+    private IEnumerator UpdatePointerPosition(int friendshipLevel, float updateDelay)
     {
         yield return new WaitForSeconds(updateDelay);
         // Map friendship level (-50 to 50) to position (minX to maxX)
@@ -81,5 +87,43 @@ public class FriendshipManager : MonoBehaviour
     public static int GetCurrentFriendshipLevel()
     {
         return friendshipLevels[LocationManager.currentLocation.Name];
+    }
+
+    //Called whenever A location is changed
+    private void OnLocationChanged(Location location)
+    {
+        StartCoroutine(UpdatePointerPosition(friendshipLevels[LocationManager.currentLocation.Name], 0));
+
+        //If friendship level has already been changed then don't worry
+        if (friendLevelChangedLocations.Contains(location)) {return;}
+        
+        DoLocationRelationFriendshipLevel(location);
+        friendLevelChangedLocations.Add(location);
+    }
+    
+    private void DoLocationRelationFriendshipLevel(Location location)
+    {
+        //Negative affect
+        if (BossManager.Instance.HasBossBeenHelped(location.dislikes) || BossManager.Instance.HasBossBeenKilled(location.likes))
+        {
+            AddToFriendshipLevel(negativeRelationsFriendshipAffect);
+        }
+
+        //Positive Affect
+        if (BossManager.Instance.HasBossBeenHelped(location.likes) || BossManager.Instance.HasBossBeenKilled(location.dislikes))
+        {
+            AddToFriendshipLevel(positiveRelationsFriendshipAffect);
+        }
+    }
+    
+
+    private void OnEnable()
+    {
+        LocationManager.OnLocationChanged += OnLocationChanged;
+    }
+
+    private void OnDisable()
+    {
+        LocationManager.OnLocationChanged -= OnLocationChanged;
     }
 }

@@ -6,8 +6,8 @@ public class BossManager : MonoBehaviour
     public static BossManager Instance;
     
     //Stores bosses names
-    public static HashSet<Bosses> bossesHelped;
-    public static HashSet<Bosses> bossesKilled;
+    public static HashSet<Bosses> bossesHelped = new HashSet<Bosses>();
+    public static HashSet<Bosses> bossesKilled = new HashSet<Bosses>();
 
     public enum Bosses
     {
