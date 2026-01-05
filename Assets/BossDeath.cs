@@ -7,6 +7,7 @@ public class BossDeath : MonoBehaviour
     [SerializeField] private List<Dialogue> dialoguesToMakeInactive;
     [SerializeField] private List<Dialogue> dialoguesToMakeActive;
     [SerializeField] private GameObject doorBlock;
+    [SerializeField] private GameObject objectSpawnOnDeath;
 
     public void DoBossDeathDialoguesToggles()
     {
@@ -21,5 +22,9 @@ public class BossDeath : MonoBehaviour
         }
         
         doorBlock.SetActive(false);
+        
+        Instantiate(objectSpawnOnDeath, transform.position, Quaternion.identity);
+        
+        BossManager.Instance.BossKilled(BossManager.Bosses.Log);
     }
 }

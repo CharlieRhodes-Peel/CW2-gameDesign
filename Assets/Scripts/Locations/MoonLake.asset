@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationType: 3
   Name: moon lake
+  likes: 3
+  dislikes: 1

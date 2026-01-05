@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: 
   questName: 
-  questGiverName: 
+  questGiverName: PlaceholderName
   questDescription: Investigate the power outage issue, ask some local frogs if they
     know anything
   questInProgressDialogue: {fileID: 11400000, guid: cf901c1554efa024d82615862000ded3, type: 2}

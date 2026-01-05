@@ -13,4 +13,7 @@ public class Location : ScriptableObject
 {
     public LocationType locationType;
     public string Name;
+
+    public BossManager.Bosses likes;
+    public BossManager.Bosses dislikes;
 }

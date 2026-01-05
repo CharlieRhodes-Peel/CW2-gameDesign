@@ -53,6 +53,8 @@ public class FriendshipManager : MonoBehaviour
 
     public void AddToFriendshipLevel(int amount)
     {
+        if (amount == 0) { return;}
+        
         string location = LocationManager.currentLocation.Name; 
         
         friendshipLevels[location] += amount;

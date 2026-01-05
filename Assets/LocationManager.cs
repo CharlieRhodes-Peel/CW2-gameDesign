@@ -7,6 +7,9 @@ using UnityEngine;
 public class LocationManager : MonoBehaviour
 {
     public static LocationManager Instance;
+
+    [SerializeField] private int positiveRelationsFriendshipAffect = 20;
+    [SerializeField] private int negativeRelationsFriendshipAffect = -20;
     
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI locationText;
@@ -51,9 +54,25 @@ public class LocationManager : MonoBehaviour
         visitedLocations.Add(location);
         
         Instance.locationText.text = location.Name;
-        
         Instance.animator.SetTrigger("showLocation");
         
+        DoLocationRelationFriendshipLevel(location);
+
         OnLocationVisited?.Invoke(location.Name);
+    }
+
+    private static void DoLocationRelationFriendshipLevel(Location location)
+    {
+        //Negative affect
+        if (BossManager.Instance.HasBossBeenHelped(location.dislikes) || BossManager.Instance.HasBossBeenKilled(location.likes))
+        {
+            FriendshipManager.Instance.AddToFriendshipLevel(Instance.negativeRelationsFriendshipAffect);
+        }
+
+        //Positive Affect
+        if (BossManager.Instance.HasBossBeenHelped(location.likes) || BossManager.Instance.HasBossBeenKilled(location.dislikes))
+        {
+            FriendshipManager.Instance.AddToFriendshipLevel(Instance.positiveRelationsFriendshipAffect);
+        }
     }
 }
