@@ -12,30 +12,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Text2Und
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: 'Dear King Log,
 
-      
 
-      I am writing to you to ask that
-      you please take care of the vine issue. The vines continue to grow and their
-      thorns are even larger than the last time I saw them. There have been rumours
-      of missing frogs, tangled in the vines and eaten! Please take care of the vines,
-      your highness.
-
-      
-
-      Sincerely,
-
-      
-
-      Concerned Frog'
+      I am writing to you to ask that you please
+      take care of the vine issue. The vines continue to grow and their thorns are
+      even larger than the last time I saw them. '
     responses:
     - responseText: Stop Reading
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Keep Reading
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: 'There have been rumours of missing frogs, tangled in the vines
+          and eaten! '
+        responses:
+        - responseText: Stop Reading
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        - responseText: Keep Reading
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 'Please take care of the vines, your highness.
+
+
+              Sincerely,
+
+
+              Concerned
+              Frog'
+            responses:
+            - responseText: Stop Reading
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
