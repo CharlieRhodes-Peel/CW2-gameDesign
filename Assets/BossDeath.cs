@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class BossDeath : MonoBehaviour
@@ -7,7 +8,8 @@ public class BossDeath : MonoBehaviour
     [SerializeField] private List<Dialogue> dialoguesToMakeInactive;
     [SerializeField] private List<Dialogue> dialoguesToMakeActive;
     [SerializeField] private GameObject doorBlock;
-    [SerializeField] private GameObject objectSpawnOnDeath;
+    [SerializeField] private bool spawnsObjectOnDeath = false;
+    [ShowIf("spawnsObjectOnDeath")] [SerializeField] private GameObject objectSpawnOnDeath;
     [SerializeField] private BossManager.Bosses bossType;
 
     public void DoBossDeathDialoguesToggles()
@@ -23,9 +25,9 @@ public class BossDeath : MonoBehaviour
         }
         
         doorBlock.SetActive(false);
-        
-        Instantiate(objectSpawnOnDeath, transform.position, Quaternion.identity);
-        
+
+        if (spawnsObjectOnDeath) { Instantiate(objectSpawnOnDeath, transform.position, Quaternion.identity); }
+
         BossManager.Instance.BossKilled(bossType);
     }
 }
