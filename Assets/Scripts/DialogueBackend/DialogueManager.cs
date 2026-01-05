@@ -124,6 +124,7 @@ public class DialogueManager : MonoBehaviour
     // Handles response selection and triggers next dialogue node
     public void SelectResponse(DialogueResponse response, string title)
     {
+        FriendshipManager.Instance.AddToFriendshipLevel(response.friendshipLevelGives);
         
         // Check if there's a follow-up node
         if (!response.nextNode.IsLastNode())

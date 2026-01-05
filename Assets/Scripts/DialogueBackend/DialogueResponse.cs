@@ -10,6 +10,7 @@ public class DialogueResponse
 {
     public string responseText;
     [FormerlySerializedAs("friendshipLevelNeeded")] public int friendshipThreshold;
+    public int friendshipLevelGives = 0;
     public DialogueNode nextNode;
     public Dialogue optionalNextDialogueTree;
 }
