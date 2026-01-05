@@ -12,12 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: S1_2
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: 'Bonk: I know, you know the vines that are growing all around this
       place?'
     responses:
     - responseText: Yeah they hurt!
       friendshipThreshold: 0
+      friendshipLevelGives: 3
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: f552d88f923f3bb42985c21015571e59, type: 2}
+    - responseText: Obviously I know!
+      friendshipThreshold: 0
+      friendshipLevelGives: -6
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: f552d88f923f3bb42985c21015571e59, type: 2}
+    - responseText: I know a little bit about it
+      friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []

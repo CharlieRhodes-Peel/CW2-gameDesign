@@ -12,15 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: IntroFrog
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Well then<0.3>...</> What are you here for?
     responses:
     - responseText: "I\u2019m here to meet your king."
+      friendshipThreshold: 0
+      friendshipLevelGives: -2
       nextNode:
         dialogueText: Aren't we all? Heheh, I've been waiting 3 years for my appointment
           with him, he's so lazy!
         responses:
         - responseText: Can you tell me more about him?
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -29,11 +36,15 @@ MonoBehaviour:
                 m_Calls: []
           optionalNextDialogueTree: {fileID: 11400000, guid: cb06abbd9c8aba6af8859145daf14ec5, type: 2}
         - responseText: I see
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: I do suggest talking to the people around though, they're
               a lovely bunch. Speaking of which can you go and tell bobble
             responses:
             - responseText: End Conversation
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
               nextNode:
                 dialogueText: 
                 responses: []
@@ -62,16 +73,22 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Lead me to your king now!
+      friendshipThreshold: 0
+      friendshipLevelGives: -5
       nextNode:
         dialogueText: I'm not all that mobile young traveller. I can't move! Just
           look at the mushrooms growing out of my back
         responses:
         - responseText: Where is he?
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: He'll be somewhere deep in the growth, gaurded by the two
               strongest gaurds I know<0.3>...</>Bonk<0.3> </>and<0.3> </>Zonk.
             responses:
             - responseText: End Conversation
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
               nextNode:
                 dialogueText: 
                 responses: []
@@ -84,6 +101,8 @@ MonoBehaviour:
                 m_Calls: []
           optionalNextDialogueTree: {fileID: 0}
         - responseText: What's he like?
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -108,6 +127,8 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Can you tell me about your king?
+      friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []
@@ -126,12 +147,28 @@ MonoBehaviour:
                 m_StringArgument: Happy
                 m_BoolArgument: 0
               m_CallState: 2
+            - m_Target: {fileID: 8953810886006781254, guid: e5d825536d15f6f409d3d85eb9600b2a, type: 3}
+              m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+              m_MethodName: SetStateTo
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: Happy
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 11400000, guid: cb06abbd9c8aba6af8859145daf14ec5, type: 2}
     - responseText: Nothing
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: <0.3>...</>Okay<0.3>...</>
         responses:
         - responseText: End Conversation
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

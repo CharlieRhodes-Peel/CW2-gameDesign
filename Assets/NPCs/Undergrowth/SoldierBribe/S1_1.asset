@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: S1_1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: 'Bonk: Who are you and what do you want?'
     responses:
     - responseText: "I\u2019m here to meet king log."
       friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []
@@ -26,6 +30,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 11400000, guid: 14937cd8b6012f44c81265045054eef7, type: 2}
     - responseText: "Get out of my way, I\u2019m here for your king!"
       friendshipThreshold: 0
+      friendshipLevelGives: -8
       nextNode:
         dialogueText: 
         responses: []

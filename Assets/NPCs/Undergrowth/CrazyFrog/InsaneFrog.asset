@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: InsaneFrog
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "Hehehahaha heh, my vines, they\u2019re so beautiful, look at their
       shiny thorns he haha hehe"
     responses:
     - responseText: Fight
+      friendshipThreshold: 0
+      friendshipLevelGives: -8
       nextNode:
         dialogueText: 
         responses: []
@@ -37,11 +42,15 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Are these your vines? Why are they eating frogs?
+      friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: "YessSs theSe aRe My gOrgEous vInEs. THE oTHer fRogs aRe cArelEss!
           It\u2019s nOt my VINES fault they\u2019re sO So sO so tasty"
         responses:
         - responseText: End Conversation
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -66,10 +75,14 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Gross, why would you like these ugly vines
+      friendshipThreshold: 0
+      friendshipLevelGives: -6
       nextNode:
         dialogueText: "No! You\u2019re WRONG! My vines are amazing hehehehehe hahahahahaha"
         responses:
         - responseText: End Conversation
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

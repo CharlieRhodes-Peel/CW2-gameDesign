@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: LogHelpTree
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: You want to help me? How kind!<0.3> </>Well I tell you what, some
-      little rascal has stolen my broach! I can no longer lounge around the pond
+      little rascal has stolen my brooch! I can no longer lounge around the pond
       the same anymore, my relaxation is ruined! Do you think you could get it back
       for me?
     responses:
     - responseText: Sure
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
