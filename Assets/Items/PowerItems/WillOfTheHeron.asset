@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bc8b222685472af885d28b69f17e6d, type: 3}
+  m_Name: WillOfTheHeron
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: WillOfTheHeron
+  itemUIIcon: {fileID: 7878005369009177012, guid: 39749219805bf647e8663da4f6146c4a, type: 3}
+  value: 0
+  description: Granted to me by the almighty, the one true king. All the other's,
+    all the other's, all the other's, are NOTHING compared to the beauty of the heron......
+    Such power he's given to me. All I need to do  is think of his name, and his
+    will, wills me to dash with shift.
+  abilityUnlocks: 2

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48bc8b222685472af885d28b69f17e6d, type: 3}
-  m_Name: VineClaws
+  m_Name: FaultyPlug
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Vine Claws
-  itemUIIcon: {fileID: -1788468356445518485, guid: 39749219805bf647e8663da4f6146c4a, type: 3}
+  itemName: Faulty Plug
+  itemUIIcon: {fileID: -3159993897955887308, guid: 39749219805bf647e8663da4f6146c4a, type: 3}
   value: 0
-  description: They fit perfectly around my hands, I think I could use these to dig
-    into walls and climb with
-  abilityUnlocks: 3
+  description: The power given off from this could blow something away. Or... Maybe...
+    If I use it in the air, I could get some extra height
+  abilityUnlocks: 1
