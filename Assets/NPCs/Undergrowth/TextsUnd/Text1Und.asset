@@ -12,31 +12,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Text1Und
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: '3rd March
 
-      
 
-      Today I went to the pong looking for
-      flies but there was a crowd of frogs there. I approached to find they were
-      all staring at something. When I looked out at the pond I saw a log, the log
-      was still in the water, so serene, so peaceful.
-
-      
-
-      5th March
-
-      
-
-      All
-      the frogs have had a meeting. We decided we all really like the log and wish
-      we could make him king.'
+      Today I went to the pond looking for flies but
+      there was a crowd of frogs there. I approached to find they were all staring
+      at something. '
     responses:
     - responseText: Stop Reading
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Keep Reading
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: When I looked out at the pond I saw a log, the log was still
+          in the water, so serene, so peaceful.
+        responses:
+        - responseText: Stop Reading
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        - responseText: Keep Reading
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: '5th March
+
+
+              All the frogs have had a meeting.
+              We decided we all really like the log and wish we could make him king.'
+            responses:
+            - responseText: Stop Reading
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

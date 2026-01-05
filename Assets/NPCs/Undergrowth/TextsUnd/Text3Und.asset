@@ -12,45 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Text3Und
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: 'Yearly Report
 
-      
 
-      This report outlines the tasks
-      handled this year, and the tasks pushed to next year.
-
-      
-
-      Completed
-
-      -Erected
-      statue of the king
-
-      -Placed a bench by the pond for his highness to
-      view his reflection
-
-      
-
-      Next Year
-
-      -Remove vines
-
-      -Investigate
-      reports of missing frogs
-
-      -Count fly supply for winter
-
-      -Clean
-      up leaves
-
-      -Remove twigs and branches'
+      This report outlines the tasks handled this
+      year, and the tasks pushed to next year.'
     responses:
     - responseText: Stop Reading
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Keep Reading
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: 'Completed
+
+          -Erected statue of the king
+
+          -Placed
+          a bench by the pond for his highness to view his reflection'
+        responses:
+        - responseText: Stop Reading
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        - responseText: Keep Reading
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 'Next Year
+
+              -Remove vines
+
+              -Investigate
+              reports of missing frogs
+
+              -Count fly supply for winter
+
+              -Clean
+              up leaves
+
+              -Remove twigs and branches'
+            responses:
+            - responseText: Stop Reading
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
