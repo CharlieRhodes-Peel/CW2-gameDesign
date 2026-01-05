@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: TiredFrogMeet
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Oh my god! Look at that sword!<0.3> </>You don't reckon you could
       cut down some of the vines down there could you? I've been trying all day,
@@ -19,6 +22,7 @@ MonoBehaviour:
     responses:
     - responseText: Sure
       friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []
@@ -40,11 +44,13 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 11400000, guid: d9fc10ff3cd38d0e18d1d9a7bbd3b83a, type: 2}
     - responseText: No Thanks
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: <0.1>uuuuuuuuuugggggghhhhhhhhhhhhh</> fine
         responses:
         - responseText: Goodbye
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -69,12 +75,14 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: I am evil!!!!
-      friendshipThreshold: -10
+      friendshipThreshold: 0
+      friendshipLevelGives: -8
       nextNode:
         dialogueText: <0.1>uuuuuuuuuugggggghhhhhhhhhhhhh</> fine
         responses:
         - responseText: Goodbye
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

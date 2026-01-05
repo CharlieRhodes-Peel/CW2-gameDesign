@@ -12,19 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Squabble
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: I love watching my brother jump around
     responses:
     - responseText: Why don't you?
+      friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: The growth is too much! It creeps up on you slowly but nothing
           gets done around here. I just want to jump around with squibble!
         responses:
         - responseText: I'll talk to the king
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: Don't bother he's so lazy
             responses:
             - responseText: I will try
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
               nextNode:
                 dialogueText: 
                 responses: []
@@ -37,11 +46,15 @@ MonoBehaviour:
                 m_Calls: []
           optionalNextDialogueTree: {fileID: 0}
         - responseText: I'll KILL the king
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: Don't go that far!! Just talk him out ruling this place,
               get someone in who WANTS to do something
             responses:
             - responseText: I will try
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
               nextNode:
                 dialogueText: 
                 responses: []
@@ -58,6 +71,8 @@ MonoBehaviour:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Goodbye
+      friendshipThreshold: 0
+      friendshipLevelGives: -2
       nextNode:
         dialogueText: 
         responses: []

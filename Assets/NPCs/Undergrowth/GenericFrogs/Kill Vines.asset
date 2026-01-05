@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Kill Vines
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Hey have you met that crazy guy?? His vines are stopping my froglings
       from going to school! If you could take out 5 VINES I would greatly appreciate
       it!
     responses:
     - responseText: Sure thing!
+      friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []

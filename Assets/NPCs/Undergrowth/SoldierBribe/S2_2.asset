@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: S2_2
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
-    dialogueText: 'Zonk: A few days ago I saw a frog get too close then and they
-      became tangled up and eaten by the vines!'
+    dialogueText: 'Zonk: Well, A few days ago I saw a frog get too close to them
+      and they got tangled up and eaten by the vines!'
     responses:
     - responseText: Next
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
