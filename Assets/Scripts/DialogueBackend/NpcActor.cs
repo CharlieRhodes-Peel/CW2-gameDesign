@@ -10,6 +10,7 @@ public class NpcActor : MonoBehaviour, IInteractable
     public string Name;
 
     public List<Dialogue> DialogueTrees;
+    public List<Dialogue> BossDialogueTrees;
     
     [SerializeField] private Transform popupPos; //Determines where the popup prompt will appear
     [SerializeField] private string popupText;
@@ -49,6 +50,12 @@ public class NpcActor : MonoBehaviour, IInteractable
         
         //Check for any active quest
         activeQuest = QuestManager.Instance.HasQuestWithNPC(Name);
+
+        //Turn off boss dialogues at the start
+        foreach (Dialogue dialogue in BossDialogueTrees)
+        {
+            MakeDialogueInactive(dialogue);
+        }
     }
 
     // Trigger dialogue for this actor
@@ -67,15 +74,52 @@ public class NpcActor : MonoBehaviour, IInteractable
             return;
         }
         
-        //Pick the first option in the list who's conditional is met
+        //Checks to see the boss requirements for dialogue are met
         bool dialoguePicked = false;
-        foreach (Dialogue dialogue in DialogueTrees)
+        
+        //Checks boss dialogue trees
+        foreach (Dialogue dialogue in BossDialogueTrees)
         {
-            if (DialogueStateManager.instance.IsDialogueActive(dialogue))
+            if (!dialogue.afterBossAction)
             {
-                dialoguePicked = true;
-                DialogueManager.Instance.StartDialogue(Name, dialogue.RootNode);
                 break;
+            }
+
+            //Checks if boss conditionals are met for this
+            bool bossConditionMet = true;
+            foreach (BossManager.Bosses boss in dialogue.bossesKilled)
+            {
+                if (!BossManager.Instance.HasBossBeenKilled(boss)) { bossConditionMet = false; break; }
+            }
+
+            foreach (BossManager.Bosses boss in dialogue.bossesHelped)
+            {
+                if (!BossManager.Instance.HasBossBeenHelped(boss)) { bossConditionMet = false; break; }
+            }
+
+            if (bossConditionMet)
+            {
+                if (DialogueStateManager.instance.IsDialogueActive(dialogue))
+                {
+                    dialoguePicked = true;
+                    DialogueManager.Instance.StartDialogue(Name, dialogue.RootNode);
+                    MakeDialogueInactive(dialogue); //Turns off the dialogue, they should only be used as one-off remarks!
+                    break;
+                }
+            }
+    }
+        
+        //Checks original dialogue trees
+        if (!dialoguePicked)
+        {
+            foreach (Dialogue dialogue in DialogueTrees)
+            {
+                if (DialogueStateManager.instance.IsDialogueActive(dialogue))
+                {
+                    dialoguePicked = true;
+                    DialogueManager.Instance.StartDialogue(Name, dialogue.RootNode);
+                    break;
+                }
             }
         }
 
