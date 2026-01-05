@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: Text1ML
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "Safety Rules\r\n1) Frogs must not lick anything that hums.\r\n2)
+      Any electric eel in a public canal must file Form 7-B.\r\n3) Complaints about
+      shocks must be submitted within one day or will be considered expected outcomes.\r\n4)
+      In the event of a blackout, all frogs must remain perfectly still while eels
+      hum reassuringly.\r\n5) Eels experiencing an emotional surge must announce
+      \u201CCHARGE RISING\u201D before entering shared waterways.\r\n\u2026"
+    responses:
+    - responseText: Stop Reading
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

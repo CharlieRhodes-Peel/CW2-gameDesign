@@ -10,17 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: Text1
+  m_Name: GenericML2
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: "The Church of The Heron Tithe & Donations Report\r\n\r\nThe church
-      of The Heron has collected tithe from all frogs. The resulting amount is 1,000,000
-      coins.\r\n\r\nTithes payments are to go towards upgrading The Heron\u2019s
-      personal pond.\r\n\r\nDonations have been collected from all willing frogs
-      forcefully. The total amount of flies collected exceeds last week's amount.
-      All flies are to be stored in the church nest.\r\n"
+    dialogueText: "Be careful traveller, you don\u2019t want to get electrocuted!"
     responses:
-    - responseText: Stop Reading
+    - responseText: End Conversation
       friendshipThreshold: 0
       nextNode:
         dialogueText: 

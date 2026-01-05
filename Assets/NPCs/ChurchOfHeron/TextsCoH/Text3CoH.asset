@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: Text2
+  m_Name: Text3CoH
   m_EditorClassIdentifier: 
   RootNode:
-    dialogueText: 'Tuesday
-
-      
-
-      The church is falling apart. Frogs are
-      in disarray and some have been reported falling into the lava pits from confusion.
-      If only we had a powerful ruler to save us from this disaster.'
+    dialogueText: "Today was my first day working for The Church of The Heron. I
+      have a cool uniform and will be helping to give sermons soon. I have also been
+      told that there is a special secret meeting happening to discuss \u201Ccontrol
+      measures\u201D. Sounds interesting! "
     responses:
     - responseText: Stop Reading
       friendshipThreshold: 0

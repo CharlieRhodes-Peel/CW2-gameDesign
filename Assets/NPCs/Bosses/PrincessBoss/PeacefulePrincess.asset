@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: PeacefulePrincess
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "You seem powerful. Will you help me wash away the fire and keep
+      The Church of Heron frogs safe? It\u2019s my one wish."
+    responses:
+    - responseText: That is a noble reason. I will be your warrior and help you achieve
+        your goal.
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: Thank you kind warrior! Please can you make a safety report
+          on The Church of The Heron for me.
+        responses:
+        - responseText: Go to The Church of The Heron
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: "Surely becoming an ally of The Church of The Heron would allow
+        you to convince them to change in a more diplomatic manner. For now focus
+        on your own people\u2019s happiness. Have you considered they might not want
+        to be so heavily regulated?"
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: I never thought of it that way. I want to hold a vote on what
+          rules to keep or remove. Can you help me locate the voting slips? Due to
+          protocol they are locked away, but I forgot the code.
+        responses:
+        - responseText: Find the voting slips
+          friendshipThreshold: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

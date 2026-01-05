@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: ThirdInvestigation1
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: Hello, are you here to investigate the electricity storage also?
+    responses:
+    - responseText: Yes. I am a journalist investigating the power outage. Do you
+        know if anyone was working the night shift 2 days ago?
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: Sorry but no one was working the night shift two days ago.
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Blah blah just tell me about who was working at night over the
+        power outage.
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: No one.
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Who was working at night the other day, was it you, are you responsible
+        for the power outage?
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: Of course not. No one was working that night.
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

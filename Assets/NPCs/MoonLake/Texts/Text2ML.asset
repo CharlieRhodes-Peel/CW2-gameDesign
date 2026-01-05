@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: Text2ML
+  m_EditorClassIdentifier: 
+  RootNode:
+    dialogueText: "The Daily Electric\r\n\r\nThis year Moon Lake has made many technological
+      advances. The scientists at Eel-Ectric Laboratory have been able to store some
+      of the electricity produced by the eels. This electricity will be used to power
+      various lighting fixtures around the pond\u2026"
+    responses:
+    - responseText: Stop Reading
+      friendshipThreshold: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []
