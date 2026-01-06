@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private string runtimeEnemyID;
 
     [SerializeField] private bool isBoss = false;
-    [ShowIf("isBoss")] [SerializeField] private BossDeath boss;
+    [ShowIf("isBoss")] [SerializeField] private Boss boss;
     [ShowIf("isBoss")] [SerializeField] private GameObject doorBlock;
     
     [Header("Stats")]

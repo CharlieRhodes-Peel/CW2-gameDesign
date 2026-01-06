@@ -53,12 +53,6 @@ public class NpcActor : MonoBehaviour, IInteractable
         {
             activeQuest = QuestManager.Instance.GetActiveQuestWithNPC(Name);
         }
-
-        //Turn off boss dialogues at the start
-        foreach (Dialogue dialogue in BossDialogueTrees)
-        {
-            MakeDialogueInactive(dialogue);
-        }
     }
 
     // Trigger dialogue for this actor
@@ -85,7 +79,7 @@ public class NpcActor : MonoBehaviour, IInteractable
         {
             if (!dialogue.afterBossAction)
             {
-                break;
+                continue;
             }
 
             //Checks if boss conditionals are met for this
@@ -106,7 +100,6 @@ public class NpcActor : MonoBehaviour, IInteractable
                 {
                     dialoguePicked = true;
                     DialogueManager.Instance.StartDialogue(Name, dialogue.RootNode);
-                    MakeDialogueInactive(dialogue); //Turns off the dialogue, they should only be used as one-off remarks!
                     break;
                 }
             }

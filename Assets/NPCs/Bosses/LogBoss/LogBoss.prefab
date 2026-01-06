@@ -485,6 +485,7 @@ MonoBehaviour:
   DialogueTrees:
   - {fileID: 11400000, guid: ba21f5057f0891a039683c6ad14dde8a, type: 2}
   - {fileID: 11400000, guid: 3da196af3d17ffa17b7d9010bda1dda3, type: 2}
+  BossDialogueTrees: []
   popupPos: {fileID: 2886736401339181615}
   popupText: Speak
   feeling: {fileID: 9164555153372580779}
@@ -536,7 +537,7 @@ MonoBehaviour:
   isBoss: 1
   boss: {fileID: 3293071126338033653}
   doorBlock: {fileID: 0}
-  health: 16
+  health: 1
   moneyOnDeath: 50
   knockbackX: 0
   knockbackY: 0
@@ -545,9 +546,11 @@ MonoBehaviour:
   timeStopDuration: 0.075
   deathParticles: {fileID: 420631421491740200, guid: 6a27879f2ba5749588cd68ae2cf93cdb, type: 3}
   deathParticles2: {fileID: 0}
+  hitDisablesMovement: 0
   disableMovementTime: 0
   renderer: {fileID: 3411706412850370683}
   moneySpawner: {fileID: 6503364584388190247, guid: a4a2cc035ebdf1ab9a35dffa3b4f8023, type: 3}
+  hurtSounds: []
 --- !u!114 &4425806093181838442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,19 +1083,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df36c0b4c7bab401695ceacfc9c17479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguesToMakeInactive:
-  - {fileID: 11400000, guid: c7af073d0576d922f831bd07d2353eda, type: 2}
-  - {fileID: 11400000, guid: 4e042a40b183af227a80812ab9b15f7d, type: 2}
-  - {fileID: 11400000, guid: 82cb0bfc92ed6c5e59fc58c9589fb1b3, type: 2}
-  - {fileID: 11400000, guid: afe1b99a5d6eb22a7877d646c96f2927, type: 2}
-  - {fileID: 11400000, guid: bc8077f2811ca424cad64dae8c76f247, type: 2}
-  - {fileID: 11400000, guid: 00e798ab54e1c1a459f54a93d59dccee, type: 2}
-  - {fileID: 11400000, guid: 2926d03472b319d4094040d95cdc45e5, type: 2}
-  - {fileID: 11400000, guid: 14937cd8b6012f44c81265045054eef7, type: 2}
-  - {fileID: 11400000, guid: f552d88f923f3bb42985c21015571e59, type: 2}
-  - {fileID: 11400000, guid: 761e12963d3631446813b5555da85506, type: 2}
-  dialoguesToMakeActive:
-  - {fileID: 11400000, guid: 2f9798969b361498aad7db6e88765ef6, type: 2}
+  doorBlock: {fileID: 0}
+  spawnsObjectOnDeath: 0
+  objectSpawnOnDeath: {fileID: 4893706945832847840, guid: 4e77005a19f4fd464bc9acbc89625d70, type: 3}
+  bossType: 1
 --- !u!1 &7534294030435197034
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: LogGivePower
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Wow<0.3>.........</> Sorry I've just missed this so much.<0.3>
       </>Oh right!<0.3> </>You must want something in return!<0.3> </>Here you go,
@@ -19,12 +22,25 @@ MonoBehaviour:
     responses:
     - responseText: Accept Gift
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls:
+            - m_Target: {fileID: 3293071126338033653, guid: 02a7a8107d4c8df0db13cf788820668c, type: 3}
+              m_TargetAssemblyTypeName: Boss, Assembly-CSharp
+              m_MethodName: BossHelped
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
             - m_Target: {fileID: 235401385596699048, guid: 02a7a8107d4c8df0db13cf788820668c, type: 3}
               m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
               m_MethodName: SpawnItemOnMe
