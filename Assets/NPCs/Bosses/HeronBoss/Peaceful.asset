@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Peaceful
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "What do you think traveller. Aren\u2019t I the most powerful and
       righteous ruler in the region?"
@@ -19,11 +22,13 @@ MonoBehaviour:
     - responseText: Your power is admirable. Undergrowth has surely been unruly for
         too long, I will agree to aid you in your ambitions.
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: Wonderful! Your orders are to infiltrate Undergrowth!
         responses:
         - responseText: Join The Heron
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -39,6 +44,7 @@ MonoBehaviour:
         frogs. Maybe you can stop worrying about Undergrowth and focus on what the
         frogs really want from you.
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: "Perhaps there is some truth in your words. I\u2019ll organise
           a meeting with the frogs to see what changes they want? But first can you
@@ -46,6 +52,7 @@ MonoBehaviour:
         responses:
         - responseText: Accept
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -53,15 +60,6 @@ MonoBehaviour:
               m_PersistentCalls:
                 m_Calls: []
           optionalNextDialogueTree: {fileID: 0}
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
-    - responseText: 
-      friendshipThreshold: 0
-      nextNode:
-        dialogueText: 
-        responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
