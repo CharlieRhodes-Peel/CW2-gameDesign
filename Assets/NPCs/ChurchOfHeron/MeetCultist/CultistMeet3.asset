@@ -22,7 +22,7 @@ MonoBehaviour:
     responses:
     - responseText: "How awful! i\u2019ll help you out"
       friendshipThreshold: 0
-      friendshipLevelGives: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: "Thank you kind traveler! Come find me when you\u2019re done"
         responses:
@@ -39,7 +39,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls:
-            - m_Target: {fileID: 8710254008617935671, guid: 578205c53c2000380bf3fdf19f2d9f36, type: 3}
+            - m_Target: {fileID: 5591592322911858514, guid: 7ad3179820d8eb1429d2d720d254ccc3, type: 3}
               m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
               m_MethodName: StartQuest
               m_Mode: 2
@@ -83,7 +83,19 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 5591592322911858514, guid: 7ad3179820d8eb1429d2d720d254ccc3, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: StartQuest
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: b740d087949841e469d5b1c710c77833, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:

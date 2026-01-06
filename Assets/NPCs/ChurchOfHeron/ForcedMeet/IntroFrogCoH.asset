@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: IntroFrogCoH
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "I haven\u2019t seen you around here before. What are you doing
       here?"
     responses:
     - responseText: I want to meet your king.
+      friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: 
         responses: []
@@ -25,6 +30,8 @@ MonoBehaviour:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: dc7b9c1207a173746a8d79d217198faf, type: 2}
     - responseText: Lead me to the king!
+      friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: 
         responses: []
@@ -33,6 +40,8 @@ MonoBehaviour:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: dc7b9c1207a173746a8d79d217198faf, type: 2}
     - responseText: Could you tell me about your king?
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []

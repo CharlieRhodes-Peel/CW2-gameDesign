@@ -12,21 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Text2ML
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
-    dialogueText: "The Daily Electric\r\n\r\nThis year Moon Lake has made many technological
-      advances. The scientists at Eel-Ectric Laboratory have been able to store some
-      of the electricity produced by the eels. This electricity will be used to power
-      various lighting fixtures around the pond\u2026"
+    dialogueText: 'The Daily Electric
+
+      
+
+      This year Moon Lake has made
+      many technological advances. The scientists at Eel-Ectric Laboratory have been
+      able to store some of the electricity produced by the eels.'
     responses:
-    - responseText: Stop Reading
+    - responseText: Next
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: b05f253e9b415584690f2e40cf79171f, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
