@@ -16,15 +16,15 @@ MonoBehaviour:
   bossesKilled: 03000000
   bossesHelped: 
   RootNode:
-    dialogueText: Oh you're back!! Did you kill the heron??? Oh my god! I thought
-      you'd never return please get me out of here!
+    dialogueText: Yeh<0.3>...</> I know I said I'd leave but I've honestly grown
+      to like the place!
     responses:
-    - responseText: Set Free
+    - responseText: Next
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:
-        dialogueText: Oh you're too kind! Here, the gaurds couldn't find this on
-          me<0.3>...</> Take it!
+        dialogueText: Well done on killing the heron though. Here, I don't need this
+          anymore. Take it as a token of my gratitude
         responses:
         - responseText: Accept Gift
           friendshipThreshold: 0

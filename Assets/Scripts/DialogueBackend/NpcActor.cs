@@ -34,7 +34,7 @@ public class NpcActor : MonoBehaviour, IInteractable
 
     public static event Action<string> OnPlayerInteractEvent; //Called when the player interacts with us to let other scripts know the name of the character we are talking to
 
-    private bool activeQuest = false;
+    private Quest activeQuest = null;
     private bool spokenTo = false;
     
     private void Start()
@@ -49,7 +49,10 @@ public class NpcActor : MonoBehaviour, IInteractable
         }
         
         //Check for any active quest
-        activeQuest = QuestManager.Instance.HasQuestWithNPC(Name);
+        if (QuestManager.Instance.HasQuestWithNPC(Name))
+        {
+            activeQuest = QuestManager.Instance.GetActiveQuestWithNPC(Name);
+        }
 
         //Turn off boss dialogues at the start
         foreach (Dialogue dialogue in BossDialogueTrees)
@@ -67,10 +70,10 @@ public class NpcActor : MonoBehaviour, IInteractable
     private void PickDialogueTree()
     {
         //If the player has an active quest with the NPC it takes precedent over any dialogue trees
-        if (activeQuest)
+        if (activeQuest != null)
         {
             //Do the quest Dialogue
-            DialogueManager.Instance.StartDialogue(Name, QuestManager.Instance.GetActiveDialogue(Name).RootNode);
+            DialogueManager.Instance.StartDialogue(Name, QuestManager.Instance.GetActiveDialogue(activeQuest).RootNode);
             return;
         }
         
@@ -205,13 +208,13 @@ public class NpcActor : MonoBehaviour, IInteractable
     
     public static void StartQuest(Quest quest)
     {
-        NpcTracker.GetClosestNpcActor().activeQuest = true;
+        NpcTracker.GetClosestNpcActor().activeQuest = quest;
         QuestManager.Instance.StartQuest(quest);
     }
     
     public static void FinishQuest(Quest quest)
     {
-        NpcTracker.GetClosestNpcActor().activeQuest = false;
+        NpcTracker.GetClosestNpcActor().activeQuest = null;
         QuestManager.Instance.FinishQuest(quest);
     }
 
@@ -233,6 +236,11 @@ public class NpcActor : MonoBehaviour, IInteractable
     public static void SpawnItemOnMe(GameObject item)
     {
         NpcTracker.GetClosestNpcActor().SpawnItem(item);
+    }
+
+    public static void RemoveDoorAllDoorBlocksInScene()
+    {
+        GameObject.FindGameObjectWithTag("DoorBlock").SetActive(false);
     }
 
     private void SpawnItem(GameObject item)

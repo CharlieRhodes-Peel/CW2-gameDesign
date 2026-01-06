@@ -10,21 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: CultistMeet3
+  m_Name: CultistAgain
   m_EditorClassIdentifier: 
   afterBossAction: 0
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: The Heron has ordered a sacrifice, saying it will increase his
-      holy power. I disagree though. I see you have a weapon, please help me stop
-      the sacrifice.
+    dialogueText: So will you help me stop the sacrifice?
     responses:
-    - responseText: "How awful! i\u2019ll help you out"
+    - responseText: Not yet
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:
-        dialogueText: "Thank you kind traveler! Come find me when you\u2019re done"
+        dialogueText: I'll be here incase you change your mind
         responses:
         - responseText: End Conversation
           friendshipThreshold: 0
@@ -35,6 +33,38 @@ MonoBehaviour:
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: Sure
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: Perfect! I'll be here waiting for your return
+        responses:
+        - responseText: End Conversation
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls:
+                - m_Target: {fileID: 8710254008617935671, guid: 578205c53c2000380bf3fdf19f2d9f36, type: 3}
+                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+                  m_MethodName: StartQuest
+                  m_Mode: 2
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 11400000, guid: b740d087949841e469d5b1c710c77833, type: 2}
+                    m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
           optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
@@ -51,39 +81,6 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
-      optionalNextDialogueTree: {fileID: 0}
-    - responseText: Is this a setup?
-      friendshipThreshold: 0
-      friendshipLevelGives: 0
-      nextNode:
-        dialogueText: "No no\u2026I just need help to stop the sacrifice, once it\u2019s
-          been stopped I can sneak you into the church."
-        responses:
-        - responseText: End Conversation
-          friendshipThreshold: 0
-          friendshipLevelGives: 0
-          nextNode:
-            dialogueText: 
-            responses: []
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls:
-                - m_Target: {fileID: 8710254008617935671, guid: 578205c53c2000380bf3fdf19f2d9f36, type: 3}
-                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-                  m_MethodName: MakeDialogueInactive
-                  m_Mode: 2
-                  m_Arguments:
-                    m_ObjectArgument: {fileID: 11400000, guid: b09c30675c01bd1418b1f89019447a73, type: 2}
-                    m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-                    m_IntArgument: 0
-                    m_FloatArgument: 0
-                    m_StringArgument: 
-                    m_BoolArgument: 0
-                  m_CallState: 2
-          optionalNextDialogueTree: {fileID: 0}
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:

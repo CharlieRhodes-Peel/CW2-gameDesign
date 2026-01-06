@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
-  m_Name: SacrificeQuest
+  m_Name: BackToZob
   m_EditorClassIdentifier: 
-  questId: H1
-  questName: Find The Sacrifice
+  questId: dkjlgdfkglj
+  questName: Meet Back Up With Zob
   questGiverName: Cultist Zob
-  questDescription: Zob said he want's me to put and end to some "sacrifice". I'm
-    not really sure what he wants me to do, better ask around.
-  questInProgressDialogue: {fileID: 11400000, guid: 414b5898dea111e439a63584cb79b9e1, type: 2}
+  questDescription: Now that I've stopped the sacrifice, I should go back and talk
+    to zob to see if he'll hold up his end of the bargin
+  questInProgressDialogue: {fileID: 11400000, guid: 4e16a799a84e2b546b1979cbae206785, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: 4e16a799a84e2b546b1979cbae206785, type: 2}
   questType: 3
   questShownInMenu: 1
@@ -25,5 +25,5 @@ MonoBehaviour:
   itemCount: 0
   enemyName: 
   requiredKills: 0
-  npcName: Trapped Frog
+  npcName: Cultist Zob
   locationName: 

@@ -95,7 +95,7 @@ public class QuestManager : MonoBehaviour
 
     private void TalkToNPCProgress(string npcName)
     {
-        List<Quest> quests = new List<Quest>(this.allQuests.Keys); //Checks all quests to see if you have spoken to a certain npc
+        List<Quest> quests = new List<Quest>(this.activeQuests.Keys); //Checks all quests to see if you have spoken to a certain npc
 
         foreach (Quest quest in quests)
         {
@@ -188,16 +188,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public Dialogue GetActiveDialogue(string name)
+    public Dialogue GetActiveDialogue(Quest quest)
     {
-        foreach (Quest quest in allQuests.Keys)
-        {
-            if (quest.questGiverName == name)
-            {
-                return currentQuestDialogue[quest];
-            }
-        }
-        return null;
+        return currentQuestDialogue[quest];
     }
 
     public bool HasQuestWithNPC(string npcName)
@@ -207,6 +200,15 @@ public class QuestManager : MonoBehaviour
             if (quest.questGiverName == npcName) { return true; }
         }
         return false;
+    }
+
+    public Quest GetActiveQuestWithNPC(string npcName)
+    {
+        foreach (Quest quest in activeQuests.Keys)
+        {
+            if(quest.questGiverName == npcName) { return quest; }
+        }
+        return null;
     }
 
     public int GetActiveQuestProgress(Quest quest)
