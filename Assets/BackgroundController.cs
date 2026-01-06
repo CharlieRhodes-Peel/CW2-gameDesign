@@ -3,18 +3,17 @@ using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
     private float startPos;
-    public GameObject cam;
+    private GameObject cam;
     public float parallaxEffect;
 
     void Start()
     {
         startPos = transform.position.x;
+        cam = GameObject.Find("Main Camera");
     }
 
     void FixedUpdate()
     {
-        float distance = cam.transform.position.x * parallaxEffect;
-        
-        transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
+        transform.position = new Vector3(cam.transform.position.x + parallaxEffect, cam.transform.position.y, transform.position.z);
     }
 }
