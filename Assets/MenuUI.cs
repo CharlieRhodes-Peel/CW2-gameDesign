@@ -38,6 +38,10 @@ public class MenuUI : MonoBehaviour
     
     [SerializeField] private PlayerInventory playerInventory;
     
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] openMenuSounds;
+    [SerializeField] private AudioClip[] closeMenuSounds;
+    [SerializeField] private AudioClip[] clickSounds;
     
     //Private dictionaries
     private Dictionary<ItemData, ItemUI> inventoryItems = new Dictionary<ItemData, ItemUI>(); //Bridges ItemData to ItemUI for inventory items
@@ -228,6 +232,8 @@ public class MenuUI : MonoBehaviour
 
         animator.SetTrigger("Open");
         SelectDefaultButton();
+        
+        SoundManager.Instance.PlayRandomSoundEffect(openMenuSounds, transform, 1);
     }
 
     private void ActivateMenuItems()
@@ -271,6 +277,7 @@ public class MenuUI : MonoBehaviour
         }
 
         StartCoroutine(DoCloseAnimation());
+        SoundManager.Instance.PlayRandomSoundEffect(closeMenuSounds, transform, 1);
     }
     
     public void SelectDefaultButton()
@@ -324,6 +331,11 @@ public class MenuUI : MonoBehaviour
                 RemoveItemFromShopUI(itemData);
             }
         }
+    }
+
+    public static void ClickSound()
+    {
+        SoundManager.Instance.PlayRandomSoundEffect(Instance.clickSounds, Instance.transform, 1);
     }
     
     private void OnDestroy()

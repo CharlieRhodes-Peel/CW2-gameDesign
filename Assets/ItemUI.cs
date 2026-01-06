@@ -13,6 +13,8 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [HideInInspector] public string description;
     [HideInInspector] public int value;
     [HideInInspector] public bool canBuy;
+    
+    [SerializeField] public AudioClip[] clickSound;
 
     public void RemoveUI()
     {
@@ -29,6 +31,11 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         quantity -= 1;
         quantityText.text = quantity > 1 ? quantity.ToString() : "";
+    }
+
+    public void ClickSound()
+    {
+        SoundManager.Instance.PlayRandomSoundEffect(clickSound, transform, 1);
     }
     
 

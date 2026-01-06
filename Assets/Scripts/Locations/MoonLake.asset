@@ -16,3 +16,4 @@ MonoBehaviour:
   Name: moon lake
   likes: 3
   dislikes: 1
+  locationMusic: {fileID: 8300000, guid: 6f7e69a0d15383a3586138e73f47362b, type: 3}

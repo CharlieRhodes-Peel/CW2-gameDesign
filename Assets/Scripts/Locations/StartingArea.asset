@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationType: 0
   Name: castle of the howl
+  likes: 0
+  dislikes: 0
+  locationMusic: {fileID: 8300000, guid: e63ac770202b3ce9eadcda9eb4a28d40, type: 3}

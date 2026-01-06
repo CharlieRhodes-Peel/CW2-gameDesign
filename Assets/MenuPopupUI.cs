@@ -8,6 +8,8 @@ public class MenuPopupUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI popupText;
     [SerializeField] private Animator animator;
     
+    [SerializeField] private AudioClip[] openPopupSounds;
+    [SerializeField] private AudioClip[] closePopupSounds;
     
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class MenuPopupUI : MonoBehaviour
     public void ShowPopup(ItemData item)
     {
         popupText.text = $"Item: {item.itemName} \nAcquired [TAB]";
-        animator.SetTrigger("Show");
+        DoVisualsAndSound();
     }
 
     public void ShowPopup(Quest quest, bool acquired)
@@ -39,6 +41,22 @@ public class MenuPopupUI : MonoBehaviour
         {
             popupText.text = $"Quest: {quest.questName} \nCompleted";
         }
+        DoVisualsAndSound();
+    }
+
+    private void DoVisualsAndSound()
+    {
         animator.SetTrigger("Show");
+        OpenSound();
+    }
+
+    public void OpenSound()
+    {
+        SoundManager.Instance.PlayRandomSoundEffect(openPopupSounds, transform, 1);
+    }
+
+    public void CloseSound()
+    {
+        SoundManager.Instance.PlayRandomSoundEffect(closePopupSounds, transform, 1);
     }
 }

@@ -16,4 +16,6 @@ public class Location : ScriptableObject
 
     public BossManager.Bosses likes;
     public BossManager.Bosses dislikes;
+    
+    public AudioClip locationMusic;
 }

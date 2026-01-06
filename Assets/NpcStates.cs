@@ -188,6 +188,7 @@ public class NpcStates : MonoBehaviour
                 OnAngryEnter(); break;
         }
         
+        
         NpcStateManager.Instance.UpdateState(npcName, currentState);
     }
 

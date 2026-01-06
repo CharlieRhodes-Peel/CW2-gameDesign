@@ -8,6 +8,9 @@ public class NpcStateManager : MonoBehaviour
     //Used to save npc states
     private Dictionary<string, NpcStates.State> npcStates = new Dictionary<string, NpcStates.State>();
     private HashSet<string> npcDeaths = new HashSet<string>();
+    
+    [SerializeField] private AudioClip[] happySounds;
+    [SerializeField] private AudioClip[] angrySounds;
 
     public NpcStates.State GetState(string name)
     {
@@ -18,6 +21,15 @@ public class NpcStateManager : MonoBehaviour
     public void UpdateState(string name,  NpcStates.State state)
     {
         npcStates[name] = state;
+
+        if (state == NpcStates.State.Happy)
+        {
+            SoundManager.Instance.PlayRandomSoundEffect(happySounds, transform, 1);
+        }
+        else if (state == NpcStates.State.Angry)
+        {
+            SoundManager.Instance.PlayRandomSoundEffect(angrySounds, transform, 1);
+        }
     }
 
     public bool KeepingTrackOf(string name)

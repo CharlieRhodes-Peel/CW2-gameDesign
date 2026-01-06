@@ -68,6 +68,26 @@ public class SoundManager : MonoBehaviour
             soundsPlaying.Remove(clip);
         }
     }
+
+    public void PlayMusic(AudioClip clip, float volume)
+    {
+        AudioSource audioSource = Instantiate(soundObject, transform.position, Quaternion.identity);
+        DontDestroyOnLoad(audioSource);
+        
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        
+        // Track this audio source
+        if (!soundsPlaying.ContainsKey(clip))
+        {
+            soundsPlaying[clip] = new List<AudioSource>();
+        }
+        soundsPlaying[clip].Add(audioSource);
+        
+        float clipLength = audioSource.clip.length;
+        StartCoroutine(PlayAgainAfterDelay(clip, volume, clipLength));
+    }
     
     private IEnumerator StopSourceAfterDelay(AudioSource source, float delay)
     {
@@ -87,6 +107,15 @@ public class SoundManager : MonoBehaviour
         }
         
         Destroy(source.gameObject);
+    }
+
+    private IEnumerator PlayAgainAfterDelay(AudioClip clip, float volume, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (soundsPlaying.ContainsKey(clip))
+        {
+            PlayMusic(clip, volume);
+        }
     }
 
     public bool IsPlayingSound(AudioClip clip)

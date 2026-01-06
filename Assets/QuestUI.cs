@@ -12,6 +12,8 @@ public class QuestUI : MonoBehaviour
     public int amountNeeded;
     public int currentProgress;
     
+    [SerializeField] private AudioClip[] clickSounds;
+    
     public void RemoveUI()
     {
         Destroy(gameObject);
@@ -20,5 +22,6 @@ public class QuestUI : MonoBehaviour
     public void QuestSelected()
     {
         QuestDescriptorUI.instance.Show(this);
+        SoundManager.Instance.PlayRandomSoundEffect(clickSounds, transform, 1);
     }
 }

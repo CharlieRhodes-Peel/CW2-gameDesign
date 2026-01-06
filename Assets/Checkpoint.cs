@@ -15,6 +15,9 @@ public class Checkpoint : MonoBehaviour, IInteractable
     [SerializeField] private GameObject checkpointActiviatedParticles;
     [SerializeField] private GameObject checkpointAnticipationParticles;
     
+    [Header("Sounds")]
+    [SerializeField] private AudioClip wishSound;
+    
     public static event Action<Checkpoint> CheckpointActivated;
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,6 +43,7 @@ public class Checkpoint : MonoBehaviour, IInteractable
         InteractManager.UnregisterInteractable(this);
         CheckpointActivated?.Invoke(this);
         StartCoroutine(Particles());
+        SoundManager.Instance.PlaySoundEffect(wishSound, transform, 1);
     }
 
     public Vector3 GetInteractPopupPosition()

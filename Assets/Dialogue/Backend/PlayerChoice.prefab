@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 6509729380588984699}
   - component: {fileID: 2118855986447965147}
   - component: {fileID: 4712761682836056926}
+  - component: {fileID: -3315119032054618309}
   m_Layer: 5
   m_Name: PlayerChoice
   m_TagString: Untagged
@@ -256,4 +257,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118855986447965147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3315119032054618309}
+        m_TargetAssemblyTypeName: PlayerChoice, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-3315119032054618309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584942066440819748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9790e9f2bb7cdf99f803f6a30da37ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectSounds:
+  - {fileID: 8300000, guid: 9a411f319677f15b5a7ecced5fc0f96b, type: 3}
+  - {fileID: 8300000, guid: 3d2105d2f2c8ab362beb2fadd39f4449, type: 3}

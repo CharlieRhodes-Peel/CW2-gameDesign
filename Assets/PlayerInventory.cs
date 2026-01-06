@@ -12,6 +12,7 @@ public class PlayerInventory : MonoBehaviour
     public int currency = 0;
     
     [SerializeField] private TextMeshProUGUI currencyUI;
+    [SerializeField] private AudioClip itemPickedSound;
     
     private PlayerMovement playerMovement;
 
@@ -29,6 +30,9 @@ public class PlayerInventory : MonoBehaviour
     {
         items.Add(item);
         itemsPickedUp.Add(item);
+        
+        //Sound
+        SoundManager.Instance.PlaySoundEffect(itemPickedSound, transform, 1);
         
         OnItemPickedUp?.Invoke(item); //This is to tell the Inventory UI
 

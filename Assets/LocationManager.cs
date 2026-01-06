@@ -33,10 +33,18 @@ public class LocationManager : MonoBehaviour
     private void Start()
     {
         currentLocation = startingLocation;
+        SoundManager.Instance.PlayMusic(currentLocation.locationMusic, 0.2f);
     }
 
     public static void LocationVisted(Location location)
     {
+        //If we have changed location
+        if (currentLocation != location)
+        {
+            SoundManager.Instance.StopSoundEffect(currentLocation.locationMusic);
+            SoundManager.Instance.PlayMusic(location.locationMusic, 0.2f);
+        }
+        
         currentLocation = location;
         
         OnLocationChanged?.Invoke(location);
@@ -46,7 +54,7 @@ public class LocationManager : MonoBehaviour
             Debug.Log("We have already visited: " + visitedLocation.name);
         }
 
-        if (visitedLocations.Contains(location)) {return;} //If we have already visited the trigger then don't do anything!
+        if (visitedLocations.Contains(location)) {return;} //If we have already visited the trigger then go no further!
         
         visitedLocations.Add(location);
         

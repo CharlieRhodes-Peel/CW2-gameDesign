@@ -31,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private SpriteRenderer renderer;
     
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] hurtSounds;
+
+    [SerializeField] private AudioClip[] enemyHitSounds;
+    
     private bool isInvulnerable = false;
     private bool isHealing = false;
     private bool invulnerableFlashing = false;
@@ -100,6 +105,10 @@ public class PlayerHealth : MonoBehaviour
         //Visuals
         StartCoroutine(DamageFlash());
         StartCoroutine(TimeStop());
+        
+        //Sounds
+        SoundManager.Instance.PlayRandomSoundEffect(hurtSounds, transform, 1);
+        SoundManager.Instance.PlayRandomSoundEffect(enemyHitSounds, transform, 1);
         
         Instantiate(blobParticles, transform.position, Quaternion.identity);
         Instantiate(smokeParticles, transform.position, Quaternion.identity);

@@ -257,6 +257,7 @@ MonoBehaviour:
   anticipationTime: 1.5
   checkpointActiviatedParticles: {fileID: 3932032286212855306, guid: 3960be60feafabdf7b20e994576ff9a6, type: 3}
   checkpointAnticipationParticles: {fileID: 5861097526927553238, guid: 093e39e9cd7ed8d88a9dcdad48a16647, type: 3}
+  wishSound: {fileID: 8300000, guid: 631ebd24e97c63058a4776beee5a931c, type: 3}
 --- !u!58 &5216518814670782420
 CircleCollider2D:
   m_ObjectHideFlags: 0
