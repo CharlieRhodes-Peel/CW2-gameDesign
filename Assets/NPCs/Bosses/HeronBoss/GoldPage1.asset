@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: GoldPage1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "Golden Page 1 text titled The Rise of The Great Heron: \u201C...The
       Heron grabbed his scepter and his crown and his robe and his holy book and
@@ -19,6 +22,7 @@ MonoBehaviour:
     responses:
     - responseText: Stop Reading
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
