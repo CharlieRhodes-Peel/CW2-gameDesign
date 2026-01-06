@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     //Type write effect
     [SerializeField] private float timeBetweenLettersTyped = 0.01f;
+    [SerializeField] private AudioClip[] letterSounds;
     private bool isTyping = false;
 
     private const string HTML_ALPHA = "<color=#00000000>";
@@ -186,6 +187,21 @@ public class DialogueManager : MonoBehaviour
         
             // Check the new char for parsing purposes
             char newChar = finishedText[rawIndex];
+
+            if (newChar == '.' || newChar == '!' || newChar == '?')
+            {
+                timeToWait = 0.3f;
+            }
+
+            else if (newChar == ',')
+            {
+                timeToWait = 0.15f;
+            }
+
+            else
+            {
+                timeToWait = timeBetweenLettersTyped;
+            }
         
             // End speed parsing with default speed
             if (parsingSpeed && newChar == '/')
@@ -226,6 +242,7 @@ public class DialogueManager : MonoBehaviour
             DialogBodyText.text = originalText;
             string displayedText = DialogBodyText.text.Insert(charIndex + 1, HTML_ALPHA);
             DialogBodyText.text = displayedText;
+            SoundManager.Instance.PlayRandomSoundEffect(letterSounds, transform, 1f);
         
             yield return new WaitForSeconds(timeToWait);
         }

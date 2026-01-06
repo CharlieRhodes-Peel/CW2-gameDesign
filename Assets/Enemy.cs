@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
     private NpcStates npcStates;
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private GameObject moneySpawner;
+    [SerializeField] private AudioClip[] hurtSounds;
     
     //Events
     public static event Action<string> OnEnemyDeathEvent; //Called to let other scripts know the name of the enemy that just died
@@ -88,6 +89,12 @@ public class Enemy : MonoBehaviour
         //Visual Impact
         StartCoroutine(DamageFlash());
         StartCoroutine(TimeStop());
+        
+        //Audio
+        if (hurtSounds.Length > 0)
+        {
+            SoundManager.Instance.PlayRandomSoundEffect(hurtSounds, transform, 1);
+        }
         
         //Death Logic
         CheckHealth();

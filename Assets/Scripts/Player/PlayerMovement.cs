@@ -50,6 +50,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float landParticleSizeMultiplier;
     [SerializeField] private GameObject dashParticles;
     
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] walkSounds;
+    [SerializeField] private AudioClip[] jumpSounds;
+    [SerializeField] private AudioClip slideSound;
+    [SerializeField] private AudioClip[] dashSounds;
+    [SerializeField] private AudioClip[] landSounds;
+    
     //Privates
     private Vector2 moveDirection;
     private Rigidbody2D rb;
@@ -58,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     private bool falling = false;
     
     //Movement PowerUps Flags
+    [Header("Toggles")]
     public bool doubleJumpUnlocked = false;
     private bool doubleJumpPerformed = false;
     
@@ -73,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
     private bool hitWallYet = false;
 
     private float fallVelocityReached;
+
+    private bool isPlayingWalkSounds = false;
 
     public enum AbilityUnlocks
     {
@@ -124,6 +134,14 @@ public class PlayerMovement : MonoBehaviour
         if (movementDisabled) { return; }
         //Only moves the player along the horizontal axis
         rb.linearVelocityX = Mathf.Round(moveDirection.x) * moveSpeed;
+
+        //Sounds
+        if (isWalking() && !isPlayingWalkSounds)
+        {
+            StartCoroutine(PlayWalkSounds());
+            isPlayingWalkSounds = true;
+        }
+        
         bool isGrounded = IsGrounded();   
         
         //Animator
@@ -142,6 +160,10 @@ public class PlayerMovement : MonoBehaviour
             }
             
             animator.SetBool("IsWallClimbing", true);
+            if (!SoundManager.Instance.IsPlayingSound(slideSound))
+            {
+                SoundManager.Instance.PlaySoundEffect(slideSound, transform, 0.5f);
+            }
         }
         else
         {
@@ -149,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = baseGravity;
             hitWallYet = false;
             animator.SetBool("IsWallClimbing", false);
+            SoundManager.Instance.StopSoundEffect(slideSound);
         }
         
 
@@ -175,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isFalling", false);
             DoLandParticles(fallVelocityReached);
+            SoundManager.Instance.PlayRandomSoundEffect(landSounds, transform, 2f);
             falling = false;
         }
     }
@@ -198,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
         dashPerformed = true;
         
         animator.SetBool("isDashing", true);
+        SoundManager.Instance.PlayRandomSoundEffect(dashSounds, transform, 0.5f);
 
         DoDashParticles();
 
@@ -240,6 +265,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("Jump");
         
         Instantiate(jumpParticles, groundPartcilesPos.position, Quaternion.identity);
+        SoundManager.Instance.PlayRandomSoundEffect(jumpSounds, transform, 0.5f);
     }
     
     private void PerformWallJump()
@@ -254,6 +280,8 @@ public class PlayerMovement : MonoBehaviour
         
         rb.AddForceY(wallJumpForceY, ForceMode2D.Impulse);
         rb.AddForceX(-transform.right.x * wallJumpForceX, ForceMode2D.Impulse);
+        
+        SoundManager.Instance.PlayRandomSoundEffect(jumpSounds, transform, 0.5f);
     }
 
     //Called when jump button released
@@ -357,7 +385,26 @@ public class PlayerMovement : MonoBehaviour
         main.startSpeed = Mathf.Pow(Mathf.Abs(fallVelocity) ,landParticleSpeedExponent);
         main.startSize = (Mathf.Abs(fallVelocity) / maxVelocity) * landParticleSizeMultiplier;
     }
-    
-    //All wall stuff
+
+    private IEnumerator PlayWalkSounds()
+    {
+        SoundManager.Instance.PlayRandomSoundEffect(walkSounds, transform, 1);
+        yield return new WaitForSeconds(0.2f);
+
+        if (isWalking())
+        {
+            StartCoroutine(PlayWalkSounds());
+        }
+        else
+        {
+            isPlayingWalkSounds = false;
+        }
+    }
+
+    private bool isWalking()
+    {
+        if (IsGrounded() && Math.Abs(rb.linearVelocityX) > 0.5f) {return true;}
+        return false;
+    }
     
 }

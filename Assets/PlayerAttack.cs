@@ -27,6 +27,10 @@ public class PlayerAttack : MonoBehaviour
     
     [Header("Visuals")]
     [SerializeField] private Animator animator;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] swingSounds;
+    [SerializeField] private AudioClip[] hitSounds;
     
     private Vector2 movementInput;
 
@@ -75,6 +79,7 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         isWindup = true;
         StartCoroutine(SetAnimatorCorrectAttack());
+        SoundManager.Instance.PlayRandomSoundEffect(swingSounds, transform, 1);
         
         yield return new WaitForSeconds(attackWindup);
         
@@ -92,6 +97,7 @@ public class PlayerAttack : MonoBehaviour
         if (other.CompareTag("Enemy") || other.CompareTag("Neutral"))
         {
             other.GetComponent<Enemy>().TakeDamage(damagePerHit, transform.position);
+            SoundManager.Instance.PlayRandomSoundEffect(hitSounds, transform, 1);
 
             if (currentHitbox == downAttackHitBox) //If we are attacking down when we hit the enemy we want to bounce off them
             {
