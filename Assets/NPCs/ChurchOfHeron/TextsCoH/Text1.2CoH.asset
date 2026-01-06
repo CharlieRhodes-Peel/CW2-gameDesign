@@ -10,34 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: CultistMeet2
+  m_Name: Text1.2CoH
   m_EditorClassIdentifier: 
   afterBossAction: 0
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: "You\u2019ll need an appointment to get in. What if we make a deal?"
+    dialogueText: All flies are to be stored in the church nest.
     responses:
-    - responseText: "I\u2019m not in the mood to make a deal!"
+    - responseText: Stop Reading
       friendshipThreshold: 0
-      friendshipLevelGives: -2
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 11400000, guid: ca97848bd9d5e4b4794252f137737320, type: 2}
-    - responseText: What kind of deal?
-      friendshipThreshold: 0
-      friendshipLevelGives: 3
-      nextNode:
-        dialogueText: 
-        responses: []
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
-      optionalNextDialogueTree: {fileID: 11400000, guid: ca97848bd9d5e4b4794252f137737320, type: 2}
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

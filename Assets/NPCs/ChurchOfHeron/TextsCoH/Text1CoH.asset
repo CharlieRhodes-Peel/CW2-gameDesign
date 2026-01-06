@@ -12,23 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Text1CoH
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
-    dialogueText: "The Church of The Heron Tithe & Donations Report\r\n\r\nThe church
-      of The Heron has collected tithe from all frogs. The resulting amount is 1,000,000
-      coins.\r\n\r\nTithes payments are to go towards upgrading The Heron\u2019s
-      personal pond.\r\n\r\nDonations have been collected from all willing frogs
-      forcefully. The total amount of flies collected exceeds last week's amount.
-      All flies are to be stored in the church nest.\r\n"
+    dialogueText: 'The Church of The Heron Tithe & Donations Report
+
+      
+
+      The
+      church of The Heron has collected tithe from all frogs. The resulting amount
+      is 1,000,000 coins.'
     responses:
-    - responseText: Stop Reading
+    - responseText: Next
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: bddd9da9aba57384cb8bc144763ac733, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
