@@ -17,7 +17,17 @@ MonoBehaviour:
   bossesHelped: 01000000
   RootNode:
     dialogueText: The flies will be extra yummy now that the king is so happy!
-    responses: []
+    responses:
+    - responseText: End Conversation
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

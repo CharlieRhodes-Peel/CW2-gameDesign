@@ -50,7 +50,7 @@ public class MenuUI : MonoBehaviour
     private Dictionary<QuestUI, Quest> UIToquests = new  Dictionary<QuestUI, Quest>();
     
     //Logic flag
-    private GameObject latestUIElement; //To keep track of the latest element to be added
+    private List<GameObject> UIElements; //To keep track of the latest element to be added
     private bool isMenuOpen = false;
     public static bool shopShowing = false;
     public static bool questsShowing = true;
@@ -86,8 +86,7 @@ public class MenuUI : MonoBehaviour
         {
             ItemUI existingUI = inventoryItems[itemData];
             existingUI.IncrementQuantity();
-
-            latestUIElement = existingUI.gameObject;
+            
             MenuPopupUI.Instance.ShowPopup(itemData);
             return;
         }
@@ -106,13 +105,15 @@ public class MenuUI : MonoBehaviour
         
         inventoryItems.Add(itemData, itemUI);
         
-        latestUIElement = newItemHolder;
+        UIElements.Add(newItemHolder);
         
         MenuPopupUI.Instance.ShowPopup(itemData);
     }
 
     public void AddItemToShopUI(ItemData itemData)
     {
+        if (shopItems.ContainsKey(itemData)) {return;}
+        
         //Create the item holder
         GameObject newItemHolder = Instantiate(itemHolderUIPrefab, shopGrid.transform);
         
@@ -127,7 +128,7 @@ public class MenuUI : MonoBehaviour
         
         shopItems.Add(itemData, itemUI);
         
-        latestUIElement = newItemHolder;
+        UIElements.Add(newItemHolder);
     }
         
     //Called anytime the player removes an item from their inventory
@@ -144,6 +145,8 @@ public class MenuUI : MonoBehaviour
             return;
         }
         
+        EventSystem.current.SetSelectedGameObject(inventoryItems[itemData].gameObject);
+        
         inventoryItems[itemData].RemoveUI();
         inventoryItems.Remove(itemData);
     }
@@ -151,6 +154,8 @@ public class MenuUI : MonoBehaviour
     public void RemoveItemFromShopUI(ItemData itemData)
     {
         if (!shopItems.ContainsKey(itemData)) { return; }
+        
+        EventSystem.current.SetSelectedGameObject(shopItems[itemData].gameObject);
         
         shopItems[itemData].RemoveUI();
         shopItems.Remove(itemData);
@@ -167,7 +172,7 @@ public class MenuUI : MonoBehaviour
         questsToUI.Add(quest, questUI);
         UIToquests.Add(questUI, quest);
         
-        latestUIElement = newQuestHolder;
+        UIElements.Add(newQuestHolder);
         
         MenuPopupUI.Instance.ShowPopup(quest, true);
     }
@@ -272,7 +277,7 @@ public class MenuUI : MonoBehaviour
         {
             itemDescptionUI.SetActive(false);
             questDescriptionUI.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(latestUIElement);
+            EventSystem.current.SetSelectedGameObject(UIElements[^1]);
             return;
         }
 
@@ -282,9 +287,8 @@ public class MenuUI : MonoBehaviour
     
     public void SelectDefaultButton()
     {
-        GameObject buttonToSelect = latestUIElement;
-        if (latestUIElement == null) { return; }
-        EventSystem.current.SetSelectedGameObject(latestUIElement);
+        GameObject toSelect = UIElements[^1];
+        EventSystem.current.SetSelectedGameObject(toSelect);
     }
 
     private IEnumerator DoCloseAnimation()
