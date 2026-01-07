@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MoonLake/MoonLakeEntrance.unity
     guid: 93c94420f082fda48817c513feff6298
+  - enabled: 1
+    path: Assets/Scenes/ChurchOfHeron/ChurchOfHeronBossRoom.unity
+    guid: aa1be2f1c65bc02498a246b96e633d4f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
