@@ -20,7 +20,7 @@ MonoBehaviour:
     responses:
     - responseText: "I\u2019m a traveler. I want to know why you hate Moon Lake?"
       friendshipThreshold: 0
-      friendshipLevelGives: 0
+      friendshipLevelGives: 1
       nextNode:
         dialogueText: "I\u2019m the king, you can\u2019t just demand an answer that
           easily!"
