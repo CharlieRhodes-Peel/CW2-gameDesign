@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: VotingComplete
+  m_Name: AfterHelp
   m_EditorClassIdentifier: 
-  afterBossAction: 0
+  afterBossAction: 1
   bossesKilled: 
-  bossesHelped: 
+  bossesHelped: 02000000
   RootNode:
-    dialogueText: Ah! You got the code.
+    dialogueText: Thank you for helping me out. I will try to organise a vote soon.
+      Then my people can decide what rules they want.
     responses:
-    - responseText: Accept Reward
+    - responseText: End Conversation
       friendshipThreshold: 0
-      friendshipLevelGives: 10
+      friendshipLevelGives: 15
       nextNode:
         dialogueText: 
         responses: []
