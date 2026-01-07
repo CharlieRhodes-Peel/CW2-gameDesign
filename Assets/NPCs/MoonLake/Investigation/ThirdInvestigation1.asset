@@ -12,15 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: ThirdInvestigation1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Hello, are you here to investigate the electricity storage also?
     responses:
     - responseText: Yes. I am a journalist investigating the power outage. Do you
         know if anyone was working the night shift 2 days ago?
       friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: Sorry but no one was working the night shift two days ago.
-        responses: []
+        responses:
+        - responseText: Next
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: fb0f5ee60cccc9f4b8d4a2bdd10460a8, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
@@ -28,9 +42,20 @@ MonoBehaviour:
     - responseText: Blah blah just tell me about who was working at night over the
         power outage.
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: No one.
-        responses: []
+        responses:
+        - responseText: Next
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: a4cd4887f0d6fd74e91d654345da8c33, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
@@ -38,9 +63,20 @@ MonoBehaviour:
     - responseText: Who was working at night the other day, was it you, are you responsible
         for the power outage?
       friendshipThreshold: 0
+      friendshipLevelGives: 1
       nextNode:
         dialogueText: Of course not. No one was working that night.
-        responses: []
+        responses:
+        - responseText: Next
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: fb0f5ee60cccc9f4b8d4a2bdd10460a8, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

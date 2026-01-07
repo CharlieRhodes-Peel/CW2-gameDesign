@@ -12,28 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: RoyalGuard1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Hello traveller. Are you here to tour the Moon Lake palace gardens?
     responses:
     - responseText: Can I please meet with the eel princess.
       friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: eab6d1f84221c1f4aa3f94d9beff8ec0, type: 2}
     - responseText: "I don\u2019t care about your gardens. Let me meet the princess
         now!"
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: eab6d1f84221c1f4aa3f94d9beff8ec0, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

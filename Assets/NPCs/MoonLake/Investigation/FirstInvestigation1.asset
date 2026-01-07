@@ -12,36 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: FirstInvestigation1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "Hey, you here about the power outage. It\u2019s got everyone worried.
       We need electricity for our work."
     responses:
     - responseText: What happened?
       friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: A few days ago there was a huge power outage, everything stopped
           working and the princess ordered us to shelter at home.
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
+          optionalNextDialogueTree: {fileID: 11400000, guid: 8185bb7b6aaf9ae4bb83808858cdb961, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Was it you?
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: What! Of course not.
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -52,15 +59,17 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 53cab08aa3507be47b9ea2c594a0ddfe, type: 2}
     - responseText: Do you know who did this?
       friendshipThreshold: 0
+      friendshipLevelGives: 1
       nextNode:
         dialogueText: Well I heard a suspicious frog was seen around here before
           the power outage.
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -71,7 +80,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 8185bb7b6aaf9ae4bb83808858cdb961, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: MeetHeron
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Who are you? How dare you enter my sacred church!
     responses:
     - responseText: "I\u2019m a traveler. I want to know why you hate Undergrowth?"
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: "Insolent traveler, you can\u2019t make demands of a king without
           proving your worth."
         responses:
         - responseText: Fight The Heron
           friendshipThreshold: 0
+          friendshipLevelGives: -3
           nextNode:
             dialogueText: 
             responses: []

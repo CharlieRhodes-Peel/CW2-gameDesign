@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: MeetPrincess
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: I hear you want an interview with me?
     responses:
     - responseText: "I know you\u2019re the one who caused the power outage. Why
         would you do it though?"
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: How dare you accuse me of such a crime!
         responses:
         - responseText: Fight
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: PrincessHalfway
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "Stop! I\u2019ll tell you everything."
     responses:
     - responseText: "You have committed a crime that hurt your people! I don\u2019t
         care about criminals! Continue Fight"
-      friendshipThreshold: 0
+      friendshipThreshold: -10
+      friendshipLevelGives: -15
       nextNode:
         dialogueText: 
         responses: []
@@ -26,7 +30,8 @@ MonoBehaviour:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     - responseText: I want to know why you hate The Church of The Heron.
-      friendshipThreshold: 0
+      friendshipThreshold: 10
+      friendshipLevelGives: 15
       nextNode:
         dialogueText: "There is no safety. Frogs can be burnt by fire and The Heron
           doesn\u2019t improve safety measures and implement more rules."
@@ -37,6 +42,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 11400000, guid: 48996f2784c81d34b82ff1b07e7fda78, type: 2}
     - responseText: I want to know more about you?
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: I am truly a benevolent ruler. I want to keep my subjects safe
           from danger. I have many safety rules and regulations to keep everyone

@@ -12,27 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: SecondInvestigation1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "Wha-What do you want for me man, I didn\u2019t do nothing!"
     responses:
     - responseText: "Don\u2019t worry i\u2019m not the police, i\u2019m just looking
         for information"
       friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: Phew. Like you had me worried there for a minute dude. Alls
           I know is that I saw like someone exiting the electricity storage wearing
           an official uniform.
-        responses: []
+        responses:
+        - responseText: Next
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: 557b5353f97542e43bd0de6be7f1868c, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Tell me everything you know!
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: "Ok ok, I saw someone in like a uniform. Go ask someone else
           about it! Like I don\u2019t know nothin'."
-        responses: []
+        responses:
+        - responseText: Next
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: 5317a085e23043348a1a563779e734c9, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
@@ -40,10 +65,21 @@ MonoBehaviour:
     - responseText: Woah you seem really suspicious, you should tell me what you
         know and clear your name
       friendshipThreshold: 0
+      friendshipLevelGives: 1
       nextNode:
         dialogueText: "Oh uh it wasn\u2019t me, I was just like on a late night walk
           dude. But like I saw someone in a uniform by the electricity storage."
-        responses: []
+        responses:
+        - responseText: Next
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 11400000, guid: 557b5353f97542e43bd0de6be7f1868c, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

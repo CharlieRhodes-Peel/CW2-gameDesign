@@ -12,10 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: SecondInvestigation2
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "It\u2019s some kinda inside job man! Y-you should go like ask
       the electricity storage manager"
-    responses: []
+    responses:
+    - responseText: End Conversation
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
