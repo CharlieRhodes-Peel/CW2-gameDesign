@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: RoyalGuard3
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: There are rumours about electricity being stolen. We know some
       of the details but not all of it. Prepare for us to ask you questions about
       your work.
     responses:
     - responseText: "No problem, I\u2019m sure I can figure it out"
-      friendshipThreshold: 0
+      friendshipThreshold: 1
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []
@@ -29,6 +33,7 @@ MonoBehaviour:
     - responseText: "Sounds like a stupid story but I guess I\u2019ll look into it
         for you."
       friendshipThreshold: 0
+      friendshipLevelGives: -5
       nextNode:
         dialogueText: 
         responses: []

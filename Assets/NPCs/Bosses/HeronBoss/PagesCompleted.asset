@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: PagesCompleted
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Have you found all my pages?
     responses:
     - responseText: Yes, I found all three!
       friendshipThreshold: 0
+      friendshipLevelGives: 10
       nextNode:
         dialogueText: "Ah! You\u2019ve indeed recovered my missing pages. These holy
           texts are of great importance and will aid me in my future decisions. For
@@ -24,6 +28,7 @@ MonoBehaviour:
         responses:
         - responseText: Take money
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

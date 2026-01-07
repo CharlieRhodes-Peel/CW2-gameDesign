@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: LogMeet
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Hey!! How did you get in here?
     responses:
     - responseText: Your Gaurds Let me through
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: What do I even pay them for<0.3>...</> Well, what are you here
           for?
         responses:
         - responseText: To KiLL you!
           friendshipThreshold: -10
+          friendshipLevelGives: -15
           nextNode:
             dialogueText: 
             responses: []
@@ -32,6 +37,7 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 11400000, guid: b57b64099316ebe4da3d84d45471b3bc, type: 2}
         - responseText: To HELP you
           friendshipThreshold: 10
+          friendshipLevelGives: 15
           nextNode:
             dialogueText: 
             responses: []
@@ -41,6 +47,7 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 11400000, guid: ff9da7350b4e172d0a39eb564299c896, type: 2}
         - responseText: Everyone says you're lazy
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

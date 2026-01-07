@@ -20,14 +20,14 @@ MonoBehaviour:
     responses:
     - responseText: Yeah, I stopped the sacrifice. Will you help me sneak in now?
       friendshipThreshold: 0
-      friendshipLevelGives: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: Thank you so much traveller! You'll find that the door on to
           the right is now open
         responses:
         - responseText: End Conversation
           friendshipThreshold: 0
-          friendshipLevelGives: 0
+          friendshipLevelGives: 5
           nextNode:
             dialogueText: 
             responses: []
@@ -65,7 +65,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 0}
     - responseText: "Shut up, I don\u2019t need you anymore"
       friendshipThreshold: 0
-      friendshipLevelGives: 0
+      friendshipLevelGives: -10
       nextNode:
         dialogueText: 
         responses: []

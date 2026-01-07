@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: HalfwayHeron
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Hmm it seems you are a mighty warrior. You may speak.
     responses:
     - responseText: You are a cruel king, I will stop you and your cult from hurting
         more frogs! Continue Fight
-      friendshipThreshold: 0
+      friendshipThreshold: -10
+      friendshipLevelGives: -15
       nextNode:
         dialogueText: 
         responses: []
@@ -26,7 +30,8 @@ MonoBehaviour:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Can you tell me why you hate Undergrowth?
-      friendshipThreshold: 0
+      friendshipThreshold: 10
+      friendshipLevelGives: 15
       nextNode:
         dialogueText: They are a lazy bunch of frogs. No discipline at all! It is
           only right and holy if I conquer their lands. A truly powerful leader is
@@ -34,6 +39,7 @@ MonoBehaviour:
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
@@ -47,6 +53,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 11400000, guid: 1ef6ba67c57238946bfaab6fd4e7793b, type: 2}
     - responseText: I want to know more about you?
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: I am The Heron. The most powerful ruler in the region. The
           frogs wished for a powerful leader to keep affairs in order. I fulfill
@@ -56,6 +63,7 @@ MonoBehaviour:
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []

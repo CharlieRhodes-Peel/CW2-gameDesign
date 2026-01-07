@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: BroochCompleted
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Have you found it yet?
     responses:
     - responseText: Yes
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: Oh my god thank you so much!! I order you as king of this place
           to hand it over to me!<0.3> </>hahahahahaha<0.3> </>I'm only playing
         responses:
         - responseText: Give Brooch
-          friendshipThreshold: 0
+          friendshipThreshold: 10
+          friendshipLevelGives: 5
           nextNode:
             dialogueText: 
             responses: []
@@ -44,11 +49,13 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 11400000, guid: a1d08c1f954e5b7dbb25e7300520f8a0, type: 2}
         - responseText: Keep Brooch
           friendshipThreshold: -10
+          friendshipLevelGives: -5
           nextNode:
             dialogueText: I will not have it!<0.3> </>Fight me!!
             responses:
             - responseText: Fight
               friendshipThreshold: 0
+              friendshipLevelGives: 0
               nextNode:
                 dialogueText: 
                 responses: []

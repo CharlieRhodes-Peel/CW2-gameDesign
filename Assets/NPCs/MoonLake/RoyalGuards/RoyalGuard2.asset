@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: RoyalGuard2
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Only individuals with an official reason can meet the princess?
     responses:
     - responseText: Ugh just let me in! I need to interview the princess.
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: There are rumours about electricity being stolen. We know some
           of the details but not all of it. Prepare for us to ask you questions about
@@ -24,20 +28,22 @@ MonoBehaviour:
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
+          optionalNextDialogueTree: {fileID: 11400000, guid: df5431b13e05c774aa7df790e11ff525, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: "Oh uh I\u2019m here as an investigative journalist and want
-        to interview the princess."
+    - responseText: "\u201COh uh I\u2019m here as an investigative journalist and
+        want to interview the princess.\u201D"
       friendshipThreshold: 0
+      friendshipLevelGives: 4
       nextNode:
         dialogueText: There are rumours about electricity being stolen. We know some
           of the details but not all of it. Prepare for us to ask you questions about
@@ -45,13 +51,14 @@ MonoBehaviour:
         responses:
         - responseText: Next
           friendshipThreshold: 0
+          friendshipLevelGives: 0
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
+          optionalNextDialogueTree: {fileID: 11400000, guid: df5431b13e05c774aa7df790e11ff525, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: FocedMeetML
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Hello traveler, welcome to Moon Lake! What have you travelled here
       for?
     responses:
     - responseText: I wanna meet your ruler now.
       friendshipThreshold: 0
+      friendshipLevelGives: 3
       nextNode:
         dialogueText: 
         responses: []
@@ -27,6 +31,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Take me to your ruler!
       friendshipThreshold: 0
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: 
         responses: []
@@ -36,6 +41,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Could you please tell me how to meet your ruler?
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []

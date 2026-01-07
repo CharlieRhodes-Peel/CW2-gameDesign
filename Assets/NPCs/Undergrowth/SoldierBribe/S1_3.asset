@@ -76,7 +76,7 @@ MonoBehaviour:
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Is this a bribe?
-      friendshipThreshold: -5
+      friendshipThreshold: -1
       friendshipLevelGives: -2
       nextNode:
         dialogueText: "Bonk: No no<0.3>\u2026</> we just need to know you are trustworthy,
