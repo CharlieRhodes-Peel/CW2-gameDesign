@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -55,6 +56,8 @@ public class SceneSwitchManager : MonoBehaviour
     {
         playerToDoor = true;
         playerToCheckpoint = false;
+        player.GetComponent<PlayerAttack>().attackDisabled = true;
+        player.GetComponent<PlayerMovement>().movementDisabled = true;
         StartCoroutine(SceneExit(sceneToLoad, door));
     }
     
@@ -124,6 +127,7 @@ public class SceneSwitchManager : MonoBehaviour
         camBoundaryComponent.Damping = 1;
         
         onSceneLoaded?.Invoke();
+        player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
         player.GetComponent<PlayerMovement>().movementDisabled = false;
         player.GetComponent<PlayerAttack>().resetAttackStuff();
     }

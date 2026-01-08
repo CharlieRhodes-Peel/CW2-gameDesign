@@ -25,12 +25,22 @@ MonoBehaviour:
         dialogueText: Thank you so much traveller! You'll find that the door on to
           the right is now open
         responses:
-        - responseText: End Conversation
+        - responseText: It was already open
           friendshipThreshold: 0
           friendshipLevelGives: 5
           nextNode:
-            dialogueText: 
-            responses: []
+            dialogueText: Yeah lol
+            responses:
+            - responseText: End Conversation
+              friendshipThreshold: 0
+              friendshipLevelGives: 0
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
