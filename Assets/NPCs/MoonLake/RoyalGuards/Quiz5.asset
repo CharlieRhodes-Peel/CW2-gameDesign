@@ -52,6 +52,18 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
+            - m_Target: {fileID: 6446865447228488188, guid: 928209ccf049e53e5a8cce07b2a0fba6, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: FinishQuest
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: 5fda42f219cf00146b5fc41ad9d8f14e, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
