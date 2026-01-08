@@ -20,7 +20,7 @@ MonoBehaviour:
   questCompleteDialogue: {fileID: 11400000, guid: b29b6225f2824de4db68ff640f14fee4, type: 2}
   questType: 0
   questShownInMenu: 1
-  itemData: {fileID: 0}
+  itemData: {fileID: 11400000, guid: d53b58933a6e8ded587a1b539bd796b4, type: 2}
   itemCount: 3
   enemyName: 
   requiredKills: 0

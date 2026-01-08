@@ -20,6 +20,8 @@ public class NpcActor : MonoBehaviour, IInteractable
     [ShowIf("givesMoney")] [SerializeField] private GameObject moneySpawnerPrefab;
     [SerializeField] private bool givesItem;
     [ShowIf("givesItem")] [SerializeField] private Transform itemGivePos;
+
+    [SerializeField] private bool flips = true;
     
 
     private bool playerInRange = false;
@@ -186,6 +188,7 @@ public class NpcActor : MonoBehaviour, IInteractable
 
     private void Flip()
     {
+        if (!flips) { return;}
         if (facingLeft) { transform.rotation = Quaternion.Euler(0f, -180f, 0f); }
         else { transform.rotation = Quaternion.Euler(0f, 0f, 0f); }
         
@@ -239,6 +242,16 @@ public class NpcActor : MonoBehaviour, IInteractable
     private void SpawnItem(GameObject item)
     {
         Instantiate(item, itemGivePos.position, Quaternion.identity);
+    }
+
+    public static void DestoryMe()
+    {
+        NpcTracker.GetClosestNpcActor().Wipe();
+    }
+
+    private void Wipe()
+    {
+        Destroy(gameObject);
     }
     
 

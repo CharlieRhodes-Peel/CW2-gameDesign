@@ -16,17 +16,17 @@ MonoBehaviour:
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: Have you found all my pages?
+    dialogueText: Child. My pages. I sense you have them all. Hand them over now.
     responses:
     - responseText: Yes, I found all three!
       friendshipThreshold: 0
       friendshipLevelGives: 10
       nextNode:
-        dialogueText: "Ah! You\u2019ve indeed recovered my missing pages. These holy
-          texts are of great importance and will aid me in my future decisions. For
-          your efforts I reward you with these riches."
+        dialogueText: Indeed child. You have recovered my missing pages. The holy
+          texts are of great importance. Will aid me in my future decisions. I give
+          you my will. My child.
         responses:
-        - responseText: Take money
+        - responseText: Accept Gift
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:
@@ -34,8 +34,56 @@ MonoBehaviour:
             responses: []
             onDialogue:
               m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
+                m_Calls:
+                - m_Target: {fileID: 4123143976625507825, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+                  m_MethodName: SpawnItemOnMe
+                  m_Mode: 2
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 9070331953404842853, guid: d5dd93995ffcebb1697f4e347f6b13d8, type: 3}
+                    m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
+                - m_Target: {fileID: 4123143976625507825, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+                  m_MethodName: FinishQuest
+                  m_Mode: 2
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 11400000, guid: 50bd3e928b82f2a4b94a10e610647f36, type: 2}
+                    m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
+                - m_Target: {fileID: 5229970455417414805, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: Boss, Assembly-CSharp
+                  m_MethodName: BossHelped
+                  m_Mode: 1
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 0}
+                    m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
+                - m_Target: {fileID: 1687153555040012974, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+                  m_MethodName: SetStateTo
+                  m_Mode: 5
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 0}
+                    m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: Happy
+                    m_BoolArgument: 0
+                  m_CallState: 2
+          optionalNextDialogueTree: {fileID: 11400000, guid: 85dfaf0e1a077d93e9badd3b5b3c65b6, type: 2}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

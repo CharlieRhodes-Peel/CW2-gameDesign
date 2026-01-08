@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 5926150592481756323}
   - component: {fileID: 1017821666349816825}
   - component: {fileID: 5229970455417414805}
+  - component: {fileID: 1352504008550459547}
   - component: {fileID: 1057798819980373638}
   - component: {fileID: 1356913039811726664}
   - component: {fileID: 7740168484731304569}
@@ -468,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultState: 0
-  angryActivatesMovement: 1
+  angryActivatesMovement: 0
   stateRemembered: 0
   angryTrustMeterAffect: -50
   happyTrustMeterAffect: 50
@@ -499,7 +500,7 @@ MonoBehaviour:
   isBoss: 1
   boss: {fileID: 5229970455417414805}
   doorBlock: {fileID: 0}
-  health: 1
+  health: 20
   moneyOnDeath: 50
   knockbackX: 0
   knockbackY: 0
@@ -553,7 +554,25 @@ MonoBehaviour:
   doorBlock: {fileID: 0}
   spawnsObjectOnDeath: 0
   objectSpawnOnDeath: {fileID: 4893706945832847840, guid: 4e77005a19f4fd464bc9acbc89625d70, type: 3}
-  bossType: 2
+  bossType: 3
+--- !u!114 &1352504008550459547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538434753691702379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30efd2dc05bc861b8d0d1b3a1822b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 181453807194934299, guid: 4ed7a12cb4d0bc7fb8ca9ed69fa78ef7, type: 3}
+  spawnDelay: 0.5
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!66 &1057798819980373638
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -1182,6 +1201,10 @@ GameObject:
   - component: {fileID: 8908135347670164348}
   - component: {fileID: 2997057292505948934}
   - component: {fileID: 34725551897996548}
+  - component: {fileID: 5259904909083275961}
+  - component: {fileID: 3511541191732482919}
+  - component: {fileID: 5528690526745140420}
+  - component: {fileID: 5253949055709151580}
   m_Layer: 7
   m_Name: EnemyHitbox
   m_TagString: EnemyAttack
@@ -1258,14 +1281,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7691737853883951551}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1307,7 +1330,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1326,13 +1349,136 @@ CompositeCollider2D:
         Y: 6858349
       - X: 10048122
         Y: 6858349
+  - m_Collider: {fileID: 5259904909083275961}
+    m_ColliderPaths:
+    - - X: 3888092
+        Y: 9941826
+      - X: -6235466
+        Y: 9941826
+      - X: -6235466
+        Y: -20566744
+      - X: 3888092
+        Y: -20566744
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.0047829, y: 0.6858349}
+    - - {x: 0.3887799, y: -2.0566745}
+      - {x: 0.38883862, y: 0.6858349}
+      - {x: 1.0048122, y: 0.6858642}
       - {x: 1.0047829, y: 4.9659195}
       - {x: -1.3971138, y: 4.96589}
       - {x: -1.3970845, y: 0.6858349}
+      - {x: -0.6235466, y: 0.6858055}
+      - {x: -0.62351733, y: -2.0566745}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 7691737853883951551}
+--- !u!61 &5259904909083275961
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691737853883951551}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_CompositeOperation: 1
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.1173687, y: -0.53124595}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.0123558, y: 3.050857}
+  m_EdgeRadius: 0
+--- !u!114 &3511541191732482919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691737853883951551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30efd2dc05bc861b8d0d1b3a1822b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 0}
+  spawnDelay: 0.5
+  spawnPoints: []
+--- !u!114 &5528690526745140420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691737853883951551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbc21c31606f8655bcf2afa604cf7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultState: 0
+  angryActivatesMovement: 1
+  stateRemembered: 1
+  angryTrustMeterAffect: -5
+  happyTrustMeterAffect: 5
+  feelingRenderer: {fileID: 0}
+  frogRenderer: {fileID: 0}
+  happySprite: {fileID: 0}
+  neutralSprite: {fileID: 0}
+  angrySprite: {fileID: 0}
+  interactDetector: {fileID: 0}
+  aboveHeadPos: {fileID: 0}
+  feelingDisplay: {fileID: 0}
+  hitbox: {fileID: 0}
+--- !u!114 &5253949055709151580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691737853883951551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7668d260df5e89bfaa66f96db2c88a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  DialogueTrees: []
+  BossDialogueTrees: []
+  popupPos: {fileID: 0}
+  popupText: 
+  feeling: {fileID: 0}
+  givesMoney: 0
+  moneySpawnerPrefab: {fileID: 0}
+  givesItem: 0
+  itemGivePos: {fileID: 0}

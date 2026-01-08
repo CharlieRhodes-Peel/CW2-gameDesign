@@ -11,6 +11,8 @@ public class CameraManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        mainCamera.GetComponent<CinemachineConfiner2D>().InvalidateBoundingShapeCache();
     }
 
     void OnEnable()

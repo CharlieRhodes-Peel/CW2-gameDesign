@@ -50,7 +50,7 @@ public class MenuUI : MonoBehaviour
     private Dictionary<QuestUI, Quest> UIToquests = new  Dictionary<QuestUI, Quest>();
     
     //Logic flag
-    private List<GameObject> UIElements; //To keep track of the latest element to be added
+    private List<GameObject> UIElements = new List<GameObject>(); //To keep track of the latest element to be added
     private bool isMenuOpen = false;
     public static bool shopShowing = false;
     public static bool questsShowing = true;
@@ -106,6 +106,7 @@ public class MenuUI : MonoBehaviour
         inventoryItems.Add(itemData, itemUI);
         
         UIElements.Add(newItemHolder);
+        SelectDefaultButton();
         
         MenuPopupUI.Instance.ShowPopup(itemData);
     }
@@ -129,6 +130,7 @@ public class MenuUI : MonoBehaviour
         shopItems.Add(itemData, itemUI);
         
         UIElements.Add(newItemHolder);
+        SelectDefaultButton();
     }
         
     //Called anytime the player removes an item from their inventory
@@ -145,7 +147,8 @@ public class MenuUI : MonoBehaviour
             return;
         }
         
-        EventSystem.current.SetSelectedGameObject(inventoryItems[itemData].gameObject);
+        UIElements.Remove(existingUI.gameObject);
+        SelectDefaultButton();
         
         inventoryItems[itemData].RemoveUI();
         inventoryItems.Remove(itemData);
@@ -155,7 +158,8 @@ public class MenuUI : MonoBehaviour
     {
         if (!shopItems.ContainsKey(itemData)) { return; }
         
-        EventSystem.current.SetSelectedGameObject(shopItems[itemData].gameObject);
+        UIElements.Remove(shopItems[itemData].gameObject);
+        SelectDefaultButton();
         
         shopItems[itemData].RemoveUI();
         shopItems.Remove(itemData);
@@ -180,11 +184,13 @@ public class MenuUI : MonoBehaviour
     public void RemoveQuestFromUI(Quest quest)
     {
         if(!questsToUI.ContainsKey(quest)) { return; }
+
+        UIElements.Remove(questsToUI[quest].gameObject);
         questsToUI[quest].RemoveUI();
-        
         UIToquests.Remove(questsToUI[quest]);
         questsToUI.Remove(quest);
         
+        SelectDefaultButton();
         MenuPopupUI.Instance.ShowPopup(quest, false);
     }
     
@@ -277,7 +283,7 @@ public class MenuUI : MonoBehaviour
         {
             itemDescptionUI.SetActive(false);
             questDescriptionUI.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(UIElements[^1]);
+            SelectDefaultButton();
             return;
         }
 
@@ -287,7 +293,7 @@ public class MenuUI : MonoBehaviour
     
     public void SelectDefaultButton()
     {
-        GameObject toSelect = UIElements[^1];
+        GameObject toSelect = UIElements[0];
         EventSystem.current.SetSelectedGameObject(toSelect);
     }
 

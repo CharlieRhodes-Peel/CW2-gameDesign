@@ -16,7 +16,7 @@ MonoBehaviour:
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: You haven't unlocked this quest yet!
+    dialogueText: The page is blank
     responses:
     - responseText: End
       friendshipThreshold: 0
@@ -30,40 +30,4 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6016770646564672468, guid: 27b066208612b354688a66c59328270b, type: 3}
-          m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-          m_MethodName: MakeDialogueInactive
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 7c6b382bdabfbc9448a0a8823203ed63, type: 2}
-            m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 3192843086023427184, guid: 3f34239444fc96e40b40fe8385221cd4, type: 3}
-          m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-          m_MethodName: MakeDialogueInactive
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 6baa04e58fc88b646b2416670ba708b1, type: 2}
-            m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 6305753050087389936, guid: 621e634ce7fa0c6469db3967ebbe324d, type: 3}
-          m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-          m_MethodName: MakeDialogueInactive
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: e0e0ef34fb84b2048b1ee60f19e1b293, type: 2}
-            m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []

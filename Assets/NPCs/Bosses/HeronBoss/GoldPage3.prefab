@@ -245,7 +245,6 @@ GameObject:
   - component: {fileID: 508592503719458477}
   - component: {fileID: 6305753050087389936}
   - component: {fileID: 3433137905052042619}
-  - component: {fileID: 7820752643777633932}
   m_Layer: 9
   m_Name: GoldPage3
   m_TagString: Neutral
@@ -307,13 +306,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4037881058950221086}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7668d260df5e89bfaa66f96db2c88a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Piece of paper
   DialogueTrees:
+  - {fileID: 11400000, guid: f23fe4ca014406e409c1a39727d29064, type: 2}
   - {fileID: 11400000, guid: e0e0ef34fb84b2048b1ee60f19e1b293, type: 2}
   BossDialogueTrees: []
   popupPos: {fileID: 1074306192377953018}
@@ -321,8 +321,9 @@ MonoBehaviour:
   feeling: {fileID: 0}
   givesMoney: 0
   moneySpawnerPrefab: {fileID: 0}
-  givesItem: 0
-  itemGivePos: {fileID: 0}
+  givesItem: 1
+  itemGivePos: {fileID: 4562969922183858644}
+  flips: 0
 --- !u!61 &3433137905052042619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -369,23 +370,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.53, y: 0.8755939}
   m_EdgeRadius: 0
---- !u!114 &7820752643777633932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4037881058950221086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91bc80769811456e997c3309c776240, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Piece of paper
-  DialogueTrees:
-  - {fileID: 11400000, guid: 92887ae8230cb7149a2a38dc354b9266, type: 2}
-  popupPos: {fileID: 1074306192377953018}
-  popupText: Read
 --- !u!1 &6960619123439121091
 GameObject:
   m_ObjectHideFlags: 0

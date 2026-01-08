@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: HeronMeetKilledLog
+  m_EditorClassIdentifier: 
+  afterBossAction: 1
+  bossesKilled: 01000000
+  bossesHelped: 
+  RootNode:
+    dialogueText: Child... You are log killer. Church welcomes
+    responses:
+    - responseText: I hate you too!
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: Child is speck to me.
+        responses:
+        - responseText: Fight
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls:
+                - m_Target: {fileID: 1687153555040012974, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
+                  m_MethodName: SetStateTo
+                  m_Mode: 5
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 0}
+                    m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: Angry
+                    m_BoolArgument: 0
+                  m_CallState: 2
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    - responseText: You are the only true king
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 8fb78cde21a5a70bab2d274f8ace2fb6, type: 2}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

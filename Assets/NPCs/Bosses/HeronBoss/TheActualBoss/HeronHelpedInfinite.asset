@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: PagesInProgress
+  m_Name: HeronHelpedInfinite
   m_EditorClassIdentifier: 
-  afterBossAction: 0
+  afterBossAction: 1
   bossesKilled: 
-  bossesHelped: 
+  bossesHelped: 03000000
   RootNode:
-    dialogueText: Child. Get Pages. I sense them. Pages not on child
+    dialogueText: You must go moon lake child. Trying to quench our flame. Put a
+      stop to it. Kill Eel child
     responses:
-    - responseText: End Conversation
+    - responseText: Yes king
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

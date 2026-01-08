@@ -10,15 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: PagesInProgress
+  m_Name: HeronMeetHelpedEel
   m_EditorClassIdentifier: 
-  afterBossAction: 0
+  afterBossAction: 1
   bossesKilled: 
-  bossesHelped: 
+  bossesHelped: 02000000
   RootNode:
-    dialogueText: Child. Get Pages. I sense them. Pages not on child
+    dialogueText: You help eel child? We have no business here
     responses:
-    - responseText: End Conversation
+    - responseText: You're the only true king
+      friendshipThreshold: 20
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 8fb78cde21a5a70bab2d274f8ace2fb6, type: 2}
+    - responseText: Fight
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:
@@ -27,7 +37,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: b2f004172a127e70c8c2407a3b09718f, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

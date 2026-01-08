@@ -132,8 +132,14 @@ public class PlayerAttack : MonoBehaviour
         animator.ResetTrigger("attackUp");
     }
 
-    
-    
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        isAttacking = false;
+        isWindup = false; 
+    }
+
+
     public bool IsWindup() { return isWindup; }
 
     public void AddToDamagePerHit(float damage)
@@ -144,11 +150,13 @@ public class PlayerAttack : MonoBehaviour
     //Subscribes and Unsubscribes to input events when player exists or doesn't
     private void OnEnable()
     {
+        attackInput.action.Enable();
         attackInput.action.started += Attack;
     }
 
     private void OnDisable()
     {
         attackInput.action.started -= Attack;
+        attackInput.action.Disable();
     }
 }

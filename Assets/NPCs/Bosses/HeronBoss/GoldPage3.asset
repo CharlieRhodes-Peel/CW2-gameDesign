@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: GoldPage3
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: "Golden Page 3 text titled The Wonders of The Past: \u201C...and
       a long time ago the frogs used computers to calculate fly harvest and LED lights
@@ -20,12 +23,37 @@ MonoBehaviour:
     responses:
     - responseText: Stop Reading
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 6305753050087389936, guid: 621e634ce7fa0c6469db3967ebbe324d, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: SpawnItemOnMe
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 3287093486411207983, guid: adedbd0f9c48621f49965e61d2eceb7d, type: 3}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 6305753050087389936, guid: 621e634ce7fa0c6469db3967ebbe324d, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: DestoryMe
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:

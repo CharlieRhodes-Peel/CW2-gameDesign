@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
+  m_Name: HeronHelpTree
+  m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
+  RootNode:
+    dialogueText: Yes child. Yes. I need you to get some things for me
+    responses:
+    - responseText: What is it true king?
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: I left some pages around... Get them for me
+        responses:
+        - responseText: Yes king
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls:
+                - m_Target: {fileID: 4123143976625507825, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+                  m_MethodName: StartQuest
+                  m_Mode: 2
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 11400000, guid: 50bd3e928b82f2a4b94a10e610647f36, type: 2}
+                    m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
+                - m_Target: {fileID: 4123143976625507825, guid: 66e8bd85398b39e86b21f8a1a50518c3, type: 3}
+                  m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+                  m_MethodName: MakeDialogueInactive
+                  m_Mode: 2
+                  m_Arguments:
+                    m_ObjectArgument: {fileID: 11400000, guid: f23fe4ca014406e409c1a39727d29064, type: 2}
+                    m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+                    m_IntArgument: 0
+                    m_FloatArgument: 0
+                    m_StringArgument: 
+                    m_BoolArgument: 0
+                  m_CallState: 2
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
+    onDialogue:
+      m_PersistentCalls:
+        m_Calls: []

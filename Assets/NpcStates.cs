@@ -33,6 +33,9 @@ public class NpcStates : MonoBehaviour
 
     private bool startingChange = false;
 
+    //Events
+    public static event Action<string, State> OnStateChangedTo;
+    
     private void Start()
     {
         frogMovement = GetComponent<FrogMovement>();
@@ -190,6 +193,7 @@ public class NpcStates : MonoBehaviour
         
         
         NpcStateManager.Instance.UpdateState(npcName, currentState);
+        OnStateChangedTo?.Invoke(npcName, currentState);
     }
 
     //Unity Events (called from dialogue usually)
