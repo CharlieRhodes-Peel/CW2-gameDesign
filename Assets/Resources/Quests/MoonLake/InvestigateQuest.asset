@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: gjkjgshdflgkj
   questName: Who stole the electricity?
-  questGiverName: Royal Guard Bink
+  questGiverName: Royal Guard Bonk
   questDescription: I told one of the guard that I'm here to invenstigate some power
     outage issue? I don't really know, all I know is that I've gotta ask almost everyone
     here. He also told me to speak to Bonk when I'm done

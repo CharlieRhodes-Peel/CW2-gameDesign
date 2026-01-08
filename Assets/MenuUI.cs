@@ -148,7 +148,6 @@ public class MenuUI : MonoBehaviour
         }
         
         UIElements.Remove(existingUI.gameObject);
-        SelectDefaultButton();
         
         inventoryItems[itemData].RemoveUI();
         inventoryItems.Remove(itemData);
@@ -186,11 +185,11 @@ public class MenuUI : MonoBehaviour
         if(!questsToUI.ContainsKey(quest)) { return; }
 
         UIElements.Remove(questsToUI[quest].gameObject);
+        
         questsToUI[quest].RemoveUI();
         UIToquests.Remove(questsToUI[quest]);
         questsToUI.Remove(quest);
         
-        SelectDefaultButton();
         MenuPopupUI.Instance.ShowPopup(quest, false);
     }
     
@@ -300,6 +299,12 @@ public class MenuUI : MonoBehaviour
     public void SelectDefaultButton()
     {
         GameObject toSelect = UIElements[0];
+
+        foreach (GameObject go in UIElements)
+        {
+            if (go.activeInHierarchy) { toSelect = go; break; }
+        }
+        
         EventSystem.current.SetSelectedGameObject(toSelect);
     }
 
