@@ -17,7 +17,7 @@ MonoBehaviour:
   bossesHelped: 
   RootNode:
     dialogueText: It was an electricity storage uniform. Like go ask the manager
-      or somethin`
+      or somethin`. He's called Binki Boo
     responses:
     - responseText: Fine.
       friendshipThreshold: 0

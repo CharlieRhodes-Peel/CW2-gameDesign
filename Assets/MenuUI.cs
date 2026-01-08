@@ -214,6 +214,12 @@ public class MenuUI : MonoBehaviour
             questUI.amountNeeded = quest.itemCount;
             questUI.currentProgress = QuestManager.Instance.GetActiveQuestProgress(quest);
         }
+        
+        else if (quest.questType == Quest.QuestType.TalkToNpcMultiple)
+        {
+            questUI.amountNeeded = quest.npcNames.Count;
+            questUI.currentProgress = QuestManager.Instance.GetActiveQuestProgress(quest);
+        }
 
         return questUI;
     }
@@ -318,6 +324,11 @@ public class MenuUI : MonoBehaviour
             return QuestManager.Instance.GetAllQuestProgress(quest);
         }
         if (quest.questType == Quest.QuestType.KillEnemies)
+        {
+            return QuestManager.Instance.GetActiveQuestProgress(quest);
+        }
+
+        if (quest.questType == Quest.QuestType.TalkToNpcMultiple)
         {
             return QuestManager.Instance.GetActiveQuestProgress(quest);
         }

@@ -18,8 +18,7 @@ MonoBehaviour:
   RootNode:
     dialogueText: Hello, are you here to investigate the electricity storage also?
     responses:
-    - responseText: Yes. I am a journalist investigating the power outage. Do you
-        know if anyone was working the night shift 2 days ago?
+    - responseText: Do you know if anyone was working the night shift 2 days ago?
       friendshipThreshold: 0
       friendshipLevelGives: 3
       nextNode:
@@ -39,8 +38,7 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: Blah blah just tell me about who was working at night over the
-        power outage.
+    - responseText: Just tell me about who was working at night over the power outage.
       friendshipThreshold: 0
       friendshipLevelGives: -3
       nextNode:
@@ -60,8 +58,7 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: Who was working at night the other day, was it you, are you responsible
-        for the power outage?
+    - responseText: Who was working at night the other day, was it you?
       friendshipThreshold: 0
       friendshipLevelGives: 1
       nextNode:

@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Quiz2
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: 'Question 1: What word did the suspicious frog say a lot?: a) but,
       b) um, c) like'
     responses:
-    - responseText: a) but
+    - responseText: but
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
@@ -25,8 +29,9 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: 617bba23a3df23140a68ff969f45a14d, type: 2}
-    - responseText: b) um
+    - responseText: um
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
@@ -34,8 +39,9 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: 617bba23a3df23140a68ff969f45a14d, type: 2}
-    - responseText: c) like
+    - responseText: like
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []

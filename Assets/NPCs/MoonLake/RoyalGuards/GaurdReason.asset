@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: RoyalGuard2
+  m_Name: GaurdReason
   m_EditorClassIdentifier: 
   afterBossAction: 0
   bossesKilled: 
@@ -24,7 +24,7 @@ MonoBehaviour:
       nextNode:
         dialogueText: "Well if you are really here as a journalist to interview the
           princess why don\u2019t you write an article on the current power outage
-          issue."
+          issue. Speak to Royal Guard Bonk when you are done"
         responses:
         - responseText: "Sounds like a stupid story but I guess i\u2019ll look into
             it for you."
@@ -39,16 +39,27 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 6446865447228488188, guid: 928209ccf049e53e5a8cce07b2a0fba6, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: StartQuest
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: 5fda42f219cf00146b5fc41ad9d8f14e, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: "Oh uh I\u2019m here as an investigative journalist and want
-        to interview the princess."
+    - responseText: "Well \u2019m here as an investigative journalist"
       friendshipThreshold: 0
       friendshipLevelGives: 1
       nextNode:
         dialogueText: There are rumours about electricity being stolen. We know some
           of the details but not all of it. Prepare for us to ask you questions about
-          your work.
+          your work. Speak to Royal Guard Bonk when you are done
         responses:
         - responseText: "No problem, I\u2019m sure I can figure it out"
           friendshipThreshold: 0
@@ -62,7 +73,19 @@ MonoBehaviour:
           optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 6446865447228488188, guid: 928209ccf049e53e5a8cce07b2a0fba6, type: 3}
+              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+              m_MethodName: StartQuest
+              m_Mode: 2
+              m_Arguments:
+                m_ObjectArgument: {fileID: 11400000, guid: 5fda42f219cf00146b5fc41ad9d8f14e, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:

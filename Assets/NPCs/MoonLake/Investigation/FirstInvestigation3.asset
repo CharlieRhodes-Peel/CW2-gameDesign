@@ -16,7 +16,8 @@ MonoBehaviour:
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: Well you can find the suspicious frog seen around here.
+    dialogueText: Well I don't know where they went but I saw them go closer to the
+      princess' chambers.
     responses:
     - responseText: Got it.
       friendshipThreshold: 0

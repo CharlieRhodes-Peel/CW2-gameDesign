@@ -19,7 +19,7 @@ MonoBehaviour:
     dialogueText: 'Correct. Question 2: Who is the main suspect?: a) Suspicious frog,
       b) Uniformed person, c) Manager'
     responses:
-    - responseText: a) Suspicious frog
+    - responseText: Dinki Doo
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:
@@ -29,7 +29,7 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: d7db351e86e658d4d92cc42c4d31108f, type: 2}
-    - responseText: b) Uniformed person
+    - responseText: Minki Moo
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:
@@ -39,7 +39,7 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: f17c80cc91312994ab9e977f62f46061, type: 2}
-    - responseText: c) Manager
+    - responseText: Binki Boo
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

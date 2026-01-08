@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class QuestManager : MonoBehaviour
 
     //Maps quests to npc actors names
     private static Dictionary<Quest, Dialogue> currentQuestDialogue = new Dictionary<Quest, Dialogue>();
+    
+    private static Dictionary<Quest, List<string>> talkToNpcMultipleProgressStore = new Dictionary<Quest, List<string>>();
 
     public static event Action<ItemData> OnItemGivenAway;
 
@@ -36,6 +39,11 @@ public class QuestManager : MonoBehaviour
         {
             allQuests.Add(quest, 0);
             currentQuestDialogue.Add(quest, quest.questInProgressDialogue);
+
+            if (quest.questType == Quest.QuestType.TalkToNpcMultiple)
+            {
+                talkToNpcMultipleProgressStore.Add(quest, new List<string>());
+            }
         }
         
         Debug.Log($"Loaded {allQuests.Count} quests in total!");
@@ -95,7 +103,7 @@ public class QuestManager : MonoBehaviour
 
     private void TalkToNPCProgress(string npcName)
     {
-        List<Quest> quests = new List<Quest>(this.activeQuests.Keys); //Checks all quests to see if you have spoken to a certain npc
+        List<Quest> quests = new List<Quest>(this.activeQuests.Keys); //Checks active to see if you have spoken to a certain npc
 
         foreach (Quest quest in quests)
         {
@@ -104,6 +112,26 @@ public class QuestManager : MonoBehaviour
             if (quest.npcName == npcName)
             {
                 activeQuests[quest]++;
+                CheckIfQuestComplete(activeQuests, quest);
+            }
+        }
+    }
+
+    private void TalkToNPCMultipleProgress(string npcName)
+    {
+        List<Quest> quests = new List<Quest>(this.activeQuests.Keys); //Checks active quests
+
+        foreach (Quest quest in quests)
+        {
+            if (quest.questType != Quest.QuestType.TalkToNpcMultiple) { continue; } //Only worry about talk to npc multiple
+
+            if (talkToNpcMultipleProgressStore[quest].Contains(npcName)) { continue; } //If we have already talked to the npc then
+
+            //And the npc name is in the list of people to talk to
+            if (quest.npcNames.Contains(npcName))
+            {
+                activeQuests[quest]++;
+                talkToNpcMultipleProgressStore[quest].Add(npcName);
                 CheckIfQuestComplete(activeQuests, quest);
             }
         }
@@ -141,6 +169,8 @@ public class QuestManager : MonoBehaviour
                 questComplete = dictionary[quest] >= quest.requiredKills; break;
             case Quest.QuestType.TalkToNpc:
                 questComplete = dictionary[quest] >= 1; break;
+            case Quest.QuestType.TalkToNpcMultiple:
+                questComplete = dictionary[quest] >= quest.npcNames.Count; break;
             case Quest.QuestType.ReachLocation:
                 questComplete = dictionary[quest] >= 1; break;
         }
@@ -153,6 +183,7 @@ public class QuestManager : MonoBehaviour
     {
         activeQuests.Add(quest, 0);
         currentQuestDialogue[quest] = quest.questInProgressDialogue;
+        quest.OnQuestStart.Invoke();
         
         if (quest.questShownInMenu) {MenuUI.Instance.AddQuestToUI(quest);}
         
@@ -163,6 +194,7 @@ public class QuestManager : MonoBehaviour
         Debug.Log($"Ending quest with {quest.questGiverName}");
         currentQuestDialogue[quest] = quest.questCompleteDialogue;
         completedQuests.Add(quest);
+        StartCoroutine(InvokeQuestCompleteNextFrame(quest));
         
         if (quest.questShownInMenu) {MenuUI.Instance.RemoveQuestFromUI(quest);}
     }
@@ -231,6 +263,7 @@ public class QuestManager : MonoBehaviour
         Enemy.OnEnemyDeathEvent += KillEnemyProgress;
         Enemy.OnEnemyDeathEvent += KillEnemyPassiveProgress;
         NpcActor.OnPlayerInteractEvent += TalkToNPCProgress;
+        NpcActor.OnPlayerInteractEvent += TalkToNPCMultipleProgress;
         LocationManager.OnLocationVisited += ReachLocationProgress;
     }
     
@@ -240,6 +273,14 @@ public class QuestManager : MonoBehaviour
         Enemy.OnEnemyDeathEvent -= KillEnemyProgress;
         Enemy.OnEnemyDeathEvent -= KillEnemyPassiveProgress;
         NpcActor.OnPlayerInteractEvent -= TalkToNPCProgress;
+        NpcActor.OnPlayerInteractEvent -= TalkToNPCMultipleProgress;
         LocationManager.OnLocationVisited -= ReachLocationProgress;
+    }
+
+    private IEnumerator InvokeQuestCompleteNextFrame(Quest quest)
+    {
+        yield return new WaitForFixedUpdate();
+        
+        quest.OnQuestComplete.Invoke();
     }
 }

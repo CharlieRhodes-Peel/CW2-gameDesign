@@ -10,41 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: AfterHelp
+  m_Name: VotingSlips
   m_EditorClassIdentifier: 
-  afterBossAction: 1
+  afterBossAction: 0
   bossesKilled: 
-  bossesHelped: 02000000
+  bossesHelped: 
   RootNode:
-    dialogueText: Thank you for helping me out. I will try to organise a vote soon.
-      Then my people can decide what rules they want. Oh and please take this with
-      you. I don't want it, it scares me
+    dialogueText: Why are you looking at me like that?
     responses:
-    - responseText: End Conversation
+    - responseText: By princess' orders I need your voting slips
       friendshipThreshold: 0
-      friendshipLevelGives: 15
+      friendshipLevelGives: 0
       nextNode:
-        dialogueText: 
-        responses: []
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
-    - responseText: Accept Gift
-      friendshipThreshold: 0
-      friendshipLevelGives: 15
-      nextNode:
-        dialogueText: 
-        responses: []
+        dialogueText: Wow you're talking orders from the princess now? You move up
+          the ladder fast!
+        responses:
+        - responseText: Take Slip
+          friendshipThreshold: 0
+          friendshipLevelGives: 0
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls:
-            - m_Target: {fileID: 1060307787964198032, guid: 50fa13d0a218a3b7fab9e93c0d2f925b, type: 3}
+            - m_Target: {fileID: 6016770646564672468, guid: 27b066208612b354688a66c59328270b, type: 3}
               m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
               m_MethodName: SpawnItemOnMe
               m_Mode: 2
               m_Arguments:
-                m_ObjectArgument: {fileID: 3198063072627364249, guid: 73c1ef85b335de9aba517974d529423a, type: 3}
+                m_ObjectArgument: {fileID: 2141525433281502171, guid: 7cd0af0cebc4f97e0bca61b12b17a3c3, type: 3}
                 m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
                 m_IntArgument: 0
                 m_FloatArgument: 0

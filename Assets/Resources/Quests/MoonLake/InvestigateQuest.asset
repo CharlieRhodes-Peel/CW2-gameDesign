@@ -12,18 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5ee506886d242a39dbfd6374f789a4, type: 3}
   m_Name: InvestigateQuest
   m_EditorClassIdentifier: 
-  questId: 
-  questName: 
-  questGiverName: PlaceholderName
-  questDescription: Investigate the power outage issue, ask some local frogs if they
-    know anything
+  questId: gjkjgshdflgkj
+  questName: Who stole the electricity?
+  questGiverName: Royal Guard Bink
+  questDescription: I told one of the guard that I'm here to invenstigate some power
+    outage issue? I don't really know, all I know is that I've gotta ask almost everyone
+    here. He also told me to speak to Bonk when I'm done
   questInProgressDialogue: {fileID: 11400000, guid: cf901c1554efa024d82615862000ded3, type: 2}
   questCompleteDialogue: {fileID: 11400000, guid: 487163fb450896441bcd547f8d116365, type: 2}
-  questType: 3
+  questType: 4
   questShownInMenu: 1
   itemData: {fileID: 0}
   itemCount: 0
   enemyName: 
   requiredKills: 0
   npcName: 
+  npcNames:
+  - Donki Doo
+  - Minki Moo
+  - Binki Boo
   locationName: 
+  OnQuestStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8925727842974379738, guid: 9b1c8ff0ac282f24bb51e8c9383a25d6, type: 3}
+        m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
+        m_MethodName: MakeDialogueInactive
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d7017e518770d5869932b16058e7ea4d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnQuestComplete:
+    m_PersistentCalls:
+      m_Calls: []

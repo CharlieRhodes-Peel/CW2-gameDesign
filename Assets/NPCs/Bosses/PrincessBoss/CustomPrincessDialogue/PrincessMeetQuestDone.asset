@@ -10,20 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: MeetPrincess
+  m_Name: PrincessMeetQuestDone
   m_EditorClassIdentifier: 
   afterBossAction: 0
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: I hear you want an interview with me?
+    dialogueText: I hear you're a good journalist. What do you want with me
     responses:
-    - responseText: "I know you\u2019re the one who caused the power outage. Why
-        would you do it though?"
+    - responseText: I want to help you
       friendshipThreshold: 0
-      friendshipLevelGives: -3
+      friendshipLevelGives: 0
       nextNode:
-        dialogueText: How dare you accuse me of such a crime!
+        dialogueText: 
+        responses: []
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 11400000, guid: 1770e2c470e91677bb3cd04d2117743c, type: 2}
+    - responseText: I came here to fight you
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: Aaahhhh. A sly one... Bring it!
         responses:
         - responseText: Fight
           friendshipThreshold: 0
@@ -51,26 +60,6 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: I want to help you!
-      friendshipThreshold: 10
-      friendshipLevelGives: 0
-      nextNode:
-        dialogueText: How dare you accuse me of such a crime!
-        responses:
-        - responseText: Fight
-          friendshipThreshold: 0
-          friendshipLevelGives: 0
-          nextNode:
-            dialogueText: 
-            responses: []
-            onDialogue:
-              m_PersistentCalls:
-                m_Calls: []
-          optionalNextDialogueTree: {fileID: 0}
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
-      optionalNextDialogueTree: {fileID: 11400000, guid: 1770e2c470e91677bb3cd04d2117743c, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

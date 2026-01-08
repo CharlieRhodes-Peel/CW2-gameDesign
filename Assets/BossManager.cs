@@ -31,13 +31,24 @@ public class BossManager : MonoBehaviour
     public void BossKilled(Bosses boss)
     {
         bossesKilled.Add(boss);
+        
+        CheckEnding();
     }
 
     public void BossHelped(Bosses boss)
     {
         bossesHelped.Add(boss);
+        CheckEnding();
     }
 
+    public void CheckEnding()
+    {
+        if (bossesHelped.Count + bossesKilled.Count >= 3)
+        {
+            EndingManager.StartEndingQuest();
+        }
+    }
+    
     public bool HasBossBeenHelped(Bosses boss)
     {
         return bossesHelped.Contains(boss);

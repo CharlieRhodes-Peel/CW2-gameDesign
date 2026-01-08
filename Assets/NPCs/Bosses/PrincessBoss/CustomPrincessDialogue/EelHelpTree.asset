@@ -10,29 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: AfterHelp
+  m_Name: EelHelpTree
   m_EditorClassIdentifier: 
-  afterBossAction: 1
+  afterBossAction: 0
   bossesKilled: 
-  bossesHelped: 02000000
+  bossesHelped: 
   RootNode:
-    dialogueText: Thank you for helping me out. I will try to organise a vote soon.
-      Then my people can decide what rules they want. Oh and please take this with
-      you. I don't want it, it scares me
+    dialogueText: You wanna help me?? Well we recently help a vote. Though, I haven't
+      recieved the voting slips. Can you go out and get people's voting slips?
     responses:
-    - responseText: End Conversation
+    - responseText: Sure
       friendshipThreshold: 0
-      friendshipLevelGives: 15
-      nextNode:
-        dialogueText: 
-        responses: []
-        onDialogue:
-          m_PersistentCalls:
-            m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
-    - responseText: Accept Gift
-      friendshipThreshold: 0
-      friendshipLevelGives: 15
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
@@ -41,11 +30,11 @@ MonoBehaviour:
             m_Calls:
             - m_Target: {fileID: 1060307787964198032, guid: 50fa13d0a218a3b7fab9e93c0d2f925b, type: 3}
               m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-              m_MethodName: SpawnItemOnMe
+              m_MethodName: StartQuest
               m_Mode: 2
               m_Arguments:
-                m_ObjectArgument: {fileID: 3198063072627364249, guid: 73c1ef85b335de9aba517974d529423a, type: 3}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+                m_ObjectArgument: {fileID: 11400000, guid: 4a6a1f81c83626b40b10477e9dc042f3, type: 2}
+                m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
                 m_IntArgument: 0
                 m_FloatArgument: 0
                 m_StringArgument: 

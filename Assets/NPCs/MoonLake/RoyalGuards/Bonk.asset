@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: SecondInvestigation2
+  m_Name: Bonk
   m_EditorClassIdentifier: 
   afterBossAction: 0
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: "It\u2019s some kinda inside job man! Y-you should go like ask
-      the electricity storage manager, Binki Boo."
+    dialogueText: The princess shall see you now
     responses:
-    - responseText: Hm.
+    - responseText: End conversation
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

@@ -735,8 +735,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Princess Eel
   DialogueTrees:
-  - {fileID: 11400000, guid: ba21f5057f0891a039683c6ad14dde8a, type: 2}
-  - {fileID: 11400000, guid: 3da196af3d17ffa17b7d9010bda1dda3, type: 2}
+  - {fileID: 11400000, guid: 010a5c31136c69032b4b6a987ec1f030, type: 2}
+  - {fileID: 11400000, guid: 0e50e3729f5a501cbbbf96889f2d0554, type: 2}
   BossDialogueTrees: []
   popupPos: {fileID: 888281894575025799}
   popupText: Speak

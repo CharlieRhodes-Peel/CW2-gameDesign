@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Quest", menuName = "Quests/Quest")]
 
@@ -31,8 +32,14 @@ public class Quest : ScriptableObject
     [ShowIf(EConditionOperator.Or, "IsKillEnemiesQuest", "IsKillEnemiesPassiveQuest")]  public int requiredKills;
     
     [ShowIf("questType", QuestType.TalkToNpc)] public string npcName;
+    
+    [ShowIf("questType", QuestType.TalkToNpcMultiple)] public List<string> npcNames;
 
     [ShowIf("questType", QuestType.ReachLocation)] public string locationName;
+    
+    public UnityEvent OnQuestStart = new UnityEvent();
+    
+    public UnityEvent OnQuestComplete = new UnityEvent();
     
     public enum QuestType //Add more quest types in here if needed!
     {
@@ -40,6 +47,7 @@ public class Quest : ScriptableObject
         KillEnemies,
         KillEnemiesPassive,
         TalkToNpc,
+        TalkToNpcMultiple,
         ReachLocation,
         Other,
     }

@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
-  m_Name: Quiz5
+  m_Name: PrincessMeetForce
   m_EditorClassIdentifier: 
   afterBossAction: 0
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: Correct, you really are an investigative journalist. We will organise
-      an interview with the princess.
+    dialogueText: Hey how did you get in here! LEAVE
     responses:
-    - responseText: Meet Eel Princess
+    - responseText: Fight
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:
@@ -28,7 +27,7 @@ MonoBehaviour:
         onDialogue:
           m_PersistentCalls:
             m_Calls:
-            - m_Target: {fileID: 1759511694551690776, guid: 81ac28fca94a0bffb90bfda20b8d813a, type: 3}
+            - m_Target: {fileID: 4994880911336763375, guid: 50fa13d0a218a3b7fab9e93c0d2f925b, type: 3}
               m_TargetAssemblyTypeName: NpcStates, Assembly-CSharp
               m_MethodName: SetStateTo
               m_Mode: 5
@@ -37,19 +36,7 @@ MonoBehaviour:
                 m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
                 m_IntArgument: 0
                 m_FloatArgument: 0
-                m_StringArgument: Happy
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 6446865447228488188, guid: 928209ccf049e53e5a8cce07b2a0fba6, type: 3}
-              m_TargetAssemblyTypeName: NpcActor, Assembly-CSharp
-              m_MethodName: MakeDialogueInactive
-              m_Mode: 2
-              m_Arguments:
-                m_ObjectArgument: {fileID: 11400000, guid: 010a5c31136c69032b4b6a987ec1f030, type: 2}
-                m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: 
+                m_StringArgument: Angry
                 m_BoolArgument: 0
               m_CallState: 2
       optionalNextDialogueTree: {fileID: 0}
