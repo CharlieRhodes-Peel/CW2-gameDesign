@@ -33,7 +33,7 @@ MonoBehaviour:
     - responseText: "Sounds like a stupid story but I guess I\u2019ll look into it
         for you."
       friendshipThreshold: 0
-      friendshipLevelGives: -5
+      friendshipLevelGives: -1
       nextNode:
         dialogueText: 
         responses: []

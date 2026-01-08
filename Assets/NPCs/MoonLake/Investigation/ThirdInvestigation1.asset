@@ -25,7 +25,7 @@ MonoBehaviour:
       nextNode:
         dialogueText: Sorry but no one was working the night shift two days ago.
         responses:
-        - responseText: Next
+        - responseText: "Why wasn\u2019t anyone working that night?"
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:
@@ -46,7 +46,7 @@ MonoBehaviour:
       nextNode:
         dialogueText: No one.
         responses:
-        - responseText: Next
+        - responseText: You're hiding something!
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:
@@ -67,7 +67,7 @@ MonoBehaviour:
       nextNode:
         dialogueText: Of course not. No one was working that night.
         responses:
-        - responseText: Next
+        - responseText: "Why wasn\u2019t anyone working that night?"
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:

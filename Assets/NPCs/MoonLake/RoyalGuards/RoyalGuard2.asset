@@ -16,49 +16,50 @@ MonoBehaviour:
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: Only individuals with an official reason can meet the princess?
+    dialogueText: Only individuals with an official reason can meet the princess!
     responses:
     - responseText: Ugh just let me in! I need to interview the princess.
       friendshipThreshold: 0
-      friendshipLevelGives: -3
+      friendshipLevelGives: -1
       nextNode:
-        dialogueText: There are rumours about electricity being stolen. We know some
-          of the details but not all of it. Prepare for us to ask you questions about
-          your work.
+        dialogueText: "Well if you are really here as a journalist to interview the
+          princess why don\u2019t you write an article on the current power outage
+          issue."
         responses:
-        - responseText: Next
+        - responseText: "Sounds like a stupid story but I guess i\u2019ll look into
+            it for you."
           friendshipThreshold: 0
-          friendshipLevelGives: 0
+          friendshipLevelGives: -1
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-          optionalNextDialogueTree: {fileID: 11400000, guid: df5431b13e05c774aa7df790e11ff525, type: 2}
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 0}
-    - responseText: "\u201COh uh I\u2019m here as an investigative journalist and
-        want to interview the princess.\u201D"
+    - responseText: "Oh uh I\u2019m here as an investigative journalist and want
+        to interview the princess."
       friendshipThreshold: 0
-      friendshipLevelGives: 4
+      friendshipLevelGives: 1
       nextNode:
         dialogueText: There are rumours about electricity being stolen. We know some
           of the details but not all of it. Prepare for us to ask you questions about
           your work.
         responses:
-        - responseText: Next
+        - responseText: "No problem, I\u2019m sure I can figure it out"
           friendshipThreshold: 0
-          friendshipLevelGives: 0
+          friendshipLevelGives: 5
           nextNode:
             dialogueText: 
             responses: []
             onDialogue:
               m_PersistentCalls:
                 m_Calls: []
-          optionalNextDialogueTree: {fileID: 11400000, guid: df5431b13e05c774aa7df790e11ff525, type: 2}
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []

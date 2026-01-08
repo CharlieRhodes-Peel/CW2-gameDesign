@@ -16,7 +16,7 @@ MonoBehaviour:
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: "Wha-What do you want for me man, I didn\u2019t do nothing!"
+    dialogueText: "Wha-What do you want from me man, I didn\u2019t do nothing!"
     responses:
     - responseText: "Don\u2019t worry i\u2019m not the police, i\u2019m just looking
         for information"
@@ -27,7 +27,7 @@ MonoBehaviour:
           I know is that I saw like someone exiting the electricity storage wearing
           an official uniform.
         responses:
-        - responseText: Next
+        - responseText: Can you tell me more about the uniformed person?
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:
@@ -43,12 +43,12 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 0}
     - responseText: Tell me everything you know!
       friendshipThreshold: 0
-      friendshipLevelGives: -3
+      friendshipLevelGives: -5
       nextNode:
         dialogueText: "Ok ok, I saw someone in like a uniform. Go ask someone else
           about it! Like I don\u2019t know nothin'."
         responses:
-        - responseText: Next
+        - responseText: Hey tell me more about the uniform!
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:
@@ -65,12 +65,12 @@ MonoBehaviour:
     - responseText: Woah you seem really suspicious, you should tell me what you
         know and clear your name
       friendshipThreshold: 0
-      friendshipLevelGives: 1
+      friendshipLevelGives: -3
       nextNode:
         dialogueText: "Oh uh it wasn\u2019t me, I was just like on a late night walk
           dude. But like I saw someone in a uniform by the electricity storage."
         responses:
-        - responseText: Next
+        - responseText: You're acting suspicious.
           friendshipThreshold: 0
           friendshipLevelGives: 0
           nextNode:

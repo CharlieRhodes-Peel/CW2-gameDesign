@@ -19,7 +19,7 @@ MonoBehaviour:
     dialogueText: "Uh well, a suspicious frog was speaking funny, he used the word
       \u201Clike\u201D a lot apparently"
     responses:
-    - responseText: End Conversation
+    - responseText: Got it.
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

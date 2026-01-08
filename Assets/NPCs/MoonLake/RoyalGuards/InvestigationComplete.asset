@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: InvestigationComplete
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: Have you finished your investigation?
     responses:
     - responseText: Yeah, I found some pretty good information.
       friendshipThreshold: 0
+      friendshipLevelGives: 5
       nextNode:
         dialogueText: 
         responses: []
@@ -26,6 +30,7 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 11400000, guid: 49ed7d1a0fc447c41b00739e4798be9a, type: 2}
     - responseText: Yeah, now let me see the princess
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
@@ -33,6 +38,26 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
       optionalNextDialogueTree: {fileID: 11400000, guid: 49ed7d1a0fc447c41b00739e4798be9a, type: 2}
+    - responseText: No, what should I do?
+      friendshipThreshold: 0
+      friendshipLevelGives: 0
+      nextNode:
+        dialogueText: You could ask the suspicious frog somewhere around here...
+        responses:
+        - responseText: On it!
+          friendshipThreshold: 0
+          friendshipLevelGives: 1
+          nextNode:
+            dialogueText: 
+            responses: []
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
+        onDialogue:
+          m_PersistentCalls:
+            m_Calls: []
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

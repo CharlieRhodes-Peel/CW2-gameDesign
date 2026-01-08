@@ -16,9 +16,9 @@ MonoBehaviour:
   bossesKilled: 
   bossesHelped: 
   RootNode:
-    dialogueText: "I can\u2019t remember. Please leave me alone"
+    dialogueText: "I can\u2019t remember, please leave me alone!"
     responses:
-    - responseText: End Conversation
+    - responseText: Fine!
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

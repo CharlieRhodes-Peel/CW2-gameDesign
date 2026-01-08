@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Quiz3
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
     dialogueText: 'Correct. Question 2: Who is the main suspect?: a) Suspicious frog,
       b) Uniformed person, c) Manager'
     responses:
     - responseText: a) Suspicious frog
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
@@ -27,15 +31,17 @@ MonoBehaviour:
       optionalNextDialogueTree: {fileID: 11400000, guid: d7db351e86e658d4d92cc42c4d31108f, type: 2}
     - responseText: b) Uniformed person
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: f17c80cc91312994ab9e977f62f46061, type: 2}
     - responseText: c) Manager
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []

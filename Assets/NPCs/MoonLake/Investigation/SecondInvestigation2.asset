@@ -17,9 +17,9 @@ MonoBehaviour:
   bossesHelped: 
   RootNode:
     dialogueText: "It\u2019s some kinda inside job man! Y-you should go like ask
-      the electricity storage manager"
+      the electricity storage manager."
     responses:
-    - responseText: End Conversation
+    - responseText: Hm.
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

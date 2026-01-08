@@ -19,7 +19,7 @@ MonoBehaviour:
     dialogueText: It was an electricity storage uniform. Like go ask the manager
       or somethin`
     responses:
-    - responseText: End Conversation
+    - responseText: Fine.
       friendshipThreshold: 0
       friendshipLevelGives: 0
       nextNode:

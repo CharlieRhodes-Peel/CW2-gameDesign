@@ -12,18 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a9e1a4d1902c4d1b372ee0de810513, type: 3}
   m_Name: Quiz1
   m_EditorClassIdentifier: 
+  afterBossAction: 0
+  bossesKilled: 
+  bossesHelped: 
   RootNode:
-    dialogueText: Great, now we can quiz you on your findings
+    dialogueText: Great, now we can quiz you on your findings!
     responses:
-    - responseText: Next
+    - responseText: Ask!
       friendshipThreshold: 0
+      friendshipLevelGives: 0
       nextNode:
         dialogueText: 
         responses: []
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 0}
+      optionalNextDialogueTree: {fileID: 11400000, guid: 4e24b6d59fec8464385172737b3362d9, type: 2}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []

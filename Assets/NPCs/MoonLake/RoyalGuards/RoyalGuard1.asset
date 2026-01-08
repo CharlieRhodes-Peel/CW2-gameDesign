@@ -31,14 +31,37 @@ MonoBehaviour:
     - responseText: "I don\u2019t care about your gardens. Let me meet the princess
         now!"
       friendshipThreshold: 0
-      friendshipLevelGives: -3
+      friendshipLevelGives: -5
       nextNode:
-        dialogueText: 
-        responses: []
+        dialogueText: Only individuals with an official reason can meet the princess!
+        responses:
+        - responseText: Ugh just let me in! I need to interview the princess.
+          friendshipThreshold: 0
+          friendshipLevelGives: -1
+          nextNode:
+            dialogueText: "Well if you are really here as a journalist to interview
+              the princess why don\u2019t you write an article on the current power
+              outage issue."
+            responses:
+            - responseText: "Sounds like a stupid story but I guess i\u2019ll look
+                into it for you."
+              friendshipThreshold: 0
+              friendshipLevelGives: -1
+              nextNode:
+                dialogueText: 
+                responses: []
+                onDialogue:
+                  m_PersistentCalls:
+                    m_Calls: []
+              optionalNextDialogueTree: {fileID: 0}
+            onDialogue:
+              m_PersistentCalls:
+                m_Calls: []
+          optionalNextDialogueTree: {fileID: 0}
         onDialogue:
           m_PersistentCalls:
             m_Calls: []
-      optionalNextDialogueTree: {fileID: 11400000, guid: eab6d1f84221c1f4aa3f94d9beff8ec0, type: 2}
+      optionalNextDialogueTree: {fileID: 0}
     onDialogue:
       m_PersistentCalls:
         m_Calls: []
