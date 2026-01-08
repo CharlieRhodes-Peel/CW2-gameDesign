@@ -41,6 +41,8 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
 
+    [HideInInspector] public bool attackDisabled = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,8 +70,13 @@ public class PlayerAttack : MonoBehaviour
     //Called whenever the attack button is pressed
     private void Attack(InputAction.CallbackContext ctx)
     {
+        Debug.Log("AttackButtonPressed");
+        if (attackDisabled) { return; }
+        Debug.Log("Attack is not disbaled");
         if (isAttacking) {return;}
+        Debug.Log("is attack is false!");
         if (playerMovement.isWallClimbing) {return;}
+        Debug.Log("Player is not wall climbing!");
         
         StartCoroutine(StartAttacking());
     }
@@ -158,5 +165,12 @@ public class PlayerAttack : MonoBehaviour
     {
         attackInput.action.started -= Attack;
         attackInput.action.Disable();
+    }
+
+    public void resetAttackStuff()
+    {
+        isAttacking = false;
+        isWindup = false;
+        attackDisabled = false;
     }
 }

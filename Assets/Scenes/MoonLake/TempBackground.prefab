@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1843295351
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5784037432292624257, guid: 93dcafe05520e5854a7b6f7b23e507f8, type: 3}
+  m_Sprite: {fileID: 5683406257457414574, guid: f087c86cb953aedfa9db4e98e231c9bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,5 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb3bf4ab8565ba018f869090ddebe29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   parallaxEffect: 0.99

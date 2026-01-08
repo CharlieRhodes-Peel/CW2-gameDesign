@@ -63,6 +63,8 @@ public class SceneSwitchManager : MonoBehaviour
     {
         playerToDoor = false;
         playerToCheckpoint = true;
+        player.GetComponent<PlayerMovement>().movementDisabled = true;
+        player.GetComponent<PlayerAttack>().attackDisabled = true;
         StartCoroutine(SceneExit(sceneToLoad, null));
     }
     
@@ -122,6 +124,8 @@ public class SceneSwitchManager : MonoBehaviour
         camBoundaryComponent.Damping = 1;
         
         onSceneLoaded?.Invoke();
+        player.GetComponent<PlayerMovement>().movementDisabled = false;
+        player.GetComponent<PlayerAttack>().resetAttackStuff();
     }
 
     private IEnumerator Fade(float targetAlpha)

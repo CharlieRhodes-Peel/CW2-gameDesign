@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     private Rigidbody2D rb;
     private bool facingRight = true;
-    private bool movementDisabled = false;
+    [HideInInspector] public bool movementDisabled = false;
     private bool falling = false;
     
     //Movement PowerUps Flags

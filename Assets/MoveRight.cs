@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoveLeft : MonoBehaviour
+public class MoveRight : MonoBehaviour
 {
     [SerializeField] private float acceleration = 1.05f ;
     private Rigidbody2D rb;
@@ -10,7 +10,7 @@ public class MoveLeft : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = new  Vector2(-1, 0);
+        rb.linearVelocity = new  Vector2(1, 0);
         
         //Clean up
         Destroy(gameObject, 10f);
